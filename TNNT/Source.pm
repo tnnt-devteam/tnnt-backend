@@ -9,6 +9,8 @@
 
 package TNNT::Source;
 
+use TNNT::Game;
+
 use Try::Tiny;
 use Carp;
 use Moo;
@@ -49,7 +51,7 @@ has lines => (
 #=============================================================================
 
 #=============================================================================
-# Parse single row of xlogfile and return the result as hashref
+# Parse single row of xlogfile and return the result as TNNT::Game object.
 #=============================================================================
 
 sub _parse_xlogfile_row
@@ -115,7 +117,8 @@ sub read
     while(my $l = <$fh>) {
       chomp($l);
       my $row = $self->_parse_xlogfile_row($l);
-      $cb->($row);
+      my $game = new TNNT::Game(%$row);
+      $cb->($game);
       $lines++;
     }
 
