@@ -1,14 +1,16 @@
 #!/usr/bin/env perl
 
 #=============================================================================
-# Role encapsulating plain list of games (ie. array of TNNT::Game objects).
+# Role extending TNNT::GameList role with a list of ascending games.
 #=============================================================================
 
 
-package TNNT::GameList;
+package TNNT::AscensionList;
 
 use Tie::Array::Sorted;
 use Moo::Role;
+
+requires 'add_game';
 
 
 
@@ -16,7 +18,7 @@ use Moo::Role;
 #=== ATTRIBUTES ==============================================================
 #=============================================================================
 
-has games => (
+has ascensions => (
   is => 'rw',
   default => sub {
     my @ar;
@@ -33,32 +35,31 @@ has games => (
 #=== METHODS =================================================================
 #=============================================================================
 
-sub add_game
-{
-  my (
-    $self,
-    $game
-  ) = @_;
+around 'add_game' => sub {
+  my ($orig, $self, $game) = @_;
 
-  my $gl = $self->games();
-  push(@$gl, $game);
-}
+  if($game->is_ascended()) {
+    push(@{$self->ascensions()}, $game);
+  }
+
+  return $orig->($self, $game);
+};
 
 
-sub count_games
+sub count_ascensions
 {
   my ($self) = @_;
 
-  my $gl = $self->games();
-  return scalar(@$gl);
+  my $al = $self->ascensions();
+  return scalar(@$al);
 }
 
 
-sub iter_games
+sub iter_ascensions
 {
   my ($self, $cb) = @_;
 
-  foreach (@{$self->games()}) {
+  foreach (@{$self->ascensions()}) {
     $cb->($_);
   }
 }
@@ -69,12 +70,12 @@ sub iter_games
 # is always sorted.
 #=============================================================================
 
-sub last_game
+sub last_ascension
 {
   my ($self) = @_;
 
   if($self->count()) {
-    return $self->games()->[-1];
+    return $self->ascensions()->[-1];
   } else {
     return ();
   }
