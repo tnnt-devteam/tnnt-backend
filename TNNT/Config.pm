@@ -4,11 +4,11 @@
 # Loading and access to configuration
 #=============================================================================
 
-
-
 package TNNT::Config;
 
 use Moo;
+with 'MooX::Singleton';
+
 use JSON;
 
 
@@ -48,5 +48,8 @@ sub _load_config
  }
 }
 
+
+
+#=============================================================================
 
 1;
