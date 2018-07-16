@@ -5,8 +5,6 @@
 # (repeatedly) use 'read' method to read the contents.
 #=============================================================================
 
-
-
 package TNNT::Source;
 
 use TNNT::Game;
@@ -88,7 +86,7 @@ sub read
 
   my (
     $self,
-    $cb,        # 1. callback that gets a parsed line (hashref)
+    $cb,        # 1. callback that gets a parsed line (as TNNT::Game object)
   ) = @_;
 
   #--- other variables
