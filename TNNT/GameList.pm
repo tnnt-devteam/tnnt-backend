@@ -10,6 +10,8 @@ package TNNT::GameList;
 use Tie::Array::Sorted;
 use Moo::Role;
 
+requires 'add_game';
+
 
 
 #=============================================================================
@@ -33,16 +35,18 @@ has games => (
 #=== METHODS =================================================================
 #=============================================================================
 
-sub add_game
-{
+around 'add_game' => sub {
   my (
+    $orig,
     $self,
     $game
   ) = @_;
 
   my $gl = $self->games();
   push(@$gl, $game);
-}
+
+  return $orig->($self, $game);
+};
 
 
 sub count_games
