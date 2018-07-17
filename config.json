@@ -1,0 +1,44 @@
+{
+  #---------------------------------------------------------------------------
+  #--- Trophies definitions --------------------------------------------------
+  #---------------------------------------------------------------------------
+
+  "trophies" : {
+
+    "firstasc" : {
+      "title"  : "First Ascension",
+      "points" : 150,
+    },
+
+    "mostasc"  : {
+      "title"  : "Most Ascensions",
+      "points" : 250,
+    },
+
+    "mostcond" : {
+      "title"  : "Most Conducts in One Ascension",
+      "points" : 250,
+    },
+
+    "lowscore" : {
+      "title"  : "Lowest Scoring Ascension",
+      "points" : 150,
+    },
+
+    "highscore" : {
+      "title"  : "Highest Scoring Ascension",
+      "points" : 150,
+    },
+
+    "maxstreak" : {
+      "title"  : "Longest Streak",
+      "points" : 250,
+    },
+
+    "minturns" : {
+      "title"  : "Lowest Turncount",
+      "points" : 250,
+    },
+
+  }
+}
