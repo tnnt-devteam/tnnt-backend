@@ -15,7 +15,7 @@ use Moo::Role;
 #=============================================================================
 
 has scores => (
-  is => 'ro',
+  is => 'rwp',
   default => sub { [] },
 );
 
@@ -34,6 +34,23 @@ sub add_score
 
   my $lst = $self->scores();
   push(@$lst, $entry);
+}
+
+
+#-----------------------------------------------------------------------------
+# Remove scoring entry by trophy name.
+#-----------------------------------------------------------------------------
+
+sub remove_score
+{
+  my (
+    $self,
+    $trophy,
+  ) = @_;
+
+  $self->_set_scores(
+    [ grep { $_->trophy() ne $trophy } @{$self->scores()} ]
+  );
 }
 
 
