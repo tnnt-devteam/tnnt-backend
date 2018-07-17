@@ -95,6 +95,23 @@ sub timeref
 }
 
 
+#-----------------------------------------------------------------------------
+# Display single scoring entry (for development purposes only)
+#-----------------------------------------------------------------------------
+
+sub disp
+{
+  my ($self) = @_;
+
+  printf(
+    "trophy=%s, points=%d, when=%s\n",
+    $self->trophy(),
+    $self->points(),
+    scalar(gmtime($self->when()))
+  );
+}
+
+
 
 #=============================================================================
 
