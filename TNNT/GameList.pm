@@ -77,7 +77,7 @@ sub last_game
 {
   my ($self) = @_;
 
-  if($self->count()) {
+  if($self->count_games()) {
     return $self->games()->[-1];
   } else {
     return ();
