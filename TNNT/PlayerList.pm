@@ -59,6 +59,23 @@ sub count_players
 
 
 #-----------------------------------------------------------------------------
+# Player iterator.
+#-----------------------------------------------------------------------------
+
+sub iter_players
+{
+  my ($self, $cb) = @_;
+
+  my $players = $self->players();
+
+  foreach my $player_name (keys %$players) {
+    my $player = $self->players()->{$player_name};
+    $cb->($player);
+  }
+}
+
+
+#-----------------------------------------------------------------------------
 # Handle new game, if player doesn't exist, add them to the list.
 #-----------------------------------------------------------------------------
 
