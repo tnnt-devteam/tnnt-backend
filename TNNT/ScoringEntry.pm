@@ -30,15 +30,6 @@ has points => (
   default => sub {},
 );
 
-# when was this trophy gained, this can be omitted when the gamelist is not
-# empty as the highest 'endtime' value is used instead; generally most
-# trophies will probably be given for finished games, so this is probably
-# not needed
-
-has when => (
-  is => 'ro',
-);
-
 
 
 #=============================================================================
@@ -73,6 +64,18 @@ sub BUILD
 
 sub add_game
 {
+}
+
+
+#-----------------------------------------------------------------------------
+# Return time when the scoring entry was achieved.
+#-----------------------------------------------------------------------------
+
+sub when
+{
+  my ($self) = @_;
+
+  return $self->last_game()->endtime();
 }
 
 
