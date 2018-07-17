@@ -37,6 +37,21 @@ sub add_score
 }
 
 
+#-----------------------------------------------------------------------------
+# Display the scoring list (for development purposes only)
+#-----------------------------------------------------------------------------
+
+sub disp_scores
+{
+  my ($self) = @_;
+  my $i = 1;
+
+  printf "--- SCORING LIST -- %d entries ---\n", scalar(@{$self->scores()});
+  my $scores = $self->scores();
+  foreach (@$scores) { printf "%d. ", $i++; $_->disp() };
+  print "--- END OF SCORING LIST ---\n";
+}
+
 
 #=============================================================================
 
