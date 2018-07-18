@@ -18,6 +18,10 @@ requires 'add_game';
 #=== ATTRIBUTES ==============================================================
 #=============================================================================
 
+# list of games; by default we use Tie::Array::Sorted to keep this list
+# permanently sorted; if this is not needed, then just supply your own
+# arrayref on instantiation
+
 has games => (
   is => 'rw',
   default => sub {
