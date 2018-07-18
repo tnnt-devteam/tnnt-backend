@@ -74,7 +74,7 @@ sub last_ascension
 {
   my ($self) = @_;
 
-  if($self->count()) {
+  if($self->count_ascensions()) {
     return $self->ascensions()->[-1];
   } else {
     return ();
