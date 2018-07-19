@@ -69,8 +69,11 @@ sub process_game
     $player->add_score(new TNNT::ScoringEntry(
       trophy => 'firstasc',
       games => [ $game ],
+      when => $game->endtime(),
     ));
   }
+
+  return $self;
 }
 
 

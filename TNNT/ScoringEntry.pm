@@ -30,6 +30,15 @@ has points => (
   default => sub {},
 );
 
+# when was the scoring entry achieved; this is the endtime of the last game
+# at the time this entry was created; this is not necessarily the endtime
+# of the last game (the player can achieve the trophy, then add new games to
+# it)
+
+has when => (
+  is => 'rwp',
+);
+
 
 
 #=============================================================================
@@ -64,18 +73,6 @@ sub BUILD
 
 sub add_game
 {
-}
-
-
-#-----------------------------------------------------------------------------
-# Return time when the scoring entry was achieved.
-#-----------------------------------------------------------------------------
-
-sub when
-{
-  my ($self) = @_;
-
-  return $self->last_game()->endtime();
 }
 
 
