@@ -7,6 +7,7 @@
 package TNNT::ScoringList;
 
 use Moo::Role;
+use List::Util qw(first);
 
 
 
@@ -40,6 +41,21 @@ sub add_score
   push(@$lst, $entry);
 
   return $self;
+}
+
+
+#-----------------------------------------------------------------------------
+# Get scoring entry for specified trophy shortname.
+#-----------------------------------------------------------------------------
+
+sub get_score
+{
+  my (
+    $self,
+    $trophy,
+  ) = @_;
+
+  return first { $_->trophy() eq $trophy } @{$self->scores()};
 }
 
 
