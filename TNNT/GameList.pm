@@ -44,12 +44,12 @@ around 'add_game' => sub {
     $orig,
     $self,
     $game
-  ) = @_;
+  ) = splice(@_, 0, 3);
 
   my $gl = $self->games();
   push(@$gl, $game);
 
-  return $orig->($self, $game);
+  return $orig->($self, $game, @_);
 };
 
 

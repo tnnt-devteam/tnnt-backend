@@ -36,13 +36,13 @@ has ascensions => (
 #=============================================================================
 
 around 'add_game' => sub {
-  my ($orig, $self, $game) = @_;
+  my ($orig, $self, $game) = splice(@_, 0, 3);
 
   if($game->is_ascended()) {
     push(@{$self->ascensions()}, $game);
   }
 
-  return $orig->($self, $game);
+  return $orig->($self, $game, @_);
 };
 
 
