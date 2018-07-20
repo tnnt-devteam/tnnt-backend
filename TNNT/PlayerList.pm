@@ -102,6 +102,7 @@ around 'add_game' => sub {
     $pl->{$plr_name} = new TNNT::Player(
       name => $plr_name
     );
+    $pl->{$plr_name}->add_game($game);
   }
 
   #--- return the player object
