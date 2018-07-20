@@ -57,11 +57,11 @@ sub disp
   my ($self) = @_;
 
   printf(
-    "%-16s  %s-%s-%s-%s  %s  %6d turns  %8d points\n",
+    "%-16s  %s-%s-%s-%s  %s  %6d turns  %8d points  %s\n",
     $self->name(),
     $self->role(), $self->race(), $self->gender0(), $self->align0(),
     scalar(gmtime($self->endtime())),
-    $self->turns(), $self->points()
+    $self->turns(), $self->points(), $self->death()
   );
 }
 
