@@ -77,7 +77,7 @@ sub track_game
 
   my $tl = $self->trackers();
   foreach my $tracker (@$tl) {
-    $tracker->process_game($game, $player);
+    $tracker->add_game($game, $player);
   }
 }
 
