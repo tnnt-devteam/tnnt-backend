@@ -39,7 +39,6 @@ sub process_game
   my (
     $self,
     $game,
-    $player
   ) = @_;
 
   #--- if the game is ascended and its endtime is lower than the current's
@@ -62,11 +61,11 @@ sub process_game
     #--- set player and game
 
     $self->_set_game($game);
-    $self->_set_player($player);
+    $self->_set_player($game->player());
 
     #--- add scoring entry to new holder
 
-    $player->add_score(new TNNT::ScoringEntry(
+    $game->player()->add_score(new TNNT::ScoringEntry(
       trophy => 'firstasc',
       games => [ $game ],
       when => $game->endtime(),

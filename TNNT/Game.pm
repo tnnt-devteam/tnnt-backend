@@ -35,6 +35,12 @@ has hp        => ( is => 'ro', required => 1 );
 has maxhp     => ( is => 'ro', required => 1 );
 has deaths    => ( is => 'ro', required => 1 );
 
+# reference to TNNT::Player object
+
+has player => (
+  is => 'rw',
+);
+
 
 
 #=============================================================================
