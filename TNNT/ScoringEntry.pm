@@ -39,6 +39,13 @@ has when => (
   is => 'rwp',
 );
 
+# additional, trophy-specific data
+
+has data => (
+  is => 'ro',
+  default => sub { {}; },
+);
+
 
 
 #=============================================================================
@@ -93,6 +100,46 @@ sub timeref
 
 
 #-----------------------------------------------------------------------------
+# Function to add hash entries into the "data" attribute. It takes key=>value
+# pairs as argument.
+#-----------------------------------------------------------------------------
+
+sub add_data
+{
+  my ($self) = shift;
+  my %new = @_;
+  my $cur = $self->data();
+
+  foreach my $key (keys %new) {
+    $cur->{$key} = $new{$key};
+  }
+
+  return $self;
+}
+
+
+#-----------------------------------------------------------------------------
+# Function to get hash entries from the "data" attribute.
+#-----------------------------------------------------------------------------
+
+sub get_data
+{
+  my ($self, $key) = @_;
+  my $cur = $self->data();
+
+  if(
+    !$cur
+    || !ref $cur
+    || !exists $cur->{$key}
+  ) {
+    return undef;
+  } else {
+    return $cur->{$key};
+  }
+}
+
+
+#-----------------------------------------------------------------------------
 # Display single scoring entry (for development purposes only)
 #-----------------------------------------------------------------------------
 
@@ -101,10 +148,13 @@ sub disp
   my ($self) = @_;
 
   printf(
-    "trophy=%s, points=%d, when=%s\n",
+    "trophy=%s, points=%d, when=%s, data={%s}\n",
     $self->trophy(),
     $self->points(),
-    scalar(gmtime($self->when()))
+    scalar(gmtime($self->when())),
+    join(', ',
+      map { $_ . '=' . $self->get_data($_) } (sort keys %{$self->data()})
+    )
   );
 }
 
