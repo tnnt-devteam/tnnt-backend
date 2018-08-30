@@ -2,7 +2,9 @@
 
 #=============================================================================
 # This object handles ingesting the games from sources and compiling the
-# scoreboard
+# scoreboard. This is a two-step process: 1. first you add all games by
+# using the TNNT::Source's iterator; 2. run 'process' method that will compile
+# the data.
 #=============================================================================
 
 package TNNT::Score;
@@ -16,6 +18,7 @@ with 'TNNT::PlayerList';
 use TNNT::Game;
 use TNNT::TrackerList;
 use TNNT::Tracker::FirstAsc;
+use TNNT::Tracker::MostAsc;
 
 
 
@@ -28,6 +31,10 @@ has 'global_tracker' => (
   default => sub { new TNNT::TrackerList },
 );
 
+has 'processed' => (
+  is => 'rwp',
+  default => 0,
+);
 
 
 #=============================================================================
@@ -42,6 +49,7 @@ sub BUILD
   #--- register trackers
 
   $tr->add_tracker(new TNNT::Tracker::FirstAsc);
+  $tr->add_tracker(new TNNT::Tracker::MostAsc);
 }
 
 
@@ -56,18 +64,34 @@ sub BUILD
 
 sub add_game
 {
-  my ($self, $game) = @_;
+  # not implemented yet
+};
+
+
+#-----------------------------------------------------------------------------
+# Process loaded games
+#-----------------------------------------------------------------------------
+
+sub process
+{
+  my $self = shift;
   my $tr = $self->global_tracker();
 
-  #--- get player
+  #--- do this only once
 
-  my $player_name = $game->name();
-  my $player = $self->get_player($player_name);
+  return if $self->processed();
 
-  #--- process the game
+  #--- process every game sequentially
 
-  $tr->track_game($game, $player);
-};
+  $self->iter_games(sub {
+    my ($game) = @_;
+    $tr->track_game($game);
+  });
+
+  #--- set 'processed' attribute
+
+  $self->_set_processed(1);
+}
 
 
 
