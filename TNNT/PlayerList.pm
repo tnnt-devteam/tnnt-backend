@@ -94,15 +94,17 @@ around 'add_game' => sub {
 
   if(exists $pl->{$plr_name}) {
     $pl->{$plr_name}->add_game($game);
+    $game->player($pl->{$plr_name});
   }
 
   #--- player not in the player list, create new instance
 
   else {
-    $pl->{$plr_name} = new TNNT::Player(
-      name => $plr_name
+    my $player = $pl->{$plr_name} = new TNNT::Player(
+      name => $plr_name,
     );
-    $pl->{$plr_name}->add_game($game);
+    $player->add_game($game);
+    $game->player($player);
   }
 
   #--- return the player object
