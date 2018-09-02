@@ -19,6 +19,7 @@ use TNNT::Game;
 use TNNT::TrackerList;
 use TNNT::Tracker::FirstAsc;
 use TNNT::Tracker::MostAsc;
+use TNNT::Tracker::MostCond;
 
 
 
@@ -50,6 +51,7 @@ sub BUILD
 
   $tr->add_tracker(new TNNT::Tracker::FirstAsc);
   $tr->add_tracker(new TNNT::Tracker::MostAsc);
+  $tr->add_tracker(new TNNT::Tracker::MostCond);
 }
 
 
