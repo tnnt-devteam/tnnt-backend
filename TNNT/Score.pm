@@ -22,6 +22,7 @@ use TNNT::Tracker::MostAsc;
 use TNNT::Tracker::MostCond;
 use TNNT::Tracker::LowScore;
 use TNNT::Tracker::HighScore;
+use TNNT::Tracker::MinTurns;
 
 
 
@@ -56,6 +57,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::MostCond);
   $tr->add_tracker(new TNNT::Tracker::LowScore);
   $tr->add_tracker(new TNNT::Tracker::HighScore);
+  $tr->add_tracker(new TNNT::Tracker::MinTurns);
 }
 
 
