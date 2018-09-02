@@ -8,7 +8,7 @@ package TNNT::Player;
 
 use Moo;
 
-with 'TNNT::GameList';
+with 'TNNT::GameList::AddGame';
 with 'TNNT::AscensionList';
 with 'TNNT::ScoringList';
 

@@ -7,7 +7,7 @@
 package TNNT::ScoringEntry;
 
 use Moo;
-with 'TNNT::GameList';
+with 'TNNT::GameList::AddGame';
 
 
 
