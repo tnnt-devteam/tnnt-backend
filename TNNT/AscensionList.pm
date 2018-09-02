@@ -7,6 +7,7 @@
 
 package TNNT::AscensionList;
 
+use Tie::Array::Sorted;
 use Moo::Role;
 
 requires 'add_game';
@@ -19,7 +20,13 @@ requires 'add_game';
 
 has ascensions => (
   is => 'rw',
-  default => sub { [] },
+  default => sub {
+    my @ar;
+    tie @ar, 'Tie::Array::Sorted', sub {
+      $_[0]->endtime() <=> $_[1]->endtime()
+    };
+    return \@ar;
+  },
 );
 
 

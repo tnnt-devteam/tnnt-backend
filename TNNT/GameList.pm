@@ -7,6 +7,7 @@
 
 package TNNT::GameList;
 
+use Tie::Array::Sorted;
 use Moo::Role;
 
 
@@ -21,7 +22,13 @@ use Moo::Role;
 
 has games => (
   is => 'rw',
-  default => sub { [] },
+  default => sub {
+    my @ar;
+    tie @ar, 'Tie::Array::Sorted', sub {
+      $_[0]->endtime() <=> $_[1]->endtime()
+    };
+    return \@ar;
+  },
 );
 
 
