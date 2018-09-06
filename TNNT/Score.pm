@@ -17,6 +17,9 @@ with 'TNNT::PlayerList';
 
 use TNNT::Game;
 use TNNT::TrackerList;
+use TNNT::Tracker::Ascension;
+use TNNT::Tracker::Conduct;
+use TNNT::Tracker::Speedrun;
 use TNNT::Tracker::FirstAsc;
 use TNNT::Tracker::MostAsc;
 use TNNT::Tracker::MostCond;
@@ -52,6 +55,9 @@ sub BUILD
 
   #--- register trackers
 
+  $tr->add_tracker(new TNNT::Tracker::Ascension);
+  $tr->add_tracker(new TNNT::Tracker::Conduct);
+  $tr->add_tracker(new TNNT::Tracker::Speedrun);
   $tr->add_tracker(new TNNT::Tracker::FirstAsc);
   $tr->add_tracker(new TNNT::Tracker::MostAsc);
   $tr->add_tracker(new TNNT::Tracker::MostCond);

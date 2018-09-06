@@ -42,6 +42,99 @@
 
     "streak"   : {
       "title"  : "Streak",
+    },
+
+    "ascension" : {
+      "title"  : "Ascension",
+      "points" : 50,
+    },
+
+    "conduct" : {
+      "title" : "Conduct",
+    },
+
+    "conduct:food" : {
+      "title"  : "Conduct: Foodless",
+      "points" : 30,
+    },
+
+    "conduct:vegn" : {
+      "title"  : "Conduct: Vegan",
+      "points" : 15,
+    },
+
+    "conduct:vegt" : {
+      "title"  : "Conduct: Vegetarian",
+      "points" : 5,
+    },
+
+    "conduct:athe" : {
+      "title"  : "Conduct: Atheist",
+      "points" : 10,
+    },
+
+    "conduct:weap" : {
+      "title"  : "Conduct: Weaponless",
+      "points" : 10,
+    },
+
+    "conduct:paci" : {
+      "title"  : "Conduct: Pacifist",
+      "points" : 50,
+    },
+
+    "conduct:illi" : {
+      "title"  : "Conduct: Illiterate",
+      "points" : 20,
+    },
+
+    "conduct:pile" : {
+      "title"  : "Conduct: Polypileless",
+      "points" : 1,
+    },
+
+    "conduct:self" : {
+      "title"  : "Conduct: Polyselfless",
+      "points" : 1,
+    },
+
+    "conduct:wish" : {
+      "title"  : "Conduct: Wishless",
+      "points" : 4,
+    },
+
+    "conduct:arti" : {
+      "title"  : "Conduct: Artiwishless",
+      "points" : 1,
+    },
+
+    "conduct:geno" : {
+      "title"  : "Conduct: Genocideless",
+      "points" : 5,
+    },
+
+    "conduct:elbe" : {
+      "title"  : "Conduct: Elberethless",
+      "points" : 20,
+    },
+
+    "conduct:zen"  : {
+      "title"  : "Conduct: Zen",
+      "points" : 50,
+    },
+
+    "conduct:nude" : {
+      "title"  : "Conduct: Nude",
+      "points" : 50,
+    },
+
+    # speedrunning bonus is int(factor / turns); if cutoff is defined then
+    # game with <cutoff> or more turns receives no bonus
+
+    "speedrun" : {
+      "title"  : "Speedrun",
+      "factor" : 500000,
+      "cutoff" : null,
     }
   },
 
