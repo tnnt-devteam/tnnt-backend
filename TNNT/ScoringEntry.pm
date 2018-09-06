@@ -69,7 +69,7 @@ sub BUILD
   }
 
   $self->_set_points(
-    $cfg->{'trophies'}{$trophy}{'points'}
+    $cfg->{'trophies'}{$trophy}{'points'} // 0
   );
 }
 
