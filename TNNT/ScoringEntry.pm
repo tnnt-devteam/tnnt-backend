@@ -1,7 +1,8 @@
 #!/usr/bin/env perl
 
 #=============================================================================
-# Scoring entry for single trophy.
+# Scoring entry for single trophy. ScoringList is used to manage lists of
+# scoring entries.
 #=============================================================================
 
 package TNNT::ScoringEntry;
