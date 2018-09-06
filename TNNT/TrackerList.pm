@@ -93,7 +93,6 @@ sub finish
   my ($self) = @_;
 
   foreach my $tracker (@{$self->trackers()}) {
-    printf "calling finish on tracker %s\n", $tracker->name();
     $tracker->finish();
   }
 }
