@@ -84,5 +84,22 @@ sub track_game
 
 
 #=============================================================================
+# Invoke all trackers' finish method. This allows for some final wrap up
+# actions like generation of scoring entries etc.
+#=============================================================================
+
+sub finish
+{
+  my ($self) = @_;
+
+  foreach my $tracker (@{$self->trackers()}) {
+    printf "calling finish on tracker %s\n", $tracker->name();
+    $tracker->finish();
+  }
+}
+
+
+
+#=============================================================================
 
 1;
