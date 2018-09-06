@@ -68,9 +68,11 @@ sub BUILD
     die "Trophy '$trophy' is not defined";
   }
 
-  $self->_set_points(
-    $cfg->{'trophies'}{$trophy}{'points'} // 0
-  );
+  if(!defined $self->points()) {
+    $self->_set_points(
+      $cfg->{'trophies'}{$trophy}{'points'} // 0
+    );
+  }
 }
 
 
