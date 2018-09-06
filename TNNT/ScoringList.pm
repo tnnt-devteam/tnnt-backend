@@ -60,6 +60,37 @@ sub get_score
 
 
 #-----------------------------------------------------------------------------
+# Get sum of scores. You can supply list of scoring entry names to filter the
+# entries with.
+#-----------------------------------------------------------------------------
+
+sub sum_score
+{
+  my $self = shift;
+  my @filter = splice @_;
+
+  #--- apply the filter
+
+  my @scores = grep {
+    my $score = $_;
+    !@filter
+    || grep { $score->{'trophy'} eq $_ } @filter;
+  } @{$self->scores()};
+
+  #--- sum the selected entries
+
+  my $sum = 0;
+  for my $score (@scores) {
+    $sum += $score->{'points'} // 0;
+  }
+
+  #--- finish
+
+  return $sum;
+}
+
+
+#-----------------------------------------------------------------------------
 # Remove scoring entry by trophy name.
 #-----------------------------------------------------------------------------
 
