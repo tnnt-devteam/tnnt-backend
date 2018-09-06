@@ -96,6 +96,10 @@ sub process
     $tr->track_game($game);
   });
 
+  #--- invoke trackers' finish() method
+
+  $tr->finish();
+
   #--- set 'processed' attribute
 
   $self->_set_processed(1);
