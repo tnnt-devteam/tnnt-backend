@@ -113,6 +113,28 @@ sub remove_score
 
 
 #-----------------------------------------------------------------------------
+# This method finds a scoring entry, removes it and adds a new one to the end
+# of the list. The search is done by finding a key/value in 'data' attribute.
+# It is up to an implementor to make that key/value pair unique. Only the
+# first match is removed.
+#-----------------------------------------------------------------------------
+
+sub remove_and_add
+{
+  my ($self, $key, $value, $new_entry) = @_;
+  my $scores = $self->scores();
+
+  for(my $i = 0; $i < @$scores; $i++) {
+    next if $scores->[$i]->get_data($key) ne $value;
+    splice(@$scores, $i, 1);
+    push(@$scores, $new_entry);
+  }
+
+  return $self;
+}
+
+
+#-----------------------------------------------------------------------------
 # Display the scoring list (for development purposes only)
 #-----------------------------------------------------------------------------
 
