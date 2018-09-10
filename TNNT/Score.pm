@@ -27,6 +27,7 @@ use TNNT::Tracker::LowScore;
 use TNNT::Tracker::HighScore;
 use TNNT::Tracker::MinTurns;
 use TNNT::Tracker::Streak;
+use TNNT::Tracker::ClanAscension;
 
 
 
@@ -66,6 +67,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::HighScore);
   $tr->add_tracker(new TNNT::Tracker::MinTurns);
   $tr->add_tracker(new TNNT::Tracker::Streak);
+  $tr->add_tracker(new TNNT::Tracker::ClanAscension);
 }
 
 
