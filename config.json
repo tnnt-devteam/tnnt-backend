@@ -26,6 +26,11 @@
       "points" : 250,
     },
 
+    "clan-mostcond" : {
+      "title"  : "Most Conducts in One Ascension",
+      "points" : 250,
+    },
+
     "lowscore" : {
       "title"  : "Lowest Scoring Ascension",
       "points" : 150,
