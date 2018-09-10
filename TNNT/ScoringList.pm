@@ -125,7 +125,9 @@ sub remove_and_add
   my $scores = $self->scores();
 
   for(my $i = 0; $i < @$scores; $i++) {
-    next if $scores->[$i]->get_data($key) ne $value;
+    next if
+      !defined $scores->[$i]->get_data($key)
+      || $scores->[$i]->get_data($key) ne $value;
     splice(@$scores, $i, 1);
     push(@$scores, $new_entry);
   }
