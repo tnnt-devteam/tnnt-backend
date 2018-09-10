@@ -53,5 +53,41 @@ sub add_player
 
 
 #=============================================================================
+# Returns true if player name supplied in argument is a clan member.
+#=============================================================================
+
+sub is_member
+{
+  my ($self, $player) = @_;
+
+  if(
+    grep { $_ eq $player } @{$self->players()}
+  ) {
+    return 1;
+  } else {
+    return undef;
+  }
+}
+
+
+#=============================================================================
+# Returns true if player name supplied in argument is a clan admin.
+#=============================================================================
+
+sub is_admin
+{
+  my ($self, $player) = @_;
+
+  if(
+    grep { $_ eq $player } @{$self->admins()}
+  ) {
+    return 1;
+  } else {
+    return undef;
+  }
+}
+
+
+#=============================================================================
 
 1;

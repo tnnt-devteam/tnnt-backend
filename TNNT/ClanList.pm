@@ -103,5 +103,26 @@ sub iter_clans
 
 
 #=============================================================================
+# Find clan by playername
+#=============================================================================
+
+sub find_clan
+{
+  my ($self, $player_name) = @_;
+
+  my ($clan_name) = grep {
+    $self->clans()->{$_}->is_member($player_name)
+  } keys %{$self->clans()};
+
+  if($clan_name) {
+    return $self->clans()->{$clan_name};
+  } else {
+    return undef;
+  }
+}
+
+
+
+#=============================================================================
 
 1;
