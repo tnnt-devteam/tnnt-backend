@@ -45,22 +45,24 @@ sub add_game
     $sum_pts += $cfg->{'trophies'}{"conduct:$conduct"}{'points'};
   }
 
-  #--- create scoring entry
+  #--- create scoring entry (only if the score is non-zero)
 
-  my $se = new TNNT::ScoringEntry(
-    trophy => $self->name(),
-    games => [ $game ],
-    when => $game->endtime(),
-    points => $sum_pts,
-    data => {
-      conducts => [ $game->conducts() ],
-      conducts_txt => join(' ', $game->conducts()),
-      ncond => scalar($game->conducts()),
-    }
-  );
+  if($sum_pts) {
+    my $se = new TNNT::ScoringEntry(
+      trophy => $self->name(),
+      games => [ $game ],
+      when => $game->endtime(),
+      points => $sum_pts,
+      data => {
+        conducts => [ $game->conducts() ],
+        conducts_txt => join(' ', $game->conducts()),
+        ncond => scalar($game->conducts()),
+      }
+    );
 
-  $game->player()->add_score($se);
-  $game->add_score($se);
+    $game->player()->add_score($se);
+    $game->add_score($se);
+  }
 
   #--- finish
 
