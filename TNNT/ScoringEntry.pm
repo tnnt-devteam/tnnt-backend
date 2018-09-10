@@ -28,7 +28,6 @@ has trophy => (
 
 has points => (
   is => 'rwp',
-  default => sub {},
 );
 
 # when was the scoring entry achieved; this is the endtime of the last game
@@ -159,6 +158,66 @@ sub disp
       map { $_ . '=' . $self->get_data($_) } (sort keys %{$self->data()})
     )
   );
+}
+
+
+
+#=============================================================================
+# Get the 'when' attribute value; if the attribute's value is undefined and
+# the list of games is defined in 'games' key, then this method tries to
+# return endtime of the last game.
+#=============================================================================
+
+sub get_when
+{
+  my ($self) = @_;
+
+  #--- if explicit 'when' is set, return that
+
+  if(defined $self->when()) {
+    return $self->when();
+  }
+
+  #--- otherwise find last game's endtime (we're assuming the list
+  #--- of games is ordered)
+
+  elsif($self->games()) {
+    my $games = $self->dgames();
+    return $games->[ scalar(@$games) -1 ]->endtime();
+  }
+
+  #--- fail with undef
+
+  return undef;
+}
+
+
+#=============================================================================
+# Get the 'points' attribute value; if the value is undefined and list of
+# games is present in 'games' attribute, then sum all the games' scoring
+# entries' 'points' values and return that instead.
+#=============================================================================
+
+sub get_points
+{
+  my ($self) = @_;
+
+  #--- if 'points' value is defined, return that
+
+  if(defined $self->points()) {
+    return $self->points();
+  }
+
+  #--- otherwise sum game list scoring entries
+
+  elsif($self->games()) {
+    my $games = $self->games();
+    my $points = 0;
+    foreach my $game (@$games) {
+      $points += $game->sum_score();
+    }
+    return $points;
+  }
 }
 
 
