@@ -1,7 +1,12 @@
 #!/usr/bin/env perl
 
 #=============================================================================
-# Scoring list for players/clans.
+# Scoring list for players/clans. This is a collection of ScoringEntry
+# objects and is used to hold scoring information for:
+#
+#  * players (Player class)
+#  * games (Game class)
+#  * clans (Clan class)
 #=============================================================================
 
 package TNNT::ScoringList;
