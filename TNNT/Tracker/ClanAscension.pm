@@ -70,13 +70,19 @@ sub add_game
       $game->align()
     );
 
+
+  #--- only following types of entries are counted for ascension score
+  #--- for clan scoring purposes
+
+    my @filter = ('ascension', 'conduct', 'speedrun', 'streak');
+
   #--- create new scoring entry
 
     my $se = new TNNT::ScoringEntry(
       trophy => $self->name(),
       games => [ $game ],
       when => $game->endtime,
-      points => $game->sum_score(),
+      points => $game->sum_score(@filter),
       data => { combo => $combo },
     );
 
@@ -84,17 +90,17 @@ sub add_game
 
     if(
       exists $clan_trk->{$combo}
-      && $clan_trk->{$combo} < $game->sum_score()
+      && $clan_trk->{$combo} < $game->sum_score(@filter)
     ) {
       $clan->remove_and_add('combo', $combo, $se);
-      $clan_trk->{$combo} = $game->sum_score();
+      $clan_trk->{$combo} = $game->sum_score(@filter);
     }
 
   #--- new unique combo game for the clan
 
     elsif(!exists $clan_trk->{$combo}) {
       $clan->add_score($se);
-      $clan_trk->{$combo} = $game->sum_score();
+      $clan_trk->{$combo} = $game->sum_score(@filter);
     }
   }
 
