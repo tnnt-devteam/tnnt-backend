@@ -33,15 +33,11 @@ has players => (
   default => sub { {}; },
 );
 
-# longest streak and the player holding it
+# longest streak
 
 has maxstreak => (
   is => 'rwp',
   default => sub { new TNNT::Streak; },
-);
-
-has player => (
-  is => 'rwp',
 );
 
 
@@ -49,6 +45,45 @@ has player => (
 #=============================================================================
 #=== METHODS =================================================================
 #=============================================================================
+
+#-----------------------------------------------------------------------------
+# Return player object for current maxstreak. If the maxstreak is an empty
+# list, return undef.
+#-----------------------------------------------------------------------------
+
+sub player
+{
+  my ($self) = @_;
+
+  return (
+    $self->maxstreak()->count_games()
+    ?
+    $self->maxstreak()->last_game()->player()
+    :
+    undef
+  );
+}
+
+
+#-----------------------------------------------------------------------------
+# Return clan object for current maxstreak. If the maxstreak is an empty list
+# or the player is not in a clan, return undef.
+#-----------------------------------------------------------------------------
+
+sub clan
+{
+  my ($self) = @_;
+  my $player = $self->player();
+
+  return if !$player;
+
+  my $clans = TNNT::ClanList->instance();
+  my $clan = $clans->find_clan($player);
+
+  return $clan;
+}
+
+
 
 #=============================================================================
 # Process one game.
@@ -116,11 +151,13 @@ sub score
     if($self->player()) {
       $self->player()->remove_score('maxstreak');
     }
+    if($self->clan()) {
+      $self->clan()->remove_score('clan-maxstreak');
+    }
 
   # set the tracking attributes
 
     $self->_set_maxstreak($streak);
-    $self->_set_player($streak->last_game()->player());
 
   # add scoring entry to new holder
 
@@ -130,6 +167,15 @@ sub score
       data  => { len => $streak-> count_games() },
       when => $streak->last_game()->endtime(),
     ));
+
+    if($self->clan()) {
+      $self->clan()->add_score(new TNNT::ScoringEntry(
+        trophy => 'clan-maxstreak',
+        games => $streak,
+        data  => { len => $streak-> count_games() },
+        when => $streak->last_game()->endtime(),
+      ));
+    }
 
   }
 

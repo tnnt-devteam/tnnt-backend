@@ -66,6 +66,11 @@
       "points" : 250,
     },
 
+    "clan-maxstreak" : {
+      "title"  : "Longest Streak",
+      "points" : 250,
+    },
+
     "minturns" : {
       "title"  : "Lowest Turncount",
       "points" : 250,
