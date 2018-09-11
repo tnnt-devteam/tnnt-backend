@@ -66,6 +66,11 @@
       "points" : 250,
     },
 
+    "clan-minturns" : {
+      "title"  : "Lowest Turncount",
+      "points" : 250,
+    },
+
     "streak"   : {
       "title"  : "Streak",
     },
