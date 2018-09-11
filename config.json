@@ -26,6 +26,11 @@
       "points" : 250,
     },
 
+    "clan-mostasc"  : {
+      "title"  : "Most Ascensions",
+      "points" : 250,
+    },
+
     "mostcond" : {
       "title"  : "Most Conducts in One Ascension",
       "points" : 250,

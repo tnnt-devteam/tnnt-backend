@@ -1,15 +1,15 @@
 #!/usr/bin/env perl
 
 #=============================================================================
-# Tracker for the "Most Ascensions" trophy
+# Tracker for the "Most Ascensions" trophy (both individual players and
+# clans). One slight difference in this tracker is that it doesn't attach
+# attach scoring entries to games.
 #=============================================================================
 
 package TNNT::Tracker::MostAsc;
 
 use Moo;
 use TNNT::ScoringEntry;
-
-with 'TNNT::AscensionList';
 
 
 
@@ -26,9 +26,8 @@ has player => (
   is => 'rwp',
 );
 
-has maxasc => (
+has clan => (
   is => 'rwp',
-  default => sub { 0 },
 );
 
 
@@ -39,29 +38,36 @@ has maxasc => (
 
 sub add_game
 {
-  my (
-    $self,
-    $game,
-  ) = @_;
-
+  my ($self, $game) = @_;
   my $player = $game->player();
+  my $clans = TNNT::ClanList->instance();
+  my $clan = $clans->find_clan($player->name());
 
   #--- count only ascending games
 
   return if !$game->is_ascended();
 
+  #--- prepare scoring entries
+
+  my $se_player = new TNNT::ScoringEntry(
+    trophy => $self->name(),
+    games => [ $game ],
+    when => $game->endtime(),
+  );
+
+  my $se_clan = new TNNT::ScoringEntry(
+    trophy => 'clan-' . $self->name(),
+    games => [ $game ],
+    when => $game->endtime(),
+  );
+
   #--- the very first ascension
 
   if(!$self->player()) {
-    $self->_set_maxasc(1);
     $self->_set_player($player);
-    $player->add_score(
-      new TNNT::ScoringEntry(
-        trophy => 'mostasc',
-        games => [ $game ],
-        when => $game->endtime(),
-      )->add_data(wins => 1)
-    );
+    $self->_set_clan($clan) if $clan;
+    $player->add_score($se_player->add_data(wins =>1));
+    $clan->add_score($se_clan->add_data(wins => 1)) if $clan;
   }
 
   #--- current trophy holder increased their lead, just update their scoring
@@ -75,61 +81,32 @@ sub add_game
     $s->add_data(wins => $player->count_ascensions());
   }
 
-  #--- player got ascension, but did not get the trophy, do nothing
+  #--- another player overtook the current holder
 
   elsif(
-    $player->count_ascensions() < $self->maxasc()
+    $player->count_ascensions() > $self->player()->count_ascensions()
   ) {
-  }
 
-  #--- all other cases mean rescan of the ascension list
-
-  else {
-    my $maxasc = 0;    # most ascensions on a player
-    my $maxplr;        # player with most ascensions
-    my $when;          # achievement time reference
-    my %p;             # hash to hold player data
-
-    # scan the ascensions list
-
-    $self->iter_ascensions(sub {
-      my $plrname = $_->name();
-      if(++$p{$plrname} > $maxasc) {
-        if(!$maxplr || $maxplr ne $plrname) {
-          $when = $_->endtime();
-        }
-        $maxplr = $plrname;
-        $maxasc++;
-      }
-    });
-
-    # the trophy holder has not changed, just update their scoring entry
-
-    if($self->player()->name() eq $maxplr) {
-      my $s = $self->player()->get_score('mostasc');
-      $s->games([ @{$self->player()->ascensions()} ]);
-      $s->add_data(wins => $self->player()->count_ascensions());
+    # remove scoring entries from previous holders
+    $self->player()->remove_score($self->name());
+    if($self->clan()) {
+      $self->clan()->remove_score('clan-' . $self->name());
     }
 
-    # the trophy holder has changed, delete previous scoring entry and
-    # create a new one
+    # set tracker state
+    $self->_set_player($player);
+    $self->_set_clan($clan);
 
-    else {
-      $self->player()->remove_score('mostasc');
-      $player->add_score(new TNNT::ScoringEntry(
-        trophy => 'mostasc',
-        games => [ @{$player->ascensions()} ],
-        data => { wins => $player->count_ascensions() },
-        when => $when,
-      ));
-      $self->_set_player($player);
-    }
-
-    # update the number of ascensions of the trophy holder
-
-    $self->_set_maxasc($maxasc);
+    # add new scoring entries
+    $player->add_score(
+      $se_player->add_data(wins => $player->count_ascensions())
+    );
+    $clan->add_score(
+      $se_clan->add_data(wins => $player->count_ascensions())
+    ) if $clan;
   }
 
+  return $self;
 }
 
 
