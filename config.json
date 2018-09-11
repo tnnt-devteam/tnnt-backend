@@ -46,6 +46,11 @@
       "points" : 150,
     },
 
+    "clan-highscore" : {
+      "title"  : "Highest Scoring Ascension",
+      "points" : 150,
+    },
+
     "maxstreak" : {
       "title"  : "Longest Streak",
       "points" : 250,
