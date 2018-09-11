@@ -16,6 +16,11 @@
       "points" : 150,
     },
 
+    "clan-firstasc" : {
+      "title"  : "First Ascension",
+      "points" : 150,
+    },
+
     "mostasc"  : {
       "title"  : "Most Ascensions",
       "points" : 250,
