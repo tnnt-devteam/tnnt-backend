@@ -103,15 +103,19 @@ sub iter_clans
 
 
 #=============================================================================
-# Find clan by playername
+# Find clan by playername or player object ref.
 #=============================================================================
 
 sub find_clan
 {
-  my ($self, $player_name) = @_;
+  my ($self, $player) = @_;
+
+  if(ref($player)) {
+    $player = $player->name();
+  }
 
   my ($clan_name) = grep {
-    $self->clans()->{$_}->is_member($player_name)
+    $self->clans()->{$_}->is_member($player)
   } keys %{$self->clans()};
 
   if($clan_name) {
