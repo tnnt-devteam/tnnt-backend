@@ -41,6 +41,11 @@
       "points" : 150,
     },
 
+    "clan-lowscore" : {
+      "title"  : "Lowest Scoring Ascension",
+      "points" : 150,
+    },
+
     "highscore" : {
       "title"  : "Highest Scoring Ascension",
       "points" : 150,
