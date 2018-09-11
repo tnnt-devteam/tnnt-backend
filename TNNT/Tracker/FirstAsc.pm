@@ -73,7 +73,7 @@ sub add_game
 
     $self->_set_game($game);
     $self->_set_player($game->player());
-    $self->_set_clan($clan) if $clan;
+    $self->_set_clan($clan);
 
     #--- add scoring entry to new holder
 
