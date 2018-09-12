@@ -428,6 +428,513 @@
   },
 
   #---------------------------------------------------------------------------
+  #--- Achievements ----------------------------------------------------------
+  #---------------------------------------------------------------------------
+
+  "achievements" : {
+
+  #--- the canonic vanilla achievements --------------------------------------
+
+    "thebell" : {
+      "achieve" : "0x001",
+      "title"   : "Ringing in My Ears",
+      "descr"   : "Get the Bell of Opening"
+    },
+
+    "gehennom" : {
+      "achieve" : "0x002",
+      "title"   : "Feel the Burn",
+      "descr"   : "Enter the Gehennom"
+    },
+
+    "candelabrum" : {
+      "achieve" : "0x004",
+      "title"   : "Emerging into the Light",
+      "descr"   : "Get the Candelabrum of Invocation"
+    },
+
+    "thebook"   : {
+      "achieve" : "0x008",
+      "title"   : "Weighing of the Heart",
+      "descr"   : "Get the Book of the Dead"
+    },
+
+    "invocation" : {
+      "achieve" : "0x010",
+      "title"   : "Bell, Book and Candle",
+      "descr"   : "Perform the Invocation Ritual"
+    },
+
+    "theamulet" : {
+      "achieve" : "0x020",
+      "title"   : "My Preciousss",
+      "descr"   : "Get the Amulet of Yendor"
+    },
+
+    "endgame" : {
+      "achieve" : "0x040",
+      "title"   : "From the Dungeon They Came",
+      "descr"   : "Enter the Elemental Planes"
+    },
+
+    "meluckstone" : {
+      "achieve" : "0x200",
+      "title"   : "Are You Feeling Lucky",
+      "descr"   : "Get the luckstone from Mines' End"
+    },
+
+    "sokoban" : {
+      "achieve" : "0x400",
+      "title"   : "Boulder Pusher",
+      "descr"   : "Finish Sokoban"
+    },
+
+    "medusa" : {
+      "achieve" : "0x800",
+      "title"   : "Anti-Stoner",
+      "descr"   : "Kill Medusa"
+    },
+
+  #--- TNNT specific achievements --------------------------------------------
+
+    "oracle" : {
+      "title"   : "Sage Advice",
+      "descr"   : "Consult the Oracle"
+    },
+
+    "quest" : {
+      "title"   : "The Archetypal Hero",
+      "descr"   : "Get admitted to the Quest"
+    },
+
+    "asmodeus" : {
+      "title"   : "Asmo-Slayer",
+      "descr"   : "Kill Asmodeus"
+    },
+
+    "baalzebub" : {
+      "title"   : "Fly Swatter",
+      "descr"   : "Kill Baalzebub"
+    },
+
+    "orcus" : {
+      "title"   : "That Wand is Mine",
+      "descr"   : "Kill Orcus"
+    },
+
+    "juiblex" : {
+      "title"   : "Squish Squish",
+      "descr"   : "Kill Juiblex"
+    },
+
+    "demogorgon" : {
+      "title"   : "Demo-Slayer",
+      "descr"   : "Kill Demogorgon"
+    },
+
+    "yeenoghu" : {
+      "title"   : "Yeenoghu-Slayer",
+      "descr"   : "Kill Yeenoghu"
+    },
+
+    "geryon" : {
+      "title"   : "Geryon-Slayer",
+      "descr"   : "Kill Geryon"
+    },
+
+    "dispater" : {
+      "title"   : "Dispater-Slayer",
+      "descr"   : "Kill Dispater"
+    },
+
+    "death" : {
+      "title"   : "Conqueror of Death",
+      "descr"   : "Kill Death"
+    },
+
+    "pestilence" : {
+      "title"   : "Curer of Pestilence",
+      "descr"   : "Kill Pestilence"
+    },
+
+    "famine" : {
+      "title"   : "Feeder of Famine",
+      "descr"   : "Kill Famine"
+    },
+
+    "protection" : {
+      "title"   : "Indulgences",
+      "descr"   : "Get protection from a priest"
+    },
+
+    "survpetri" : {
+      "title"   : "Part-time Statue",
+      "descr"   : "Survive stoning"
+    },
+
+    "survslime" : {
+      "title"   : "The Blob",
+      "descr"   : "Survive sliming"
+    },
+
+    "survdrown" : {
+      "title"   : "Captain Ahab",
+      "descr"   : "Survive being grabbed by a sea monster"
+    },
+
+    "throne" : {
+      "title"   : "The Royal Treatment",
+      "descr"   : "Sit on a throne"
+    },
+
+    "sink" : {
+      "title"   : "It'll Turn Up Later",
+      "descr"   : "Drop a ring in a sink"
+    },
+
+    "nazgul" : {
+      "title"   : "Nine for Mortal Men Doomed to Die ... Again",
+      "descr"   : "Kill all nine Nazgûl"
+    },
+
+    "erinyes" : {
+      "title"   : "Furious",
+      "descr"   : "Kill all three erinyes"
+    },
+
+    "lycanthrope" : {
+      "title"   : "Furry Little Problem",
+      "descr"   : "Cure lycanthropy"
+    },
+
+    "deathlyill" : {
+      "title"   : "New Lease on Life",
+      "descr"   : "Cure deathly illness"
+    },
+
+    "altarconv" : {
+      "title"   : "Orthodoxy",
+      "descr"   : "Convert an altar"
+    },
+
+    "izchak" : {
+      "title"   : "Always Talk to the Wise Old Man",
+      "descr"   : "Chat with Izchak"
+    },
+
+    "disgrace" : {
+      "title"   : "You Had ONE Job",
+      "descr"   : "Escape the Astral Plane in celestial disgrace"
+    },
+
+    "treefruit" : {
+      "title"   : "Isaac Newton",
+      "descr"   : "Get fruit by kicking a tree"
+    },
+
+    "shopping" : {
+      "title"   : "Dungeon Economics",
+      "descr"   : "Buy something at a shop"
+    },
+
+    "kops" : {
+      "title"   : "Stop, Theif!",
+      "descr"   : "Be chased by the Keystone Kops"
+    },
+
+    "fountuncurs" : {
+      "title"   : "Wash it Clean",
+      "descr"   : "Uncurse an item in a fountain"
+    },
+
+    "lvl5spell" : {
+      "title"   : "Well-Read",
+      "descr"   : "Learn level 5+ spell"
+    },
+
+    "lvl5spell" : {
+      "title"   : "Well-Read",
+      "descr"   : "Learn level 5+ spell"
+    },
+
+    "tamefood" : {
+      "title"   : "Pet Whisperer",
+      "descr"   : "Tame a monster by feeding it"
+    },
+
+    "tameother" : {
+      "title"   : "Beast Master",
+      "descr"   : "Tame a monster without food"
+    },
+
+    "crowned" : {
+      "title"   : "The Chosen one",
+      "descr"   : "Get crowned"
+    },
+
+    "artigift" : {
+      "title"   : "Go Forth and Smite",
+      "descr"   : "Receive an artifact gift from your deity"
+    },
+
+    "excalibur" : {
+      "title"   : "Some Watery Tart",
+      "descr"   : "Be gifted Excalibur"
+    },
+
+    "makedsm" : {
+      "title"   : "Hand Crafted",
+      "descr"   : "Make a dragon scale mail"
+    },
+
+    "nymphrob" : {
+      "title"   : "A Little Light Larceny",
+      "descr"   : "Get robbed by a nymph"
+    },
+
+    "foocubus" : {
+      "title"   : "The Birds and the Bees",
+      "descr"   : "Dally with a foocubus"
+    },
+
+    "trapper" : {
+      "title"   : "The Most Dangerous Game",
+      "descr"   : "Catch a monster in a trap set by you"
+    },
+
+    "orcmass" : {
+      "title"   : "Minetown Avenger",
+      "descr"   : "Kill every orc in Orctown"
+    },
+
+    "unpunish" : {
+      "title"   : "Liberated",
+      "descr"   : "Get yourself unpunished"
+    },
+
+    "sinkcrash" : {
+      "title"   : "It's Called That For a Reason",
+      "descr"   : "Come to earth by levitating over a sink"
+    },
+
+    "passtune" : {
+      "title"   : "Musical Mastermind",
+      "descr"   : "Learn the passtune"
+    },
+
+    "gemtouchid" : {
+      "title"   : "Diamond in the Rough",
+      "descr"   : "Identify a gem with a touchstone"
+    },
+
+    "scribe" : {
+      "title"   : "Scribe",
+      "descr"   : "Write a scroll with a magic marker"
+    },
+
+    "dragonrider" : {
+      "title"   : "Dragon Rider",
+      "descr"   : "Ride a dragon"
+    },
+
+    "egglay" : {
+      "title"   : "Motherhood",
+      "descr"   : "Lay an egg"
+    },
+
+    "fooproof" : {
+      "title"   : "Shimmer",
+      "descr"   : "Fireproof an item"
+    },
+
+    "fooproof" : {
+      "title"   : "Shimmer",
+      "descr"   : "Fireproof an item"
+    },
+
+    "unigem" : {
+      "title"   : "They Like Shiny Things",
+      "descr"   : "Throw a gem at a unicorn"
+    },
+
+    "leppysteal" : {
+      "title"   : "Pot of Greed",
+      "descr"   : "Have your purse lightened by a leprechaun"
+    },
+
+    "trolltin" : {
+      "title"   : "Reincarnation Cancelled",
+      "descr"   : "Tin a troll"
+    },
+
+    "ghostkill" : {
+      "title"   : "Kill it Twice",
+      "descr"   : "Destroy a ghost"
+    },
+
+    "revive" : {
+      "title"   : "Only Mostly Dead",
+      "descr"   : "Revive a corpse"
+    },
+
+    "revive" : {
+      "title"   : "Only Mostly Dead",
+      "descr"   : "Revive a corpse"
+    },
+
+    "turn" : {
+      "title"   : "Buffy",
+      "descr"   : "Destroy an undead with #turn"
+    },
+
+    "milration" : {
+      "title"   : "Wasn't a Meal, Wasn't Ready, And You Shouldn't Have Eaten It",
+      "descr"   : "Eat a military ration"
+    },
+
+    "drawbridge" : {
+      "title"   : "Have Fun Storming the Castle",
+      "descr"   : "Blow up the Castle drawbridge"
+    },
+
+    "lifesaved" : {
+      "title"   : "Insert Quarter to Continue",
+      "descr"   : "Get life-saved"
+    },
+
+    "banekill" : {
+      "title"   : "What It Was Made For",
+      "descr"   : "Kill a appropriate monster with a Bane weapon"
+    },
+
+    "diggrave" : {
+      "title"   : "Buried Treasure",
+      "descr"   : "Dig up a grave not in a graveyard"
+    },
+
+    "bigroom" : {
+      "title"   : "All Clear",
+      "descr"   : "Kill all hostiles in the Big Room"
+    },
+
+    "molochpri" : {
+      "title"   : "Holy War",
+      "descr"   : "Kill a priest of Moloch"
+    },
+
+    "quake" : {
+      "title"   : "Moves and Shakers",
+      "descr"   : "Cause an earthquake"
+    },
+
+    "quake" : {
+      "title"   : "Moves and Shakers",
+      "descr"   : "Cause an earthquake"
+    },
+
+    "snakecharm" : {
+      "title"   : "Snake Charmer",
+      "descr"   : "Pacify a snake with a flute"
+    },
+
+    "dragonkill" : {
+      "title"   : "Dragonslayer",
+      "descr"   : "Kill a dragon"
+    },
+
+    "tinfoilhat" : {
+      "title"   : "Tin Foil Hat",
+      "descr"   : "Dodge a brainsucking attack"
+    },
+
+    "boomerang" : {
+      "title"   : "Right Back at Ya, Mate!",
+      "descr"   : "Hit an enemy with a thrown boomerang"
+    },
+
+    "boomerang" : {
+      "title"   : "Right Back at Ya, Mate!",
+      "descr"   : "Hit an enemy with a thrown boomerang"
+    },
+
+    "silverdam" : {
+      "title"   : "It Burnsss",
+      "descr"   : "Deal silver damage to a silver-hating monster"
+    },
+
+    "crysknife" : {
+      "title"   : "Arrakis",
+      "descr"   : "Make a crysknife"
+    },
+
+    "rubberhose" : {
+      "title"   : "Kop Training Program",
+      "descr"   : "Kill a monster with a rubber hose"
+    },
+
+    "cornuthaum" : {
+      "title"   : "Obligatory Pointy Hat",
+      "descr"   : "Put on a cornuthaum as a wizard"
+    },
+
+    "mithril" : {
+      "title"   : "Hobbit Skin",
+      "descr"   : "Wear a mithril coat"
+    },
+
+    "graffiti" : {
+      "title"   : "The Words of the Prophets",
+      "descr"   : "Read 5 random graffiti"
+    },
+
+    "pudding" : {
+      "title"   : "Are You Still Pudding Farming",
+      "descr"   : "Split a pudding"
+    },
+
+    "pudding" : {
+      "title"   : "Are You Still Pudding Farming",
+      "descr"   : "Split a pudding"
+    },
+
+    "meatring" : {
+      "title"   : "Wearable Snack",
+      "descr"   : "Wear a meat ring"
+    },
+
+    "icebox" : {
+      "title"   : "Frozen Treats",
+      "descr"   : "Loot an ice box"
+    },
+
+    "figurine" : {
+      "title"   : "Pygmalion",
+      "descr"   : "Create a monster from a figurine"
+    },
+
+    "nerd" : {
+      "title"   : "Nerd",
+      "descr"   : "Read a spellbook while wearing lenses and a T-shirt"
+    },
+
+    "charge" : {
+      "title"   : "Recharged",
+      "descr"   : "Charge an object"
+    },
+
+    "kickwall" : {
+      "title"   : "Get Your Kicks",
+      "descr"   : "Kick an item embedded in a wall or rock"
+    },
+
+    "grapple" : {
+      "title"   : "I'm Spiderman!",
+      "descr"   : "Grab an item with a grappling hook"
+    },
+
+  },
+
+  #---------------------------------------------------------------------------
   #--- Roles/races/genders/alignments/combos ---------------------------------
   #---------------------------------------------------------------------------
 
