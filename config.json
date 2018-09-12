@@ -342,6 +342,56 @@
       "points" : 150,
     },
 
+    "allroles" : {
+      "title"  : "All The Roles",
+      "points" : 260,
+    },
+
+    "clan-allroles" : {
+      "title"  : "All The Roles",
+      "points" : 260,
+    },
+
+    "allraces" : {
+      "title"  : "All The Races",
+      "points" : 100,
+    },
+
+    "clan-allraces" : {
+      "title"  : "All The Races",
+      "points" : 100,
+    },
+
+    "allgenders" : {
+      "title"  : "Both Genders",
+      "points" : 40,
+    },
+
+    "clan-allgenders" : {
+      "title"  : "Both Genders",
+      "points" : 40,
+    },
+
+    "allaligns" : {
+      "title"  : "All The Alignments",
+      "points" : 60,
+    },
+
+    "clan-allaligns" : {
+      "title"  : "All The Alignments",
+      "points" : 60,
+    },
+
+    "allconducts" : {
+      "title"  : "All The Conducts",
+      "points" : 300,
+    },
+
+    "clan-allconducts" : {
+      "title"  : "All The Conducts",
+      "points" : 300,
+    }
+
   },
 
   #---------------------------------------------------------------------------
