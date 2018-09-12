@@ -932,6 +932,206 @@
       "descr"   : "Grab an item with a grappling hook"
     },
 
+    "coirefill" : {
+      "title"   : "More Light",
+      "descr"   : "Refill the Candelabrum after it burns out after the Invocation"
+    },
+
+    "allfruit" : {
+      "title"   : "Balanced Diet",
+      "descr"   : "Eat one of each type of produce in one game"
+    },
+
+    "allfood" : {
+      "title" : "Smorgasbord",
+      "descr" : "Eat very type of food in the game"
+    },
+
+    "refilllamp" : {
+      "title" : "Fill 'Er Up",
+      "descr" : "Fill an oil lamp with a potion of oil"
+    },
+
+    "oilid" : {
+      "title" : "Curse the Darkness",
+      "descr" : "Identify a potion of oil by applying it"
+    },
+
+    "gremlin" : {
+      "title" : "Bright Light, Bright Light",
+      "descr" : "Kill gremlin with any light source"
+    },
+
+    "alchemy" : {
+      "title" : "Chemistry 101",
+      "descr" : "Alchemize two stacks of potions"
+    },
+
+    "stinkcloud" : {
+      "title" : "Get Your Gas Mask",
+      "descr" : "Kill a monster with a stinking cloud"
+    },
+
+    "readtpnovel" : {
+      "title" : "Escape to Discworld",
+      "descr" : "Read a Terry Pratchett novel"
+    },
+
+    "ndexperience" : {
+      "title" : "Near Death Experience",
+      "descr" : "#chat to Death while carrying a Terry Pratchett Novel"
+    },
+
+    "allgems" : {
+      "title" : "Jeweler",
+      "descr" : "Identify every type of valuable gemstone"
+    },
+
+    "statueprize" : {
+      "title" : "Prize Inside!",
+      "descr" : "Get a spellbook by breaking a randomly-generated statue"
+    },
+
+    "summonnymph" : {
+      "title" : "Ding-a-Ling",
+      "descr" : "Summon a nymph by ringing a cursed bell"
+    },
+
+    "growpet" : {
+      "title" : "Best Friends Forever",
+      "descr" : "Take your starting pet to full adulthood"
+    },
+
+    "diver" : {
+      "title" : "Diver",
+      "descr" : "Retrieve an object from the bottom of a moat or pool"
+    },
+
+    "wumpusride" : {
+      "title" : "Ceiling-clinging commute",
+      "descr" : "Ride a wumpus over water"
+    },
+
+    "woodchuck" : {
+      "title" : "How Much Wood?",
+      "descr" : "Kill or tame a woodchuck"
+    },
+
+    "archon" : {
+      "title" : "Storm the Gates of Heaven",
+      "descr" : "Kill an Archon"
+    },
+
+    "stinkcloud" : {
+      "title" : "Get Your Gas Mask",
+      "descr" : "Kill a monster with a stinking cloud"
+    },
+
+    "tamesshifter" : {
+      "title" : "Shifty",
+      "descr" : "Tame a shapeshifter in any way"
+    },
+
+    "catlady" : {
+      "title" : "Cat Lady",
+      "descr" : "Tame seven \"f\" in the course of one game"
+    },
+
+    "shroedinger" : {
+      "title" : "Collapse the Wave Function",
+      "descr" : "Open the box containing Shroedinger's Cat"
+    },
+
+    "freeprisoner" : {
+      "title" : "I'm Free! I'm Free!",
+      "descr" : "Free a prisoner"
+    },
+
+    "petrescue" : {
+      "title" : "Pet Rescue",
+      "descr" : "Free a pet from trap that you did not create yourself"
+    },
+
+    "spam" : {
+      "title" : "Spam, Spam, Spam",
+      "descr" : "Read a scroll of mail"
+    },
+
+    "royaljelly" : {
+      "title" : "Superfood",
+      "descr" : "Gain strength by eating royal jelly"
+    },
+
+    "foodintr" : {
+      "title" : "You Are What You Eat",
+      "descr" : "Gain an intrinsic by eating a corpse"
+    },
+
+    "bankrupt" : {
+      "title" : "The Art of the Deal",
+      "descr" : "Bankrupt a shopkeeper by getting all their money"
+    },
+
+    "polypet" : {
+      "title" : "Distinction Without Difference",
+      "descr" : "Polymorph a pet using a polytrap"
+    },
+
+    "transgender" : {
+      "title" : "Transgender",
+      "descr" : "Put on an amulet of change"
+    },
+
+    "hatchegg" : {
+      "title" : "Father Figure",
+      "descr" : "Hatch an egg not laid by you and have it come out tame"
+    },
+
+    "nursedance" : {
+      "title" : "Oooh, Matron!",
+      "descr" : "Get a nurse to heal you or raise your max HP"
+    },
+
+    "pitkill" : {
+      "title" : "It's The Pits",
+      "descr" : "Kill something while you are stuck in a pit"
+    },
+
+    "invisikill" : {
+      "title" : "Never Saw It Coming",
+      "descr" : "Kill invisible monster without see invisible"
+    },
+
+    "shafted" : {
+      "title" : "Shafted",
+      "descr" : "Fall down a shaft"
+    },
+
+    "writebook" : {
+      "title" : "First Edition",
+      "descr" : "Write a book"
+    },
+
+    "twobits" : {
+      "title" : "Potions of Booze Cost More",
+      "descr" : "Get two bits for an ale from a priest"
+    },
+
+    "extkop" : {
+      "title" : "Horatius at the Bridge",
+      "descr" : "Extinct any kind of soldier or kop"
+    },
+
+    "nymphmirror" : {
+      "title" : "Who's That Pretty Girl in the Mirror, There?",
+      "descr" : "Deflect a nymph with a mirror"
+    },
+
+    "bribe" : {
+      "title" : "Money Talks",
+      "descr" : "Bribe a demon lord"
+    },
+
   },
 
   #---------------------------------------------------------------------------
