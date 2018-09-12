@@ -14,14 +14,22 @@
 #
 #    $ms->track(set1 => 'value1', ...)
 #
+# Tracking multiple values in one set is also possible:
+#
+#    $ms->track(set1 => [ 'value1', 'value2', ... ]
+#
 # This invocation returns true if all the values in all sets were tracked at
 # least once. You can invoke the track() method without arguments, then it
 # will just return the fullfillment status of the instance.
+#
+# If the last odd arguments to new_sets() is a coderef, then this is invoked
+# when the state flips into fullfilled.
 #=============================================================================
 
 package TNNT::Tracker::MultiSet;
 
 use Moo;
+use Carp;
 
 
 
@@ -42,6 +50,11 @@ has _trk => (
 has _achieved => (
   is => 'rw',
   default => 0,
+);
+
+has _cb => (
+  is => 'rwp',
+  writer => '_set_cb',
 );
 
 
@@ -77,9 +90,15 @@ sub _build_trk
 
 sub new_sets
 {
-  my ($self, %sets) = @_;
+  my ($self, @sets) = @_;
+  my $cb;
+  my %sets;
 
-  $self->new(_sets => \%sets);
+  if(@sets % 2) {
+    $cb = pop @sets;
+  }
+  %sets = @sets;
+  $self->new(_sets => \%sets, _cb => $cb);
 }
 
 
@@ -94,10 +113,19 @@ sub track
 
   return 1 if $self->_achieved();
 
+  #--- mark all the values from arguments as seen
+
   foreach my $key (keys %args) {
-    die if !exists $self->_trk()->{$key}->{$args{$key}};
-    $self->_trk()->{$key}->{$args{$key}} = 1;
+    my @values = ref $args{$key} ? @{$args{$key}} : ($args{$key});
+    foreach my $value (@values) {
+      if(!exists $self->_trk()->{$key}->{$value}) {
+        croak "MultiSet: Invalid set '$key' element '$value'";
+      }
+      $self->_trk()->{$key}->{$value} = 1;
+    }
   }
+
+  #--- check whether all set elements were already seen
 
   my $achieve = 1;
   TRACK: foreach my $set (keys %{$self->_trk()}) {
@@ -108,6 +136,15 @@ sub track
       }
     }
   }
+
+  #--- invoke callback if flipping into achieved state
+
+  if($achieve && $self->_cb()) {
+    $self->_cb()->();
+    $self->_set_cb(undef);
+  }
+
+  #--- finish
 
   $self->_achieved($achieve);
   return $achieve;
