@@ -180,7 +180,168 @@
       "title"  : "Speedrun",
       "factor" : 500000,
       "cutoff" : null,
-    }
+    },
+
+    "greatrace:orc" : {
+      "title"  : "The Great Orc",
+      "points" : 200,
+    },
+
+    "greatrace:gno" : {
+      "title"  : "The Great Gnome",
+      "points" : 250,
+    },
+
+    "greatrace:dwa" : {
+      "title"  : "The Great Dwarf",
+      "points" : 150,
+    },
+
+    "greatrace:elf" : {
+      "title"  : "The Great Elf",
+      "points" : 150,
+    },
+
+    "greatrace:hum" : {
+      "title"  : "The Great Human",
+      "points" : 200,
+    },
+
+    "greatrole:arc" : {
+      "title"  : "The Great Archeologist",
+      "points" : 200,
+    },
+
+    "greatrole:arc" : {
+      "title"  : "The Great Archeologist",
+      "points" : 200,
+    },
+
+    "greatrole:bar" : {
+      "title"  : "The Great Barbarian",
+      "points" : 150,
+    },
+
+    "greatrole:cav" : {
+      "title"  : "The Great Caveman",
+      "points" : 200,
+    },
+
+    "greatrole:hea" : {
+      "title"  : "The Great Healer",
+      "points" : 100,
+    },
+
+    "greatrole:mon" : {
+      "title"  : "The Great Monk",
+      "points" : 150,
+    },
+
+    "greatrole:pri" : {
+      "title"  : "The Great Priest",
+      "points" : 200,
+    },
+
+    "greatrole:ran" : {
+      "title"  : "The Great Ranger",
+      "points" : 250,
+    },
+
+    "greatrole:rog" : {
+      "title"  : "The Great Rogue",
+      "points" : 100,
+    },
+
+    "greatrole:val" : {
+      "title"  : "The Great Valkyrie",
+      "points" : 150,
+    },
+
+    "greatrole:wiz" : {
+      "title"  : "The Great Wizard",
+      "points" : 150,
+    },
+
+    "lesserrace:orc" : {
+      "title"  : "The Lesser Orc",
+      "points" : 200,
+    },
+
+    "lesserrace:gno" : {
+      "title"  : "The Lesser Gnome",
+      "points" : 250,
+    },
+
+    "lesserrace:dwa" : {
+      "title"  : "The Lesser Dwarf",
+      "points" : 150,
+    },
+
+    "lesserrace:elf" : {
+      "title"  : "The Lesser Elf",
+      "points" : 150,
+    },
+
+    "lesserrace:hum" : {
+      "title"  : "The Lesser Human",
+      "points" : 200,
+    },
+
+    "lesserrole:arc" : {
+      "title"  : "The Lesser Archeologist",
+      "points" : 200,
+    },
+
+    "lesserrole:arc" : {
+      "title"  : "The Lesser Archeologist",
+      "points" : 200,
+    },
+
+    "lesserrole:bar" : {
+      "title"  : "The Lesser Barbarian",
+      "points" : 150,
+    },
+
+    "lesserrole:cav" : {
+      "title"  : "The Lesser Caveman",
+      "points" : 200,
+    },
+
+    "lesserrole:hea" : {
+      "title"  : "The Lesser Healer",
+      "points" : 100,
+    },
+
+    "lesserrole:mon" : {
+      "title"  : "The Lesser Monk",
+      "points" : 150,
+    },
+
+    "lesserrole:pri" : {
+      "title"  : "The Lesser Priest",
+      "points" : 200,
+    },
+
+    "lesserrole:ran" : {
+      "title"  : "The Lesser Ranger",
+      "points" : 250,
+    },
+
+    "lesserrole:rog" : {
+      "title"  : "The Lesser Rogue",
+      "points" : 100,
+    },
+
+    "lesserrole:val" : {
+      "title"  : "The Lesser Valkyrie",
+      "points" : 150,
+    },
+
+    "lesserrole:wiz" : {
+      "title"  : "The Lesser Wizard",
+      "points" : 150,
+    },
+
   },
 
   #---------------------------------------------------------------------------
@@ -214,5 +375,140 @@
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
       "elbe", "illi", "paci", "food", "zen", "nude",
     ],
-  }
+  },
+
+  #---------------------------------------------------------------------------
+  #--- Roles/races/genders/alignments/combos ---------------------------------
+  #---------------------------------------------------------------------------
+
+  "nethack" : {
+
+    "roles" : [
+      "Arc", "Bar", "Cav", "Hea", "Kni", "Mon", "Pri", "Ran", "Rog", "Sam",
+      "Tou", "Val", "Wiz"
+    ],
+
+    "races" : [
+      "Hum", "Elf", "Dwa", "Gno", "Orc"
+    ],
+
+    "aligns" : [
+      "Law", "Neu", "Cha",
+    ],
+
+    "genders" : [
+      "Mal", "Fem"
+    ],
+
+    "combos" : [
+      "Arc-Hum-Mal-Law",
+      "Arc-Hum-Fem-Law",
+      "Arc-Hum-Mal-Neu",
+      "Arc-Hum-Fem-Neu",
+      "Arc-Dwa-Mal-Law",
+      "Arc-Dwa-Fem-Law",
+      "Arc-Gno-Mal-Neu",
+      "Arc-Gno-Fem-Neu",
+
+      "Bar-Hum-Mal-Neu",
+      "Bar-Hum-Fem-Neu",
+      "Bar-Hum-Mal-Cha",
+      "Bar-Hum-Fem-Cha",
+      "Bar-Orc-Mal-Cha",
+      "Bar-Orc-Fem-Cha",
+
+      "Cav-Hum-Mal-Law",
+      "Cav-Hum-Fem-Law",
+      "Cav-Hum-Mal-Neu",
+      "Cav-Hum-Fem-Neu",
+      "Cav-Dwa-Mal-Law",
+      "Cav-Dwa-Fem-Law",
+      "Cav-Gno-Mal-Neu",
+      "Cav-Gno-Fem-Neu",
+
+      "Hea-Hum-Mal-Neu",
+      "Hea-Hum-Fem-Neu",
+      "Hea-Gno-Mal-Neu",
+      "Hea-Gno-Fem-Neu",
+
+      "Kni-Hum-Mal-Law",
+      "Kni-Hum-Fem-Law",
+
+      "Mon-Hum-Mal-Law",
+      "Mon-Hum-Fem-Law",
+      "Mon-Hum-Mal-Neu",
+      "Mon-Hum-Fem-Neu",
+      "Mon-Hum-Mal-Cha",
+      "Mon-Hum-Fem-Cha",
+
+      "Pri-Hum-Mal-Law",
+      "Pri-Hum-Fem-Law",
+      "Pri-Hum-Mal-Neu",
+      "Pri-Hum-Fem-Neu",
+      "Pri-Hum-Mal-Cha",
+      "Pri-Hum-Fem-Cha",
+      "Pri-Elf-Mal-Cha",
+      "Pri-Elf-Fem-Cha",
+
+      "Ran-Hum-Mal-Neu",
+      "Ran-Hum-Fem-Neu",
+      "Ran-Hum-Mal-Cha",
+      "Ran-Hum-Fem-Cha",
+      "Ran-Elf-Mal-Cha",
+      "Ran-Elf-Fem-Cha",
+      "Ran-Gno-Mal-Neu",
+      "Ran-Gno-Fem-Neu",
+
+      "Rog-Hum-Mal-Cha",
+      "Rog-Hum-Fem-Cha",
+      "Rog-Orc-Mal-Cha",
+      "Rog-Orc-Fem-Cha",
+
+      "Sam-Hum-Mal-Law",
+      "Sam-Hum-Fem-Law",
+
+      "Tou-Hum-Mal-Neu",
+      "Tou-Hum-Fem-Neu",
+
+      "Val-Hum-Mal-Law",
+      "Val-Hum-Fem-Law",
+      "Val-Hum-Mal-Neu",
+      "Val-Hum-Fem-Neu",
+      "Val-Dwa-Mal-Law",
+      "Val-Dwa-Fem-Law",
+
+      "Wiz-Hum-Mal-Neu",
+      "Wiz-Hum-Fem-Neu",
+      "Wiz-Hum-Mal-Cha",
+      "Wiz-Hum-Fem-Cha",
+      "Wiz-Elf-Mal-Cha",
+      "Wiz-Elf-Fem-Cha",
+      "Wiz-Gno-Mal-Neu",
+      "Wiz-Gno-Fem-Neu",
+      "Wiz-Orc-Mal-Cha",
+      "Wiz-Orc-Fem-Cha",
+    ],
+
+    "greatrace" : {
+      "Orc" : [ "Bar", "Ran", "Rog", "Wiz" ],
+      "Gno" : [ "Arc", "Cav", "Hea", "Ran", "Wiz" ],
+      "Dwa" : [ "Arc", "Cav", "Val" ],
+      "Elf" : [ "Pri", "Ran", "Wiz" ],
+      "Hum" : [ "Kni", "Mon", "Sam", "Tou" ]
+    },
+
+    "greatrole" : {
+      "Arc" : [ "Hum-Law", "Hum-Neu", "Dwa-Law", "Gno-Neu" ],
+      "Bar" : [ "Hum-Neu", "Hum-Cha", "Orc-Cha" ],
+      "Cav" : [ "Hum-Law", "Hum-Neu", "Dwa-Law", "Gno-Neu" ],
+      "Hea" : [ "Hum-Neu", "Gno-Neu" ],
+      "Mon" : [ "Hum-Law", "Hum-Neu", "Hum-Cha" ],
+      "Pri" : [ "Hum-Law", "Hum-Neu", "Hum-Cha", "Elf-Cha" ],
+      "Ran" : [ "Hum-Neu", "Hum-Cha", "Elf-Cha", "Gno-Neu", "Orc-Cha" ],
+      "Rog" : [ "Hum-Cha", "Orc-Cha" ],
+      "Val" : [ "Hum-Law", "Hum-Neu", "Dwa-Law" ],
+      "Wiz" : [ "Hum-Neu", "Hum-Cha", "Elf-Cha", "Gno-Neu", "Orc-Cha" ]
+    },
+
+  },
 }
