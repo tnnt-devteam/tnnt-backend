@@ -30,6 +30,7 @@ use TNNT::Tracker::MinTurns;
 use TNNT::Tracker::Streak;
 use TNNT::Tracker::AllCats;
 use TNNT::Tracker::ClanAscension;
+use TNNT::Tracker::UniqueAscs;
 
 
 
@@ -72,6 +73,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::Streak);
   $tr->add_tracker(new TNNT::Tracker::AllCats);
   $tr->add_tracker(new TNNT::Tracker::ClanAscension);
+  $tr->add_tracker(new TNNT::Tracker::UniqueAscs);
 }
 
 
