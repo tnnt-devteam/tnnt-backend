@@ -1229,6 +1229,8 @@
       "Ran-Elf-Fem-Cha",
       "Ran-Gno-Mal-Neu",
       "Ran-Gno-Fem-Neu",
+      "Ran-Orc-Mal-Cha",
+      "Ran-Orc-Fem-Cha",
 
       "Rog-Hum-Mal-Cha",
       "Rog-Hum-Fem-Cha",
@@ -1241,11 +1243,8 @@
       "Tou-Hum-Mal-Neu",
       "Tou-Hum-Fem-Neu",
 
-      "Val-Hum-Mal-Law",
       "Val-Hum-Fem-Law",
-      "Val-Hum-Mal-Neu",
       "Val-Hum-Fem-Neu",
-      "Val-Dwa-Mal-Law",
       "Val-Dwa-Fem-Law",
 
       "Wiz-Hum-Mal-Neu",
