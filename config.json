@@ -487,6 +487,12 @@
       "descr"   : "Enter the Elemental Planes"
     },
 
+    "astral" : {
+      "achieve" : "0x080",
+      "title"   : "The Halls of the Gods",
+      "descr"   : "Enter the Astral Plane"
+    },
+
     "meluckstone" : {
       "achieve" : "0x200",
       "title"   : "Are You Feeling Lucky",
