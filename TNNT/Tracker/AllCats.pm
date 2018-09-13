@@ -213,8 +213,8 @@ sub add_game
 
   $ptrack->{'roles'}->track(role => $game->role());
   $ptrack->{'races'}->track(race => $game->race());
-  $ptrack->{'genders'}->track(gender => $game->gender());
-  $ptrack->{'aligns'}->track(align => $game->align());
+  $ptrack->{'genders'}->track(gender => $game->gender0());
+  $ptrack->{'aligns'}->track(align => $game->align0());
   $ptrack->{'conducts'}->track(conduct => [ $game->conducts() ]);
 
   #--- finish
