@@ -390,7 +390,17 @@
     "clan-allconducts" : {
       "title"  : "All The Conducts",
       "points" : 300,
-    }
+    },
+
+    "ach" : {
+      "title"  : "Achievement",
+      "points" : 1,
+    },
+
+    "clan-ach" : {
+      "title"  : "Achievement",
+      "points" : 1,
+    },
 
   },
 
