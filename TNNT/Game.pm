@@ -7,6 +7,7 @@
 package TNNT::Game;
 
 use Moo;
+use TNNT::Config;
 
 with 'TNNT::ScoringList';
 
@@ -50,13 +51,35 @@ has achieve   => (
   coerce => sub { hex($_[0]) },
 );
 
+has tnntachieve0 => (
+  is => 'ro',
+  coerce => sub { hex($_[0]) },
+);
+
+has tnntachieve1 => (
+  is => 'ro',
+  coerce => sub { hex($_[0]) },
+);
+
 # reference to TNNT::Player object
 
 has player => (
   is => 'rw',
 );
 
+# list of achievements
 
+has achievements => (
+  is => 'ro',
+  lazy => 1,
+  builder => 1,
+);
+
+
+
+#=============================================================================
+#=== METHODS =================================================================
+#=============================================================================
 
 #=============================================================================
 #=============================================================================
@@ -67,6 +90,7 @@ sub is_ascended
 
   return ($self->death() =~ /^ascended/);
 }
+
 
 
 #=============================================================================
@@ -135,6 +159,35 @@ sub conducts
   #--- return value depending on context
 
   return wantarray ? @conducts : scalar(@conducts);
+}
+
+
+
+#-----------------------------------------------------------------------------
+# Create list of achievements out of the xlogfile fields 'achieve' and TNNT
+# specific 'tnntachieve0' and 'tnntachieve1'. The result is an array of
+# achievement shortnames (as referenced in the configuration file)
+#-----------------------------------------------------------------------------
+
+sub _build_achievements
+{
+  my ($self) = @_;
+  my $cfg = TNNT::Config->instance()->config()->{'achievements'};
+
+  my @achievements;
+
+  for my $field (qw(achieve tnntachieve0 tnntachieve1)) {
+    next if !$self->$field();
+    my @found = grep {
+      exists $cfg->{$_}{$field}
+      && $cfg->{$_}{$field}
+      && hex($cfg->{$_}{$field}) & $self->$field()
+    } keys %$cfg;
+
+    push(@achievements, @found) if @found;
+  }
+
+  return \@achievements;
 }
 
 
