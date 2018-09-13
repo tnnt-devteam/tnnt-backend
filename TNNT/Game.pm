@@ -191,6 +191,28 @@ sub _build_achievements
 }
 
 
+#-----------------------------------------------------------------------------
+# Returns true if supplied achievements were achieved by the game.
+#-----------------------------------------------------------------------------
+
+sub has_achievement
+{
+  my $self = shift;
+  my @wanted = @_;
+  my $achievements = $self->achievements();
+
+  my $found = 1;
+
+  for my $ach (@wanted) {
+    if(!grep { $_ eq $ach } @$achievements) {
+      $found = 0;
+      last;
+    }
+  }
+
+  return $found;
+}
+
 
 #=============================================================================
 
