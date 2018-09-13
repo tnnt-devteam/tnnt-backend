@@ -52,9 +52,19 @@ has data => (
 #=== METHODS =================================================================
 #=============================================================================
 
-#=============================================================================
+#-----------------------------------------------------------------------------
 # Validate the trophy name and retrieve points (both using configuration).
-#=============================================================================
+# The point retrieval follows this semantics:
+#
+# If the trophy is found in the 'trophies' configuration section and the entry
+# specifies points value, this value is used.
+#
+# If the trophy contains ':' (colon), and the 'trophies' configuration section
+# contains entry for the part _before_ the colon, that point value is used.
+# This allows to specify "default" point value for trophies with a subtype.
+# For example "ach" is achievement trophy, but specific achievements are e.g.
+# 'ach:meluckstone', 'ach:thebell' etc.
+#-----------------------------------------------------------------------------
 
 sub BUILD
 {
@@ -63,14 +73,28 @@ sub BUILD
   my $trophy = $args->{'trophy'};
   my $cfg = TNNT::Config->instance()->config();
 
-  if(!exists $cfg->{'trophies'}{$trophy}) {
-    die "Trophy '$trophy' is not defined";
-  }
-
   if(!defined $self->points()) {
-    $self->_set_points(
-      $cfg->{'trophies'}{$trophy}{'points'} // 0
-    );
+    my $points = 0;
+
+    # the trophy is directly defined in configuration
+    if(exists $cfg->{'trophies'}{$trophy}{'points'}) {
+      $points = $cfg->{'trophies'}{$trophy}{'points'}
+    }
+
+    # the trophy type is defined
+    elsif(
+      $trophy =~ /^([a-z-]+):/
+      && exists $cfg->{'trophies'}{$1}{'points'}
+    ) {
+      $points = $cfg->{'trophies'}{$1}{'points'}
+    }
+
+    # otherwise fail
+    else {
+      die "The trophy '$trophy' not defined in configuration";
+    }
+
+    $self->_set_points($points);
   }
 }
 
