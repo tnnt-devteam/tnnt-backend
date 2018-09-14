@@ -405,6 +405,11 @@
     "clan-uniqascs" : {
       "title"  : "Most Unique Ascensions",
       "points" : 200,
+    },
+
+    "clan-mostgames" : {
+      "title"  : "Most Games",
+      "points" : 100,
     }
   },
 

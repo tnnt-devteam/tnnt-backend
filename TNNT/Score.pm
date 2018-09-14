@@ -32,6 +32,7 @@ use TNNT::Tracker::Streak;
 use TNNT::Tracker::AllCats;
 use TNNT::Tracker::ClanAscension;
 use TNNT::Tracker::UniqueAscs;
+use TNNT::Tracker::MostGames;
 
 
 
@@ -75,6 +76,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::AllCats);
   $tr->add_tracker(new TNNT::Tracker::ClanAscension);
   $tr->add_tracker(new TNNT::Tracker::UniqueAscs);
+  $tr->add_tracker(new TNNT::Tracker::MostGames);
 }
 
 
