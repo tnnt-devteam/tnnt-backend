@@ -31,13 +31,17 @@ CREATE TABLE invites (
 
 INSERT INTO clans VALUES ( 1, 'clan1' );
 INSERT INTO clans VALUES ( 2, 'clan2' );
+INSERT INTO clans VALUES ( 3, 'clan3' );
+INSERT INTO clans VALUES ( 4, 'clan4' );
 
-INSERT INTO players (name,clans_i,clan_admin ) VALUES ('Fek',      1, 1);
-INSERT INTO players (name,clans_i,clan_admin ) VALUES ('discoboy', 1, 0);
-INSERT INTO players (name,clans_i,clan_admin ) VALUES ('raisse',   1, 0);
-INSERT INTO players (name,clans_i,clan_admin ) VALUES ('Prowler',  1, 0);
-INSERT INTO players (name,clans_i,clan_admin ) VALUES ('Wooble',   2, 1);
-INSERT INTO players (name,clans_i,clan_admin ) VALUES ('rebatela', 2, 0);
-INSERT INTO players (name,clans_i,clan_admin ) VALUES ('jt',       2, 0);
-INSERT INTO players (name,clans_i,clan_admin ) VALUES ('kcostell', 2, 0);
-INSERT INTO players (name,clans_i,clan_admin ) VALUES ('Tariru', NULL,0);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('Fek',        1, 1);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('discoboy',   1, 0);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('raisse',     1, 0);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('Prowler',    1, 0);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('Wooble',     2, 1);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('rebatela',   2, 0);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('jt',         2, 0);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('kcostell',   2, 0);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('Tariru',  NULL, 0);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('stenno36',   3, 1);
+INSERT INTO players (name,clans_i,clan_admin ) VALUES ('landerblue', 4, 1);

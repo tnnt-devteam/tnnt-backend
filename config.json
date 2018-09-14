@@ -430,7 +430,12 @@
     "clan-gimpossible" : {
       "title"  : "The Great Impossible",
       "points" : 5000,
-    }
+    },
+
+    "clan-medusacup" : {
+      "title"  : "The Medusa Cup",
+      "points" : 100,
+    },
 
   },
 
