@@ -410,7 +410,18 @@
     "clan-mostgames" : {
       "title"  : "Most Games",
       "points" : 100,
-    }
+    },
+
+    "clan-allcombos" : {
+      "title"  : "NetHack Master",
+      "points" : 1000,
+    },
+
+    "clan-allcomcon" : {
+      "title"  : "NetHack Dominator",
+      "points" : 2000,
+    },
+
   },
 
   #---------------------------------------------------------------------------
