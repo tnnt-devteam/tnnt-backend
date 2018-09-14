@@ -65,22 +65,39 @@ sub get_score
 
 
 #-----------------------------------------------------------------------------
-# Get sum of scores. You can supply list of scoring entry names to filter the
-# entries with.
+# Get sum of scores in a ScoringList. You can supply a list of filter strings
+# to narrow down the score entries that are being summed. The list come in two
+# modes:
+#
+# inclusive / only entries matching the filter strings are summed
+# exclusive / only entries not matching any of the filter strings are summed
+#
+# exclusive filter is indicated by the first element having ! prepended to it.
 #-----------------------------------------------------------------------------
 
 sub sum_score
 {
-  my $self = shift;
-  my @filter = splice @_;
+  my ($self, @filter) = @_;
+  my @scores;
 
-  #--- apply the filter
+  #--- exclusive filter, indicated by the first element having prepended !
 
-  my @scores = grep {
-    my $score = $_;
-    !@filter
-    || grep { $score->{'trophy'} eq $_ } @filter;
-  } @{$self->scores()};
+  if(@filter && substr($filter[0], 0, 0) eq '!') {
+    @scores = grep {
+      my $score = $_;
+      grep { $score->{'trophy'} ne $_ } map { s/^!// } @filter;
+    } @{$self->scores()};
+  }
+
+  #--- inclusive filter otherwise
+
+  else {
+    @scores = grep {
+      my $score = $_;
+      !@filter
+      || grep { $score->{'trophy'} eq $_ } @filter;
+    } @{$self->scores()};
+  }
 
   #--- sum the selected entries
 
