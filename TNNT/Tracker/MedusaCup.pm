@@ -84,7 +84,7 @@ sub add_game
     return $sorted[0];
   };
 
-  #--- if eligible clan has ascended game, make in ineligible
+  #--- if eligible clan has ascended game, make it ineligible
 
   if(
     $game->is_ascended()
@@ -135,6 +135,9 @@ sub add_game
 }
 
 
+#-----------------------------------------------------------------------------
+# Tracker cleanup.
+#-----------------------------------------------------------------------------
 
 sub finish
 {
