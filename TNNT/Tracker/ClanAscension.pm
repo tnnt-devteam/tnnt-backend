@@ -70,7 +70,6 @@ sub add_game
       $game->align0()
     );
 
-
   #--- only following types of entries are counted for ascension score
   #--- for clan scoring purposes
 
