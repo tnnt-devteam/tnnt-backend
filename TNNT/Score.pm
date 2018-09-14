@@ -9,6 +9,7 @@
 
 package TNNT::Score;
 
+use Carp;
 use Moo;
 
 with 'TNNT::GameList::AddGame';
@@ -88,7 +89,12 @@ sub BUILD
 
 sub add_game
 {
-  # not implemented yet
+  my ($self, $game) = @_;
+  my $clans = TNNT::ClanList->instance();
+
+  $clans->add_game($game);
+
+  return $self;
 };
 
 
