@@ -422,6 +422,16 @@
       "points" : 2000,
     },
 
+    "gimpossible" : {
+      "title"  : "The Great Impossible",
+      "points" : 5000,
+    },
+
+    "clan-gimpossible" : {
+      "title"  : "The Great Impossible",
+      "points" : 5000,
+    }
+
   },
 
   #---------------------------------------------------------------------------
