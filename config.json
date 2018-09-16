@@ -1121,7 +1121,7 @@
 
     "nursedance" : {
       "tnntachieve1" : "0x2000000000",
-      "title"        : "Oooh, Matron!",
+      "title"        : "Hello, Nurse!",
       "descr"        : "Get a nurse to heal you or raise your max HP"
     },
 
@@ -1145,7 +1145,7 @@
 
     "twobits" : {
       "tnntachieve1" : "0x20000000000",
-      "title"        : "Potions of Booze Cost More",
+      "title"        : "Potions of Booze Cost More Than That",
       "descr"        : "Get two bits for an ale from a priest"
     },
 
@@ -1173,66 +1173,287 @@
       "descr"        : "Enter a vault"
     },
 
+    "zoo": {
+      "tnntachieve1" : "0x400000000000",
+      "title"        : "Who Was That David Person Anyway?",
+      "descr"        : "Enter a treasure zoo"
+    },
+
+    "throneroom": {
+      "tnntachieve1" : "0x800000000000",
+      "title"        : "Absolute Monarchy",
+      "descr"        : "Enter a throne room"
+    },
+
+    "lephall": {
+      "tnntachieve1" : "0x1000000000000",
+      "title"        : "They're After Me Lucky Charms",
+      "descr"        : "Enter a leprechaun hall"
+    },
+
+    "beehive": {
+      "tnntachieve1" : "0x2000000000000",
+      "title"        : "Hive Mind",
+      "descr"        : "Enter a beehive"
+    },
+
+    "graveyard": {
+      "tnntachieve1" : "0x4000000000000",
+      "title"        : "Day of the Dead",
+      "descr"        : "Enter a graveyard"
+    },
+
+    "anthole": {
+      "tnntachieve1" : "0x8000000000000",
+      "title"        : "Team a Headquarters",
+      "descr"        : "Enter an anthole"
+    },
+
+    "barracks": {
+      "tnntachieve1" : "0x10000000000000",
+      "title"        : "Halt, Who Goes There?",
+      "descr"        : "Enter a barracks"
+    },
+
+    "swamp": {
+      "tnntachieve1" : "0x20000000000000",
+      "title"        : "Dungeon Ecology",
+      "descr"        : "Enter a swamp"
+    },
+
+    "cocknest": {
+      "tnntachieve1" : "0x40000000000000",
+      "title"        : "Statue Showcase",
+      "descr"        : "Enter a cockatrice nest"
+    },
+
     "asmodeus" : {
+      "tnntachieve1" : "0x80000000000000",
       "title"        : "Asmo-Slayer",
       "descr"        : "Kill Asmodeus"
     },
 
     "baalzebub" : {
+      "tnntachieve1" : "0x100000000000000",
       "title"        : "Fly Swatter",
       "descr"        : "Kill Baalzebub"
     },
 
     "orcus" : {
+      "tnntachieve1" : "0x200000000000000",
       "title"        : "That Wand is Mine",
       "descr"        : "Kill Orcus"
     },
 
     "juiblex" : {
+      "tnntachieve1" : "0x400000000000000",
       "title"        : "Squish Squish",
       "descr"        : "Kill Juiblex"
     },
 
     "demogorgon" : {
+      "tnntachieve1" : "0x800000000000000",
       "title"        : "Demo-Slayer",
       "descr"        : "Kill Demogorgon"
     },
 
     "yeenoghu" : {
+      "tnntachieve1" : "0x1000000000000000",
       "title"        : "Yeenoghu-Slayer",
       "descr"        : "Kill Yeenoghu"
     },
 
     "geryon" : {
+      "tnntachieve1" : "0x2000000000000000",
       "title"        : "Geryon-Slayer",
       "descr"        : "Kill Geryon"
     },
 
     "dispater" : {
+      "tnntachieve1" : "0x4000000000000000",
       "title"        : "Dispater-Slayer",
       "descr"        : "Kill Dispater"
     },
 
     "death" : {
+      "tnntachieve1" : "0x8000000000000000",
       "title"        : "Conqueror of Death",
       "descr"        : "Kill Death"
     },
 
     "pestilence" : {
+      "tnntachieve2" : "0x1",
       "title"        : "Curer of Pestilence",
       "descr"        : "Kill Pestilence"
     },
 
     "famine" : {
+      "tnntachieve2" : "0x2",
       "title"        : "Feeder of Famine",
       "descr"        : "Kill Famine"
     },
 
     "disgrace" : {
+      "tnntachieve2" : "0x4",
       "title"        : "You Had ONE Job",
       "descr"        : "Escape the Astral Plane in celestial disgrace"
     },
 
+    "alignchange": {
+      "tnntachieve2" : "0x8",
+      "title"        : "Under New Management",
+      "descr"        : "Change your alignment by any means"
+    },
+
+    "heisenberg": {
+      "tnntachieve2" : "0x10",
+      "title"        : "Heisenberg",
+      "descr"        : "Become uncertain about your position or velocity"
+    },
+
+    "spooky": {
+      "tnntachieve2" : "0x20",
+      "title"        : "Who You Gonna Call?",
+      "descr"        : "Get scared by a ghost"
+    },
+
+    "dejavu": {
+      "tnntachieve2" : "0x40",
+      "title"        : "Groundhog Day",
+      "descr"        : "Return to a forgotten level"
+    },
+
+    "unholy": {
+      "tnntachieve2" : "0x80",
+      "title"        : "Tainted",
+      "descr"        : "Dip an item in unholy water"
+    },
+
+    "dissolve": {
+      "tnntachieve2" : "0x100",
+      "title"        : "Hydrochloric",
+      "descr"        : "Dissolve iron bars with acid"
+    },
+
+    "brokenothin": {
+      "tnntachieve2" : "0x200",
+      "title"        : "Predictably, Nothing Happens",
+      "descr"        : "Break an identified wand of nothing"
+    },
+
+    "neutralize": {
+      "tnntachieve2" : "0x400",
+      "title"        : "Neutralized",
+      "descr"        : "Cancel a monster"
+    },
+
+    "magivore": {
+      "tnntachieve2" : "0x800",
+      "title"        : "Magivore",
+      "descr"        : "Gain a magical intrinsic by eating a piece of jewelry"
+    },
+
+    "aklys": {
+      "tnntachieve2" : "0x1000",
+      "title"        : "Rope-a-Dope",
+      "descr"        : "Kill a monster with a thrown aklys"
+    },
+
+    "horndip": {
+      "tnntachieve2" : "0x2000",
+      "title"        : "Panacea",
+      "descr"        : "Neutralize a harmful potion with a unicorn horn"
+    },
+
+    "crunch": {
+      "tnntachieve2" : "0x4000",
+      "title"        : "Hulk Smash",
+      "descr"        : "Kill a monster with a heavy iron ball"
+    },
+
+    "rich": {
+      "tnntachieve2" : "0x8000",
+      "title"        : "Croesus Competitor",
+      "descr"        : "Finish a game carrying at least 50000 gold"
+    },
+
+    "filthyrich": {
+      "tnntachieve2" : "0x10000",
+      "title"        : "Croesus Buyout",
+      "descr"        : "Finish a game carrying at least 100000 gold"
+    },
+
+    "crysball": {
+      "tnntachieve2" : "0x20000",
+      "title"        : "Palantir",
+      "descr"        : "Successfully apply a crystal ball"
+    },
+
+    "maxxed": {
+      "tnntachieve2" : "0x40000",
+      "title"        : "Peak Condition",
+      "descr"        : "Raise all attributes to at least 18"
+    },
+
+    "playerbones": {
+      "tnntachieve2" : "0x80000",
+      "title"        : "Those Who Came Before",
+      "descr"        : "Sight another player's bones pile"
+    },
+
+    "roguebones": {
+      "tnntachieve2" : "0x100000",
+      "title"        : "Imitation Bones",
+      "descr"        : "Step onto the Rogue level fake bones pile"
+    },
+
+    "familiar": {
+      "tnntachieve2" : "0x200000",
+      "title"        : "Replacement Goldfish",
+      "descr"        : "Cast create familiar"
+    },
+
+    "adorn": {
+      "tnntachieve2" : "0x400000",
+      "title"        : "Pop the Question",
+      "descr"        : "Give a ring of adornment to a succubus"
+    },
+
+    "unwin": {
+      "tnntachieve2" : "0x800000",
+      "title"        : "TODO",
+      "descr"        : "TODO"
+    },
+
+    "noseknows": {
+      "tnntachieve2" : "0x1000000",
+      "title"        : "Discerning Palate",
+      "descr"        : "Gain intrinsic food appraisal"
+    },
+
+    "soldierant": {
+      "tnntachieve2" : "0x2000000",
+      "title"        : "Playerbanebane",
+      "descr"        : "Kill a soldier ant"
+    },
+
+    "summon": {
+      "tnntachieve2" : "0x4000000",
+      "title"        : "Banishing Spells Not Included",
+      "descr"        : "Summon a demon lord"
+    },
+
+    "chicken": {
+      "tnntachieve2" : "0x8000000",
+      "title"        : "Tastes Like Chicken",
+      "descr"        : "Eat chickatrice or cockatrice meat without ending the game"
+    },
+
+    "wrest": {
+      "tnntachieve2" : "0x10000000",
+      "title"        : "Dust to Dust",
+      "descr"        : "Wrest one last charge from a wand of wishing"
+    },
 
   },
 
