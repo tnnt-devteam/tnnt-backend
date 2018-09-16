@@ -24,6 +24,10 @@
 #
 # If the last odd arguments to new_sets() is a coderef, then this is invoked
 # when the state flips into fullfilled.
+#
+# The tracker has two modes: 'strict' will die on attempting to track a value
+# that is not in the list of possible values; 'loose' mode will silently skip
+# that value.
 #=============================================================================
 
 package TNNT::Tracker::MultiSet;
@@ -56,6 +60,15 @@ has _cb => (
   is => 'rwp',
   writer => '_set_cb',
 );
+
+has mode => (
+  is => 'rw',
+  default => 'strict',
+  isa => sub {
+    $_[0] =~ /^(strict|loose)$/ or die "Invalid mode '$_[0]' specified";
+  }
+);
+
 
 
 
@@ -118,7 +131,10 @@ sub track
   foreach my $key (keys %args) {
     my @values = ref $args{$key} ? @{$args{$key}} : ($args{$key});
     foreach my $value (@values) {
-      if(!exists $self->_trk()->{$key}->{$value}) {
+      if(
+        $self->mode() eq 'strict'
+        && !exists $self->_trk()->{$key}->{$value}
+      ) {
         croak "MultiSet: Invalid set '$key' element '$value'";
       }
       $self->_trk()->{$key}->{$value} = 1;
