@@ -437,6 +437,81 @@
       "points" : 100,
     },
 
+    "greatrace:orc" : {
+      "title"  : "Great Orc",
+      "points" : 200
+    },
+
+    "greatrace:gno" : {
+      "title"  : "Great Gnome",
+      "points" : 250
+    },
+
+    "greatrace:dwa" : {
+      "title"  : "Great Dwarf",
+      "points" : 150
+    },
+
+    "greatrace:elf" : {
+      "title"  : "Great Elf",
+      "points" : 150
+    },
+
+    "greatrace:hum" : {
+      "title"  : "Great Human",
+      "points" : 200
+    },
+
+    "greatrole:arc" : {
+      "title"  : "Great Archeologist",
+      "points" : 200
+    },
+
+    "greatrole:bar" : {
+      "title"  : "Great Barbarian",
+      "points" : 150
+    },
+
+    "greatrole:cav" : {
+      "title"  : "Great Caveman",
+      "points" : 200
+    },
+
+    "greatrole:hea" : {
+      "title"  : "Great Healer",
+      "points" : 100
+    },
+
+    "greatrole:mon" : {
+      "title"  : "Great Monk",
+      "points" : 150
+    },
+
+    "greatrole:pri" : {
+      "title"  : "Great Priest",
+      "points" : 200
+    },
+
+    "greatrole:ran" : {
+      "title"  : "Great Ranger",
+      "points" : 250
+    },
+
+    "greatrole:rog" : {
+      "title"  : "Great Rogue",
+      "points" : 100
+    },
+
+    "greatrole:val" : {
+      "title"  : "Great Valkyrie",
+      "points" : 150
+    },
+
+    "greatrole:wiz" : {
+      "title"  : "Great Wizard",
+      "points" : 250
+    },
+
   },
 
   #---------------------------------------------------------------------------
@@ -1290,12 +1365,15 @@
       "Wiz-Orc-Fem-Cha",
     ],
 
+    # note that in Great Monk there's special case as you only need one monk,
+    # not all possible alignments
+
     "greatrace" : {
-      "Orc" : [ "Bar", "Ran", "Rog", "Wiz" ],
-      "Gno" : [ "Arc", "Cav", "Hea", "Ran", "Wiz" ],
-      "Dwa" : [ "Arc", "Cav", "Val" ],
-      "Elf" : [ "Pri", "Ran", "Wiz" ],
-      "Hum" : [ "Kni", "Mon", "Sam", "Tou" ]
+      "Orc" : [ "Bar-Cha", "Ran-Cha", "Rog-Cha", "Wiz-Cha" ],
+      "Gno" : [ "Arc-Neu", "Cav-Neu", "Hea-Neu", "Ran-Neu", "Wiz-Neu" ],
+      "Dwa" : [ "Arc-Law", "Cav-Law", "Val-Law" ],
+      "Elf" : [ "Pri-Cha", "Ran-Cha", "Wiz-Cha" ],
+      "Hum" : [ "Kni-Law", "Mon-*", "Sam-Law", "Tou-Neu" ]
     },
 
     "greatrole" : {
