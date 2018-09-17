@@ -94,11 +94,26 @@ sub add_game
         $ptrk->{$greatfoo}{$rr} = TNNT::Tracker::MultiSet->new_sets(
           $rr => $cfg->{'nethack'}{$greatfoo}{$rr},
           sub {
+            # score player
             $player->add_score(TNNT::ScoringEntry->new(
               trophy => $greatfoo . ':' . lc($rr),
               game => [ $game ],
               when => $game->endtime()
-            ))
+            ));
+            # score player's clan
+            if(
+              $clan
+              &&
+              !exists $self->_clan_track()->{$clan->{'name'}}{$greatfoo}{$rr}
+            ) {
+              $clan->add_score(TNNT::ScoringEntry->new(
+                trophy => 'clan-' . $greatfoo . ':' . lc($rr),
+                game => [ $game ],
+                when => $game->endtime(),
+                data => { player_name => $player->name() }
+              ));
+              $self->_clan_track()->{$clan->{'name'}}{$greatfoo}{$rr} = $game;
+            }
           }
         );
         $ptrk->{$greatfoo}{$rr}->mode('loose');
@@ -121,24 +136,18 @@ sub add_game
 
       my $ptrk = $self->_player_track->{$player->name()};
 
-      # track role-align in MultiSet for greatrace; there's special case for
-      # Great Human that only requires _one_ Monk ascension, not all three
+      # track role-race-align in MultiSet for greatrace; there's special case
+      # for Great Human that only requires _one_ Monk ascension, not all three
       # available (Monks can be of any alignment)
 
-      if($foo eq 'race') {
-        $ptrk->{$greatfoo}{$rr}->track(
-          $rr => $game->role() . '-' .
-          ($game->role() eq 'Mon' ? '*' : $game->align0())
-        );
-      }
-
-      # track race-align in MultiSet for greatrole
-
-      else {
-        $ptrk->{$greatfoo}{$rr}->track(
-          $rr => $game->race() . '-' . $game->align0()
+      $ptrk->{$greatfoo}{$rr}->track(
+        $rr => sprintf(
+          "%s-%s-%s",
+          $game->role(),
+          $game->race(),
+          (($game->role() eq 'Mon' && $foo eq 'race') ? '*' : $game->align0())
         )
-      }
+      );
 
     }
   }

@@ -512,6 +512,81 @@
       "points" : 250
     },
 
+    "clan-greatrace:orc" : {
+      "title"  : "Great Orc",
+      "points" : 200
+    },
+
+    "clan-greatrace:gno" : {
+      "title"  : "Great Gnome",
+      "points" : 250
+    },
+
+    "clan-greatrace:dwa" : {
+      "title"  : "Great Dwarf",
+      "points" : 150
+    },
+
+    "clan-greatrace:elf" : {
+      "title"  : "Great Elf",
+      "points" : 150
+    },
+
+    "clan-greatrace:hum" : {
+      "title"  : "Great Human",
+      "points" : 200
+    },
+
+    "clan-greatrole:arc" : {
+      "title"  : "Great Archeologist",
+      "points" : 200
+    },
+
+    "clan-greatrole:bar" : {
+      "title"  : "Great Barbarian",
+      "points" : 150
+    },
+
+    "clan-greatrole:cav" : {
+      "title"  : "Great Caveman",
+      "points" : 200
+    },
+
+    "clan-greatrole:hea" : {
+      "title"  : "Great Healer",
+      "points" : 100
+    },
+
+    "clan-greatrole:mon" : {
+      "title"  : "Great Monk",
+      "points" : 150
+    },
+
+    "clan-greatrole:pri" : {
+      "title"  : "Great Priest",
+      "points" : 200
+    },
+
+    "clan-greatrole:ran" : {
+      "title"  : "Great Ranger",
+      "points" : 250
+    },
+
+    "clan-greatrole:rog" : {
+      "title"  : "Great Rogue",
+      "points" : 100
+    },
+
+    "clan-greatrole:val" : {
+      "title"  : "Great Valkyrie",
+      "points" : 150
+    },
+
+    "clan-greatrole:wiz" : {
+      "title"  : "Great Wizard",
+      "points" : 250
+    },
+
   },
 
   #---------------------------------------------------------------------------
@@ -1369,24 +1444,30 @@
     # not all possible alignments
 
     "greatrace" : {
-      "Orc" : [ "Bar-Cha", "Ran-Cha", "Rog-Cha", "Wiz-Cha" ],
-      "Gno" : [ "Arc-Neu", "Cav-Neu", "Hea-Neu", "Ran-Neu", "Wiz-Neu" ],
-      "Dwa" : [ "Arc-Law", "Cav-Law", "Val-Law" ],
-      "Elf" : [ "Pri-Cha", "Ran-Cha", "Wiz-Cha" ],
-      "Hum" : [ "Kni-Law", "Mon-*", "Sam-Law", "Tou-Neu" ]
+      "Orc" : [ "Bar-Orc-Cha", "Ran-Orc-Cha", "Rog-Orc-Cha", "Wiz-Orc-Cha" ],
+      "Gno" : [
+        "Arc-Gno-Neu", "Cav-Gno-Neu", "Hea-Gno-Neu", "Ran-Gno-Neu", "Wiz-Gno-Neu"
+      ],
+      "Dwa" : [ "Arc-Dwa-Law", "Cav-Dwa-Law", "Val-Dwa-Law" ],
+      "Elf" : [ "Pri-Elf-Cha", "Ran-Elf-Cha", "Wiz-Elf-Cha" ],
+      "Hum" : [ "Kni-Hum-Law", "Mon-Hum-*", "Sam-Hum-Law", "Tou-Hum-Neu" ]
     },
 
     "greatrole" : {
-      "Arc" : [ "Hum-Law", "Hum-Neu", "Dwa-Law", "Gno-Neu" ],
-      "Bar" : [ "Hum-Neu", "Hum-Cha", "Orc-Cha" ],
-      "Cav" : [ "Hum-Law", "Hum-Neu", "Dwa-Law", "Gno-Neu" ],
-      "Hea" : [ "Hum-Neu", "Gno-Neu" ],
-      "Mon" : [ "Hum-Law", "Hum-Neu", "Hum-Cha" ],
-      "Pri" : [ "Hum-Law", "Hum-Neu", "Hum-Cha", "Elf-Cha" ],
-      "Ran" : [ "Hum-Neu", "Hum-Cha", "Elf-Cha", "Gno-Neu", "Orc-Cha" ],
-      "Rog" : [ "Hum-Cha", "Orc-Cha" ],
-      "Val" : [ "Hum-Law", "Hum-Neu", "Dwa-Law" ],
-      "Wiz" : [ "Hum-Neu", "Hum-Cha", "Elf-Cha", "Gno-Neu", "Orc-Cha" ]
+      "Arc" : [ "Arc-Hum-Law", "Arc-Hum-Neu", "Arc-Dwa-Law", "Arc-Gno-Neu" ],
+      "Bar" : [ "Bar-Hum-Neu", "Bar-Hum-Cha", "Bar-Orc-Cha" ],
+      "Cav" : [ "Cav-Hum-Law", "Cav-Hum-Neu", "Cav-Dwa-Law", "Cav-Gno-Neu" ],
+      "Hea" : [ "Hea-Hum-Neu", "Hea-Gno-Neu" ],
+      "Mon" : [ "Mon-Hum-Law", "Mon-Hum-Neu", "Mon-Hum-Cha" ],
+      "Pri" : [ "Pri-Hum-Law", "Pri-Hum-Neu", "Pri-Hum-Cha", "Pri-Elf-Cha" ],
+      "Ran" : [
+        "Ran-Hum-Neu", "Ran-Hum-Cha", "Ran-Elf-Cha", "Ran-Gno-Neu", "Ran-Orc-Cha"
+      ],
+      "Rog" : [ "Rog-Hum-Cha", "Rog-Orc-Cha" ],
+      "Val" : [ "Val-Hum-Law", "Val-Hum-Neu", "Val-Dwa-Law" ],
+      "Wiz" : [
+        "Wiz-Hum-Neu", "Wiz-Hum-Cha", "Wiz-Elf-Cha", "Wiz-Gno-Neu", "Wiz-Orc-Cha"
+      ]
     },
 
   },
