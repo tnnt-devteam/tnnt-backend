@@ -118,7 +118,13 @@ sub add_game
 
   #--- create new scoring entry for the new leader
 
-  if($new_clan) {
+  # but only if they have non-zero score; this avoids the problem where
+  # multiple clans with zero score (at the start of the tournament) get
+  # randomly assigned the Medusa Cup
+
+  if(
+    $new_clan && $new_clan->sum_score('!clan-medusacup')
+  ) {
     $new_clan->add_score(TNNT::ScoringEntry->new(
       trophy => $self->name(),
       when => $game->endtime(),
