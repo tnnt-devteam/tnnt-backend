@@ -167,6 +167,31 @@ sub track
 }
 
 
+#-----------------------------------------------------------------------------
+# Function that displays configuration and current state of the tracker. This
+# is for development/debugging purposes only.
+#-----------------------------------------------------------------------------
+
+sub status
+{
+  my ($self) = @_;
+  my $re = '';
+  my $sets = $self->_trk();
+
+  for my $set (keys %$sets) {
+    $re .= sprintf(
+      "%s (%s) ",
+      $set, join(',',
+        map { $sets->{$set}{$_} ? $_ . '*' : $_; }
+        keys %{$sets->{$set}}
+      )
+    );
+  }
+
+  return $re;
+}
+
+
 
 #=============================================================================
 
