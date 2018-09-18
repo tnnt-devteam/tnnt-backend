@@ -8,6 +8,8 @@ package TNNT::Clan;
 
 use Moo;
 with 'TNNT::ScoringList';
+with 'TNNT::GameList::AddGame';
+with 'TNNT::AscensionList';
 
 
 
@@ -90,6 +92,15 @@ sub is_admin
   } else {
     return undef;
   }
+}
+
+
+#-----------------------------------------------------------------------------
+# Empty but required for the GameList role.
+#-----------------------------------------------------------------------------
+
+sub add_game
+{
 }
 
 

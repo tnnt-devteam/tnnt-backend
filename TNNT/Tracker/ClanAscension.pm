@@ -66,10 +66,9 @@ sub add_game
     my $combo = join('-',
       $game->role(),
       $game->race(),
-      $game->gender(),
-      $game->align()
+      $game->gender0(),
+      $game->align0()
     );
-
 
   #--- only following types of entries are counted for ascension score
   #--- for clan scoring purposes

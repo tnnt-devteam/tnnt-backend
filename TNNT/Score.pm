@@ -9,6 +9,7 @@
 
 package TNNT::Score;
 
+use Carp;
 use Moo;
 
 with 'TNNT::GameList::AddGame';
@@ -30,6 +31,13 @@ use TNNT::Tracker::MinTurns;
 use TNNT::Tracker::Streak;
 use TNNT::Tracker::AllCats;
 use TNNT::Tracker::ClanAscension;
+use TNNT::Tracker::UniqueAscs;
+use TNNT::Tracker::MostGames;
+use TNNT::Tracker::AllCombos;
+use TNNT::Tracker::GImpossible;
+use TNNT::Tracker::GreatFoo;
+use TNNT::Tracker::UniqueDeaths;
+use TNNT::Tracker::MedusaCup;
 
 
 
@@ -72,6 +80,14 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::Streak);
   $tr->add_tracker(new TNNT::Tracker::AllCats);
   $tr->add_tracker(new TNNT::Tracker::ClanAscension);
+  $tr->add_tracker(new TNNT::Tracker::UniqueAscs);
+  $tr->add_tracker(new TNNT::Tracker::MostGames);
+  $tr->add_tracker(new TNNT::Tracker::AllCombos);
+  $tr->add_tracker(new TNNT::Tracker::GImpossible);
+  $tr->add_tracker(new TNNT::Tracker::GreatFoo);
+  $tr->add_tracker(new TNNT::Tracker::UniqueDeaths);
+  # this needs to be the last tracker
+  $tr->add_tracker(new TNNT::Tracker::MedusaCup);
 }
 
 
@@ -86,7 +102,12 @@ sub BUILD
 
 sub add_game
 {
-  # not implemented yet
+  my ($self, $game) = @_;
+  my $clans = TNNT::ClanList->instance();
+
+  $clans->add_game($game);
+
+  return $self;
 };
 
 

@@ -402,6 +402,354 @@
       "points" : 1,
     },
 
+    "clan-uniqascs" : {
+      "title"  : "Most Unique Ascensions",
+      "points" : 200,
+    },
+
+    "clan-mostgames" : {
+      "title"  : "Most Games",
+      "points" : 100,
+    },
+
+    "clan-allcombos" : {
+      "title"  : "NetHack Master",
+      "points" : 1000,
+    },
+
+    "clan-allcomcon" : {
+      "title"  : "NetHack Dominator",
+      "points" : 2000,
+    },
+
+    "gimpossible" : {
+      "title"  : "The Great Impossible",
+      "points" : 5000,
+    },
+
+    "clan-gimpossible" : {
+      "title"  : "The Great Impossible",
+      "points" : 5000,
+    },
+
+    "clan-medusacup" : {
+      "title"  : "The Medusa Cup",
+      "points" : 100,
+    },
+
+    "clan-uniquedeaths" : {
+      "title"  : "Unique Deaths",
+      "points" : 200,
+    },
+
+    #--- great race/role -----------------------------------------------------
+
+    "greatrace:orc" : {
+      "title"  : "Great Orc",
+      "points" : 200
+    },
+
+    "greatrace:gno" : {
+      "title"  : "Great Gnome",
+      "points" : 250
+    },
+
+    "greatrace:dwa" : {
+      "title"  : "Great Dwarf",
+      "points" : 150
+    },
+
+    "greatrace:elf" : {
+      "title"  : "Great Elf",
+      "points" : 150
+    },
+
+    "greatrace:hum" : {
+      "title"  : "Great Human",
+      "points" : 200
+    },
+
+    "greatrole:arc" : {
+      "title"  : "Great Archeologist",
+      "points" : 200
+    },
+
+    "greatrole:bar" : {
+      "title"  : "Great Barbarian",
+      "points" : 150
+    },
+
+    "greatrole:cav" : {
+      "title"  : "Great Caveman",
+      "points" : 200
+    },
+
+    "greatrole:hea" : {
+      "title"  : "Great Healer",
+      "points" : 100
+    },
+
+    "greatrole:mon" : {
+      "title"  : "Great Monk",
+      "points" : 150
+    },
+
+    "greatrole:pri" : {
+      "title"  : "Great Priest",
+      "points" : 200
+    },
+
+    "greatrole:ran" : {
+      "title"  : "Great Ranger",
+      "points" : 250
+    },
+
+    "greatrole:rog" : {
+      "title"  : "Great Rogue",
+      "points" : 100
+    },
+
+    "greatrole:val" : {
+      "title"  : "Great Valkyrie",
+      "points" : 150
+    },
+
+    "greatrole:wiz" : {
+      "title"  : "Great Wizard",
+      "points" : 250
+    },
+
+    #--- clan great race/role ------------------------------------------------
+
+    "clan-greatrace:orc" : {
+      "title"  : "Great Orc",
+      "points" : 200
+    },
+
+    "clan-greatrace:gno" : {
+      "title"  : "Great Gnome",
+      "points" : 250
+    },
+
+    "clan-greatrace:dwa" : {
+      "title"  : "Great Dwarf",
+      "points" : 150
+    },
+
+    "clan-greatrace:elf" : {
+      "title"  : "Great Elf",
+      "points" : 150
+    },
+
+    "clan-greatrace:hum" : {
+      "title"  : "Great Human",
+      "points" : 200
+    },
+
+    "clan-greatrole:arc" : {
+      "title"  : "Great Archeologist",
+      "points" : 200
+    },
+
+    "clan-greatrole:bar" : {
+      "title"  : "Great Barbarian",
+      "points" : 150
+    },
+
+    "clan-greatrole:cav" : {
+      "title"  : "Great Caveman",
+      "points" : 200
+    },
+
+    "clan-greatrole:hea" : {
+      "title"  : "Great Healer",
+      "points" : 100
+    },
+
+    "clan-greatrole:mon" : {
+      "title"  : "Great Monk",
+      "points" : 150
+    },
+
+    "clan-greatrole:pri" : {
+      "title"  : "Great Priest",
+      "points" : 200
+    },
+
+    "clan-greatrole:ran" : {
+      "title"  : "Great Ranger",
+      "points" : 250
+    },
+
+    "clan-greatrole:rog" : {
+      "title"  : "Great Rogue",
+      "points" : 100
+    },
+
+    "clan-greatrole:val" : {
+      "title"  : "Great Valkyrie",
+      "points" : 150
+    },
+
+    "clan-greatrole:wiz" : {
+      "title"  : "Great Wizard",
+      "points" : 250
+    },
+
+    #--- lesser race/role ----------------------------------------------------
+
+    "lesserrace:orc" : {
+      "title"  : "Lesser Orc",
+      "points" : 20
+    },
+
+    "lesserrace:gno" : {
+      "title"  : "Lesser Gnome",
+      "points" : 25
+    },
+
+    "lesserrace:dwa" : {
+      "title"  : "Lesser Dwarf",
+      "points" : 15
+    },
+
+    "lesserrace:elf" : {
+      "title"  : "Lesser Elf",
+      "points" : 15
+    },
+
+    "lesserrace:hum" : {
+      "title"  : "Lesser Human",
+      "points" : 20
+    },
+
+    "lesserrole:arc" : {
+      "title"  : "Lesser Archeologist",
+      "points" : 20
+    },
+
+    "lesserrole:bar" : {
+      "title"  : "Lesser Barbarian",
+      "points" : 15
+    },
+
+    "lesserrole:cav" : {
+      "title"  : "Lesser Caveman",
+      "points" : 20
+    },
+
+    "lesserrole:hea" : {
+      "title"  : "Lesser Healer",
+      "points" : 10
+    },
+
+    "lesserrole:mon" : {
+      "title"  : "Lesser Monk",
+      "points" : 15
+    },
+
+    "lesserrole:pri" : {
+      "title"  : "Lesser Priest",
+      "points" : 20
+    },
+
+    "lesserrole:ran" : {
+      "title"  : "Lesser Ranger",
+      "points" : 25
+    },
+
+    "lesserrole:rog" : {
+      "title"  : "Lesser Rogue",
+      "points" : 10
+    },
+
+    "lesserrole:val" : {
+      "title"  : "Lesser Valkyrie",
+      "points" : 15
+    },
+
+    "lesserrole:wiz" : {
+      "title"  : "Lesser Wizard",
+      "points" : 25
+    },
+
+    #--- clan lesser race/role -----------------------------------------------
+
+    "clan-lesserrace:orc" : {
+      "title"  : "Lesser Orc",
+      "points" : 20
+    },
+
+    "clan-lesserrace:gno" : {
+      "title"  : "Lesser Gnome",
+      "points" : 25
+    },
+
+    "clan-lesserrace:dwa" : {
+      "title"  : "Lesser Dwarf",
+      "points" : 15
+    },
+
+    "clan-lesserrace:elf" : {
+      "title"  : "Lesser Elf",
+      "points" : 15
+    },
+
+    "clan-lesserrace:hum" : {
+      "title"  : "Lesser Human",
+      "points" : 20
+    },
+
+    "clan-lesserrole:arc" : {
+      "title"  : "Lesser Archeologist",
+      "points" : 20
+    },
+
+    "clan-lesserrole:bar" : {
+      "title"  : "Lesser Barbarian",
+      "points" : 15
+    },
+
+    "clan-lesserrole:cav" : {
+      "title"  : "Lesser Caveman",
+      "points" : 20
+    },
+
+    "clan-lesserrole:hea" : {
+      "title"  : "Lesser Healer",
+      "points" : 10
+    },
+
+    "clan-lesserrole:mon" : {
+      "title"  : "Lesser Monk",
+      "points" : 15
+    },
+
+    "clan-lesserrole:pri" : {
+      "title"  : "Lesser Priest",
+      "points" : 20
+    },
+
+    "clan-lesserrole:ran" : {
+      "title"  : "Lesser Ranger",
+      "points" : 25
+    },
+
+    "clan-lesserrole:rog" : {
+      "title"  : "Lesser Rogue",
+      "points" : 10
+    },
+
+    "clan-lesserrole:val" : {
+      "title"  : "Lesser Valkyrie",
+      "points" : 15
+    },
+
+    "clan-lesserrole:wiz" : {
+      "title"  : "Lesser Wizard",
+      "points" : 25
+    },
+
   },
 
   #---------------------------------------------------------------------------
@@ -1538,6 +1886,8 @@
       "Ran-Elf-Fem-Cha",
       "Ran-Gno-Mal-Neu",
       "Ran-Gno-Fem-Neu",
+      "Ran-Orc-Mal-Cha",
+      "Ran-Orc-Fem-Cha",
 
       "Rog-Hum-Mal-Cha",
       "Rog-Hum-Fem-Cha",
@@ -1550,11 +1900,8 @@
       "Tou-Hum-Mal-Neu",
       "Tou-Hum-Fem-Neu",
 
-      "Val-Hum-Mal-Law",
       "Val-Hum-Fem-Law",
-      "Val-Hum-Mal-Neu",
       "Val-Hum-Fem-Neu",
-      "Val-Dwa-Mal-Law",
       "Val-Dwa-Fem-Law",
 
       "Wiz-Hum-Mal-Neu",
@@ -1569,26 +1916,72 @@
       "Wiz-Orc-Fem-Cha",
     ],
 
+    # note that in Great Monk there's special case as you only need one monk,
+    # not all possible alignments
+
     "greatrace" : {
-      "Orc" : [ "Bar", "Ran", "Rog", "Wiz" ],
-      "Gno" : [ "Arc", "Cav", "Hea", "Ran", "Wiz" ],
-      "Dwa" : [ "Arc", "Cav", "Val" ],
-      "Elf" : [ "Pri", "Ran", "Wiz" ],
-      "Hum" : [ "Kni", "Mon", "Sam", "Tou" ]
+      "Orc" : [ "Bar-Orc-Cha", "Ran-Orc-Cha", "Rog-Orc-Cha", "Wiz-Orc-Cha" ],
+      "Gno" : [
+        "Arc-Gno-Neu", "Cav-Gno-Neu", "Hea-Gno-Neu", "Ran-Gno-Neu", "Wiz-Gno-Neu"
+      ],
+      "Dwa" : [ "Arc-Dwa-Law", "Cav-Dwa-Law", "Val-Dwa-Law" ],
+      "Elf" : [ "Pri-Elf-Cha", "Ran-Elf-Cha", "Wiz-Elf-Cha" ],
+      "Hum" : [ "Kni-Hum-Law", "Mon-Hum-*", "Sam-Hum-Law", "Tou-Hum-Neu" ]
     },
 
     "greatrole" : {
-      "Arc" : [ "Hum-Law", "Hum-Neu", "Dwa-Law", "Gno-Neu" ],
-      "Bar" : [ "Hum-Neu", "Hum-Cha", "Orc-Cha" ],
-      "Cav" : [ "Hum-Law", "Hum-Neu", "Dwa-Law", "Gno-Neu" ],
-      "Hea" : [ "Hum-Neu", "Gno-Neu" ],
-      "Mon" : [ "Hum-Law", "Hum-Neu", "Hum-Cha" ],
-      "Pri" : [ "Hum-Law", "Hum-Neu", "Hum-Cha", "Elf-Cha" ],
-      "Ran" : [ "Hum-Neu", "Hum-Cha", "Elf-Cha", "Gno-Neu", "Orc-Cha" ],
-      "Rog" : [ "Hum-Cha", "Orc-Cha" ],
-      "Val" : [ "Hum-Law", "Hum-Neu", "Dwa-Law" ],
-      "Wiz" : [ "Hum-Neu", "Hum-Cha", "Elf-Cha", "Gno-Neu", "Orc-Cha" ]
+      "Arc" : [ "Arc-Hum-Law", "Arc-Hum-Neu", "Arc-Dwa-Law", "Arc-Gno-Neu" ],
+      "Bar" : [ "Bar-Hum-Neu", "Bar-Hum-Cha", "Bar-Orc-Cha" ],
+      "Cav" : [ "Cav-Hum-Law", "Cav-Hum-Neu", "Cav-Dwa-Law", "Cav-Gno-Neu" ],
+      "Hea" : [ "Hea-Hum-Neu", "Hea-Gno-Neu" ],
+      "Mon" : [ "Mon-Hum-Law", "Mon-Hum-Neu", "Mon-Hum-Cha" ],
+      "Pri" : [ "Pri-Hum-Law", "Pri-Hum-Neu", "Pri-Hum-Cha", "Pri-Elf-Cha" ],
+      "Ran" : [
+        "Ran-Hum-Neu", "Ran-Hum-Cha", "Ran-Elf-Cha", "Ran-Gno-Neu", "Ran-Orc-Cha"
+      ],
+      "Rog" : [ "Rog-Hum-Cha", "Rog-Orc-Cha" ],
+      "Val" : [ "Val-Hum-Law", "Val-Hum-Neu", "Val-Dwa-Law" ],
+      "Wiz" : [
+        "Wiz-Hum-Neu", "Wiz-Hum-Cha", "Wiz-Elf-Cha", "Wiz-Gno-Neu", "Wiz-Orc-Cha"
+      ]
     },
 
   },
+
+  #---------------------------------------------------------------------------
+  #--- Definitions for Unique Deaths trophy ----------------------------------
+  #---------------------------------------------------------------------------
+
+  "uniquedeaths" : {
+
+    "reject" : [
+      "^ascended",
+      "^quit",
+      "^escaped",
+    ],
+
+    "normalize" : [
+      [ "^killed by an ", "killed by a " ],
+      [ ", while .*", "" ],
+      [ "hallucinogen-distorted ", "" ],
+      [ "by the invisible ", "by " ],
+      [ "by (an|a) invisible ", "by a " ],
+      [ "by invisible ", "by " ],
+      [ " (her|his) ", " eir " ],
+      [ " (herself|himself) ", " eirself " ],
+      [ " (herself|himself)$", " eirself" ],
+      [ " (called|named) .*", "" ],
+      [ " \\(with the Amulet\\)$", "" ],
+      [ "choked on .*", "choked on something" ],
+      [ "killed by kicking .*", "killed by kicking something" ],
+      [ "killed by a falling (?!rock)$", "killed by a falling object" ],
+      [ " (an? )?M[rs]\\. [A-Z].*[,;] the shopkeeper", " a shopkeeper" ],
+      [ " (an?|the) ghost of .+", " a ghost" ],
+      [ "poisoned by a rotted .* corpse", "poisoned by a rotted corpse" ],
+      [ "wrath of .+", "wrath of a deity" ],
+      [ "priest(ess)?", "priest(ess)" ],
+      [ "priest\\(ess\\) of .+", "priest(ess) of a deity" ],
+      [ "(\\w+ elemental|Aleax|couatl|Angel|\\w+ demon|\\w+ devil|(suc|in)cubus|balrog|pit fiend|nalfeshnee|hezrou|vrock|marilith|erinyes) of .+", "minion of a deity" ],
+    ]
+  }
 }
