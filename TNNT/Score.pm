@@ -36,6 +36,7 @@ use TNNT::Tracker::MostGames;
 use TNNT::Tracker::AllCombos;
 use TNNT::Tracker::GImpossible;
 use TNNT::Tracker::GreatFoo;
+use TNNT::Tracker::UniqueDeaths;
 use TNNT::Tracker::MedusaCup;
 
 
@@ -84,6 +85,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::AllCombos);
   $tr->add_tracker(new TNNT::Tracker::GImpossible);
   $tr->add_tracker(new TNNT::Tracker::GreatFoo);
+  $tr->add_tracker(new TNNT::Tracker::UniqueDeaths);
   # this needs to be the last tracker
   $tr->add_tracker(new TNNT::Tracker::MedusaCup);
 }

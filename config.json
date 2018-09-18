@@ -437,6 +437,11 @@
       "points" : 100,
     },
 
+    "clan-uniquedeaths" : {
+      "title"  : "Unique Deaths",
+      "points" : 200,
+    },
+
     #--- great race/role -----------------------------------------------------
 
     "greatrace:orc" : {
@@ -1629,4 +1634,41 @@
     },
 
   },
+
+  #---------------------------------------------------------------------------
+  #--- Definitions for Unique Deaths trophy ----------------------------------
+  #---------------------------------------------------------------------------
+
+  "uniquedeaths" : {
+
+    "reject" : [
+      "^ascended",
+      "^quit",
+      "^escaped",
+    ],
+
+    "normalize" : [
+      [ "^killed by an ", "killed by a " ],
+      [ ", while .*", "" ],
+      [ "hallucinogen-distorted ", "" ],
+      [ "by the invisible ", "by " ],
+      [ "by (an|a) invisible ", "by a " ],
+      [ "by invisible ", "by " ],
+      [ " (her|his) ", " eir " ],
+      [ " (herself|himself) ", " eirself " ],
+      [ " (herself|himself)$", " eirself" ],
+      [ " (called|named) .*", "" ],
+      [ " \\(with the Amulet\\)$", "" ],
+      [ "choked on .*", "choked on something" ],
+      [ "killed by kicking .*", "killed by kicking something" ],
+      [ "killed by a falling (?!rock)$", "killed by a falling object" ],
+      [ " (an? )?M[rs]\\. [A-Z].*[,;] the shopkeeper", " a shopkeeper" ],
+      [ " (an?|the) ghost of .+", " a ghost" ],
+      [ "poisoned by a rotted .* corpse", "poisoned by a rotted corpse" ],
+      [ "wrath of .+", "wrath of a deity" ],
+      [ "priest(ess)?", "priest(ess)" ],
+      [ "priest\\(ess\\) of .+", "priest(ess) of a deity" ],
+      [ "(\\w+ elemental|Aleax|couatl|Angel|\\w+ demon|\\w+ devil|(suc|in)cubus|balrog|pit fiend|nalfeshnee|hezrou|vrock|marilith|erinyes) of .+", "minion of a deity" ],
+    ]
+  }
 }
