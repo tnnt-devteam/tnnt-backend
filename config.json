@@ -437,6 +437,8 @@
       "points" : 100,
     },
 
+    #--- great race/role -----------------------------------------------------
+
     "greatrace:orc" : {
       "title"  : "Great Orc",
       "points" : 200
@@ -512,6 +514,8 @@
       "points" : 250
     },
 
+    #--- clan great race/role ------------------------------------------------
+
     "clan-greatrace:orc" : {
       "title"  : "Great Orc",
       "points" : 200
@@ -585,6 +589,160 @@
     "clan-greatrole:wiz" : {
       "title"  : "Great Wizard",
       "points" : 250
+    },
+
+    #--- lesser race/role ----------------------------------------------------
+
+    "lesserrace:orc" : {
+      "title"  : "Lesser Orc",
+      "points" : 20
+    },
+
+    "lesserrace:gno" : {
+      "title"  : "Lesser Gnome",
+      "points" : 25
+    },
+
+    "lesserrace:dwa" : {
+      "title"  : "Lesser Dwarf",
+      "points" : 15
+    },
+
+    "lesserrace:elf" : {
+      "title"  : "Lesser Elf",
+      "points" : 15
+    },
+
+    "lesserrace:hum" : {
+      "title"  : "Lesser Human",
+      "points" : 20
+    },
+
+    "lesserrole:arc" : {
+      "title"  : "Lesser Archeologist",
+      "points" : 20
+    },
+
+    "lesserrole:bar" : {
+      "title"  : "Lesser Barbarian",
+      "points" : 15
+    },
+
+    "lesserrole:cav" : {
+      "title"  : "Lesser Caveman",
+      "points" : 20
+    },
+
+    "lesserrole:hea" : {
+      "title"  : "Lesser Healer",
+      "points" : 10
+    },
+
+    "lesserrole:mon" : {
+      "title"  : "Lesser Monk",
+      "points" : 15
+    },
+
+    "lesserrole:pri" : {
+      "title"  : "Lesser Priest",
+      "points" : 20
+    },
+
+    "lesserrole:ran" : {
+      "title"  : "Lesser Ranger",
+      "points" : 25
+    },
+
+    "lesserrole:rog" : {
+      "title"  : "Lesser Rogue",
+      "points" : 10
+    },
+
+    "lesserrole:val" : {
+      "title"  : "Lesser Valkyrie",
+      "points" : 15
+    },
+
+    "lesserrole:wiz" : {
+      "title"  : "Lesser Wizard",
+      "points" : 25
+    },
+
+    #--- clan lesser race/role -----------------------------------------------
+
+    "clan-lesserrace:orc" : {
+      "title"  : "Lesser Orc",
+      "points" : 20
+    },
+
+    "clan-lesserrace:gno" : {
+      "title"  : "Lesser Gnome",
+      "points" : 25
+    },
+
+    "clan-lesserrace:dwa" : {
+      "title"  : "Lesser Dwarf",
+      "points" : 15
+    },
+
+    "clan-lesserrace:elf" : {
+      "title"  : "Lesser Elf",
+      "points" : 15
+    },
+
+    "clan-lesserrace:hum" : {
+      "title"  : "Lesser Human",
+      "points" : 20
+    },
+
+    "clan-lesserrole:arc" : {
+      "title"  : "Lesser Archeologist",
+      "points" : 20
+    },
+
+    "clan-lesserrole:bar" : {
+      "title"  : "Lesser Barbarian",
+      "points" : 15
+    },
+
+    "clan-lesserrole:cav" : {
+      "title"  : "Lesser Caveman",
+      "points" : 20
+    },
+
+    "clan-lesserrole:hea" : {
+      "title"  : "Lesser Healer",
+      "points" : 10
+    },
+
+    "clan-lesserrole:mon" : {
+      "title"  : "Lesser Monk",
+      "points" : 15
+    },
+
+    "clan-lesserrole:pri" : {
+      "title"  : "Lesser Priest",
+      "points" : 20
+    },
+
+    "clan-lesserrole:ran" : {
+      "title"  : "Lesser Ranger",
+      "points" : 25
+    },
+
+    "clan-lesserrole:rog" : {
+      "title"  : "Lesser Rogue",
+      "points" : 10
+    },
+
+    "clan-lesserrole:val" : {
+      "title"  : "Lesser Valkyrie",
+      "points" : 15
+    },
+
+    "clan-lesserrole:wiz" : {
+      "title"  : "Lesser Wizard",
+      "points" : 25
     },
 
   },
