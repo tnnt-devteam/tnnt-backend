@@ -54,7 +54,7 @@ sub add_game
 
   #--- these are the 12 canonical conducts tracked by vanilla NetHack
 
-  if($game->conduct() & 2048) {
+  if(($game->conduct() & 4095) == 4095) {
 
     # player scoring
     if(!exists $self->_playertrk()->{$game->player()->name()}) {
