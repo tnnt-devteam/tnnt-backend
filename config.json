@@ -978,7 +978,7 @@
     "alchemy" : {
       "tnntachieve1" : "0x2000",
       "title"        : "Chemistry 101",
-      "descr"        : "Alchemize two stacks of potions"
+      "descr"        : "Alchemize two potions in an established recipe"
     },
 
     "stinkcloud" : {
@@ -1446,7 +1446,7 @@
     "chicken": {
       "tnntachieve2" : "0x8000000",
       "title"        : "Tastes Like Chicken",
-      "descr"        : "Eat chickatrice or cockatrice meat without ending the game"
+      "descr"        : "Eat chickatrice or cockatrice meat"
     },
 
     "wrest": {
