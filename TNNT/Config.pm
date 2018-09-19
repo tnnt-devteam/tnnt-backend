@@ -49,6 +49,25 @@ sub _load_config
 }
 
 
+#-----------------------------------------------------------------------------
+# Sources iterator. The callback gets a hash of arguments containing 'name'
+# and 'logfile' keys. These can be fed directly to TNNT::Sources constructor.
+#-----------------------------------------------------------------------------
+
+sub iter_sources
+{
+  my ($self, $cb) = @_;
+  my $sources = $self->config()->{'sources'};
+
+  for my $src (keys %$sources) {
+    $cb->(
+      name => $src,
+      logfile => $sources->{$src}{'xlogfile'}
+    );
+  }
+}
+
+
 
 #=============================================================================
 
