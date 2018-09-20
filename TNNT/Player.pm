@@ -42,6 +42,14 @@ has achievements_hash => (
   default => sub { {} },
 );
 
+has maxcond => (
+  is => 'rwp',
+);
+
+has maxlvl => (
+  is => 'rwp',
+);
+
 
 
 #=============================================================================
@@ -79,6 +87,19 @@ sub disp
 
 sub add_game
 {
+  my ($self, $game) = @_;
+
+  #--- track highest number of conducts
+
+  if($game->is_ascended && $game->conducts() > ($self->maxcond() // 0)) {
+    $self->_set_maxcond(scalar($game->conducts()));
+  }
+
+  #--- track maximum depth reached
+
+  if($game->maxlvl() > ($self->maxlvl() // 0)) {
+    $self->_set_maxlvl($game->maxlvl());
+  }
 }
 
 
