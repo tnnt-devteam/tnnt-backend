@@ -15,6 +15,8 @@ use TNNT::Config;
 use TNNT::Source;
 use TNNT::ClanList;
 use TNNT::Score;
+use TNNT::Template;
+use Data::Dumper;
 
 $| = 1;
 
@@ -58,3 +60,8 @@ for my $src (@sources) {
 
 $score->process();
 
+#--- process the templates
+
+my $data = $score->export();
+my $t = TNNT::Template->new(data => $data);
+$t->process();
