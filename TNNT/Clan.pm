@@ -22,6 +22,11 @@ has name => (
   required => 1,
 );
 
+has n => (
+  is => 'ro',
+  required => 1,
+);
+
 has players => (
   is => 'rw',
   default => sub { []; }

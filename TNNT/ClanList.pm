@@ -67,11 +67,12 @@ sub _load_clans
   #--- read the clan info from the database
 
   my %clans;
+  my $i = 0;
 
   while(my $h = $sth->fetchrow_hashref()) {
     my $clan = $h->{'clan'};
     if(!exists $clans{$clan}) {
-      $clans{$clan} = new TNNT::Clan(name => $clan);
+      $clans{$clan} = new TNNT::Clan(name => $clan, n => $i++);
     }
     $clans{$clan}->add_player(
       $h->{'name'},
