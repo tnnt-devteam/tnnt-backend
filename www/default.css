@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+
+body {
+  background-color: white;
+  color: black;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  font-weight: 400;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  font-size: 400%;
+}
+
+table {
+  border-collapse: collapse;
+  padding: 1em;
+}
+
+td, th {
+  padding: 0.3em 0.6em;
+}
+
+th {
+  font-weight: 300;
+}
+
+thead tr {
+  border-bottom: 0.1em solid black;
+}
+
+.num {
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+
+.dim {
+  color: rgb(100,100,100);
+  font-weight: 300;
+  font-size: 66%;
+  vertical-align: middle;
+}
+
+.won {
+  font-weight: bold;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+span.clan {
+  font-size: 200%;
+  font-weight: 400;
+}
+
+span.subinfo {
+  font-weight: 300;
+  color: #888;
+  font-size: 80%;
+  display: inline-block;
+  margin-left: 0.5em;
+}

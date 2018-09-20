@@ -3,3 +3,6 @@ t.pl
 xlogfile*
 session.npp
 clandb.sqlite
+*.html
+file
+t*.pl

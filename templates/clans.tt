@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::Clans</title>
+  <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+
+<body>
+
+<h1>Clans</h1>
+
+<table>
+
+  <thead>
+    <tr>
+      <th></th>
+      <th>clan</th>
+      <th>score</th>
+      <th>wins</th>
+      <th>achieve</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    [% SET i = 1; FOREACH clan IN clans %]
+      <tr>
+
+        <td class="num">[% i; SET i = i + 1 %]</td>
+
+        <td>
+          <span class="clan"><a href="">[% clan.name %]</a></span><br>
+          [% clan.players.sort.join(', ') %]
+          <span class="subinfo">[% clan.players.size %]&nbsp;player[% IF clan.players.size > 1 %]s[% END %]</span>
+        </td>
+
+        <td class="num">
+          <span class="clan">[% clan.score %]</span>
+        </td>
+
+        <td class="num">
+          <span class="clan">[% clan.ascs.size %]</span>
+        </td>
+
+        <td class="num">
+          <span class="clan">[% clan.achievements.size %]</span>
+        </td>
+
+      </tr>
+    [% END %]
+  </tbody>
+</table>
+
+</body>
+
+</html>
