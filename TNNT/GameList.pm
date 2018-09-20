@@ -56,6 +56,22 @@ sub iter_games
 }
 
 
+#-----------------------------------------------------------------------------
+# Update the index numbers (the 'n') attribute of the Game class. This number
+# is used to reference the game in the exported data structure.
+#-----------------------------------------------------------------------------
+
+sub renumber
+{
+  my ($self) = @_;
+  my $c = $self->count_games();
+
+  for(my $i = 0; $i < $c; $i++) {
+    $self->games()->[$i]->{'n'} = $i;
+  }
+}
+
+
 #=============================================================================
 # Return last game in the list. This is also the newest game, because the list
 # is always sorted.

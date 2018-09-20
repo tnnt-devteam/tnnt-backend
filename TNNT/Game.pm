@@ -75,6 +75,12 @@ has achievements => (
   builder => 1,
 );
 
+# index number
+
+has n => (
+  is => 'rw',
+);
+
 # source tag
 
 has src => (
@@ -109,7 +115,8 @@ sub disp
   my ($self) = @_;
 
   printf(
-    "%-16s  %s-%s-%s-%s  %s  %6d turns  %8d points  %s\n",
+    "%4d  %-16s  %s-%s-%s-%s  %s  %6d turns  %8d points  %s\n",
+    $self->n(),
     $self->name(),
     $self->role(), $self->race(), $self->gender0(), $self->align0(),
     scalar(gmtime($self->endtime())),
