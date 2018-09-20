@@ -77,10 +77,7 @@ sub clan
 
   return if !$player;
 
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player);
-
-  return $clan;
+  return $player->clan();
 }
 
 

@@ -8,7 +8,6 @@ package TNNT::Tracker::Achievements;
 
 use Moo;
 use TNNT::ScoringEntry;
-use TNNT::ClanList;
 
 
 
@@ -35,8 +34,7 @@ sub add_game
 {
   my ($self, $game) = @_;
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player);
+  my $clan = $player->clan();
 
   for my $ach (@{$game->achievements()}) {
 

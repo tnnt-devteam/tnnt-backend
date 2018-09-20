@@ -43,8 +43,7 @@ sub add_game
 {
   my ($self, $game) = @_;
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player->name());
+  my $clan = $player->clan();
 
   #--- if the game is ascended and its endtime is lower than the current's
   #--- first ascension's endtime, or there is not current ascension, record it

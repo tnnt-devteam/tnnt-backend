@@ -43,8 +43,7 @@ sub add_game
 {
   my ($self, $game) = @_;
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player->name());
+  my $clan = $player->clan();
   my $trk = $self->_clantrk();
 
   #--- count only clan games over 1000 turns

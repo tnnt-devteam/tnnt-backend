@@ -50,10 +50,8 @@ sub add_game
 
   #--- initialize
 
-  my $clans = TNNT::ClanList->instance();
   my $player_name = $game->player()->name();
-
-  my $clan = $clans->find_clan($player_name);
+  my $clan = $game->player()->clan();
 
   #--- following section only run when the player is a clan member
 

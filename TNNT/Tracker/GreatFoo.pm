@@ -66,8 +66,7 @@ sub add_game
   #--- initialize variables we're going to use
 
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($game->player());
+  my $clan = $player->clan();
   my $cfg = TNNT::Config->instance()->config();
 
   #--- initialize player tracking

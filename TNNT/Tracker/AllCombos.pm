@@ -37,8 +37,7 @@ has _clantrk => (
 sub add_game
 {
   my ($self, $game) = @_;
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($game->player());
+  my $clan = $game->player()->clan();
   my $trk = $self->_clantrk();
   my $cfg = TNNT::Config->instance()->config();
 

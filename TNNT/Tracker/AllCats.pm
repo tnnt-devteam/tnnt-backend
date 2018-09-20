@@ -76,8 +76,7 @@ sub add_game
   #--- get more info
 
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player);
+  my $clan = $player->clan();
 
   #--- if the player is not yet tracked, create the tracking structure
 

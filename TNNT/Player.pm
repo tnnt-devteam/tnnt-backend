@@ -7,6 +7,7 @@
 package TNNT::Player;
 
 use Moo;
+use TNNT::ClanList;
 
 with 'TNNT::GameList::AddGame';
 with 'TNNT::AscensionList';
@@ -18,7 +19,18 @@ with 'TNNT::ScoringList';
 #=== ATTRIBUTES ==============================================================
 #=============================================================================
 
-has name => ( is => 'ro', required => 1 );
+has name => (
+  is => 'ro',
+  required => 1
+);
+
+# clan instance reference or undef
+
+has clan => (
+  is => 'ro',
+  builder => 1,
+  lazy => 1,
+);
 
 has achievements => (
   is => 'rwp',
@@ -35,6 +47,19 @@ has achievements_hash => (
 #=============================================================================
 #=== METHODS =================================================================
 #=============================================================================
+
+#-----------------------------------------------------------------------------
+# Builder for the 'clan' attribute
+#-----------------------------------------------------------------------------
+
+sub _build_clan
+{
+  my ($self) = @_;
+
+  my $clans = TNNT::ClanList->instance();
+  return $clans->find_clan($self);
+}
+
 
 #-----------------------------------------------------------------------------
 # Display player name (for development purposes).
