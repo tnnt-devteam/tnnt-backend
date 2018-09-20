@@ -144,6 +144,34 @@ sub add_game
 }
 
 
+#-----------------------------------------------------------------------------
+# Export clan data
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+  my @clans;
+
+  foreach my $clan_name (keys %{$self->clans()}) {
+    my $clan = $self->clans()->{$clan_name};
+    my $i = $clan->n();
+    $clans[$i] = {
+      name         => $clan->name(),
+      players      => $clan->players(),
+      admins       => $clan->admins(),
+      score        => $clan->sum_score(),
+      games        => $clan->export_games(),
+      ascs         => $clan->export_ascensions(),
+      achievements => $clan->achievements(),
+      scorelog     => $clan->export_scores(),
+    };
+  }
+
+  return \@clans;
+}
+
+
 
 #=============================================================================
 

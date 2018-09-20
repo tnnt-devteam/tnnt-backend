@@ -245,6 +245,42 @@ sub combo
 }
 
 
+#-----------------------------------------------------------------------------
+# Return export data.
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+
+  my %d = (
+    n            => $self->n(),
+    role         => $self->role(),
+    race         => $self->race(),
+    gender       => $self->gender0(),
+    align        => $self->align0(),
+    name         => $self->name(),
+    death        => $self->death(),
+    turns        => $self->turns(),
+    realtime     => $self->realtime(),
+    starttime    => $self->starttime(),
+    endtime      => $self->endtime(),
+    points       => $self->points(),
+    deathlev     => $self->deathlev(),
+    maxlvl       => $self->maxlvl(),
+    hp           => $self->hp(),
+    achievements => $self->achievements(),
+    src          => $self->src(),
+  );
+
+  if($self->is_ascended()) {
+    $d{'conducts'} = [ $self->conducts() ],
+  }
+
+  return \%d;
+}
+
+
 
 #=============================================================================
 

@@ -103,6 +103,42 @@ sub add_game
 }
 
 
+#-----------------------------------------------------------------------------
+# Export data
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+
+  my %d = (
+    name   => $self->name(),
+    games  => $self->export_games(),
+    ach    => $self->achievements(),
+    scores => $self->export_scores(),
+    score  => $self->sum_score(),
+    maxlvl => $self->maxlvl(),
+  );
+
+  if($self->clan()) {
+    $d{'clan'} = $self->clan()->n();
+  }
+
+  if(defined $self->maxcond()) {
+    $d{'maxcond'} = $self->maxcond();
+  }
+
+  if($self->count_ascensions()) {
+    $d{'ascs'} = $self->export_ascensions(),
+    $d{'ratio'} = sprintf("%3.1f",
+      $self->count_ascensions() / $self->count_games() * 100
+    ),
+  }
+
+  return \%d;
+}
+
+
 
 #=============================================================================
 
