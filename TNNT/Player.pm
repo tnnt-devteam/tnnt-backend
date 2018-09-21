@@ -118,13 +118,13 @@ sub export
   my ($self) = @_;
 
   my %d = (
-    name   => $self->name(),
-    games  => $self->export_games(),
-    ach    => $self->achievements(),
-    scores => $self->export_scores(),
-    score  => $self->sum_score(),
-    maxlvl => $self->maxlvl(),
-    rank   => $self->rank(),
+    name         => $self->name(),
+    games        => $self->export_games(),
+    achievements => $self->achievements(),
+    scores       => $self->export_scores(),
+    score        => $self->sum_score(),
+    maxlvl       => $self->maxlvl(),
+    rank         => $self->rank(),
   );
 
   if($self->clan()) {
