@@ -64,11 +64,19 @@ a:hover {
   text-decoration: underline;
 }
 
+/*====================================================================
+  === CLANS ==========================================================
+  ====================================================================*/
+
+/* clan name in clan listing */
 
 span.clan {
   font-size: 200%;
   font-weight: 400;
 }
+
+/* Non-breakable text box with dimmed additional information, used for
+   showing number of players */
 
 span.subinfo {
   font-weight: 300;
@@ -76,4 +84,19 @@ span.subinfo {
   font-size: 80%;
   display: inline-block;
   margin-left: 0.5em;
+}
+
+/* admin player highlight */
+
+span.plradmin {
+  font-weight: bold;
+}
+
+/* no clans exist message */
+
+.noclans {
+  font-size: 100%;
+  letter-spacing: 0.3em;
+  text-align: center;
+  padding: 1em;
 }

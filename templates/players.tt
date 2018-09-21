@@ -1,3 +1,4 @@
+[%- PROCESS 'macros.tt' -%]
 <!doctype html>
 
 <html>
@@ -33,12 +34,12 @@
         <td class="num dim">[% i; SET i = i + 1 %]</td>
 
         <td[% IF players.all.item(plr).exists('ascs') %] class="won"[% END %]>
-          <a href="">[% plr %]</a>
+          <a href="">[% plink(plr) %]</a>
         </td>
 
         <td>
           [% IF players.all.item(plr).exists('clan') %]
-            [% clans.item(players.all.item(plr).clan).name %]
+            [% clink(clans.all.item(players.all.item(plr).clan).name) %]
           [% END %]
         </td>
 

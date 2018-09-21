@@ -65,3 +65,4 @@ $score->process();
 my $data = $score->export();
 my $t = TNNT::Template->new(data => $data);
 $t->process();
+$t->process('players', 'player', $data->{'players'}{'ordered'});
