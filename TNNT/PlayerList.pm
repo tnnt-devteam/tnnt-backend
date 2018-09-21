@@ -122,12 +122,6 @@ sub export_players
   my ($self) = @_;
   my %d;
 
-  #--- full data about players in the 'all' hash
-
-  for my $player (values %{$self->players()}) {
-    $d{'all'}{$player->name()} = $player->export();
-  }
-
   #--- list of only player names ordered for display on the Players page
 
   # ordering by
@@ -156,6 +150,18 @@ sub export_players
       }
     } keys %{$self->players()}
   ];
+
+  #--- fill in player's rank
+
+  for(my $i = 0; $i < scalar(@{$d{'ordered'}}); $i++) {
+    $self->players()->{$d{'ordered'}[$i]}->rank($i + 1);
+  }
+
+  #--- full data about players in the 'all' hash
+
+  for my $player (values %{$self->players()}) {
+    $d{'all'}{$player->name()} = $player->export();
+  }
 
   #--- finish
 

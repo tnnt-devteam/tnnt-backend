@@ -50,6 +50,12 @@ has maxlvl => (
   is => 'rwp',
 );
 
+# this is filled in later from GameList's export() method
+
+has rank => (
+  is => 'rw',
+);
+
 
 
 #=============================================================================
@@ -118,6 +124,7 @@ sub export
     scores => $self->export_scores(),
     score  => $self->sum_score(),
     maxlvl => $self->maxlvl(),
+    rank   => $self->rank(),
   );
 
   if($self->clan()) {
