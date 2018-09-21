@@ -151,12 +151,15 @@ sub add_game
 sub export
 {
   my ($self) = @_;
-  my @clans;
+  my (@clans, @clans_by_score);
+
+  #--- produce list of clans with full information
 
   foreach my $clan_name (keys %{$self->clans()}) {
     my $clan = $self->clans()->{$clan_name};
     my $i = $clan->n();
     $clans[$i] = {
+      n            => $i,
       name         => $clan->name(),
       players      => $clan->players(),
       admins       => $clan->admins(),
@@ -168,7 +171,27 @@ sub export
     };
   }
 
-  return \@clans;
+  #--- produce list of clan indices ordered by score
+
+  @clans_by_score =
+
+  map { $_->{'n'} }
+  sort {
+    if($b->{'score'} == $a->{'score'}) {
+      if(scalar @{$b->{'ascs'}} == scalar @{$a->{'ascs'}}) {
+        return @{$b->{'achievements'}} <=> scalar @{$a->{'achievements'}}
+      } else {
+        return scalar @{$b->{'ascs'}} <=> scalar @{$a->{'ascs'}}
+      }
+    } else {
+      return $b->{'score'} <=> $a->{'score'}
+    }
+  } @clans;
+
+  return {
+    all => \@clans,
+    ordered => \@clans_by_score,
+  };
 }
 
 
