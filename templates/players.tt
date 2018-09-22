@@ -14,7 +14,7 @@
 
 <table>
   <thead>
-    <tr>
+    <tr class="framed">
       <th></th>
       <th>player</th>
       <th>clan</th>
