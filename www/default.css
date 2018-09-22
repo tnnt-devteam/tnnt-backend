@@ -44,6 +44,14 @@ thead tr.framed {
   border-top: 0.1em solid black;
 }
 
+tfoot tr.overline {
+  border-top: 0.1em solid black;
+}
+
+td.total {
+  letter-spacing: 0.3em;
+}
+
 .num {
   text-align: right;
   letter-spacing: 0.04em;

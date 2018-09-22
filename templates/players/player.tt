@@ -122,7 +122,7 @@
 
 <table>
 
-<thead>
+  <thead>
     [% INCLUDE streak.tt head=1 class="framed" %]
   </thead>
 
@@ -141,39 +141,51 @@
     === SCORING LOG =======================================================
     ======================================================================= %]
 
-<h2>SCORING BREAKDOWN</h2>
+[% IF plr.score %]
+  <h2>SCORING BREAKDOWN</h2>
 
-<table>
+  <table>
 
-  <thead>
-    <tr class="framed">
-      <td>date</td>
-      <td>name</td>
-      <td>title</td>
-      <td>points</td>
-    </tr>
-  </thead>
-
-  <tbody>
-    [% FOREACH se IN plr.scores %]
-      <tr>
-        <td>[% se.when_fmt %]</td>
-        <td>[% se.trophy %]</td>
-        <td>
-          [% IF config.trophies.exists(se.trophy) %]
-            [% config.trophies.item(se.trophy).title %]
-          [% ELSIF config.achievements.exists(se.trophy.replace('ach:','')) %]
-            [% config.achievements.item(se.trophy.replace('ach:','')).title %]
-          [% ELSE %]
-            ?
-          [% END %]
-        </td>
-        <td class="num">[% se.points %]</td>
+    <thead>
+      <tr class="framed">
+        <th>date</th>
+        <th>name</th>
+        <th>title</th>
+        <th>points</th>
       </tr>
-    [% END %]
-  </tbody>
+    </thead>
 
-</table>
+    <tbody>
+      [% FOREACH se IN plr.scores.reverse %]
+        <tr>
+          <td>[% se.when_fmt %]</td>
+          <td>[% se.trophy %]</td>
+          <td>
+            [% IF config.trophies.exists(se.trophy) %]
+              [% config.trophies.item(se.trophy).title %]
+            [% ELSIF config.achievements.exists(se.trophy.replace('ach:','')) %]
+              [% config.achievements.item(se.trophy.replace('ach:','')).title %]
+            [% ELSE %]
+              ?
+            [% END %]
+          </td>
+          <td class="num">[% se.points %]</td>
+        </tr>
+      [% END %]
+    </tbody>
+
+    <tfoot>
+      <tr class="overline">
+        <td colspan=3 class="total">
+          [% plr.scores.size %] entrie[% IF plr.scores.size > 1 %]s[% END %]
+        </td>
+        <td class="num">[% plr.score %]</td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+[% END %]
 
 </body>
 
