@@ -7,6 +7,7 @@
 
 package TNNT::ScoringEntry;
 
+use Carp;
 use Moo;
 with 'TNNT::GameList::AddGame';
 
@@ -37,6 +38,9 @@ has points => (
 
 has when => (
   is => 'rwp',
+  isa => sub {
+    croak "ScoringEntry/when cannot be a reference" if ref $_[0];
+  },
 );
 
 # additional, trophy-specific data
