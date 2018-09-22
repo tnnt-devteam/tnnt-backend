@@ -244,6 +244,18 @@ sub get_points
   }
 }
 
+#----------------------------------------------------------------------------
+# Format the when field
+#----------------------------------------------------------------------------
+
+sub _format_when
+{
+  my ($self) = @_;
+
+  my @t = gmtime($self->when());
+  return sprintf("%04d-%02d-%02d %02d:%02d", $t[5]+1900, $t[4]+1, $t[3], $t[2], $t[1]);
+}
+
 
 #-----------------------------------------------------------------------------
 # Export data
@@ -257,6 +269,7 @@ sub export
     trophy => $self->trophy(),
     points => $self->get_points(),
     when   => $self->get_when(),
+    when_fmt => $self->_format_when(),
     data   => $self->data(),
   };
 }
