@@ -155,10 +155,10 @@ sub export
 {
   my ($self) = @_;
   my $clans = TNNT::ClanList->instance();
-  my $cfg = TNNT::Config->instance()->config();
+  my $cfg = TNNT::Config->instance();
 
   my %d = (
-    config => $cfg,
+    config => $cfg->config(),
     games => {
       all => $self->export_games(1),
       ascs => $self->export_ascensions(),
@@ -166,6 +166,8 @@ sub export
     players => $self->export_players(),
     clans => $clans->export(),
   );
+
+  $d{'config'}{'achievements-ordered'} = $cfg->order_achievements();
 
   return \%d;
 
