@@ -91,7 +91,7 @@ sub add_game
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allroles',
-              when => $game->endtime(),
+              when => $_[0],
             )
           );
           if(
@@ -101,7 +101,7 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allroles',
-                when => $game->endtime(),
+                when => $_[0],
                 data => { player => $game->name() },
               )
             );
@@ -115,7 +115,7 @@ sub add_game
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allraces',
-              when => $game->endtime(),
+              when => $_[0],
             )
           );
           if(
@@ -125,7 +125,7 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allraces',
-                when => $game->endtime(),
+                when => $_[0],
                 data => { player => $game->name() },
               )
             );
@@ -139,7 +139,7 @@ sub add_game
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allgenders',
-              when => $game->endtime(),
+              when => $_[0],
             )
           );
           if(
@@ -149,7 +149,7 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allgenders',
-                when => $game->endtime(),
+                when => $_[0],
                 data => { player => $game->name() },
               )
             );
@@ -163,7 +163,7 @@ sub add_game
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allaligns',
-              when => $game->endtime(),
+              when => $_[0],
             )
           );
           if(
@@ -173,7 +173,7 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allaligns',
-                when => $game->endtime(),
+                when => $_[0],
                 data => { player => $game->name() },
               )
             );
@@ -187,7 +187,7 @@ sub add_game
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allconducts',
-              when => $game->endtime(),
+              when => $_[0],
             )
           );
           if(
@@ -197,7 +197,7 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allconducts',
-                when => $game->endtime(),
+                when => $_[0],
                 data => { player => $game->name() },
               )
             );
@@ -210,11 +210,11 @@ sub add_game
 
   #--- perform the tracking
 
-  $ptrack->{'roles'}->track(role => $game->role());
-  $ptrack->{'races'}->track(race => $game->race());
-  $ptrack->{'genders'}->track(gender => $game->gender0());
-  $ptrack->{'aligns'}->track(align => $game->align0());
-  $ptrack->{'conducts'}->track(conduct => [ $game->conducts() ]);
+  $ptrack->{'roles'}->track(role => $game->role(), $game);
+  $ptrack->{'races'}->track(race => $game->race(), $game);
+  $ptrack->{'genders'}->track(gender => $game->gender0(), $game);
+  $ptrack->{'aligns'}->track(align => $game->align0(), $game);
+  $ptrack->{'conducts'}->track(conduct => [ $game->conducts() ], $game);
 
   #--- finish
 
