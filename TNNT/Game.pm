@@ -6,6 +6,8 @@
 
 package TNNT::Game;
 
+use integer;
+
 use Moo;
 use TNNT::Config;
 
@@ -251,6 +253,64 @@ sub combo
 
 
 #-----------------------------------------------------------------------------
+# Format duration field into homan readable form
+#-----------------------------------------------------------------------------
+
+sub _format_duration
+{
+  my ($self) = @_;
+
+  my $realtime = $self->realtime();
+  my ($d, $h, $m, $s) = (0,0,0,0);
+  my $duration;
+
+  $d = $realtime / 86400;
+  $realtime %= 86400;
+
+  $h = $realtime / 3600;
+  $realtime %= 3600;
+
+  $m = $realtime / 60;
+  $realtime %= 60;
+
+  $s = $realtime;
+
+  $duration = sprintf("%s:%02s:%02s", $h, $m, $s);
+  if($d) {
+    $duration = sprintf("%s, %s:%02s:%02s", $d, $h, $m, $s);
+  }
+
+  return $duration;
+}
+
+
+#----------------------------------------------------------------------------
+# Format the endtime xlogfile fileds.
+#----------------------------------------------------------------------------
+
+sub _format_endtime
+{
+  my ($self) = @_;
+
+  my @t = gmtime($self->endtime());
+  return sprintf("%04d-%02d-%02d %02d:%02d", $t[5]+1900, $t[4]+1, $t[3], $t[2], $t[1]);
+}
+
+
+#----------------------------------------------------------------------------
+# Format the starttime xlogfile fileds.
+#----------------------------------------------------------------------------
+
+sub _format_starttime
+{
+  my ($self) = @_;
+
+  my @t = gmtime($self->starttime());
+  return sprintf("%04d-%02d-%02d %02d:%02d", $t[5]+1900, $t[4]+1, $t[3], $t[2], $t[1]);
+}
+
+
+#-----------------------------------------------------------------------------
 # Return export data.
 #-----------------------------------------------------------------------------
 
@@ -267,13 +327,14 @@ sub export
     name         => $self->name(),
     death        => $self->death(),
     turns        => $self->turns(),
-    realtime     => $self->realtime(),
-    starttime    => $self->starttime(),
-    endtime      => $self->endtime(),
+    realtime     => $self->_format_duration(),
+    starttime    => $self->_format_starttime(),
+    endtime      => $self->_format_endtime(),
     points       => $self->points(),
     deathlev     => $self->deathlev(),
     maxlvl       => $self->maxlvl(),
     hp           => $self->hp(),
+    maxhp        => $self->maxhp(),
     achievements => $self->achievements(),
     src          => $self->src(),
   );
