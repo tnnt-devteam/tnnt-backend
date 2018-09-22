@@ -18,6 +18,14 @@ h1 {
   font-size: 400%;
 }
 
+h2 {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  font-size: 200%;
+  text-align: center;
+}
+
 table {
   border-collapse: collapse;
   padding: 1em;
@@ -31,8 +39,9 @@ th {
   font-weight: 300;
 }
 
-thead tr {
+thead tr.framed {
   border-bottom: 0.1em solid black;
+  border-top: 0.1em solid black;
 }
 
 .num {
@@ -62,6 +71,12 @@ a:visited {
 
 a:hover {
   text-decoration: underline;
+}
+
+span.streak {
+  display: inline-block;
+  background: #ddd;
+  padding: 0 0.3em;
 }
 
 /*====================================================================

@@ -1,0 +1,30 @@
+[% IF head; #============================================================== %]
+
+  <tr[% IF class %] class="[% class %]"[% END %]>
+    <th>&nbsp;</th>
+    <th>len</th>
+    <th>start</th>
+    <th>end</th>
+    <th colspan=6>streak games</th>
+  </tr>
+
+[% ELSE; #================================================================= %]
+
+  <tr>
+
+    <td class="num">[% i %]</td>
+    <td class="num">[% streak.size %]</td>
+    <td class="num">[% games.all.item(streak.0).starttime %]</td>
+    <td class="num">
+      [% games.all.item(streak.item(streak.size - 1)).endtime %]
+    </td>
+    <td colspan=9>
+      [% FOREACH s IN streak %]
+        [% SET g = games.all.item(s) %]
+        <span class="streak">[% g.role %]-[% g.race %]-[% g.gender %]-[% g.align %]</span>
+      [% END %]
+    </td>
+
+  </tr>
+
+[% END; #================================================================== %]

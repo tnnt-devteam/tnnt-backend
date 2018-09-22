@@ -8,6 +8,7 @@ package TNNT::Player;
 
 use Moo;
 use TNNT::ClanList;
+use TNNT::StreakList;
 
 with 'TNNT::GameList::AddGame';
 with 'TNNT::AscensionList';
@@ -54,6 +55,14 @@ has maxlvl => (
 
 has rank => (
   is => 'rw',
+);
+
+# list of streaks, this is not TNNT::StreakList, however, to avoid bringing
+# in all the streak-tracking machinery
+
+has streaks => (
+  is => 'rw',
+  default => sub { [] },
 );
 
 
@@ -140,6 +149,10 @@ sub export
     $d{'ratio'} = sprintf("%3.1f",
       $self->count_ascensions() / $self->count_games() * 100
     ),
+  }
+
+  if(@{$self->streaks()}) {
+    $d{'streaks'} = [ map { $_->export_games() } @{$self->streaks()} ]
   }
 
   return \%d;
