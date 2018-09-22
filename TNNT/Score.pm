@@ -12,6 +12,8 @@ package TNNT::Score;
 use Carp;
 use Moo;
 
+use TNNT::Config;
+
 with 'TNNT::GameList::AddGame';
 with 'TNNT::AscensionList';
 with 'TNNT::PlayerList';
@@ -153,8 +155,10 @@ sub export
 {
   my ($self) = @_;
   my $clans = TNNT::ClanList->instance();
+  my $cfg = TNNT::Config->instance()->config();
 
   my %d = (
+    config => $cfg,
     games => {
       all => $self->export_games(1),
       ascs => $self->export_ascensions(),
