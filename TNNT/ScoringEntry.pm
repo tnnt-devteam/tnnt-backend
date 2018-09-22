@@ -77,13 +77,17 @@ sub BUILD
     my $points = 0;
 
     # the trophy is directly defined in configuration
-    if(exists $cfg->{'trophies'}{$trophy}{'points'}) {
+    if(
+      exists $cfg->{'trophies'}{$trophy}
+      && exists $cfg->{'trophies'}{$trophy}{'points'}
+    ) {
       $points = $cfg->{'trophies'}{$trophy}{'points'}
     }
 
     # the trophy type is defined
     elsif(
       $trophy =~ /^([a-z-]+):/
+      && exists $cfg->{'trophies'}{$1}
       && exists $cfg->{'trophies'}{$1}{'points'}
     ) {
       $points = $cfg->{'trophies'}{$1}{'points'}
