@@ -31,7 +31,7 @@
   <thead>
     <tr class="framed"><th colspan=2">general information</th></tr>
   </thead>
-  
+
   <tr>
     <td>rank</td>
     <td class="num">[% plr.rank %]</td>
@@ -53,7 +53,7 @@
     <td>games ascended</td>
     <td class="num">[% plr.ascs.size || 0 %]</td>
   </tr>
-  
+
   <tr>
     <td>ascension ratio</td>
     <td class="num">
@@ -80,13 +80,13 @@
 [% IF plr.exists('ascs') || plr.games.size %]
 
   <table>
-  
+
     [% IF plr.exists('ascs') %]
     <thead>
       <tr><td colspan=10><h2>ASCENSIONS</h2></td></tr>
       [% INCLUDE game.tt head=1 aswon=1 class="framed" %]
     </thead>
-    
+
     <tbody>
       [% SET i = plr.ascs.size %]
       [% FOREACH game IN plr.ascs.reverse %]
@@ -95,7 +95,7 @@
       [% END %]
     </tbody>
     [% END %]
-    
+
     <thead>
       <tr><td colspan=10><h2>RECENT GAMES</h2></td></tr>
       [% INCLUDE game.tt head=1 class="framed" %]
@@ -115,7 +115,7 @@
 [%# =======================================================================
     === STREAKS ===========================================================
     ======================================================================= %]
-  
+
 [% IF plr.streaks.size %]
 
 <h2>STREAKS</h2>
@@ -125,7 +125,7 @@
 <thead>
     [% INCLUDE streak.tt head=1 class="framed" %]
   </thead>
-  
+
   <tbody>
     [% SET i = plr.streaks.size %]
     [% FOREACH streak IN plr.streaks.reverse %]
@@ -133,10 +133,47 @@
       [% SET i = i - 1 %]
     [% END %]
   </tbody>
-  
+
 </table>
 [% END %]
-  
+
+[%# =======================================================================
+    === SCORING LOG =======================================================
+    ======================================================================= %]
+
+<h2>SCORING BREAKDOWN</h2>
+
+<table>
+
+  <thead>
+    <tr class="framed">
+      <td>date</td>
+      <td>name</td>
+      <td>title</td>
+      <td>points</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    [% FOREACH se IN plr.scores %]
+      <tr>
+        <td>[% se.when_fmt %]</td>
+        <td>[% se.trophy %]</td>
+        <td>
+          [% IF config.trophies.exists(se.trophy) %]
+            [% config.trophies.item(se.trophy).title %]
+          [% ELSIF config.achievements.exists(se.trophy.replace('ach:','')) %]
+            [% config.achievements.item(se.trophy.replace('ach:','')).title %]
+          [% ELSE %]
+            ?
+          [% END %]
+        </td>
+        <td class="num">[% se.points %]</td>
+      </tr>
+    [% END %]
+  </tbody>
+
+</table>
 
 </body>
 
