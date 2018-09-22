@@ -9,6 +9,8 @@ package TNNT::Player;
 use Moo;
 use TNNT::ClanList;
 use TNNT::StreakList;
+use TNNT::Config;
+
 
 with 'TNNT::GameList::AddGame';
 with 'TNNT::AscensionList';
@@ -154,6 +156,38 @@ sub export
   if(@{$self->streaks()}) {
     $d{'streaks'} = [ map { $_->export_games() } @{$self->streaks()} ]
   }
+
+  #--- trophies (selected trophies for showcasing on the player page)
+
+  my @trophies;
+  my $cfg = TNNT::Config->instance()->config();
+
+  my @trophy_names = qw(
+    firstasc mostascs mostcond lowscore highscore minturns gimpossible
+    maxstreak allroles allraces allaligns allgenders allconducts
+  );
+
+  for my $race (qw(hum elf dwa gno orc)) {
+    push(@trophy_names, "greatrace:$race", "lesserrace:$race");
+  }
+
+  for my $role (qw(arc bar cav hea mon pri ran rog val wiz)) {
+    push(@trophy_names, "greatrace:$role", "lesserrace:$role");
+  }
+
+  for my $trophy (@trophy_names) {
+    if(my $s = $self->get_score($trophy)) {
+      push(@trophies, {
+        'trophy' => $trophy,
+        'title'  => $cfg->{'trophies'}{$trophy}{'title'},
+        'when'   => $s->_format_when(),
+      });
+    }
+  }
+
+  $d{'trophies'} = \@trophies if @trophies;
+
+  #--- finish
 
   return \%d;
 }
