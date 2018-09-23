@@ -1,0 +1,217 @@
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::[% player %]</title>
+  <base href="../">
+  <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+
+<body>
+
+<h1>[% player %]</h1>
+
+[%# ======================================================================= %]
+
+[%
+  SET plr = players.all.item(player);
+  IF plr.clan.defined;
+    SET clan = clans.all.item(plr.clan);
+  END
+%]
+
+<div class="row">
+
+[%# =======================================================================
+    === GENERAL INFORMATION ===============================================
+    ======================================================================= %]
+
+<table>
+
+  <thead>
+    <tr class="framed"><th colspan=2">general information</th></tr>
+  </thead>
+
+  <tr>
+    <td>rank</td>
+    <td class="num">[% plr.rank %]</td>
+  </tr>
+
+  [% IF plr.clan.defined %]
+  <tr>
+    <td>clan</td>
+    <td class="num">[% clink(clan.name) %]</td>
+  </tr>
+  [% END %]
+
+  <tr>
+    <td>games played</td>
+    <td class="num">[% plr.games.size %]</td>
+  </tr>
+
+  <tr>
+    <td>games ascended</td>
+    <td class="num">[% plr.ascs.size || 0 %]</td>
+  </tr>
+
+  <tr>
+    <td>ascension ratio</td>
+    <td class="num">
+      [% IF plr.exists('ascs'); plr.ratio _ "%"; ELSE; "N/A"; END %]
+    </td>
+  </tr>
+
+  <tr>
+    <td>achievements</td>
+    <td class="num">[% plr.achievements.size %]</td>
+  </tr>
+
+  <tr>
+    <td>score</td>
+    <td class="num">[% plr.score %]</td>
+  </tr>
+
+</table>
+
+[%# =======================================================================
+    === TROPHIES ==========================================================
+    ======================================================================= %]
+
+<table>
+
+  <thead>
+    <tr class="framed"><th colspan="2">trophies</th></tr>
+  </thead>
+
+  <tbody>
+    [% FOREACH tr IN plr.trophies %]
+    <tr>
+      <td>[% tr.title %]</td>
+      <td>[% tr.when %]</td>
+    </tr>
+    [% END %]
+  </tbody>
+
+</table>
+
+</div>
+
+[%# =======================================================================
+    === ASCENSIONS & RECENT ===============================================
+    ======================================================================= %]
+
+[% IF plr.exists('ascs') || plr.games.size %]
+
+  <table>
+
+    [% IF plr.exists('ascs') %]
+    <thead>
+      <tr><td colspan=10><h2>ASCENSIONS</h2></td></tr>
+      [% INCLUDE game.tt head=1 aswon=1 class="framed" %]
+    </thead>
+
+    <tbody>
+      [% SET i = plr.ascs.size %]
+      [% FOREACH game IN plr.ascs.reverse %]
+        [% INCLUDE game.tt aswon=1 %]
+        [% SET i = i - 1 %]
+      [% END %]
+    </tbody>
+    [% END %]
+
+    <thead>
+      <tr><td colspan=10><h2>RECENT GAMES</h2></td></tr>
+      [% INCLUDE game.tt head=1 class="framed" %]
+    </thead>
+
+    <tbody>
+      [% SET i = plr.games.size; SET cnt = 10; %]
+      [% FOREACH game IN plr.games.reverse %]
+        [% INCLUDE game.tt %]
+        [% SET i = i - 1 %]
+        [% SET cnt = cnt - 1; LAST IF cnt == 0 %]
+      [% END %]
+    </tbody>
+  </table>
+[% END %]
+
+[%# =======================================================================
+    === STREAKS ===========================================================
+    ======================================================================= %]
+
+[% IF plr.streaks.size %]
+
+<h2>STREAKS</h2>
+
+<table>
+
+  <thead>
+    [% INCLUDE streak.tt head=1 class="framed" %]
+  </thead>
+
+  <tbody>
+    [% SET i = plr.streaks.size %]
+    [% FOREACH streak IN plr.streaks.reverse %]
+      [% INCLUDE streak.tt %]
+      [% SET i = i - 1 %]
+    [% END %]
+  </tbody>
+
+</table>
+[% END %]
+
+[%# =======================================================================
+    === SCORING LOG =======================================================
+    ======================================================================= %]
+
+[% IF plr.score %]
+  <h2>SCORING BREAKDOWN</h2>
+
+  <table>
+
+    <thead>
+      <tr class="framed">
+        <th>date</th>
+        <th>name</th>
+        <th>title</th>
+        <th>points</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      [% FOREACH se IN plr.scores.reverse %]
+        <tr>
+          <td>[% se.when_fmt %]</td>
+          <td>[% se.trophy %]</td>
+          <td>
+            [% IF config.trophies.exists(se.trophy) %]
+              [% config.trophies.item(se.trophy).title %]
+            [% ELSIF config.achievements.exists(se.trophy.replace('ach:','')) %]
+              [% config.achievements.item(se.trophy.replace('ach:','')).title %]
+            [% ELSE %]
+              ?
+            [% END %]
+          </td>
+          <td class="num">[% se.points %]</td>
+        </tr>
+      [% END %]
+    </tbody>
+
+    <tfoot>
+      <tr class="overline">
+        <td colspan=3 class="total">
+          [% plr.scores.size %] entrie[% IF plr.scores.size > 1 %]s[% END %]
+        </td>
+        <td class="num">[% plr.score %]</td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+[% END %]
+
+</body>
+
+</html>

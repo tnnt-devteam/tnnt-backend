@@ -23,7 +23,8 @@
 # will just return the fullfillment status of the instance.
 #
 # If the last odd arguments to new_sets() is a coderef, then this is invoked
-# when the state flips into fullfilled.
+# when the state flips into fullfilled. This callback can be passed an optional
+# argument from track() invocation.
 #
 # The tracker has two modes: 'strict' will die on attempting to track a value
 # that is not in the list of possible values; 'loose' mode will silently skip
@@ -122,9 +123,19 @@ sub new_sets
 
 sub track
 {
-  my ($self, %args) = @_;
+  my ($self, @args) = @_;
+  my $cb_arg;
 
   return 1 if $self->_achieved();
+
+  #--- if we receive odd number of arguments, then the last one is passed to
+  #--- the callback (but it needs to evaluate as true)
+
+  if(@args % 2) {
+    $cb_arg = pop @args;
+  }
+
+  my %args = @args;
 
   #--- mark all the values from arguments as seen
 
@@ -156,7 +167,7 @@ sub track
   #--- invoke callback if flipping into achieved state
 
   if($achieve && $self->_cb()) {
-    $self->_cb()->();
+    $cb_arg ? $self->_cb()->($cb_arg) : $self->_cb()->();
     $self->_set_cb(undef);
   }
 

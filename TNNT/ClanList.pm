@@ -67,11 +67,12 @@ sub _load_clans
   #--- read the clan info from the database
 
   my %clans;
+  my $i = 0;
 
   while(my $h = $sth->fetchrow_hashref()) {
     my $clan = $h->{'clan'};
     if(!exists $clans{$clan}) {
-      $clans{$clan} = new TNNT::Clan(name => $clan);
+      $clans{$clan} = new TNNT::Clan(name => $clan, n => $i++);
     }
     $clans{$clan}->add_player(
       $h->{'name'},
@@ -140,6 +141,57 @@ sub add_game
   $clan->add_game($game);
 
   return ($self, $game);
+}
+
+
+#-----------------------------------------------------------------------------
+# Export clan data
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+  my (@clans, @clans_by_score);
+
+  #--- produce list of clans with full information
+
+  foreach my $clan_name (keys %{$self->clans()}) {
+    my $clan = $self->clans()->{$clan_name};
+    my $i = $clan->n();
+    $clans[$i] = {
+      n            => $i,
+      name         => $clan->name(),
+      players      => $clan->players(),
+      admins       => $clan->admins(),
+      score        => $clan->sum_score(),
+      games        => $clan->export_games(),
+      ascs         => $clan->export_ascensions(),
+      achievements => $clan->achievements(),
+      scorelog     => $clan->export_scores(),
+    };
+  }
+
+  #--- produce list of clan indices ordered by score
+
+  @clans_by_score =
+
+  map { $_->{'n'} }
+  sort {
+    if($b->{'score'} == $a->{'score'}) {
+      if(scalar @{$b->{'ascs'}} == scalar @{$a->{'ascs'}}) {
+        return @{$b->{'achievements'}} <=> scalar @{$a->{'achievements'}}
+      } else {
+        return scalar @{$b->{'ascs'}} <=> scalar @{$a->{'ascs'}}
+      }
+    } else {
+      return $b->{'score'} <=> $a->{'score'}
+    }
+  } @clans;
+
+  return {
+    all => \@clans,
+    ordered => \@clans_by_score,
+  };
 }
 
 

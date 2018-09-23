@@ -12,6 +12,8 @@ package TNNT::Score;
 use Carp;
 use Moo;
 
+use TNNT::Config;
+
 with 'TNNT::GameList::AddGame';
 with 'TNNT::AscensionList';
 with 'TNNT::PlayerList';
@@ -135,9 +137,40 @@ sub process
 
   $tr->finish();
 
+  #--- assign index numbers to the games
+
+  $self->renumber();
+
   #--- set 'processed' attribute
 
   $self->_set_processed(1);
+}
+
+
+#-----------------------------------------------------------------------------
+# Return all scoring data in single structure.
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+  my $clans = TNNT::ClanList->instance();
+  my $cfg = TNNT::Config->instance();
+
+  my %d = (
+    config => $cfg->config(),
+    games => {
+      all => $self->export_games(1),
+      ascs => $self->export_ascensions(),
+    },
+    players => $self->export_players(),
+    clans => $clans->export(),
+  );
+
+  $d{'config'}{'achievements-ordered'} = $cfg->order_achievements();
+
+  return \%d;
+
 }
 
 

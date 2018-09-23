@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
+
+body {
+  background-color: white;
+  color: black;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  font-weight: 400;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  font-size: 400%;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  font-size: 200%;
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  padding: 1em;
+}
+
+td, th {
+  padding: 0.3em 0.6em;
+}
+
+th {
+  font-weight: 300;
+}
+
+thead tr.framed {
+  border-bottom: 0.1em solid black;
+  border-top: 0.1em solid black;
+}
+
+tfoot tr.overline {
+  border-top: 0.1em solid black;
+}
+
+td.total {
+  letter-spacing: 0.3em;
+}
+
+.num {
+  text-align: right;
+  letter-spacing: 0.04em;
+}
+
+.dim {
+  color: rgb(100,100,100);
+  font-weight: 300;
+  font-size: 66%;
+  vertical-align: middle;
+}
+
+.won {
+  font-weight: bold;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+span.streak {
+  display: inline-block;
+  background: #ddd;
+  padding: 0 0.3em;
+}
+
+div.row {
+  display: flex;
+  flex-direction: row;
+}
+
+div.row table
+{
+  margin: 0 2em;
+}
+
+/*====================================================================
+  === CLANS ==========================================================
+  ====================================================================*/
+
+/* clan name in clan listing */
+
+span.clan {
+  font-size: 200%;
+  font-weight: 400;
+}
+
+/* Non-breakable text box with dimmed additional information, used for
+   showing number of players */
+
+span.subinfo {
+  font-weight: 300;
+  color: #888;
+  font-size: 80%;
+  display: inline-block;
+  margin-left: 0.5em;
+}
+
+/* admin player highlight */
+
+span.plradmin {
+  font-weight: bold;
+}
+
+/* no clans exist message */
+
+.noclans {
+  font-size: 100%;
+  letter-spacing: 0.3em;
+  text-align: center;
+  padding: 1em;
+}

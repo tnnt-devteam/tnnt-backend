@@ -66,8 +66,7 @@ sub add_game
   #--- initialize variables we're going to use
 
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($game->player());
+  my $clan = $player->clan();
   my $cfg = TNNT::Config->instance()->config();
 
   #--- initialize player tracking
@@ -97,8 +96,8 @@ sub add_game
               # score player
               $player->add_score(TNNT::ScoringEntry->new(
                 trophy => $the_foo . ':' . lc($rr),
-                game => [ $game ],
-                when => $game->endtime()
+                game => [ $_[0] ],
+                when => $_[0]->endtime()
               ));
               # score player's clan
               if(
@@ -108,8 +107,8 @@ sub add_game
               ) {
                 $clan->add_score(TNNT::ScoringEntry->new(
                   trophy => 'clan-' . $the_foo . ':' . lc($rr),
-                  game => [ $game ],
-                  when => $game->endtime(),
+                  game => [ $_[0] ],
+                  when => $_[0]->endtime(),
                   data => { player_name => $player->name() }
                 ));
                 $self->_clan_track()->{$clan->{'name'}}{$the_foo}{$rr} = $game;
@@ -157,7 +156,8 @@ sub add_game
             $game->role(),
             $game->race(),
             (($game->role() eq 'Mon' && $foo eq 'race') ? '*' : $game->align0())
-          )
+          ),
+          $game
         );
 
       }

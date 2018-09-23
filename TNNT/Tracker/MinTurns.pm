@@ -47,8 +47,7 @@ sub add_game
 {
   my ($self, $game) = @_;
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player->name());
+  my $clan = $player->clan();
 
   #--- count only ascending games
 

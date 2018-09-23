@@ -1,0 +1,79 @@
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::Players</title>
+  <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+
+<body>
+
+<h1>Players</h1>
+
+<table>
+  <thead>
+    <tr class="framed">
+      <th></th>
+      <th>player</th>
+      <th>clan</th>
+      <th>wins</th>
+      <th>games</th>
+      <th>ratio</th>
+      <th>achieve</th>
+      <th>score</th>
+      <th>cond</th>
+      <th>dlvl</th>
+    </tr>
+  </thead>
+  <tbody>
+    [% SET i = 1; FOREACH plr IN players.ordered %]
+      <tr>
+
+        <td class="num dim">[% i; SET i = i + 1 %]</td>
+
+        <td[% IF players.all.item(plr).exists('ascs') %] class="won"[% END %]>
+          <a href="">[% plink(plr) %]</a>
+        </td>
+
+        <td>
+          [% IF players.all.item(plr).exists('clan') %]
+            [% clink(clans.all.item(players.all.item(plr).clan).name) %]
+          [% END %]
+        </td>
+
+        <td class="num">
+          [% IF players.all.item(plr).exists('ascs') %]
+            [% players.all.item(plr).ascs.size %]
+          [% END %]
+        </td>
+
+        <td class="num">[% players.all.item(plr).games.size %]</td>
+
+        <td class="num">
+          [% IF players.all.item(plr).exists('ratio') %]
+            [% players.all.item(plr).ratio %]%
+          [% END %]
+        </td>
+
+        <td class="num">[% players.all.item(plr).ach.size %]</td>
+
+        <td class="num">[% players.all.item(plr).score %]</td>
+
+        <td class="num">
+          [% IF players.all.item(plr).exists('maxcond') %]
+            [% players.all.item(plr).maxcond %]
+          [% END %]
+        </td>
+
+        <td class="num">[% players.all.item(plr).maxlvl %]</td>
+
+      </tr>
+    [% END %]
+  </tbody>
+</table>
+
+</body>
+
+</html>

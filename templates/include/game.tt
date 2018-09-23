@@ -1,0 +1,68 @@
+[% IF head; #============================================================== %]
+
+  <tr class="[% class %]">
+  <th>&nbsp;</th>
+  <th>name</th>
+  <th>character</th>
+  <th>turns</th>
+  <th>score</th>
+  <th>duration</th>
+  <th>hp</th>
+  <th>time</th>
+  [% IF aswon %]
+    <th colspan=2>conducts</th>
+  [% ELSE %]
+    <th colspan=2>death reason</th>
+  [% END %]
+  </tr>
+
+[% ELSE; #================================================================= %]
+
+  [% row = games.all.item(game) %]
+
+  [% # --- if the game is ascended, add class "won", otherwise lost
+     classarr = classarr.defined ? class.split(' ') : [];
+     IF row.item('conducts');
+       classarr.push('won');
+     ELSE;
+       classarr.push('lost');
+     END
+  %]
+
+  <tr class="[% classarr.join(' ') %]">
+  <td class="num">[% i %]</td>
+  <td>[% plink(row.name) %]</td>
+  <td class="nowrap">
+    [% row.role %]-[% row.race %]-[% row.gender %]-[% row.align %]
+  </td>
+  <td class="num">[% number(row.turns) %]</td>
+  <td class="num">
+    [% IF row.item('_dump') %]
+      <a href="[% row.item('_dump') %]">[% number(row.points) %]</a>
+    [% ELSE %]
+      [% number(row.points) %]
+    [% END %]
+  </td>
+  <td class="num">[% row.item('realtime') %]</td>
+  <td class="num">[% row.hp %]/[% row.maxhp %]</td>
+  <td class="num">[% row.item('endtime') %]</td>
+  [% IF aswon %]
+    <td class="num">[% row.conducts.size %]</td>
+    <td>[% row.conducts.join(' ') %]</td>
+  [% ELSE %]
+    <td colspan=2>
+    [% IF row.item('conducts') %]
+      [% IF row.conducts.size == 0 %]
+        ascended with all conducts broken
+      [% ELSE %]
+        ascended with [% row.conducts.size %]
+        conduct[% IF row.conducts.size > 1 %]s[% END %]
+        ([% row.conducts.join(' ') %])
+      [% END %]
+    [% ELSE %]
+      [% row.death %]
+    [% END %]
+    </td>
+  [% END %]
+  </tr>
+[% END %]

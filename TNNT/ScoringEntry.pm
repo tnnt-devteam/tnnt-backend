@@ -7,6 +7,7 @@
 
 package TNNT::ScoringEntry;
 
+use Carp;
 use Moo;
 with 'TNNT::GameList::AddGame';
 
@@ -37,6 +38,9 @@ has points => (
 
 has when => (
   is => 'rwp',
+  isa => sub {
+    croak "ScoringEntry/when cannot be a reference" if ref $_[0];
+  },
 );
 
 # additional, trophy-specific data
@@ -77,13 +81,17 @@ sub BUILD
     my $points = 0;
 
     # the trophy is directly defined in configuration
-    if(exists $cfg->{'trophies'}{$trophy}{'points'}) {
+    if(
+      exists $cfg->{'trophies'}{$trophy}
+      && exists $cfg->{'trophies'}{$trophy}{'points'}
+    ) {
       $points = $cfg->{'trophies'}{$trophy}{'points'}
     }
 
     # the trophy type is defined
     elsif(
       $trophy =~ /^([a-z-]+):/
+      && exists $cfg->{'trophies'}{$1}
       && exists $cfg->{'trophies'}{$1}{'points'}
     ) {
       $points = $cfg->{'trophies'}{$1}{'points'}
@@ -242,6 +250,36 @@ sub get_points
     }
     return $points;
   }
+}
+
+#----------------------------------------------------------------------------
+# Format the when field
+#----------------------------------------------------------------------------
+
+sub _format_when
+{
+  my ($self) = @_;
+
+  my @t = gmtime($self->when());
+  return sprintf("%04d-%02d-%02d %02d:%02d", $t[5]+1900, $t[4]+1, $t[3], $t[2], $t[1]);
+}
+
+
+#-----------------------------------------------------------------------------
+# Export data
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+
+  return {
+    trophy => $self->trophy(),
+    points => $self->get_points(),
+    when   => $self->get_when(),
+    when_fmt => $self->_format_when(),
+    data   => $self->data(),
+  };
 }
 
 
