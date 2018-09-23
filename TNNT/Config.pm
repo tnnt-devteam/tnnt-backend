@@ -57,6 +57,8 @@ sub _load_config
 
 sub order_achievements
 {
+  no warnings 'portable';
+
   my ($self) = @_;
   my $achievements = $self->config()->{'achievements'};
 
