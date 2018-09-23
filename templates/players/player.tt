@@ -163,6 +163,31 @@
 [% END %]
 
 [%# =======================================================================
+    === ACHIEVEMENTS ======================================================
+    ======================================================================= %]
+
+<h2 id="achievements">Achievements</h2>
+
+<div class="achieve-top">
+
+    [% FOREACH ach IN config.item('achievements-ordered') %]
+    <div
+      class="achieve-item[% IF plr.achievements.grep(ach).size %] achieved[% ELSE %] not-achieved[% END %]"
+      title="[% config.achievements.item(ach).descr %]"
+    >
+      <!-- [% IF plr.achievements.grep(ach).size %]*[% END %] -->
+      [% config.achievements.item(ach).title %]
+    </div>
+    [% END %]
+
+    <div class="achieve-summary">
+      [% plr.achievements.size %] out of
+      [% config.item('achievements-ordered').size %] achievements attained
+    </div>
+
+</div>
+
+[%# =======================================================================
     === SCORING LOG =======================================================
     ======================================================================= %]
 

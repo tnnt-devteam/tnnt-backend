@@ -133,3 +133,52 @@ span.plradmin {
   text-align: center;
   padding: 1em;
 }
+
+/*====================================================================
+  === PLAYERS (individual pages) =====================================
+  ====================================================================*/
+
+/*--- achievements display -------------------------------------------*/
+
+/* the grid container */
+
+div.achieve-top {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 52em;
+  column-gap: 1em;
+  row-gap: 1em;
+  margin-bottom: 2em;
+}
+
+/* the individual achievement box, a grid element */
+
+div.achieve-item {
+  padding: 1em;
+  height: 3.5em;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* style for the non-attained achievements */
+
+div.achieve-item.not-achieved {
+  background: #ddd;
+}
+
+/* style for the attained achievements */
+
+div.achieve-item.achieved {
+  background: #dfd;
+}
+
+/* style for the achievement summary */
+
+div.achieve-summary {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  text-align: center;
+  color: #888;
+}
