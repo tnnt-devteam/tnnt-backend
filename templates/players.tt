@@ -39,7 +39,7 @@
 
         <td>
           [% IF players.all.item(plr).exists('clan') %]
-            [% clink(clans.all.item(players.all.item(plr).clan).name) %]
+            [% clink(clans.all.item(players.all.item(plr).clan)) %]
           [% END %]
         </td>
 

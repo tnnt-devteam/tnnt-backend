@@ -42,7 +42,7 @@
   [% IF plr.clan.defined %]
   <tr>
     <td>clan</td>
-    <td class="num">[% clink(clan.name) %]</td>
+    <td class="num">[% clink(clan) %]</td>
   </tr>
   [% END %]
 

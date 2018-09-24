@@ -15,7 +15,7 @@
 <table>
 
   <thead>
-    <tr>
+    <tr class="framed">
       <th></th>
       <th>clan</th>
       <th>score</th>
@@ -39,7 +39,7 @@
           [%# === clan name / members ===================================== %]
 
           <td>
-            <span class="clan">[% clink(clan.name) %]</span><br>
+            <span class="clan">[% clink(clan) %]</span><br>
 
             [% FOREACH plr IN clan.players.sort %]
               [% IF clan.admins.grep(plr).size %]
