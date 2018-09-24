@@ -36,7 +36,7 @@
 
   <tr>
     <td>rank</td>
-    <td class="num">[% plr.rank %]</td>
+    <td class="num">[% plr.rank %] of [% players.ordered.size %]</td>
   </tr>
 
   [% IF plr.clan.defined %]
@@ -101,7 +101,7 @@
 </div>
 
 [%# =======================================================================
-    === ASCENSIONS & RECENT ===============================================
+    === ASCENSIONS & RECENT GAMES =========================================
     ======================================================================= %]
 
 [% IF plr.exists('ascs') || plr.games.size %]
