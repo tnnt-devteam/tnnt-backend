@@ -79,22 +79,24 @@
     === TROPHIES ==========================================================
     ======================================================================= %]
 
-<table>
+[% IF plr.trophies.size %]
+  <table>
 
-  <thead>
-    <tr class="framed"><th colspan="2">trophies</th></tr>
-  </thead>
+    <thead>
+      <tr class="framed"><th colspan="2">trophies</th></tr>
+    </thead>
 
-  <tbody>
-    [% FOREACH tr IN plr.trophies %]
-    <tr>
-      <td>[% tr.title %]</td>
-      <td>[% tr.when %]</td>
-    </tr>
-    [% END %]
-  </tbody>
+    <tbody>
+      [% FOREACH tr IN plr.trophies %]
+      <tr>
+        <td>[% tr.title %]</td>
+        <td>[% tr.when %]</td>
+      </tr>
+      [% END %]
+    </tbody>
 
-</table>
+  </table>
+[% END %]
 
 </div>
 
