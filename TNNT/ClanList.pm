@@ -146,6 +146,12 @@ sub add_game
 
 #-----------------------------------------------------------------------------
 # Export clan data
+#
+# NOTE/FIXME: We have decided that the clans will be exposed to the templates
+# in a list, not hash. Ie. clan is identified not by its name, but by its
+# index in the list. This makes it inconsistent with how players are presented
+# and makes it somwhat awkward. The intention was to prevent users putting
+# arbitrary strings into URLs.
 #-----------------------------------------------------------------------------
 
 sub export
@@ -164,11 +170,51 @@ sub export
       players      => $clan->players(),
       admins       => $clan->admins(),
       score        => $clan->sum_score(),
+      scores       => $clan->export_scores(),
       games        => $clan->export_games(),
       ascs         => $clan->export_ascensions(),
       achievements => $clan->achievements(),
       scorelog     => $clan->export_scores(),
     };
+
+    # ascension ratio
+
+    if($clan->count_ascensions()) {
+      $clans[$i]{'ratio'} = sprintf("%3.1f",
+        $clan->count_ascensions() / $clan->count_games() * 100
+      )
+    }
+
+    # trophies (selected trophies for showcasing on the player page)
+
+    my @trophies;
+    my $cfg = TNNT::Config->instance()->config();
+
+    my @trophy_names = qw(
+      firstasc mostascs mostcond lowscore highscore minturns gimpossible
+      maxstreak allroles allraces allaligns allgenders allconducts
+    );
+
+    for my $race (qw(hum elf dwa gno orc)) {
+      push(@trophy_names, "greatrace:$race", "lesserrace:$race");
+    }
+
+    for my $role (qw(arc bar cav hea mon pri ran rog val wiz)) {
+      push(@trophy_names, "greatrace:$role", "lesserrace:$role");
+    }
+
+    for my $trophy (@trophy_names) {
+      if(my $s = $clan->get_score("clan-$trophy")) {
+        push(@trophies, {
+          'trophy' => $trophy,
+          'title'  => $cfg->{'trophies'}{"clan-$trophy"}{'title'},
+          'when'   => $s->_format_when(),
+        });
+      }
+    }
+
+    $clans[$i]{'trophies'} = \@trophies if @trophies;
+
   }
 
   #--- produce list of clan indices ordered by score
@@ -187,6 +233,15 @@ sub export
       return $b->{'score'} <=> $a->{'score'}
     }
   } @clans;
+
+  #--- get clans' rank
+
+  for(my $i = 0; $i < @clans_by_score; $i++) {
+    $clans[$clans_by_score[$i]]{'rank'} = $i + 1;
+  }
+
+
+  #--- finish
 
   return {
     all => \@clans,
