@@ -38,6 +38,32 @@ has clan_track => (
   default => sub { {} },
 );
 
+# this tracks players who attained one or more trophies
+
+has players => (
+  is => 'ro',
+  default => sub { {
+    allroles    => [],
+    allraces    => [],
+    allgenders  => [],
+    allaligns   => [],
+    allconducts => [],
+  } },
+);
+
+# this tracks clans who attained one or more trophies
+
+has clans => (
+  is => 'ro',
+  default => sub { {
+    allroles    => [],
+    allraces    => [],
+    allgenders  => [],
+    allaligns   => [],
+    allconducts => [],
+  } },
+);
+
 
 #=============================================================================
 #=== METHODS =================================================================
@@ -94,6 +120,7 @@ sub add_game
               when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allroles'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'roles'}
           ) {
@@ -105,6 +132,7 @@ sub add_game
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allroles'}}, $clan);
           }
         }
       ),
@@ -118,6 +146,7 @@ sub add_game
               when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allraces'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'races'}
           ) {
@@ -129,6 +158,7 @@ sub add_game
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allraces'}}, $clan);
           }
         }
       ),
@@ -142,6 +172,7 @@ sub add_game
               when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allgenders'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'genders'}
           ) {
@@ -153,6 +184,7 @@ sub add_game
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allgenders'}}, $clan);
           }
         }
       ),
@@ -166,6 +198,7 @@ sub add_game
               when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allaligns'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'aligns'}
           ) {
@@ -177,6 +210,7 @@ sub add_game
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allaligns'}}, $clan);
           }
         }
       ),
@@ -190,6 +224,7 @@ sub add_game
               when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allconducts'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'conducts'}
           ) {
@@ -201,6 +236,7 @@ sub add_game
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allconducts'}}, $clan);
           }
         }
       ),
