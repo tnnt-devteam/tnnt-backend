@@ -65,25 +65,38 @@ sub get_score
 
 
 #-----------------------------------------------------------------------------
-# Get sum of scores in a ScoringList. You can supply a list of filter strings
-# to narrow down the score entries that are being summed. The list come in two
-# modes:
+# Return new list of ScoringEntry instances that is a subset of the original
+# one created by filtering by supplied filter list. The list comes in two
+# variants:
 #
 # inclusive / only entries matching the filter strings are summed
 # exclusive / only entries not matching any of the filter strings are summed
 #
 # exclusive filter is indicated by the first element having ! prepended to it.
+# If the filter is empty, original instance is returned instead.
+#
+# FIXME: It would be nice to return ScoringList instance, but since it is role
+# this is not possible. For some reason, creating class with the role doesn't
+# work either (it breaks the role when you use that class in it).
 #-----------------------------------------------------------------------------
 
-sub sum_score
+sub filter_score
 {
   my ($self, @filter) = @_;
-  my @scores;
+  my $result = [];
+
+  #--- if filter is empty, return original instance
+
+  if(!@filter) {
+    $result = $self->scores();
+  }
 
   #--- exclusive filter, indicated by the first element having prepended !
 
-  if(@filter && substr($filter[0], 0, 0) eq '!') {
-    @scores = grep {
+  elsif(@filter && substr($filter[0], 0, 0) eq '!') {
+    do {
+      push(@$result, $_);
+    } for grep {
       my $score = $_;
       grep { $score->{'trophy'} ne $_ } map { s/^!// } @filter;
     } @{$self->scores()};
@@ -92,21 +105,36 @@ sub sum_score
   #--- inclusive filter otherwise
 
   else {
-    @scores = grep {
+    do {
+      push(@$result, $_);
+    } for grep {
       my $score = $_;
       !@filter
       || grep { $score->{'trophy'} eq $_ } @filter;
     } @{$self->scores()};
   }
 
-  #--- sum the selected entries
+  #--- finish
+
+  return $result;
+}
+
+
+#-----------------------------------------------------------------------------
+# Get sum of scores in a ScoringList. The optional filter term uses the
+# filter_score() method semantics (see above).
+#-----------------------------------------------------------------------------
+
+sub sum_score
+{
+  my ($self, @filter) = @_;
+
+  my $sl = $self->filter_score(@filter);
 
   my $sum = 0;
-  for my $score (@scores) {
-    $sum += $score->{'points'} // 0;
+  foreach my $score (@$sl) {
+    $sum += $score->get_points();
   }
-
-  #--- finish
 
   return $sum;
 }
