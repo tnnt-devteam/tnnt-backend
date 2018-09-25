@@ -1,19 +1,20 @@
 [%- PROCESS 'macros.tt' -%]
+[%- SET cln = clans.all.item(clan); -%]
 <!doctype html>
+
 
 <html>
 
 <head>
-  <title>TNNT::[% clan %]</title>
+  <title>TNNT::[% cln.name %]</title>
   <base href="../">
   <link rel="stylesheet" type="text/css" href="default.css">
 </head>
 
 <body>
 
-[% SET cln = clans.all.item(clan); %]
 
-<h1>[% clans.all.item(clan).name %]</h1>
+<h1>[% cln.name %]</h1>
 
 <div class="row">
 

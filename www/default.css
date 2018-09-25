@@ -26,32 +26,6 @@ h2 {
   text-align: center;
 }
 
-table {
-  border-collapse: collapse;
-  padding: 1em;
-}
-
-td, th {
-  padding: 0.3em 0.6em;
-}
-
-th {
-  font-weight: 300;
-}
-
-thead tr.framed {
-  border-bottom: 0.1em solid black;
-  border-top: 0.1em solid black;
-}
-
-tfoot tr.overline {
-  border-top: 0.1em solid black;
-}
-
-td.total {
-  letter-spacing: 0.3em;
-}
-
 .num {
   text-align: right;
   letter-spacing: 0.04em;
@@ -92,13 +66,44 @@ div.row {
   flex-direction: row;
 }
 
-div.row table
-{
-  margin: 0 2em;
-}
 
 .align-top {
   vertical-align: top;
+}
+
+/*====================================================================
+  === DEFAULT TABLES =================================================
+  ====================================================================*/
+
+table {
+  border-collapse: collapse;
+  padding: 1em;
+}
+
+td, th {
+  padding: 0.3em 0.6em;
+}
+
+th {
+  font-weight: 300;
+}
+
+thead tr.framed {
+  border-bottom: 0.1em solid black;
+  border-top: 0.1em solid black;
+}
+
+tfoot tr.overline {
+  border-top: 0.1em solid black;
+}
+
+td.total {
+  letter-spacing: 0.3em;
+}
+
+div.row table
+{
+  margin: 0 2em;
 }
 
 /*====================================================================
@@ -200,3 +205,33 @@ TABLE.clan-members {
   font-weight: 300;
 }
 
+/*====================================================================
+  === TROPHIES =======================================================
+  ====================================================================*/
+
+table.trophies td {
+  min-width: 8em;
+  border-bottom: 1px solid #eee;
+  padding: 0.6rem 1.4rem;
+}
+
+table.trophies tr {
+  vertical-align: baseline;
+}
+
+td.trophy-name {
+  font-size: 166%;
+  text-transform: uppercase;
+  padding-right: 2em;
+  font-weight: 300;
+}
+
+td.trophy-single {
+  font-size: 200%;
+  font-weight: 300;
+}
+
+td.trophy-multi {
+  font-weight: 300;
+  font-size: 133%
+}

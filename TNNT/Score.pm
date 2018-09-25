@@ -169,6 +169,115 @@ sub export
 
   $d{'config'}{'achievements-ordered'} = $cfg->order_achievements();
 
+  #--- trophies
+
+  my $tr = $self->global_tracker();
+
+  # First Ascension
+
+  if(defined $tr->get_tracker_by_name('firstasc')->player()->name()) {
+    $d{'trophies'}{'players'}{'firstasc'}
+    = $tr->get_tracker_by_name('firstasc')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('firstasc')->clan()->n()) {
+    $d{'trophies'}{'clans'}{'firstasc'}
+    = $tr->get_tracker_by_name('firstasc')->clan()->n();
+  }
+
+  # Most Ascensions
+
+  if(defined $tr->get_tracker_by_name('mostasc')->player()) {
+    $d{'trophies'}{'players'}{'mostasc'}
+    = $tr->get_tracker_by_name('mostasc')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('mostasc')->clan()) {
+    $d{'trophies'}{'clans'}{'mostasc'}
+    = $tr->get_tracker_by_name('mostasc')->clan()->n();
+  }
+
+  # Lowest Turncount
+
+  if(defined $tr->get_tracker_by_name('minturns')->player()) {
+    $d{'trophies'}{'players'}{'minturns'}
+    = $tr->get_tracker_by_name('minturns')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('minturns')->clan()) {
+    $d{'trophies'}{'clans'}{'minturns'}
+    = $tr->get_tracker_by_name('minturns')->clan()->n();
+  }
+
+  # Most Conducts in single game
+
+  if(defined $tr->get_tracker_by_name('mostcond')->player()) {
+    $d{'trophies'}{'players'}{'mostcond'}
+    = $tr->get_tracker_by_name('mostcond')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('mostcond')->clan()) {
+    $d{'trophies'}{'clans'}{'mostcond'}
+    = $tr->get_tracker_by_name('mostcond')->clan()->n();
+  }
+
+  # Lowest Score
+
+  if(defined $tr->get_tracker_by_name('lowscore')->player()) {
+    $d{'trophies'}{'players'}{'lowscore'}
+    = $tr->get_tracker_by_name('lowscore')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('lowscore')->clan()) {
+    $d{'trophies'}{'clans'}{'lowscore'}
+    = $tr->get_tracker_by_name('lowscore')->clan()->n();
+  }
+
+  # Highest Score
+
+  if(defined $tr->get_tracker_by_name('highscore')->player()) {
+    $d{'trophies'}{'players'}{'highscore'}
+    = $tr->get_tracker_by_name('highscore')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('highscore')->clan()) {
+    $d{'trophies'}{'clans'}{'highscore'}
+    = $tr->get_tracker_by_name('highscore')->clan()->n();
+  }
+
+  # Longest Streak
+
+  my $maxstreak = $tr->get_tracker_by_name('streak')->maxstreak();
+
+  if(defined $maxstreak) {
+
+    $d{'trophies'}{'players'}{'maxstreak'}
+    = $maxstreak->last_game()->player()->name();
+
+    if(defined $maxstreak->last_game()->player()->clan()) {
+      $d{'trophies'}{'clans'}{'maxstreak'}
+      = $maxstreak->last_game()->player()->clan()->n()
+    }
+  }
+
+  # All Roles/Races/Genders/Alignments/Conducts
+
+  my $allcats = $tr->get_tracker_by_name('allcats');
+
+  for my $cat (qw(allroles allraces allgenders allaligns allconducts)) {
+    if(@{$allcats->players()->{$cat}}) {
+      $d{'trophies'}{'players'}{$cat}
+      = [ map { $_->name() } @{$allcats->players()->{$cat}} ];
+    }
+
+    if(@{$allcats->clans()->{$cat}}) {
+      $d{'trophies'}{'clans'}{$cat}
+      = [ map { $_->n() } @{$allcats->clans()->{$cat}} ];
+    }
+  }
+
+  #--- finish
+
   return \%d;
 
 }

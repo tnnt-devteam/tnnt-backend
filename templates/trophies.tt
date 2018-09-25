@@ -1,0 +1,237 @@
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::Trophies</title>
+  <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+
+<body>
+
+<h1>Trophies</h1>
+
+<table class="trophies">
+
+  <thead>
+
+    <tr class="framed">
+      <th>trophy</th>
+      <th>player</th>
+      <th>clan</th>
+    </tr>
+
+  </thead>
+
+  <tbody>
+
+    [%# === FIRST ASCENSIONS ============================================== %]
+
+    <tr>
+      <td class="trophy-name">First Ascension</td>
+      <td class="trophy-single">
+        [% IF trophies.players.exists('firstasc');
+          plink(trophies.players.firstasc);
+        END %]
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('firstasc');
+          clink(clans.all.item(trophies.clans.firstasc));
+        END %]
+      </td>
+    </tr>
+
+    [%# === MOST ASCENSIONS =============================================== %]
+
+    <tr>
+      <td class="trophy-name">Most Ascensions</td>
+      <td class="trophy-single">
+        [% IF trophies.players.exists('mostasc');
+          plink(trophies.players.mostasc);
+        END %]
+      </td>
+      <td class="trophy-single">
+      [% IF trophies.clans.exists('mostasc');
+        clink(clans.all.item(trophies.clans.mostasc));
+      END %]
+      </td>
+    </tr>
+
+    [%# === LOWEST TURNCOUNTS ============================================= %]
+
+    <tr>
+      <td class="trophy-name">Lowest Turncount</td>
+      <td class="trophy-single">
+        [% IF trophies.players.exists('minturns');
+          plink(trophies.players.minturns);
+        END %]
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('minturns');
+          clink(clans.all.item(trophies.clans.minturns));
+        END %]
+      </td>
+    </tr>
+
+    [%# === MOST CONDUCTS ================================================= %]
+
+    <tr>
+      <td class="trophy-name">Most Conducts</td>
+      <td class="trophy-single">
+        [% IF trophies.players.exists('mostcond');
+          plink(trophies.players.mostcond);
+        END %]
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('mostcond');
+          clink(clans.all.item(trophies.clans.mostcond));
+        END %]
+      </td>
+    </tr>
+
+    [%# === LOWEST SCORE ================================================== %]
+
+    <tr>
+      <td class="trophy-name">Lowest Score</td>
+      <td class="trophy-single">
+        [% IF trophies.players.exists('lowscore');
+          plink(trophies.players.lowscore);
+        END %]
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('lowscore');
+          clink(clans.all.item(trophies.clans.lowscore));
+        END %]
+      </td>
+    </tr>
+
+    [%# === HIGHEST SCORE ================================================= %]
+
+    <tr>
+      <td class="trophy-name">Highest Score</td>
+      <td class="trophy-single">
+        [% IF trophies.players.exists('highscore');
+          plink(trophies.players.highscore);
+        END %]
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('highscore');
+          clink(clans.all.item(trophies.clans.highscore));
+        END %]
+      </td>
+    </tr>
+
+    [%# === LONGEST STREAK ================================================ %]
+
+    <tr>
+      <td class="trophy-name">Longest Streak</td>
+      [% IF trophies.players.exists('maxstreak') %]
+        <td class="trophy-single">[% plink(trophies.players.maxstreak) %]</td>
+      [% END %]
+      [% IF trophies.clans.exists('maxstreak') %]
+        <td class="trophy-single">[% clink(clans.all.item(trophies.clans.maxstreak)) %]</td>
+      [% END %]
+    </tr>
+
+    [%# === BOTH GENDERS ================================================== %]
+
+    <tr>
+      <td class="trophy-name">Both Genders</td>
+      <td class="trophy-multi">[% IF trophies.players.exists('allgenders') %]
+          [% FOREACH plr IN trophies.players.allgenders %]
+            [% plink(plr) %]
+          [% END %]
+        [% END %]
+      </td>
+      <td class="trophy-multi">
+      [% IF trophies.clans.exists('allgenders') %]
+          [% FOREACH cln IN trophies.clans.allgenders %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        [% END %]
+      </td>
+    </tr>
+
+    [%# === ALL ALIGNMENTS ================================================ %]
+
+    <tr>
+      <td class="trophy-name">All Alignments</td>
+      <td class="trophy-multi">[% IF trophies.players.exists('allaligns') %]
+          [% FOREACH plr IN trophies.players.allaligns %]
+            [% plink(plr) %]
+          [% END %]
+        [% END %]
+      </td>
+      <td class="trophy-multi">
+      [% IF trophies.clans.exists('allaligns') %]
+          [% FOREACH cln IN trophies.clans.allaligns %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        [% END %]
+      </td>
+    </tr>
+
+    [%# === ALL RACES ===================================================== %]
+
+    <tr>
+      <td class="trophy-name">All Races</td>
+      <td class="trophy-multi">[% IF trophies.players.exists('allraces') %]
+          [% FOREACH plr IN trophies.players.allraces %]
+            [% plink(plr) %]
+          [% END %]
+        [% END %]
+      </td>
+      <td class="trophy-multi">
+      [% IF trophies.clans.exists('allraces') %]
+          [% FOREACH cln IN trophies.clans.allraces %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        [% END %]
+      </td>
+    </tr>
+
+    [%# === ALL RACES ===================================================== %]
+
+    <tr>
+      <td class="trophy-name">All Roles</td>
+      <td class="trophy-multi">[% IF trophies.players.exists('allroles') %]
+          [% FOREACH plr IN trophies.players.allroles %]
+            [% plink(plr) %]
+          [% END %]
+        [% END %]
+      </td>
+      <td class="trophy-multi">
+      [% IF trophies.clans.exists('allroles') %]
+          [% FOREACH cln IN trophies.clans.allroles %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        [% END %]
+      </td>
+    </tr>
+
+    [%# === ALL CONDUCTS ================================================== %]
+
+    <tr>
+      <td class="trophy-name">All Conducts</td>
+      <td class="trophy-multi">[% IF trophies.players.exists('allconducts') %]
+          [% FOREACH plr IN trophies.players.allconducts %]
+            [% plink(plr) %]
+          [% END %]
+        [% END %]
+      </td>
+      <td class="trophy-multi">
+      [% IF trophies.clans.exists('allconducts') %]
+          [% FOREACH cln IN trophies.clans.allconducts %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        [% END %]
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+</body>
+
+</html>
