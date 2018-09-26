@@ -291,6 +291,18 @@
       [% END %]
     [% END %]
 
+    [%# === UNIQUE DEATHS ================================================= %]
+
+    <tr>
+      <td class="trophy-name">Unique Deaths</td>
+      <td class="trophy-na">N/A</td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('uniquedeaths');
+             clink(clans.all.item(trophies.clans.uniquedeaths));
+        END %]
+      </td>
+    </tr>
+
   </tbody>
 </table>
 

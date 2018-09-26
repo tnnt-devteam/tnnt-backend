@@ -235,3 +235,10 @@ td.trophy-multi {
   font-weight: 300;
   font-size: 133%
 }
+
+td.trophy-na {
+  font-weight: 300;
+  font-size: 166%;
+  color: #ddd;
+  text-align: center;
+}

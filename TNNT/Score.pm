@@ -309,6 +309,13 @@ sub export
     $d{'trophies'}{'clans'}{'greatfoo'}
   ) = $greatfoo->export();
 
+  # Unique Deaths
+
+  my $uqdeath_tr = $tr->get_tracker_by_name('uniquedeaths');
+  if(defined $uqdeath_tr->topclan()) {
+    $d{'trophies'}{'clans'}{'uniquedeaths'} = $uqdeath_tr->topclan()->n();
+  }
+
   #--- finish
 
   return \%d;
