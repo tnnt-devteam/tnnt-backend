@@ -183,13 +183,29 @@ div.achieve-item.achieved {
   background: #dfd;
 }
 
-/* style for the achievement summary */
+/* style for the achievement summary with in-laid progress bar */
 
 div.achieve-summary {
   grid-column-start: 1;
   grid-column-end: 5;
   text-align: center;
   color: #888;
+  position: relative;
+  width: 100%;
+  background-color: #ddd;
+}
+
+div.achieve-bar {
+  background-color: #dfd;
+  height: 2rem;
+}
+
+div.achieve-msg {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0.4rem;
 }
 
 /*====================================================================

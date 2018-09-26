@@ -182,8 +182,16 @@
     [% END %]
 
     <div class="achieve-summary">
+      [%
+        SET pct = (plr.achievements.size
+                  / config.item('achievements-ordered').size)
+                  * 100
+      %]
+      <div class="achieve-bar" style="width: [% pct %]%"></div>
+      <div class="achieve-msg">
       [% plr.achievements.size %] out of
       [% config.item('achievements-ordered').size %] achievements attained
+      </div>
     </div>
 
 </div>
