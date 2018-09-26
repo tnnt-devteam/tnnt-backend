@@ -55,17 +55,17 @@ has achieve   => (
 
 has tnntachieve0 => (
   is => 'ro',
-  coerce => sub { hex($_[0]) },
+  coerce => sub { no warnings 'portable'; hex($_[0]) },
 );
 
 has tnntachieve1 => (
   is => 'ro',
-  coerce => sub { hex($_[0]) },
+  coerce => sub { no warnings 'portable'; hex($_[0]) },
 );
 
 has tnntachieve2 => (
   is => 'ro',
-  coerce => sub { hex($_[0]) },
+  coerce => sub { no warnings 'portable'; hex($_[0]) },
 );
 
 # reference to TNNT::Player object
@@ -192,6 +192,8 @@ sub conducts
 
 sub _build_achievements
 {
+  no warnings 'portable';
+
   my ($self) = @_;
   my $cfg = TNNT::Config->instance()->config()->{'achievements'};
 
