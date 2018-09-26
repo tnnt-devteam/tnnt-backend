@@ -103,7 +103,7 @@ sub add_game
               if(
                 $clan
                 &&
-                !exists $self->_clan_track()->{$clan->{'name'}}{$the_foo}{$rr}
+                !exists $self->_clan_track()->{$clan->n()}{$the_foo}{$rr}
               ) {
                 $clan->add_score(TNNT::ScoringEntry->new(
                   trophy => 'clan-' . $the_foo . ':' . lc($rr),
@@ -111,7 +111,7 @@ sub add_game
                   when => $_[0]->endtime(),
                   data => { player_name => $player->name() }
                 ));
-                $self->_clan_track()->{$clan->{'name'}}{$the_foo}{$rr} = $game;
+                $self->_clan_track()->{$clan->n()}{$the_foo}{$rr} = $game;
               }
             }
           );
