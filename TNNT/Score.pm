@@ -288,6 +288,18 @@ sub export
     $d{'trophies'}{'clans'}{'allachieve'} = $achieve_tr->clans_track();
   }
 
+  # The Great Impossible
+
+  my $achieve_gi = $tr->get_tracker_by_name('gimpossible');
+
+  if(@{$achieve_gi->players()}) {
+    $d{'trophies'}{'players'}{'gimpossible'} = $achieve_gi->players();
+  }
+
+  if(@{$achieve_gi->clans()}) {
+    $d{'trophies'}{'clans'}{'gimpossible'} = $achieve_gi->clans();
+  }
+
   #--- finish
 
   return \%d;

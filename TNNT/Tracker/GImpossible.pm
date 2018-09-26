@@ -34,6 +34,20 @@ has _clantrk => (
   default => sub { {} },
 );
 
+# players who have achieved this trophy
+
+has players => (
+  is => 'ro',
+  default => sub { [] },
+);
+
+# clans who have achieved this trophy
+
+has clans => (
+  is => 'ro',
+  default => sub { [] },
+);
+
 
 
 #=============================================================================
@@ -63,6 +77,7 @@ sub add_game
         game => [ $game ],
         when => $game->endtime(),
       ));
+      push(@{$self->players()}, $game->player()->name());
     }
 
     # clan scoring
@@ -73,6 +88,7 @@ sub add_game
         game => [ $game ],
         when => $game->endtime(),
       ));
+      push(@{$self->clans()}, $clan->n());
     }
 
   }

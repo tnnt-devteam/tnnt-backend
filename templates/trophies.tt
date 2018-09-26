@@ -248,6 +248,25 @@
       </td>
     </tr>
 
+    [%# === THE GREAT IMPOSSIBLE ========================================== %]
+
+    <tr>
+      <td class="trophy-name">The Great Impossible</td>
+      <td class="trophy-multi">[% IF trophies.players.exists('gimpossible') %]
+          [% FOREACH plr IN trophies.players.gimpossible %]
+            [% plink(plr) %]
+          [% END %]
+        [% END %]
+      </td>
+      <td class="trophy-multi">
+      [% IF trophies.clans.exists('gimpossible') %]
+          [% FOREACH cln IN trophies.clans.gimpossible %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        [% END %]
+      </td>
+    </tr>
+
   </tbody>
 </table>
 
