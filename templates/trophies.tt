@@ -267,6 +267,30 @@
       </td>
     </tr>
 
+    [%# === GREATER/LESSER FOO ============================================ %]
+
+    [% FOREACH gl IN ['great', 'lesser'] %]
+      [% FOREACH rr IN ['race', 'role'] %]
+        [% FOREACH cat IN config.nethack.item(gl _ rr).keys.sort %]
+          <tr>
+            <td class="trophy-name">
+              [% config.trophies.item(gl _ rr _ ':' _ cat.lower).title %]
+            </td>
+            <td class="trophy-multi">
+              [% FOREACH plr IN trophies.players.greatfoo.item(gl _ rr _ ':' _ cat.lower) %]
+                [% plink(plr) %]
+              [% END %]
+            </td>
+            <td class="trophy-multi">
+              [% FOREACH cln IN trophies.clans.greatfoo.item (gl _ rr _ ':' _ cat.lower) %]
+                [% clink(clans.all.item(cln)) %]
+              [% END %]
+            </td>
+          </tr>
+        [% END %]
+      [% END %]
+    [% END %]
+
   </tbody>
 </table>
 

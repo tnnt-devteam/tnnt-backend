@@ -176,6 +176,55 @@ sub finish
 }
 
 
+#-----------------------------------------------------------------------------
+# Coalesce and export trophy data
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+  my $cfg = TNNT::Config->instance()->config();
+
+  #--- players
+
+  my %players;
+
+  foreach my $player_name (keys %{$self->_player_track()}) {
+    my $ptrk = $self->_player_track()->{$player_name};
+    for my $the ('great', 'lesser' ) {
+      for my $foo ('race', 'role') {
+        my $the_foo = "$the$foo";
+        for my $rr (keys %{$cfg->{'nethack'}{"great$foo"}}) {
+          if($ptrk->{$the_foo}{$rr}->track()) {
+            push(@{$players{"$the_foo:" . lc($rr)}}, $player_name);
+          }
+        }
+      }
+    }
+  }
+
+  #--- clans
+
+  my %clans;
+
+  foreach my $clan_idx (keys %{$self->_clan_track()}) {
+    my $ctrk = $self->_clan_track()->{$clan_idx};
+    for my $the ('great', 'lesser' ) {
+      for my $foo ('race', 'role') {
+        my $the_foo = "$the$foo";
+        for my $rr (keys %{$cfg->{'nethack'}{"great$foo"}}) {
+          if(exists $ctrk->{$the_foo}{$rr}) {
+            push(@{$clans{"$the_foo:" . lc($rr)}}, $clan_idx);
+          }
+        }
+      }
+    }
+  }
+
+  return (\%players, \%clans);
+}
+
+
 
 #=============================================================================
 

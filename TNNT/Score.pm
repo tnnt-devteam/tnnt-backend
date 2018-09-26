@@ -300,6 +300,15 @@ sub export
     $d{'trophies'}{'clans'}{'gimpossible'} = $achieve_gi->clans();
   }
 
+  # Great/Lesser Foo
+
+  my $greatfoo = $tr->get_tracker_by_name('greatfoo');
+
+  (
+    $d{'trophies'}{'players'}{'greatfoo'},
+    $d{'trophies'}{'clans'}{'greatfoo'}
+  ) = $greatfoo->export();
+
   #--- finish
 
   return \%d;
