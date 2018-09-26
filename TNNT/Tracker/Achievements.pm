@@ -8,6 +8,7 @@ package TNNT::Tracker::Achievements;
 
 use Moo;
 use TNNT::ScoringEntry;
+use TNNT::Config;
 
 
 
@@ -20,11 +21,39 @@ has name => (
   default => 'achievements',
 );
 
+has players_track => (
+  is => 'ro',
+  default => sub { [] },
+);
+
+has clans_track => (
+  is => 'ro',
+  default => sub { [] },
+);
+
+has total_ach_number => (
+  is => 'ro',
+  builder => 1,
+);
+
 
 
 #=============================================================================
 #=== METHODS =================================================================
 #=============================================================================
+
+#-----------------------------------------------------------------------------
+# Builder for total_ach_number attribute.
+#-----------------------------------------------------------------------------
+
+sub _build_total_ach_number
+{
+  my ($self) = @_;
+  my $cfg = TNNT::Config->instance()->config();
+
+  return scalar(keys %{$cfg->{'achievements'}});
+}
+
 
 #-----------------------------------------------------------------------------
 # Process a single game
@@ -49,6 +78,18 @@ sub add_game
         game => [ $game ],
       ));
 
+      # check if all achievements were attained and create a scoring entry
+      # and mark the player
+
+      if(@{$player->achievements()} == $self->total_ach_number()) {
+        $player->add_score(TNNT::ScoringEntry->new(
+          trophy => 'allachieve',
+          when => $game->endtime(),
+          game => [ $game ],
+          points => $self->total_ach_number(),
+        ));
+        push(@{$self->players_track()}, $player->name());
+      }
     }
 
   #--- clans
@@ -61,6 +102,19 @@ sub add_game
         when => $game->endtime(),
         game => [ $game ],
       ));
+
+      # check if all achievements were attained and create a scoring entry
+      # and mark the clan
+
+      if(@{$clan->achievements()} == $self->total_ach_number()) {
+        $clan->add_score(TNNT::ScoringEntry->new(
+          trophy => 'clan-allachieve',
+          when => $game->endtime(),
+          game => [ $game ],
+          points => $self->total_ach_number(),
+        ));
+        push(@{$self->clans_track()}, $clan->n());
+      }
     }
 
   }

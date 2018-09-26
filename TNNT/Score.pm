@@ -276,6 +276,18 @@ sub export
     }
   }
 
+  # All Achievements
+
+  my $achieve_tr = $tr->get_tracker_by_name('achievements');
+
+  if(@{$achieve_tr->players_track()}) {
+    $d{'trophies'}{'players'}{'allachieve'} = $achieve_tr->players_track();
+  }
+
+  if(@{$achieve_tr->clans_track()}) {
+    $d{'trophies'}{'clans'}{'allachieve'} = $achieve_tr->clans_track();
+  }
+
   #--- finish
 
   return \%d;

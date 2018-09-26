@@ -229,6 +229,25 @@
       </td>
     </tr>
 
+    [%# === ALL ACHIEVEMENTS ============================================== %]
+
+    <tr>
+      <td class="trophy-name">All Achievements</td>
+      <td class="trophy-multi">[% IF trophies.players.exists('allachieve') %]
+          [% FOREACH plr IN trophies.players.allachieve %]
+            [% plink(plr) %]
+          [% END %]
+        [% END %]
+      </td>
+      <td class="trophy-multi">
+      [% IF trophies.clans.exists('allachieve') %]
+          [% FOREACH cln IN trophies.clans.allachieve %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        [% END %]
+      </td>
+    </tr>
+
   </tbody>
 </table>
 

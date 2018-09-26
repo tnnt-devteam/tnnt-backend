@@ -463,6 +463,14 @@
       "points" : 200,
     },
 
+    "allachieve" : {
+      "title" : "All Achievements",
+    },
+
+    "clan-allachieve" : {
+      "title" : "All Achievements",
+    },
+
     #--- great race/role -----------------------------------------------------
 
     "greatrace:orc" : {
