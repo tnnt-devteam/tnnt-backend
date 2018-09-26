@@ -216,7 +216,7 @@ sub add_game
       ),
 
       'conducts' => TNNT::Tracker::MultiSet->new_sets(
-        conduct => $cfg->{'conducts'}{'order'},
+        conduct => $cfg->{'conducts'}{'all'},
         sub {
           $player->add_score(
             TNNT::ScoringEntry->new(
@@ -242,6 +242,8 @@ sub add_game
       ),
 
     };
+
+    $ptrack->{'conducts'}->mode('loose');
   }
 
   #--- perform the tracking

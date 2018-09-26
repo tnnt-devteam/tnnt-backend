@@ -812,6 +812,13 @@
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
       "elbe", "illi", "paci", "food", "zen", "nude",
     ],
+
+    # this defines what counts as "all conducts"
+
+    "all" : [
+      "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
+      "illi", "paci", "food",
+    ],
   },
 
   #---------------------------------------------------------------------------
