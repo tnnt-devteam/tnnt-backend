@@ -236,7 +236,7 @@
     <tfoot>
       <tr class="overline">
         <td colspan=3 class="total">
-          [% plr.scores.size %] entrie[% IF plr.scores.size > 1 %]s[% END %]
+          [% plr.scores.size %] entr[% IF plr.scores.size == 1 %]y[% ELSE %]ies[% END %]
         </td>
         <td class="num">[% plr.score %]</td>
       </tr>

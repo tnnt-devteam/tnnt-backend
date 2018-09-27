@@ -302,7 +302,7 @@
     <tfoot>
       <tr class="overline">
         <td colspan=3 class="total">
-          [% cln.scores.size %] entrie[% IF cln.scores.size > 1 %]s[% END %]
+          [% cln.scores.size %] entr[% IF cln.scores.size == 1 %]y[% ELSE %]ies[% END %]
         </td>
         <td class="num">[% cln.score %]</td>
       </tr>
