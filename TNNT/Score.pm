@@ -316,6 +316,13 @@ sub export
     $d{'trophies'}{'clans'}{'uniquedeaths'} = $uqdeath_tr->topclan()->n();
   }
 
+  # Most Unique Ascensions
+
+  my $uniqascs_tr = $tr->get_tracker_by_name('clan-uniqascs');
+  if(defined $uniqascs_tr->topclan()) {
+    $d{'trophies'}{'clans'}{'uniqascs'} = $uniqascs_tr->topclan()->n();
+  }
+
   #--- finish
 
   return \%d;
