@@ -62,6 +62,11 @@
   </tr>
 
   <tr>
+    <td>unique deaths</td>
+    <td class="num">[% cln.unique_deaths.size %]</td>
+  </tr>
+
+  <tr>
     <td>score</td>
     <td class="num">[% cln.score %]</td>
   </tr>
@@ -214,6 +219,46 @@
     </div>
 
 </div>
+
+[%# =======================================================================
+    === UNIQUE DEATHS =====================================================
+    ======================================================================= %]
+
+[% IF cln.unique_deaths.size %]
+
+  <h2>Unique Deaths</h2>
+
+  <table>
+
+    <thead>
+      <tr class="framed">
+        <th>date</th>
+        <th>player</th>
+        <th>death reason</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      [% FOREACH de IN cln.unique_deaths %]
+        <tr>
+          <td>[% games.all.item(de.1).endtime %]</td>
+          <td>[% games.all.item(de.1).name %]</td>
+          <td>[% de.0 %]</td>
+        </tr>
+      [% END %]
+    </tbody>
+
+    <tfoot>
+      <tr class="overline">
+        <td colspan=3 class="total">
+          [% cln.unique_deaths.size %] unique death[% IF cln.unique_deaths.size > 1 %]s[% END %]
+        </td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+[% END %]
 
 [%# =======================================================================
     === SCORING LOG =======================================================

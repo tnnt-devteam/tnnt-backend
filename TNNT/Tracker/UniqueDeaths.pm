@@ -118,6 +118,7 @@ sub add_game
 
   if(!exists $ctrk->{$death}) {
     $ctrk->{$death} = $game;
+    push(@{$clan->unique_deaths()}, [ $death, $game ]);
 
     # the first clan game
     if(!$self->topclan()) {

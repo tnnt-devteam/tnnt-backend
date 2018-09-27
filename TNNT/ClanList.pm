@@ -175,6 +175,9 @@ sub export
       ascs         => $clan->export_ascensions(),
       achievements => $clan->achievements(),
       scorelog     => $clan->export_scores(),
+      unique_deaths => [
+        map { [ $_->[0], $_->[1]->n() ] } @{$clan->unique_deaths()}
+      ],
     };
 
     # ascension ratio
@@ -239,7 +242,6 @@ sub export
   for(my $i = 0; $i < @clans_by_score; $i++) {
     $clans[$clans_by_score[$i]]{'rank'} = $i + 1;
   }
-
 
   #--- finish
 
