@@ -323,6 +323,13 @@ sub export
     $d{'trophies'}{'clans'}{'uniqascs'} = $uniqascs_tr->topclan()->n();
   }
 
+  # Most Games Over 1000 turns
+
+  my $mostgames_tr = $tr->get_tracker_by_name('clan-mostgames');
+  if(defined $mostgames_tr->topclan()) {
+    $d{'trophies'}{'clans'}{'mostgames'} = $mostgames_tr->topclan()->n();
+  }
+
   #--- finish
 
   return \%d;

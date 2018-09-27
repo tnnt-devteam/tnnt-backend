@@ -291,6 +291,17 @@
       </td>
     </tr>
 
+    [%# === MOST GAMES OVER 1000 TURNS ==================================== %]
+
+    <tr>
+      <td class="trophy-name">Most Games</td>
+      <td class="trophy-na">N/A</td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('mostgames');
+             clink(clans.all.item(trophies.clans.mostgames));
+        END %]
+      </td>
+    </tr>
 
     [%# === GREATER/LESSER FOO ============================================ %]
 

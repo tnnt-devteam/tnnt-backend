@@ -199,6 +199,7 @@ sub export
     my @trophy_names = qw(
       firstasc mostascs mostcond lowscore highscore minturns gimpossible
       maxstreak allroles allraces allaligns allgenders allconducts allachieve
+      mostgames
     );
 
     for my $race (qw(hum elf dwa gno orc)) {
