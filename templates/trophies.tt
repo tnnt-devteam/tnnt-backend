@@ -271,7 +271,7 @@
 
     [% FOREACH gl IN ['great', 'lesser'] %]
       [% FOREACH rr IN ['race', 'role'] %]
-        [% FOREACH cat IN config.nethack.item(gl _ rr).keys.sort %]
+        [% FOREACH cat IN config.nethack.item('great' _ rr).keys.sort %]
           <tr>
             <td class="trophy-name">
               [% config.trophies.item(gl _ rr _ ':' _ cat.lower).title %]
