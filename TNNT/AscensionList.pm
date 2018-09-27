@@ -83,17 +83,19 @@ sub last_ascension
 
 
 #-----------------------------------------------------------------------------
-# Return export data
+# Return export data, filterable with a callback.
 #-----------------------------------------------------------------------------
 
 sub export_ascensions
 {
-  my ($self) = @_;
+  my ($self, $cb) = @_;
   my $c = $self->count_ascensions();
   my @d;
 
   for(my $i = 0; $i < $c; $i++) {
-    $d[$i] = $self->ascensions()->[$i]->n();
+    if(!$cb || ($cb && $cb->($self->ascensions()->[$i]))) {
+      push(@d, $self->ascensions()->[$i]->n());
+    }
   }
 
   return \@d;

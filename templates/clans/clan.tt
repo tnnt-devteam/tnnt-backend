@@ -50,6 +50,11 @@
   </tr>
 
   <tr>
+    <td>unique ascensions</td>
+    <td class="num">[% cln.unique_ascs.size || 0 %]</td>
+  </tr>
+
+  <tr>
     <td>ascension ratio</td>
     <td class="num">
       [% IF cln.exists('ratio'); cln.ratio _ "%"; ELSE; "N/A"; END %]

@@ -178,6 +178,9 @@ sub export
       unique_deaths => [
         map { [ $_->[0], $_->[1]->n() ] } @{$clan->unique_deaths()}
       ],
+      unique_ascs  => $clan->export_ascensions(sub {
+        $_[0]->clan_unique();
+      }),
     };
 
     # ascension ratio
