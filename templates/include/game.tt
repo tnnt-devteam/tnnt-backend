@@ -1,3 +1,13 @@
+[%#
+  This include accepts following parameters:
+
+  head  ... output only table heading
+  aswon ... display this with conducts information, if not set, only
+            death message is shown as conducts are not relevant for non-
+            winning games
+  markuniq  mark clan-unique ascensions
+-%]
+
 [% IF head; #============================================================== %]
 
   <tr class="[% class %]">
