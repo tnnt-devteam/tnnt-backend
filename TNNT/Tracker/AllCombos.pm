@@ -28,6 +28,16 @@ has _clantrk => (
   default => sub { {} },
 );
 
+has masters => (
+  is => 'ro',
+  default => sub { [] },
+);
+
+has dominators => (
+  is => 'ro',
+  default => sub { [] },
+);
+
 
 
 #=============================================================================
@@ -58,6 +68,7 @@ sub add_game
             trophy => 'clan-allcombos',
             when => $game->endtime(),
           ));
+          push(@{$self->masters()}, $clan->n());
         }
       ),
 
@@ -70,6 +81,7 @@ sub add_game
             trophy => 'clan-allcomcon',
             when => $game->endtime(),
           ));
+          push(@{$self->dominators()}, $clan->n());
         }
       ),
 

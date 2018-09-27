@@ -303,6 +303,46 @@
       </td>
     </tr>
 
+    [%# === NETHACK MASTER ================================================ %]
+
+    <tr>
+      <td class="trophy-name">NetHack Master</td>
+      <td class="trophy-na">N/A</td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('master');
+          FOREACH cln IN trophies.clans.master;
+            clink(clans.all.item(cln));
+          END;
+        END %]
+      </td>
+    </tr>
+
+    [%# === NETHACK DOMINATOR ============================================= %]
+
+    <tr>
+      <td class="trophy-name">NetHack Dominator</td>
+      <td class="trophy-na">N/A</td>
+      <td class="trophy-multi">
+        [% IF trophies.clans.exists('dominator');
+          FOREACH cln IN trophies.clans.dominator;
+            clink(clans.all.item(cln));
+          END;
+        END %]
+      </td>
+    </tr>
+
+    [%# === MEDUSA CUP ==================================================== %]
+
+    <tr>
+      <td class="trophy-name">Medusa Cup</td>
+      <td class="trophy-na">N/A</td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('medusacup');
+          clink(clans.all.item(trophies.clans.medusacup));
+        END %]
+      </td>
+    </tr>
+
     [%# === GREATER/LESSER FOO ============================================ %]
 
     [% FOREACH gl IN ['great', 'lesser'] %]

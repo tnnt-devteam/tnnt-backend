@@ -330,6 +330,19 @@ sub export
     $d{'trophies'}{'clans'}{'mostgames'} = $mostgames_tr->topclan()->n();
   }
 
+  # Master and Dominator
+  
+  my $allcombos_tr = $tr->get_tracker_by_name('clan-allcombos');
+  $d{'trophies'}{'clans'}{'master'} = $allcombos_tr->masters();
+  $d{'trophies'}{'clans'}{'dominator'} = $allcombos_tr->dominators();
+  
+  # Medusa Cup
+  
+  my $medusacup_tr = $tr->get_tracker_by_name('clan-medusacup');
+  if(defined $medusacup_tr->topclan()) {
+    $d{'trophies'}{'clans'}{'medusacup'} = $medusacup_tr->topclan()->n();
+  }
+  
   #--- finish
 
   return \%d;
