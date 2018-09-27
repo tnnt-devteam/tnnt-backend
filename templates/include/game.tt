@@ -34,6 +34,9 @@
   <td>[% plink(row.name) %]</td>
   <td class="nowrap">
     [% row.role %]-[% row.race %]-[% row.gender %]-[% row.align %]
+    [% IF markuniq %]
+      <span class="clan-unique">[% IF row.clan_unique; '·'; END %]</span>
+    [% END %]
   </td>
   <td class="num">[% number(row.turns) %]</td>
   <td class="num">

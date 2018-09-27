@@ -81,6 +81,7 @@ sub add_game
 
   if(!exists $trk->{$clan}{$addr}) {
     $trk->{$clan}{$addr} = 1;
+    $game->clan_unique(1);
   } else {
     $trk->{$clan}{$addr}++;
   }

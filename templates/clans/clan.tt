@@ -157,7 +157,7 @@
       <tbody>
         [% SET i = cln.ascs.size %]
         [% FOREACH game IN cln.ascs.reverse %]
-          [% INCLUDE game.tt aswon=1 %]
+          [% INCLUDE game.tt aswon=1 markuniq=1 %]
           [% SET i = i - 1 %]
         [% END %]
       </tbody>
@@ -173,7 +173,7 @@
       [% SET i = cln.games.size; SET cnt = 10; %]
       [% IF i %]
         [% FOREACH game IN cln.games.reverse %]
-          [% INCLUDE game.tt %]
+          [% INCLUDE game.tt markuniq=1 %]
           [% SET i = i - 1 %]
           [% SET cnt = cnt - 1; LAST IF cnt == 0 %]
         [% END %]

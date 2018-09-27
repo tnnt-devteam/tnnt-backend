@@ -66,9 +66,14 @@ div.row {
   flex-direction: row;
 }
 
-
 .align-top {
   vertical-align: top;
+}
+
+/* marker for clan-unique games */
+
+span.clan-unique {
+  color: #aaa;
 }
 
 /*====================================================================

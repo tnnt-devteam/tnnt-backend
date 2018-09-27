@@ -95,6 +95,12 @@ has src => (
   required => 1,
 );
 
+# clan unique flag
+
+has clan_unique => (
+  is => 'rw',
+);
+
 
 
 #=============================================================================
@@ -339,6 +345,7 @@ sub export
     maxhp        => $self->maxhp(),
     achievements => $self->achievements(),
     src          => $self->src(),
+    clan_unique  => $self->clan_unique(),
   );
 
   if($self->is_ascended()) {
