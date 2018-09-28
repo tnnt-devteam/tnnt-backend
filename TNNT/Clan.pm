@@ -22,6 +22,11 @@ has name => (
   required => 1,
 );
 
+has n => (
+  is => 'ro',
+  required => 1,
+);
+
 has players => (
   is => 'rw',
   default => sub { []; }
@@ -33,6 +38,11 @@ has admins => (
 );
 
 has achievements => (
+  is => 'ro',
+  default => sub { []; }
+);
+
+has unique_deaths => (
   is => 'ro',
   default => sub { []; }
 );
@@ -102,6 +112,7 @@ sub is_admin
 sub add_game
 {
 }
+
 
 
 #=============================================================================

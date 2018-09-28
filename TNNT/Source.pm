@@ -19,6 +19,13 @@ use Moo;
 #=== ATTRIBUTES ==============================================================
 #=============================================================================
 
+#--- source name tag
+
+has name => (
+  is => 'ro',
+  required => 1,
+);
+
 #--- source xlogfile
 
 has logfile => (
@@ -115,7 +122,7 @@ sub read
     while(my $l = <$fh>) {
       chomp($l);
       my $row = $self->_parse_xlogfile_row($l);
-      my $game = new TNNT::Game(%$row);
+      my $game = new TNNT::Game(%$row, src => $self->name());
       $cb->($game);
       $lines++;
     }

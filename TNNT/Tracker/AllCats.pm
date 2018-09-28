@@ -1,4 +1,4 @@
-#!/usr/bin/env perl
+# #!/usr/bin/env perl
 
 #=============================================================================
 # Tracker for the "All Roles/Races/Genders/Alignments/Conducts"
@@ -36,6 +36,32 @@ has player_track => (
 has clan_track => (
   is => 'rwp',
   default => sub { {} },
+);
+
+# this tracks players who attained one or more trophies
+
+has players => (
+  is => 'ro',
+  default => sub { {
+    allroles    => [],
+    allraces    => [],
+    allgenders  => [],
+    allaligns   => [],
+    allconducts => [],
+  } },
+);
+
+# this tracks clans who attained one or more trophies
+
+has clans => (
+  is => 'ro',
+  default => sub { {
+    allroles    => [],
+    allraces    => [],
+    allgenders  => [],
+    allaligns   => [],
+    allconducts => [],
+  } },
 );
 
 
@@ -76,8 +102,7 @@ sub add_game
   #--- get more info
 
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player);
+  my $clan = $player->clan();
 
   #--- if the player is not yet tracked, create the tracking structure
 
@@ -92,9 +117,10 @@ sub add_game
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allroles',
-              when => $game->endtime(),
+              when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allroles'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'roles'}
           ) {
@@ -102,10 +128,11 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allroles',
-                when => $game->endtime(),
+                when => $_[0]->endtime(),
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allroles'}}, $clan);
           }
         }
       ),
@@ -116,9 +143,10 @@ sub add_game
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allraces',
-              when => $game->endtime(),
+              when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allraces'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'races'}
           ) {
@@ -126,10 +154,11 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allraces',
-                when => $game->endtime(),
+                when => $_[0]->endtime(),
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allraces'}}, $clan);
           }
         }
       ),
@@ -140,9 +169,10 @@ sub add_game
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allgenders',
-              when => $game->endtime(),
+              when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allgenders'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'genders'}
           ) {
@@ -150,10 +180,11 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allgenders',
-                when => $game->endtime(),
+                when => $_[0]->endtime(),
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allgenders'}}, $clan);
           }
         }
       ),
@@ -164,9 +195,10 @@ sub add_game
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allaligns',
-              when => $game->endtime(),
+              when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allaligns'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'aligns'}
           ) {
@@ -174,23 +206,25 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allaligns',
-                when => $game->endtime(),
+                when => $_[0]->endtime(),
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allaligns'}}, $clan);
           }
         }
       ),
 
       'conducts' => TNNT::Tracker::MultiSet->new_sets(
-        conduct => $cfg->{'conducts'}{'order'},
+        conduct => $cfg->{'conducts'}{'all'},
         sub {
           $player->add_score(
             TNNT::ScoringEntry->new(
               trophy => 'allconducts',
-              when => $game->endtime(),
+              when => $_[0]->endtime(),
             )
           );
+          push(@{$self->players()->{'allconducts'}}, $player);
           if(
             $clan && !exists $self->clan_track()->{$clan->name()}{'conducts'}
           ) {
@@ -198,24 +232,27 @@ sub add_game
             $clan->add_score(
               TNNT::ScoringEntry->new(
                 trophy => 'clan-allconducts',
-                when => $game->endtime(),
+                when => $_[0]->endtime(),
                 data => { player => $game->name() },
               )
             );
+            push(@{$self->clans()->{'allconducts'}}, $clan);
           }
         }
       ),
 
     };
+
+    $ptrack->{'conducts'}->mode('loose');
   }
 
   #--- perform the tracking
 
-  $ptrack->{'roles'}->track(role => $game->role());
-  $ptrack->{'races'}->track(race => $game->race());
-  $ptrack->{'genders'}->track(gender => $game->gender0());
-  $ptrack->{'aligns'}->track(align => $game->align0());
-  $ptrack->{'conducts'}->track(conduct => [ $game->conducts() ]);
+  $ptrack->{'roles'}->track(role => $game->role(), $game);
+  $ptrack->{'races'}->track(race => $game->race(), $game);
+  $ptrack->{'genders'}->track(gender => $game->gender0(), $game);
+  $ptrack->{'aligns'}->track(align => $game->align0(), $game);
+  $ptrack->{'conducts'}->track(conduct => [ $game->conducts() ], $game);
 
   #--- finish
 

@@ -1,5 +1,26 @@
 {
   #---------------------------------------------------------------------------
+  #--- Source xlogfiles ------------------------------------------------------
+  #---------------------------------------------------------------------------
+
+  "sources": {
+    "dev" : {
+      "xlogfile" : "xlogfile",
+      "display" :  "Development server",
+    },
+  },
+
+  #---------------------------------------------------------------------------
+  #-- Templates configuration ------------------------------------------------
+  #---------------------------------------------------------------------------
+
+  "templates"  : {
+    "include"  : "templates/include",
+    "path"     : "templates",
+    "html"     : "www",
+  },
+
+  #---------------------------------------------------------------------------
   #--- Clan database file ----------------------------------------------------
   #---------------------------------------------------------------------------
 
@@ -442,6 +463,14 @@
       "points" : 200,
     },
 
+    "allachieve" : {
+      "title" : "All Achievements",
+    },
+
+    "clan-allachieve" : {
+      "title" : "All Achievements",
+    },
+
     #--- great race/role -----------------------------------------------------
 
     "greatrace:orc" : {
@@ -782,6 +811,13 @@
     "order" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
       "elbe", "illi", "paci", "food", "zen", "nude",
+    ],
+
+    # this defines what counts as "all conducts"
+
+    "all" : [
+      "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
+      "illi", "paci", "food",
     ],
   },
 
@@ -1302,7 +1338,7 @@
     "allfood" : {
       "tnntachieve1" : "0x200",
       "title"        : "Smorgasbord",
-      "descr"        : "Eat very type of food in the game"
+      "descr"        : "Eat every type of food in the game"
     },
 
     "refilllamp" : {
@@ -1404,7 +1440,7 @@
     "catlady" : {
       "tnntachieve1" : "0x4000000",
       "title"        : "Cat Lady",
-      "descr"        : "Tame seven \"f\" in the course of one game"
+      "descr"        : "Tame seven “f” in the course of one game"
     },
 
     "schroedinger" : {
@@ -1733,7 +1769,7 @@
 
     "crysball": {
       "tnntachieve2" : "0x20000",
-      "title"        : "Palantir",
+      "title"        : "Palantír",
       "descr"        : "Successfully apply a crystal ball"
     },
 

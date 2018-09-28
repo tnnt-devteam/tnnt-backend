@@ -77,10 +77,7 @@ sub clan
 
   return if !$player;
 
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player);
-
-  return $clan;
+  return $player->clan();
 }
 
 
@@ -121,7 +118,8 @@ sub add_game
 
 #=============================================================================
 # Create player scoring entry for a streak and as a side-effect also track
-# the longest streak trophy (FIXME: This is not very elegant)
+# the longest streak trophy (FIXME: This is not very elegant) and add the
+# streak to Player instances for easy access.
 #=============================================================================
 
 sub score
@@ -178,6 +176,14 @@ sub score
     }
 
   }
+
+  #--- add streak to Player instance
+
+  my $player = $streak->last_game()->player();
+  push(
+    @{$player->streaks()},
+    $streak
+  );
 
   #--- create the scoring entry
 

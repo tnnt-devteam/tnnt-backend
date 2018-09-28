@@ -66,8 +66,7 @@ sub add_game
   #--- initialize variables we're going to use
 
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($game->player());
+  my $clan = $player->clan();
   my $cfg = TNNT::Config->instance()->config();
 
   #--- initialize player tracking
@@ -97,22 +96,22 @@ sub add_game
               # score player
               $player->add_score(TNNT::ScoringEntry->new(
                 trophy => $the_foo . ':' . lc($rr),
-                game => [ $game ],
-                when => $game->endtime()
+                game => [ $_[0] ],
+                when => $_[0]->endtime()
               ));
               # score player's clan
               if(
                 $clan
                 &&
-                !exists $self->_clan_track()->{$clan->{'name'}}{$the_foo}{$rr}
+                !exists $self->_clan_track()->{$clan->n()}{$the_foo}{$rr}
               ) {
                 $clan->add_score(TNNT::ScoringEntry->new(
                   trophy => 'clan-' . $the_foo . ':' . lc($rr),
-                  game => [ $game ],
-                  when => $game->endtime(),
+                  game => [ $_[0] ],
+                  when => $_[0]->endtime(),
                   data => { player_name => $player->name() }
                 ));
-                $self->_clan_track()->{$clan->{'name'}}{$the_foo}{$rr} = $game;
+                $self->_clan_track()->{$clan->n()}{$the_foo}{$rr} = $game;
               }
             }
           );
@@ -157,7 +156,8 @@ sub add_game
             $game->role(),
             $game->race(),
             (($game->role() eq 'Mon' && $foo eq 'race') ? '*' : $game->align0())
-          )
+          ),
+          $game
         );
 
       }
@@ -173,6 +173,55 @@ sub add_game
 
 sub finish
 {
+}
+
+
+#-----------------------------------------------------------------------------
+# Coalesce and export trophy data
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+  my $cfg = TNNT::Config->instance()->config();
+
+  #--- players
+
+  my %players;
+
+  foreach my $player_name (keys %{$self->_player_track()}) {
+    my $ptrk = $self->_player_track()->{$player_name};
+    for my $the ('great', 'lesser' ) {
+      for my $foo ('race', 'role') {
+        my $the_foo = "$the$foo";
+        for my $rr (keys %{$cfg->{'nethack'}{"great$foo"}}) {
+          if($ptrk->{$the_foo}{$rr}->track()) {
+            push(@{$players{"$the_foo:" . lc($rr)}}, $player_name);
+          }
+        }
+      }
+    }
+  }
+
+  #--- clans
+
+  my %clans;
+
+  foreach my $clan_idx (keys %{$self->_clan_track()}) {
+    my $ctrk = $self->_clan_track()->{$clan_idx};
+    for my $the ('great', 'lesser' ) {
+      for my $foo ('race', 'role') {
+        my $the_foo = "$the$foo";
+        for my $rr (keys %{$cfg->{'nethack'}{"great$foo"}}) {
+          if(exists $ctrk->{$the_foo}{$rr}) {
+            push(@{$clans{"$the_foo:" . lc($rr)}}, $clan_idx);
+          }
+        }
+      }
+    }
+  }
+
+  return (\%players, \%clans);
 }
 
 

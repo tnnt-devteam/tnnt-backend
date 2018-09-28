@@ -34,6 +34,20 @@ has _clantrk => (
   default => sub { {} },
 );
 
+# players who have achieved this trophy
+
+has players => (
+  is => 'ro',
+  default => sub { [] },
+);
+
+# clans who have achieved this trophy
+
+has clans => (
+  is => 'ro',
+  default => sub { [] },
+);
+
 
 
 #=============================================================================
@@ -43,8 +57,7 @@ has _clantrk => (
 sub add_game
 {
   my ($self, $game) = @_;
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($game->player());
+  my $clan = $game->player()->clan();
   my $trk = $self->_clantrk();
   my $cfg = TNNT::Config->instance()->config();
 
@@ -64,6 +77,7 @@ sub add_game
         game => [ $game ],
         when => $game->endtime(),
       ));
+      push(@{$self->players()}, $game->player()->name());
     }
 
     # clan scoring
@@ -74,6 +88,7 @@ sub add_game
         game => [ $game ],
         when => $game->endtime(),
       ));
+      push(@{$self->clans()}, $clan->n());
     }
 
   }

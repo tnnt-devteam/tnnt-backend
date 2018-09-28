@@ -67,11 +67,12 @@ sub _load_clans
   #--- read the clan info from the database
 
   my %clans;
+  my $i = 0;
 
   while(my $h = $sth->fetchrow_hashref()) {
     my $clan = $h->{'clan'};
     if(!exists $clans{$clan}) {
-      $clans{$clan} = new TNNT::Clan(name => $clan);
+      $clans{$clan} = new TNNT::Clan(name => $clan, n => $i++);
     }
     $clans{$clan}->add_player(
       $h->{'name'},
@@ -140,6 +141,118 @@ sub add_game
   $clan->add_game($game);
 
   return ($self, $game);
+}
+
+
+#-----------------------------------------------------------------------------
+# Export clan data
+#
+# NOTE/FIXME: We have decided that the clans will be exposed to the templates
+# in a list, not hash. Ie. clan is identified not by its name, but by its
+# index in the list. This makes it inconsistent with how players are presented
+# and makes it somwhat awkward. The intention was to prevent users putting
+# arbitrary strings into URLs.
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+  my (@clans, @clans_by_score);
+
+  #--- produce list of clans with full information
+
+  foreach my $clan_name (keys %{$self->clans()}) {
+    my $clan = $self->clans()->{$clan_name};
+    my $i = $clan->n();
+    $clans[$i] = {
+      n            => $i,
+      name         => $clan->name(),
+      players      => $clan->players(),
+      admins       => $clan->admins(),
+      score        => $clan->sum_score(),
+      scores       => $clan->export_scores(),
+      games        => $clan->export_games(),
+      ascs         => $clan->export_ascensions(),
+      achievements => $clan->achievements(),
+      scorelog     => $clan->export_scores(),
+      unique_deaths => [
+        map { [ $_->[0], $_->[1]->n() ] } @{$clan->unique_deaths()}
+      ],
+      unique_ascs  => $clan->export_ascensions(sub {
+        $_[0]->clan_unique();
+      }),
+    };
+
+    # ascension ratio
+
+    if($clan->count_ascensions()) {
+      $clans[$i]{'ratio'} = sprintf("%3.1f",
+        $clan->count_ascensions() / $clan->count_games() * 100
+      )
+    }
+
+    # trophies (selected trophies for showcasing on the player page)
+
+    my @trophies;
+    my $cfg = TNNT::Config->instance()->config();
+
+    my @trophy_names = qw(
+      firstasc mostascs mostcond lowscore highscore minturns gimpossible
+      maxstreak allroles allraces allaligns allgenders allconducts allachieve
+      mostgames
+    );
+
+    for my $race (qw(hum elf dwa gno orc)) {
+      push(@trophy_names, "greatrace:$race", "lesserrace:$race");
+    }
+
+    for my $role (qw(arc bar cav hea mon pri ran rog val wiz)) {
+      push(@trophy_names, "greatrace:$role", "lesserrace:$role");
+    }
+
+    for my $trophy (@trophy_names) {
+      if(my $s = $clan->get_score("clan-$trophy")) {
+        push(@trophies, {
+          'trophy' => $trophy,
+          'title'  => $cfg->{'trophies'}{"clan-$trophy"}{'title'},
+          'when'   => $s->_format_when(),
+        });
+      }
+    }
+
+    $clans[$i]{'trophies'} = \@trophies if @trophies;
+
+  }
+
+  #--- produce list of clan indices ordered by score
+
+  @clans_by_score =
+
+  map { $_->{'n'} }
+  sort {
+    if($b->{'score'} == $a->{'score'}) {
+      if(scalar @{$b->{'ascs'}} == scalar @{$a->{'ascs'}}) {
+        return @{$b->{'achievements'}} <=> scalar @{$a->{'achievements'}}
+      } else {
+        return scalar @{$b->{'ascs'}} <=> scalar @{$a->{'ascs'}}
+      }
+    } else {
+      return $b->{'score'} <=> $a->{'score'}
+    }
+  } @clans;
+
+  #--- get clans' rank
+
+  for(my $i = 0; $i < @clans_by_score; $i++) {
+    $clans[$clans_by_score[$i]]{'rank'} = $i + 1;
+  }
+
+  #--- finish
+
+  return {
+    all => \@clans,
+    ordered => \@clans_by_score,
+  };
 }
 
 

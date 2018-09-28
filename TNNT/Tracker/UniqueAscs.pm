@@ -51,8 +51,7 @@ sub add_game
 {
   my ($self, $game) = @_;
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player);
+  my $clan = $player->clan();
   my $trk = $self->_clantrk();
 
   #--- only ascended clan games
@@ -82,6 +81,7 @@ sub add_game
 
   if(!exists $trk->{$clan}{$addr}) {
     $trk->{$clan}{$addr} = 1;
+    $game->clan_unique(1);
   } else {
     $trk->{$clan}{$addr}++;
   }

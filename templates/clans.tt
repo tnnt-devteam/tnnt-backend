@@ -1,0 +1,88 @@
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::Clans</title>
+  <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+
+<body>
+
+<h1>Clans</h1>
+
+<table>
+
+  <thead>
+    <tr class="framed">
+      <th></th>
+      <th>clan</th>
+      <th>score</th>
+      <th>wins</th>
+      <th>achieve</th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    [% IF clans.all.size %]
+      [% SET i = 1; FOREACH clan_idx IN clans.ordered; %]
+        [% SET clan = clans.all.item(clan_idx) %]
+
+        <tr>
+
+          [%# === rank ==================================================== %]
+
+          <td class="num">[% i; SET i = i + 1 %]</td>
+
+          [%# === clan name / members ===================================== %]
+
+          <td>
+            <span class="clan">[% clink(clan) %]</span><br>
+
+            [% FOREACH plr IN clan.players.sort %]
+              [% IF clan.admins.grep(plr).size %]
+                <span class="plradmin">[% plink(plr) %]</span>
+              [% ELSE %]
+                [% plink(plr) %]
+              [% END %]
+            [% END %]
+            <span class="subinfo">[% clan.players.size %]
+            player[% IF clan.players.size > 1 %]s[% END %]</span>
+          </td>
+
+          [%# === clan score ============================================== %]
+
+          <td class="num">
+            <span class="clan">[% clan.score %]</span>
+          </td>
+
+          [%# === clan ascension count ==================================== %]
+
+          <td class="num">
+            <span class="clan">[% clan.ascs.size %]</span>
+          </td>
+
+          [%# === clan achievements count ================================= %]
+
+          <td class="num">
+            <span class="clan">[% clan.achievements.size %]</span>
+          </td>
+
+        </tr>
+      [% END %]
+
+    [% ELSE; #=== no clans exist yet ====================================== %]
+
+      <tr>
+        <td colspan=5 class="noclans">no clans exist at the moment</td>
+      </tr>
+
+    [% END %]
+  </tbody>
+</table>
+
+</body>
+
+</html>

@@ -6,6 +6,8 @@
 
 package TNNT::Game;
 
+use integer;
+
 use Moo;
 use TNNT::Config;
 
@@ -53,12 +55,17 @@ has achieve   => (
 
 has tnntachieve0 => (
   is => 'ro',
-  coerce => sub { hex($_[0]) },
+  coerce => sub { no warnings 'portable'; hex($_[0]) },
 );
 
 has tnntachieve1 => (
   is => 'ro',
-  coerce => sub { hex($_[0]) },
+  coerce => sub { no warnings 'portable'; hex($_[0]) },
+);
+
+has tnntachieve2 => (
+  is => 'ro',
+  coerce => sub { no warnings 'portable'; hex($_[0]) },
 );
 
 # reference to TNNT::Player object
@@ -73,6 +80,25 @@ has achievements => (
   is => 'ro',
   lazy => 1,
   builder => 1,
+);
+
+# index number
+
+has n => (
+  is => 'rw',
+);
+
+# source tag
+
+has src => (
+  is => 'ro',
+  required => 1,
+);
+
+# clan unique flag
+
+has clan_unique => (
+  is => 'rw',
 );
 
 
@@ -102,7 +128,8 @@ sub disp
   my ($self) = @_;
 
   printf(
-    "%-16s  %s-%s-%s-%s  %s  %6d turns  %8d points  %s\n",
+    "%4d  %-16s  %s-%s-%s-%s  %s  %6d turns  %8d points  %s\n",
+    $self->n(),
     $self->name(),
     $self->role(), $self->race(), $self->gender0(), $self->align0(),
     scalar(gmtime($self->endtime())),
@@ -171,12 +198,14 @@ sub conducts
 
 sub _build_achievements
 {
+  no warnings 'portable';
+
   my ($self) = @_;
   my $cfg = TNNT::Config->instance()->config()->{'achievements'};
 
   my @achievements;
 
-  for my $field (qw(achieve tnntachieve0 tnntachieve1)) {
+  for my $field (qw(achieve tnntachieve0 tnntachieve1 tnntachieve2)) {
     next if !$self->$field();
     my @found = grep {
       exists $cfg->{$_}{$field}
@@ -228,6 +257,102 @@ sub combo
     $self->gender0(),
     $self->align0()
   );
+}
+
+
+#-----------------------------------------------------------------------------
+# Format duration field into homan readable form
+#-----------------------------------------------------------------------------
+
+sub _format_duration
+{
+  my ($self) = @_;
+
+  my $realtime = $self->realtime();
+  my ($d, $h, $m, $s) = (0,0,0,0);
+  my $duration;
+
+  $d = $realtime / 86400;
+  $realtime %= 86400;
+
+  $h = $realtime / 3600;
+  $realtime %= 3600;
+
+  $m = $realtime / 60;
+  $realtime %= 60;
+
+  $s = $realtime;
+
+  $duration = sprintf("%s:%02s:%02s", $h, $m, $s);
+  if($d) {
+    $duration = sprintf("%s, %s:%02s:%02s", $d, $h, $m, $s);
+  }
+
+  return $duration;
+}
+
+
+#----------------------------------------------------------------------------
+# Format the endtime xlogfile fileds.
+#----------------------------------------------------------------------------
+
+sub _format_endtime
+{
+  my ($self) = @_;
+
+  my @t = gmtime($self->endtime());
+  return sprintf("%04d-%02d-%02d %02d:%02d", $t[5]+1900, $t[4]+1, $t[3], $t[2], $t[1]);
+}
+
+
+#----------------------------------------------------------------------------
+# Format the starttime xlogfile fileds.
+#----------------------------------------------------------------------------
+
+sub _format_starttime
+{
+  my ($self) = @_;
+
+  my @t = gmtime($self->starttime());
+  return sprintf("%04d-%02d-%02d %02d:%02d", $t[5]+1900, $t[4]+1, $t[3], $t[2], $t[1]);
+}
+
+
+#-----------------------------------------------------------------------------
+# Return export data.
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+
+  my %d = (
+    n            => $self->n(),
+    role         => $self->role(),
+    race         => $self->race(),
+    gender       => $self->gender0(),
+    align        => $self->align0(),
+    name         => $self->name(),
+    death        => $self->death(),
+    turns        => $self->turns(),
+    realtime     => $self->_format_duration(),
+    starttime    => $self->_format_starttime(),
+    endtime      => $self->_format_endtime(),
+    points       => $self->points(),
+    deathlev     => $self->deathlev(),
+    maxlvl       => $self->maxlvl(),
+    hp           => $self->hp(),
+    maxhp        => $self->maxhp(),
+    achievements => $self->achievements(),
+    src          => $self->src(),
+    clan_unique  => $self->clan_unique(),
+  );
+
+  if($self->is_ascended()) {
+    $d{'conducts'} = [ $self->conducts() ],
+  }
+
+  return \%d;
 }
 
 

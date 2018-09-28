@@ -12,6 +12,8 @@ package TNNT::Score;
 use Carp;
 use Moo;
 
+use TNNT::Config;
+
 with 'TNNT::GameList::AddGame';
 with 'TNNT::AscensionList';
 with 'TNNT::PlayerList';
@@ -135,9 +137,216 @@ sub process
 
   $tr->finish();
 
+  #--- assign index numbers to the games
+
+  $self->renumber();
+
   #--- set 'processed' attribute
 
   $self->_set_processed(1);
+}
+
+
+#-----------------------------------------------------------------------------
+# Return all scoring data in single structure.
+#-----------------------------------------------------------------------------
+
+sub export
+{
+  my ($self) = @_;
+  my $clans = TNNT::ClanList->instance();
+  my $cfg = TNNT::Config->instance();
+
+  my %d = (
+    config => $cfg->config(),
+    games => {
+      all => $self->export_games(1),
+      ascs => $self->export_ascensions(),
+    },
+    players => $self->export_players(),
+    clans => $clans->export(),
+  );
+
+  $d{'config'}{'achievements-ordered'} = $cfg->order_achievements();
+
+  #--- trophies
+
+  my $tr = $self->global_tracker();
+
+  # First Ascension
+
+  if(defined $tr->get_tracker_by_name('firstasc')->player()->name()) {
+    $d{'trophies'}{'players'}{'firstasc'}
+    = $tr->get_tracker_by_name('firstasc')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('firstasc')->clan()->n()) {
+    $d{'trophies'}{'clans'}{'firstasc'}
+    = $tr->get_tracker_by_name('firstasc')->clan()->n();
+  }
+
+  # Most Ascensions
+
+  if(defined $tr->get_tracker_by_name('mostasc')->player()) {
+    $d{'trophies'}{'players'}{'mostasc'}
+    = $tr->get_tracker_by_name('mostasc')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('mostasc')->clan()) {
+    $d{'trophies'}{'clans'}{'mostasc'}
+    = $tr->get_tracker_by_name('mostasc')->clan()->n();
+  }
+
+  # Lowest Turncount
+
+  if(defined $tr->get_tracker_by_name('minturns')->player()) {
+    $d{'trophies'}{'players'}{'minturns'}
+    = $tr->get_tracker_by_name('minturns')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('minturns')->clan()) {
+    $d{'trophies'}{'clans'}{'minturns'}
+    = $tr->get_tracker_by_name('minturns')->clan()->n();
+  }
+
+  # Most Conducts in single game
+
+  if(defined $tr->get_tracker_by_name('mostcond')->player()) {
+    $d{'trophies'}{'players'}{'mostcond'}
+    = $tr->get_tracker_by_name('mostcond')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('mostcond')->clan()) {
+    $d{'trophies'}{'clans'}{'mostcond'}
+    = $tr->get_tracker_by_name('mostcond')->clan()->n();
+  }
+
+  # Lowest Score
+
+  if(defined $tr->get_tracker_by_name('lowscore')->player()) {
+    $d{'trophies'}{'players'}{'lowscore'}
+    = $tr->get_tracker_by_name('lowscore')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('lowscore')->clan()) {
+    $d{'trophies'}{'clans'}{'lowscore'}
+    = $tr->get_tracker_by_name('lowscore')->clan()->n();
+  }
+
+  # Highest Score
+
+  if(defined $tr->get_tracker_by_name('highscore')->player()) {
+    $d{'trophies'}{'players'}{'highscore'}
+    = $tr->get_tracker_by_name('highscore')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('highscore')->clan()) {
+    $d{'trophies'}{'clans'}{'highscore'}
+    = $tr->get_tracker_by_name('highscore')->clan()->n();
+  }
+
+  # Longest Streak
+
+  my $maxstreak = $tr->get_tracker_by_name('streak')->maxstreak();
+
+  if(defined $maxstreak) {
+
+    $d{'trophies'}{'players'}{'maxstreak'}
+    = $maxstreak->last_game()->player()->name();
+
+    if(defined $maxstreak->last_game()->player()->clan()) {
+      $d{'trophies'}{'clans'}{'maxstreak'}
+      = $maxstreak->last_game()->player()->clan()->n()
+    }
+  }
+
+  # All Roles/Races/Genders/Alignments/Conducts
+
+  my $allcats = $tr->get_tracker_by_name('allcats');
+
+  for my $cat (qw(allroles allraces allgenders allaligns allconducts)) {
+    if(@{$allcats->players()->{$cat}}) {
+      $d{'trophies'}{'players'}{$cat}
+      = [ map { $_->name() } @{$allcats->players()->{$cat}} ];
+    }
+
+    if(@{$allcats->clans()->{$cat}}) {
+      $d{'trophies'}{'clans'}{$cat}
+      = [ map { $_->n() } @{$allcats->clans()->{$cat}} ];
+    }
+  }
+
+  # All Achievements
+
+  my $achieve_tr = $tr->get_tracker_by_name('achievements');
+
+  if(@{$achieve_tr->players_track()}) {
+    $d{'trophies'}{'players'}{'allachieve'} = $achieve_tr->players_track();
+  }
+
+  if(@{$achieve_tr->clans_track()}) {
+    $d{'trophies'}{'clans'}{'allachieve'} = $achieve_tr->clans_track();
+  }
+
+  # The Great Impossible
+
+  my $achieve_gi = $tr->get_tracker_by_name('gimpossible');
+
+  if(@{$achieve_gi->players()}) {
+    $d{'trophies'}{'players'}{'gimpossible'} = $achieve_gi->players();
+  }
+
+  if(@{$achieve_gi->clans()}) {
+    $d{'trophies'}{'clans'}{'gimpossible'} = $achieve_gi->clans();
+  }
+
+  # Great/Lesser Foo
+
+  my $greatfoo = $tr->get_tracker_by_name('greatfoo');
+
+  (
+    $d{'trophies'}{'players'}{'greatfoo'},
+    $d{'trophies'}{'clans'}{'greatfoo'}
+  ) = $greatfoo->export();
+
+  # Unique Deaths
+
+  my $uqdeath_tr = $tr->get_tracker_by_name('uniquedeaths');
+  if(defined $uqdeath_tr->topclan()) {
+    $d{'trophies'}{'clans'}{'uniquedeaths'} = $uqdeath_tr->topclan()->n();
+  }
+
+  # Most Unique Ascensions
+
+  my $uniqascs_tr = $tr->get_tracker_by_name('clan-uniqascs');
+  if(defined $uniqascs_tr->topclan()) {
+    $d{'trophies'}{'clans'}{'uniqascs'} = $uniqascs_tr->topclan()->n();
+  }
+
+  # Most Games Over 1000 turns
+
+  my $mostgames_tr = $tr->get_tracker_by_name('clan-mostgames');
+  if(defined $mostgames_tr->topclan()) {
+    $d{'trophies'}{'clans'}{'mostgames'} = $mostgames_tr->topclan()->n();
+  }
+
+  # Master and Dominator
+  
+  my $allcombos_tr = $tr->get_tracker_by_name('clan-allcombos');
+  $d{'trophies'}{'clans'}{'master'} = $allcombos_tr->masters();
+  $d{'trophies'}{'clans'}{'dominator'} = $allcombos_tr->dominators();
+  
+  # Medusa Cup
+  
+  my $medusacup_tr = $tr->get_tracker_by_name('clan-medusacup');
+  if(defined $medusacup_tr->topclan()) {
+    $d{'trophies'}{'clans'}{'medusacup'} = $medusacup_tr->topclan()->n();
+  }
+  
+  #--- finish
+
+  return \%d;
+
 }
 
 

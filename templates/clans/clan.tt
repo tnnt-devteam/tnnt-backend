@@ -1,0 +1,324 @@
+[%- PROCESS 'macros.tt' -%]
+[%- SET cln = clans.all.item(clan); -%]
+<!doctype html>
+
+
+<html>
+
+<head>
+  <title>TNNT::[% cln.name %]</title>
+  <base href="../">
+  <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+
+<body>
+
+
+<h1>[% cln.name %]</h1>
+
+<div class="row">
+
+[%# =======================================================================
+    === GENERAL INFORMATION ===============================================
+    ======================================================================= %]
+
+<table>
+
+  <thead>
+    <tr class="framed"><th colspan=2">general information</th></tr>
+  </thead>
+
+  <tr>
+    <td>rank</td>
+    <td class="num">
+      [% IF cln.exists('rank') %]
+        [% cln.rank %] of [% clans.ordered.size %]
+      [% ELSE %]
+        N/A
+      [% END %]
+    </td>
+  </tr>
+
+  <tr>
+    <td>games played</td>
+    <td class="num">[% cln.games.size %]</td>
+  </tr>
+
+  <tr>
+    <td>games ascended</td>
+    <td class="num">[% cln.ascs.size || 0 %]</td>
+  </tr>
+
+  <tr>
+    <td>unique ascensions</td>
+    <td class="num">[% cln.unique_ascs.size || 0 %]</td>
+  </tr>
+
+  <tr>
+    <td>ascension ratio</td>
+    <td class="num">
+      [% IF cln.exists('ratio'); cln.ratio _ "%"; ELSE; "N/A"; END %]
+    </td>
+  </tr>
+
+  <tr>
+    <td>achievements</td>
+    <td class="num">[% cln.achievements.size %]</td>
+  </tr>
+
+  <tr>
+    <td>unique deaths</td>
+    <td class="num">[% cln.unique_deaths.size %]</td>
+  </tr>
+
+  <tr>
+    <td>score</td>
+    <td class="num">[% cln.score %]</td>
+  </tr>
+
+</table>
+
+[%# =======================================================================
+    === TROPHIES ==========================================================
+    ======================================================================= %]
+
+[% IF cln.trophies.size %]
+  <table>
+
+    <thead>
+      <tr class="framed"><th colspan="2">trophies</th></tr>
+    </thead>
+
+    <tbody>
+      [% FOREACH tr IN cln.trophies %]
+      <tr>
+        <td>[% tr.title %]</td>
+        <td>[% tr.when %]</td>
+      </tr>
+      [% END %]
+    </tbody>
+
+  </table>
+[% END %]
+
+[%# =======================================================================
+    === CLAN MEMBERS ======================================================
+    ======================================================================= %]
+
+<table class="clan-members">
+
+  <thead>
+    <tr class="framed"><th colspan=2">members</th></tr>
+  </thead>
+
+  <tr>
+    <td class="align-top">admins</td>
+    <td>
+      [%
+        SET x = '';
+        FOREACH player IN cln.admins;
+          x; x = ', ';
+          plink(player);
+        END;
+      %]
+    </td>
+  </tr>
+
+  [% IF (cln.players.size - cln.admins.size) %]
+    <tr>
+      <td class="align-top">members</td>
+      <td>
+        [%
+          SET x = '';
+          FOREACH player IN cln.players;
+            NEXT IF cln.admins.grep('^' _ player _ '$').size;
+            x; x = ', ';
+            plink(player);
+          END
+        %]
+      </td>
+    </tr>
+  [% END %]
+
+</table>
+
+</div>
+
+[%# =======================================================================
+    === ASCENSIONS & RECENT GAMES =========================================
+    ======================================================================= %]
+
+[% IF cln.ascs.size || cln.games.size %]
+
+  <table>
+
+    [% IF cln.ascs.size %]
+
+      <thead>
+        <tr><td colspan=10><h2>ASCENSIONS</h2></td></tr>
+        [% INCLUDE game.tt head=1 aswon=1 class="framed" %]
+      </thead>
+
+      <tbody>
+        [% SET i = cln.ascs.size %]
+        [% FOREACH game IN cln.ascs.reverse %]
+          [% INCLUDE game.tt aswon=1 markuniq=1 %]
+          [% SET i = i - 1 %]
+        [% END %]
+      </tbody>
+
+    [% END %]
+
+    <thead>
+      <tr><td colspan=10><h2>RECENT GAMES</h2></td></tr>
+      [% INCLUDE game.tt head=1 class="framed" %]
+    </thead>
+
+    <tbody>
+      [% SET i = cln.games.size; SET cnt = 10; %]
+      [% IF i %]
+        [% FOREACH game IN cln.games.reverse %]
+          [% INCLUDE game.tt markuniq=1 %]
+          [% SET i = i - 1 %]
+          [% SET cnt = cnt - 1; LAST IF cnt == 0 %]
+        [% END %]
+      [% ELSE %]
+        <tr>
+          <td class="no-games" colspan=10>this clan has no finished games</td>
+        </tr>
+      [% END %]
+    </tbody>
+
+  </table>
+
+[% END %]
+
+[%# =======================================================================
+    === ACHIEVEMENTS ======================================================
+    ======================================================================= %]
+
+<h2 id="achievements">Achievements</h2>
+
+<div class="achieve-top">
+
+    [% FOREACH ach IN config.item('achievements-ordered') %]
+    <div
+      class="achieve-item[% IF cln.achievements.grep(ach).size %] achieved[% ELSE %] not-achieved[% END %]"
+      title="[% config.achievements.item(ach).descr %]"
+    >
+      [% config.achievements.item(ach).title %]
+    </div>
+    [% END %]
+
+    <div class="achieve-summary">
+      [%
+        SET pct = (cln.achievements.size
+                  / config.item('achievements-ordered').size)
+                  * 100
+      %]
+      <div class="achieve-bar" style="width: [% pct %]%"></div>
+      <div class="achieve-msg">
+      [% cln.achievements.size %] out of
+      [% config.item('achievements-ordered').size %] achievements attained
+      </div>
+    </div>
+
+</div>
+
+[%# =======================================================================
+    === UNIQUE DEATHS =====================================================
+    ======================================================================= %]
+
+[% IF cln.unique_deaths.size %]
+
+  <h2>Unique Deaths</h2>
+
+  <table>
+
+    <thead>
+      <tr class="framed">
+        <th>date</th>
+        <th>player</th>
+        <th>death reason</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      [% FOREACH de IN cln.unique_deaths %]
+        <tr>
+          <td>[% games.all.item(de.1).endtime %]</td>
+          <td>[% games.all.item(de.1).name %]</td>
+          <td>[% de.0 %]</td>
+        </tr>
+      [% END %]
+    </tbody>
+
+    <tfoot>
+      <tr class="overline">
+        <td colspan=3 class="total">
+          [% cln.unique_deaths.size %] unique death[% IF cln.unique_deaths.size > 1 %]s[% END %]
+        </td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+[% END %]
+
+[%# =======================================================================
+    === SCORING LOG =======================================================
+    ======================================================================= %]
+
+[% IF cln.score %]
+  <h2>SCORING BREAKDOWN</h2>
+
+  <table>
+
+    <thead>
+      <tr class="framed">
+        <th>date</th>
+        <th>name</th>
+        <th>title</th>
+        <th>points</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      [% FOREACH se IN cln.scores.reverse %]
+        <tr>
+          <td>[% se.when_fmt %]</td>
+          <td>[% se.trophy.replace('clan-', '') %]</td>
+          <td>
+            [%
+              IF config.trophies.exists(se.trophy);
+                config.trophies.item(se.trophy).title;
+              ELSIF config.achievements.exists(se.trophy.replace('clan-ach:',''));
+                config.achievements.item(se.trophy.replace('clan-ach:','')).title;
+              ELSE;
+                '?';
+              END;
+            %]
+          </td>
+          <td class="num">[% se.points %]</td>
+        </tr>
+      [% END %]
+    </tbody>
+
+    <tfoot>
+      <tr class="overline">
+        <td colspan=3 class="total">
+          [% cln.scores.size %] entr[% IF cln.scores.size == 1 %]y[% ELSE %]ies[% END %]
+        </td>
+        <td class="num">[% cln.score %]</td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+[% END %]
+
+[%# ======================================================================= %]
+
+</body>
+
+</html>

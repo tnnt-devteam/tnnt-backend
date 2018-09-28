@@ -99,8 +99,7 @@ sub add_game
 {
   my ($self, $game) = @_;
   my $player = $game->player();
-  my $clans = TNNT::ClanList->instance();
-  my $clan = $clans->find_clan($player->name());
+  my $clan = $player->clan();
 
   #--- only clan non-rejected games
 
@@ -119,6 +118,7 @@ sub add_game
 
   if(!exists $ctrk->{$death}) {
     $ctrk->{$death} = $game;
+    push(@{$clan->unique_deaths()}, [ $death, $game ]);
 
     # the first clan game
     if(!$self->topclan()) {
