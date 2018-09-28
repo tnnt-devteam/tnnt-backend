@@ -1374,7 +1374,7 @@
     "diver" : {
       "tnntachieve1" : "0x200000",
       "title"        : "Diver",
-      "descr"        : "Retrieve an object from the bottom of a moat or pool"
+      "descr"        : "Dive into a moat or pool and retrieve an item from the bottom"
     },
 
     "wumpusride" : {
@@ -1422,7 +1422,7 @@
     "petrescue" : {
       "tnntachieve1" : "0x20000000",
       "title"        : "Pet Rescue",
-      "descr"        : "Free a pet from trap that you did not create yourself"
+      "descr"        : "Free a pet from a trap that you didn't create yourself"
     },
 
     "spam" : {
@@ -1440,7 +1440,7 @@
     "foodintr" : {
       "tnntachieve1" : "0x100000000",
       "title"        : "You Are What You Eat",
-      "descr"        : "Gain an intrinsic by eating a corpse"
+      "descr"        : "Gain an intrinsic by eating a corpse (or tin or glob)"
     },
 
     "bankrupt" : {
