@@ -35,10 +35,18 @@ sub _load_clans
   my ($self) = @_;
   my $cfg = TNNT::Config->instance()->config();
 
-  #--- ensure the database file even exists
+  #--- if the configuration entry doesn't exist, just return empty hash
+
+  if(!exists $cfg->{'clandb'} || !$cfg->{'clandb'}) {
+    return {};
+  }
+
+  #--- ensure the database file exists and is readable
 
   if(!-r $cfg->{'clandb'}) {
-    die 'Cannot read clan database file ' . $self->config_file();
+    die sprintf
+      "Clan database file (%s) does not exist or is not readable\n",
+      $cfg->{'clandb'};
   }
 
   #--- open the database file
