@@ -249,7 +249,7 @@ sub export
           for my $rr (keys %{$cfg->{'nethack'}{"great$foo"}}) {
             if($strk->{$the_foo}{$rr}->track()) {
               push(
-                @{$subjects{"${subj_type}s"}{"$the$foo:" . lc($rr)}},
+                @{$subjects{"${subj_type}s"}{"$the_foo:" . lc($rr)}},
                 $subj_id
               );
             }
