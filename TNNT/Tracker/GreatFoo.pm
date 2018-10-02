@@ -232,8 +232,6 @@ sub finish
 
 sub export
 {
-  use Data::Dumper;
-
   my ($self) = @_;
   my $cfg = TNNT::Config->instance()->config();
 
@@ -258,8 +256,6 @@ sub export
       }
     }
   }
-
-  print Dumper(\%subjects), "\n";
 
   return ($subjects{'players'}, $subjects{'clans'});
 }
