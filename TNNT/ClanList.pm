@@ -7,11 +7,13 @@
 
 package TNNT::ClanList;
 
+use FindBin qw($Bin);
 use Moo;
 use DBI;
 use TNNT::Config;
 use TNNT::Clan;
 with 'MooX::Singleton';
+
 
 
 
@@ -41,9 +43,17 @@ sub _load_clans
     return {};
   }
 
+  #--- if the clandb specification doesn't specify absolute path, prepend the
+  #--- current directory
+
+  my $clandb = $cfg->{'clandb'};
+  if($clandb !~ /^\//) {
+    $clandb = "$Bin/$clandb";
+  }
+
   #--- ensure the database file exists and is readable
 
-  if(!-r $cfg->{'clandb'}) {
+  if(!-r $clandb) {
     die sprintf
       "Clan database file (%s) does not exist or is not readable\n",
       $cfg->{'clandb'};
@@ -52,7 +62,7 @@ sub _load_clans
   #--- open the database file
 
   my $dbh = DBI->connect(
-    'dbi:SQLite:dbname=' . $cfg->{'clandb'},
+    'dbi:SQLite:dbname=' . $clandb,
     undef, undef
   );
 

@@ -7,8 +7,10 @@
 
 package TNNT::Source;
 
+
 use TNNT::Game;
 
+use FindBin qw($Bin);
 use Try::Tiny;
 use Carp;
 use Moo;
@@ -31,10 +33,6 @@ has name => (
 has logfile => (
   is => 'ro',
   required => 1,
-  isa => sub {
-    die "File '$_[0]' does not exist or not readable"
-    unless -r $_[0];
-  },
 );
 
 #--- current file position
@@ -102,6 +100,13 @@ sub read
   my $fpos = $self->fpos();
   my $lines = $self->lines();
   my ($fh, $re_open, $re_seek);
+
+  #--- if the logfile spec doesn't include absolute path, prepend the
+  #--- executable's directory
+
+  if($file !~ /^\//) {
+    $file = "$Bin/$file";
+  }
 
   try { #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

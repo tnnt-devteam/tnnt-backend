@@ -7,6 +7,7 @@
 package TNNT::Template;
 
 use Carp;
+use FindBin qw($Bin);
 use Moo;
 use TNNT::Config;
 use Template;
@@ -62,6 +63,19 @@ sub process
 
   my $src_path = join('/', grep { $_ } ($self->config()->{'path'}, $dir));
   my $dst_path = join('/', grep { $_ } ($self->config()->{'html'}, $dir));
+  my $inc_path = $self->config()->{'include'};
+
+  if($src_path !~ /^\//) {
+    $src_path = "$Bin/$src_path";
+  }
+
+  if($dst_path !~ /^\//) {
+    $dst_path = "$Bin/$dst_path";
+  }
+
+  if($inc_path !~ /^\//) {
+    $inc_path = "$Bin/$inc_path";
+  }
 
   #--- initialize Template Toolkit
 
@@ -69,7 +83,7 @@ sub process
     'OUTPUT_PATH' => $dst_path,
     'INCLUDE_PATH' => [
       $src_path,
-      $self->config()->{'include'},
+      $inc_path,
     ],
     'RELATIVE' => 1,
   );
