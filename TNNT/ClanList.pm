@@ -215,7 +215,7 @@ sub export
     }
 
     for my $role (qw(arc bar cav hea mon pri ran rog val wiz)) {
-      push(@trophy_names, "greatrace:$role", "lesserrace:$role");
+      push(@trophy_names, "greatrole:$role", "lesserrole:$role");
     }
 
     for my $trophy (@trophy_names) {
