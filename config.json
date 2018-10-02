@@ -24,6 +24,9 @@
   #--- Clan database file ----------------------------------------------------
   #---------------------------------------------------------------------------
 
+  # It is possible to run without clan database, just comment out the line
+  # below if you want that.
+
   "clandb" : "clandb.sqlite",
 
   #---------------------------------------------------------------------------

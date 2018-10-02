@@ -70,17 +70,23 @@ has clans => (
 #=============================================================================
 
 #-----------------------------------------------------------------------------
-# Getter for 'player_track'.
+# Getter for player/clan tracking structure.
 #-----------------------------------------------------------------------------
 
-sub ptrack
+sub track_data
 {
-  my ($self, $player) = @_;
+  my ($self, $subj) = @_;
 
-  $player = $player->name() if ref($player);
+  $subj = $subj->name() if ref($subj);
 
-  if(exists $self->player_track()->{$player}) {
-    return $self->player_track()->{$player}
+  if($subj->isa('TNNT::Player')) {
+    if(exists $self->player_track()->{$subj}) {
+      return $self->player_track()->{$subj}
+    }
+  } else {
+    if(exists $self->clan_track()->{$subj}) {
+      return $self->clan_track()->{$subj}
+    }
   }
 
   return undef;
@@ -103,147 +109,75 @@ sub add_game
 
   my $player = $game->player();
   my $clan = $player->clan();
+  my $cfg = TNNT::Config->instance()->config();
+
+  #--- auxiliary function for generating trackers, takes two arguments:
+  #--- 1. player or clan instance, 2. category name in singular ('conduct',
+  #--- 'role' etc. ) and returns MultiSet tracker instance
+
+  my $get_tracker = sub {
+    my ($subj, $cat) = @_;
+
+    my $trophy = "all${cat}s";
+    if($subj->isa('TNNT::Clan')) {
+      $trophy = 'clan-' . $trophy;
+    }
+
+    my $cat_enum = $cfg->{'nethack'}{"${cat}s"};
+    if($cat eq 'conduct') {
+      $cat_enum = $cfg->{'conducts'}{'all'}
+    }
+
+    return TNNT::Tracker::MultiSet->new_sets(
+      $cat => $cat_enum,
+      sub {
+        $subj->add_score(
+          TNNT::ScoringEntry->new(
+            trophy => $trophy,
+            when => $_[0]->endtime(),
+          )
+        );
+        if($subj->isa('TNNT::Player')) {
+          push(@{$self->players()->{"all${cat}s"}}, $subj);
+        } else {
+          push(@{$self->clans()->{"all${cat}s"}}, $subj);
+        }
+      }
+    );
+  };
 
   #--- if the player is not yet tracked, create the tracking structure
 
-  my $ptrack = $self->ptrack($player);
+  my $ptrack = $self->track_data($player);
   if(!$ptrack) {
-    my $cfg = TNNT::Config->instance()->config();
     $ptrack = $self->player_track()->{ $player->name() } = {
-
-      'roles' => TNNT::Tracker::MultiSet->new_sets(
-        role => $cfg->{'nethack'}{'roles'},
-        sub {
-          $player->add_score(
-            TNNT::ScoringEntry->new(
-              trophy => 'allroles',
-              when => $_[0]->endtime(),
-            )
-          );
-          push(@{$self->players()->{'allroles'}}, $player);
-          if(
-            $clan && !exists $self->clan_track()->{$clan->name()}{'roles'}
-          ) {
-            $self->clan_track()->{$clan->name()}{'roles'} = undef;
-            $clan->add_score(
-              TNNT::ScoringEntry->new(
-                trophy => 'clan-allroles',
-                when => $_[0]->endtime(),
-                data => { player => $game->name() },
-              )
-            );
-            push(@{$self->clans()->{'allroles'}}, $clan);
-          }
-        }
-      ),
-
-      'races' => TNNT::Tracker::MultiSet->new_sets(
-        race => $cfg->{'nethack'}{'races'},
-        sub {
-          $player->add_score(
-            TNNT::ScoringEntry->new(
-              trophy => 'allraces',
-              when => $_[0]->endtime(),
-            )
-          );
-          push(@{$self->players()->{'allraces'}}, $player);
-          if(
-            $clan && !exists $self->clan_track()->{$clan->name()}{'races'}
-          ) {
-            $self->clan_track()->{$clan->name()}{'races'} = undef;
-            $clan->add_score(
-              TNNT::ScoringEntry->new(
-                trophy => 'clan-allraces',
-                when => $_[0]->endtime(),
-                data => { player => $game->name() },
-              )
-            );
-            push(@{$self->clans()->{'allraces'}}, $clan);
-          }
-        }
-      ),
-
-      'genders' => TNNT::Tracker::MultiSet->new_sets(
-        gender => $cfg->{'nethack'}{'genders'},
-        sub {
-          $player->add_score(
-            TNNT::ScoringEntry->new(
-              trophy => 'allgenders',
-              when => $_[0]->endtime(),
-            )
-          );
-          push(@{$self->players()->{'allgenders'}}, $player);
-          if(
-            $clan && !exists $self->clan_track()->{$clan->name()}{'genders'}
-          ) {
-            $self->clan_track()->{$clan->name()}{'genders'} = undef;
-            $clan->add_score(
-              TNNT::ScoringEntry->new(
-                trophy => 'clan-allgenders',
-                when => $_[0]->endtime(),
-                data => { player => $game->name() },
-              )
-            );
-            push(@{$self->clans()->{'allgenders'}}, $clan);
-          }
-        }
-      ),
-
-      'aligns' => TNNT::Tracker::MultiSet->new_sets(
-        align => $cfg->{'nethack'}{'aligns'},
-        sub {
-          $player->add_score(
-            TNNT::ScoringEntry->new(
-              trophy => 'allaligns',
-              when => $_[0]->endtime(),
-            )
-          );
-          push(@{$self->players()->{'allaligns'}}, $player);
-          if(
-            $clan && !exists $self->clan_track()->{$clan->name()}{'aligns'}
-          ) {
-            $self->clan_track()->{$clan->name()}{'aligns'} = undef;
-            $clan->add_score(
-              TNNT::ScoringEntry->new(
-                trophy => 'clan-allaligns',
-                when => $_[0]->endtime(),
-                data => { player => $game->name() },
-              )
-            );
-            push(@{$self->clans()->{'allaligns'}}, $clan);
-          }
-        }
-      ),
-
-      'conducts' => TNNT::Tracker::MultiSet->new_sets(
-        conduct => $cfg->{'conducts'}{'all'},
-        sub {
-          $player->add_score(
-            TNNT::ScoringEntry->new(
-              trophy => 'allconducts',
-              when => $_[0]->endtime(),
-            )
-          );
-          push(@{$self->players()->{'allconducts'}}, $player);
-          if(
-            $clan && !exists $self->clan_track()->{$clan->name()}{'conducts'}
-          ) {
-            $self->clan_track()->{$clan->name()}{'conducts'} = undef;
-            $clan->add_score(
-              TNNT::ScoringEntry->new(
-                trophy => 'clan-allconducts',
-                when => $_[0]->endtime(),
-                data => { player => $game->name() },
-              )
-            );
-            push(@{$self->clans()->{'allconducts'}}, $clan);
-          }
-        }
-      ),
-
+      'roles'    => $get_tracker->($player, 'role'),
+      'races'    => $get_tracker->($player, 'race'),
+      'genders'  => $get_tracker->($player, 'gender'),
+      'aligns'   => $get_tracker->($player, 'align'),
+      'conducts' => $get_tracker->($player, 'conduct'),
     };
 
     $ptrack->{'conducts'}->mode('loose');
+  }
+
+  #--- if the player is a clan member and the clan is not yet tracked,
+  #--- create its tracking structure
+
+  my $ctrack;
+  if($clan) {
+    $ctrack = $self->track_data($clan);
+    if(!$ctrack) {
+      $ctrack = $self->clan_track()->{ $clan->name() } = {
+        'roles'    => $get_tracker->($clan, 'role'),
+        'races'    => $get_tracker->($clan, 'race'),
+        'genders'  => $get_tracker->($clan, 'gender'),
+        'aligns'   => $get_tracker->($clan, 'align'),
+        'conducts' => $get_tracker->($clan, 'conduct'),
+      };
+
+      $ctrack->{'conducts'}->mode('loose');
+    }
   }
 
   #--- perform the tracking
@@ -253,6 +187,14 @@ sub add_game
   $ptrack->{'genders'}->track(gender => $game->gender0(), $game);
   $ptrack->{'aligns'}->track(align => $game->align0(), $game);
   $ptrack->{'conducts'}->track(conduct => [ $game->conducts() ], $game);
+
+  if($clan) {
+    $ctrack->{'roles'}->track(role => $game->role(), $game);
+    $ctrack->{'races'}->track(race => $game->race(), $game);
+    $ctrack->{'genders'}->track(gender => $game->gender0(), $game);
+    $ctrack->{'aligns'}->track(align => $game->align0(), $game);
+    $ctrack->{'conducts'}->track(conduct => [ $game->conducts() ], $game);
+  }
 
   #--- finish
 
@@ -269,6 +211,7 @@ sub finish
   my ($self) = @_;
 
   $self->_set_player_track(undef);
+  $self->_set_clan_track(undef);
   return $self;
 }
 
