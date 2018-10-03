@@ -6,3 +6,4 @@ clandb.sqlite
 *.html
 file
 t*.pl
+config.json
