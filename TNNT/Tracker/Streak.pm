@@ -37,7 +37,6 @@ has players => (
 
 has maxstreak => (
   is => 'rwp',
-  default => sub { new TNNT::Streak; },
 );
 
 
