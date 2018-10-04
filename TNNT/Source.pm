@@ -28,6 +28,12 @@ has name => (
   required => 1,
 );
 
+#--- source display string
+
+has display => (
+  is => 'ro',
+);
+
 #--- source xlogfile
 
 has logfile => (
