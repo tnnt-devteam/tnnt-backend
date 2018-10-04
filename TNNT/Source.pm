@@ -133,7 +133,7 @@ sub read
     while(my $l = <$fh>) {
       chomp($l);
       my $row = $self->_parse_xlogfile_row($l);
-      my $game = new TNNT::Game(%$row, src => $self->name());
+      my $game = new TNNT::Game(%$row, src => $self);
       $cb->($game);
       $lines++;
     }

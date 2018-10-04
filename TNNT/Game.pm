@@ -344,7 +344,7 @@ sub export
     hp           => $self->hp(),
     maxhp        => $self->maxhp(),
     achievements => $self->achievements(),
-    src          => $self->src(),
+    src          => $self->src()->name(),
     clan_unique  => $self->clan_unique(),
   );
 
