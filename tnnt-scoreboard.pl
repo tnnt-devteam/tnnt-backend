@@ -8,6 +8,9 @@
 
 use v5.10;
 
+use FindBin qw($Bin);
+use lib "$Bin";
+
 use Try::Tiny;
 use Moo;
 use TNNT::Cmdline;
@@ -33,7 +36,7 @@ try {
 
 #--- load configuration file
 
-my $cfg = TNNT::Config->instance(config_file => 'config.json');
+my $cfg = TNNT::Config->instance(config_file => "$Bin/config.json");
 $cfg->config();
 
 #--- load clan list

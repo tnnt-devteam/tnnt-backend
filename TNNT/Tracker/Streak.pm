@@ -37,7 +37,6 @@ has players => (
 
 has maxstreak => (
   is => 'rwp',
-  default => sub { new TNNT::Streak; },
 );
 
 
@@ -56,7 +55,7 @@ sub player
   my ($self) = @_;
 
   return (
-    $self->maxstreak()->count_games()
+    defined $self->maxstreak() && $self->maxstreak()->count_games()
     ?
     $self->maxstreak()->last_game()->player()
     :
@@ -141,7 +140,8 @@ sub score
   #--- handle longest streak tracking
 
   if(
-    $streak->count_games() > $self->maxstreak()->count_games()
+    !defined $self->maxstreak()
+    || $streak->count_games() > $self->maxstreak()->count_games()
   ) {
 
   # remove scoring entry from previous holder

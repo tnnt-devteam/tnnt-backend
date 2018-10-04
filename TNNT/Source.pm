@@ -7,8 +7,10 @@
 
 package TNNT::Source;
 
+
 use TNNT::Game;
 
+use FindBin qw($Bin);
 use Try::Tiny;
 use Carp;
 use Moo;
@@ -26,15 +28,23 @@ has name => (
   required => 1,
 );
 
+#--- source display string
+
+has display => (
+  is => 'ro',
+);
+
 #--- source xlogfile
 
 has logfile => (
   is => 'ro',
   required => 1,
-  isa => sub {
-    die "File '$_[0]' does not exist or not readable"
-    unless -r $_[0];
-  },
+);
+
+#--- dumplog template string
+
+has dumplog => (
+  is => 'ro',
 );
 
 #--- current file position
@@ -103,6 +113,13 @@ sub read
   my $lines = $self->lines();
   my ($fh, $re_open, $re_seek);
 
+  #--- if the logfile spec doesn't include absolute path, prepend the
+  #--- executable's directory
+
+  if($file !~ /^\//) {
+    $file = "$Bin/$file";
+  }
+
   try { #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
   #--- open the xlogfile
@@ -122,7 +139,7 @@ sub read
     while(my $l = <$fh>) {
       chomp($l);
       my $row = $self->_parse_xlogfile_row($l);
-      my $game = new TNNT::Game(%$row, src => $self->name());
+      my $game = new TNNT::Game(%$row, src => $self);
       $cb->($game);
       $lines++;
     }

@@ -319,6 +319,42 @@ sub _format_starttime
 
 
 #-----------------------------------------------------------------------------
+# Return game's dumplog, if the template is defined for its source.
+#-----------------------------------------------------------------------------
+
+sub dumplog
+{
+  my ($self) = @_;
+
+  #--- return undef if dumplog is not defined
+
+  return undef if
+    !defined $self->src()
+    || !defined $self->src()->dumplog();
+
+  #--- gather required data
+
+  my $dump = $self->src()->dumplog();
+
+  my $r_username  = $self->{'name'};
+  my $r_uinitial  = substr($r_username, 0, 1);
+  my $r_starttime = $self->{'starttime'};
+  my $r_endtime   = $self->{'endtime'};
+
+  #--- perform token replacement
+
+  $dump =~ s/%u/$r_username/g;
+  $dump =~ s/%U/$r_uinitial/g;
+  $dump =~ s/%s/$r_starttime/g;
+  $dump =~ s/%e/$r_endtime/g;
+
+  #--- finish
+
+  return $dump;
+}
+
+
+#-----------------------------------------------------------------------------
 # Return export data.
 #-----------------------------------------------------------------------------
 
@@ -344,8 +380,9 @@ sub export
     hp           => $self->hp(),
     maxhp        => $self->maxhp(),
     achievements => $self->achievements(),
-    src          => $self->src(),
+    src          => $self->src()->name(),
     clan_unique  => $self->clan_unique(),
+    dumplog      => $self->dumplog(),
   );
 
   if($self->is_ascended()) {

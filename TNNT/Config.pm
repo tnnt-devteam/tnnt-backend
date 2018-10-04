@@ -93,8 +93,9 @@ sub order_achievements
 
 
 #-----------------------------------------------------------------------------
-# Sources iterator. The callback gets a hash of arguments containing 'name'
-# and 'logfile' keys. These can be fed directly to TNNT::Sources constructor.
+# Sources iterator. The callback gets a hash of arguments take from the config
+# file plus 'name' that contains the shortname. These can be fed directly to
+# TNNT::Sources constructor.
 #-----------------------------------------------------------------------------
 
 sub iter_sources
@@ -105,7 +106,7 @@ sub iter_sources
   for my $src (keys %$sources) {
     $cb->(
       name => $src,
-      logfile => $sources->{$src}{'xlogfile'}
+      %{$self->config()->{'sources'}{$src}},
     );
   }
 }
