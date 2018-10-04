@@ -50,8 +50,8 @@
   </td>
   <td class="num">[% number(row.turns) %]</td>
   <td class="num">
-    [% IF row.item('_dump') %]
-      <a href="[% row.item('_dump') %]">[% number(row.points) %]</a>
+    [% IF row.item('dumplog') %]
+      <a href="[% row.item('dumplog') %]">[% number(row.points) %]</a>
     [% ELSE %]
       [% number(row.points) %]
     [% END %]

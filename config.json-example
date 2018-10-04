@@ -5,8 +5,9 @@
 
   "sources": {
     "dev" : {
-      "xlogfile" : "xlogfile",
-      "display" :  "Development server",
+      "logfile" : "xlogfile",
+      "display" : "Development server",
+      "dumplog" : "test_%U_%u_%s_%e",
     },
   },
 

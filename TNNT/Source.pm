@@ -41,6 +41,12 @@ has logfile => (
   required => 1,
 );
 
+#--- dumplog template string
+
+has dumplog => (
+  is => 'ro',
+);
+
 #--- current file position
 
 has fpos => (
