@@ -235,6 +235,7 @@ sub export
       ascs         => $clan->export_ascensions(),
       achievements => $clan->achievements(),
       scorelog     => $clan->export_scores(),
+      udeaths_rank => $clan->udeaths_rank(),
       unique_deaths => [
         map { [ $_->[0], $_->[1]->n() ] } @{$clan->unique_deaths()}
       ],

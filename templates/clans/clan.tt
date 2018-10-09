@@ -255,8 +255,11 @@
 
     <tfoot>
       <tr class="overline">
-        <td colspan=3 class="total">
+        <td colspan=2 class="total">
           [% cln.unique_deaths.size %] unique death[% IF cln.unique_deaths.size > 1 %]s[% END %]
+        </td>
+        <td class="num">
+          rank [% cln.udeaths_rank %]
         </td>
       </tr>
     </tfoot>
