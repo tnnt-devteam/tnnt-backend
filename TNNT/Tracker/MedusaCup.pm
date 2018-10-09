@@ -37,7 +37,8 @@ has topclan => (
 #=============================================================================
 
 #-----------------------------------------------------------------------------
-# List of clans eligible for the trophy, ie. clans that have no ascensions.
+# Hash of clans eligible for the trophy, ie. clans that have no ascensions.
+# The hash key is clan id, the value is clan instance reference.
 #-----------------------------------------------------------------------------
 
 sub _build_eligible_clans
@@ -46,7 +47,7 @@ sub _build_eligible_clans
 
   my %eligible_clans;
   TNNT::ClanList->instance()->iter_clans(sub {
-    $eligible_clans{$_[0]->name()} = 1;
+    $eligible_clans{$_[0]->n()} = $_[0];
   });
 
   return \%eligible_clans;
@@ -69,16 +70,19 @@ sub add_game
 
   #--- only eligible clans
 
-  return if !$self->eligible_clans()->{$clan->name()};
+  return if !exists $self->eligible_clans()->{$clan->n()};
 
   #--- aux function to find highest-scoring eligible clan
   # FIXME: This doesn't handle ties
 
   my $get_new_clan = sub {
     my @sorted =
-    sort { $b->sum_score('!clan-medusacup') <=> $a->sum_score('!clan-medusacup')}
-    map  { $clans->clans()->{$_} }
-    grep { $self->eligible_clans()->{$_} }
+    sort {
+      $a->sum_score('!clan-medusacup') <=> $b->sum_score('!clan-medusacup')
+    } # eligible clan instance refs
+    map {
+      $self->eligible_clans()->{$_}
+    } # eligible clan ids
     keys %{$self->eligible_clans()};
 
     return $sorted[0];
@@ -88,10 +92,10 @@ sub add_game
 
   if(
     $game->is_ascended()
-    && $self->eligible_clans()->{$clan->name()}
+    && exists $self->eligible_clans()->{$clan->n()}
   ) {
-    $self->eligible_clans()->{$clan->name()} = 0;
-    if($self->topclan() && $self->topclan()->name() eq $clan->name()) {
+    delete $self->eligible_clans()->{$clan->n()};
+    if($self->topclan() && $self->topclan()->n() == $clan->n()) {
       $self->_set_topclan(undef);
       $clan->remove_score($self->name());
     }
@@ -104,8 +108,13 @@ sub add_game
   #--- if the leading clan has not changed, do nothing
 
   if(
-    $self->topclan()
-    && $self->topclan()->name() eq $new_clan->name()
+    (
+      $self->topclan()
+      && $self->topclan()->n() == $new_clan->n()
+    ) || (
+      !$self->topclan()
+      && !defined $new_clan
+    )
   ) {
     return $self;
   }
@@ -129,11 +138,8 @@ sub add_game
       trophy => $self->name(),
       when => $game->endtime(),
     ));
+    $self->_set_topclan($new_clan);
   }
-
-  #--- and record current state
-
-  $self->_set_topclan($new_clan);
 
   #--- finish
 

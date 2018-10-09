@@ -8,6 +8,8 @@
 package TNNT::ClanList;
 
 use FindBin qw($Bin);
+use Scalar::Util qw(blessed);
+use Carp;
 use Moo;
 use DBI;
 use TNNT::Config;
@@ -16,31 +18,41 @@ with 'MooX::Singleton';
 
 
 
-
 #=============================================================================
 #=== ATTRIBUTES ==============================================================
 #=============================================================================
+
+# this is list of Clan instances; the position in this list must be equal to
+# the value of Clan's 'n' attribute
 
 has clans => (
   is => 'rw',
   builder => '_load_clans',
 );
 
+# this is a playername-to-clan lookup hash, an optimization to speed up
+# reading of logfiles
+
+has _players_lookup => (
+  is => 'rw',
+  default => sub { {} },
+);
 
 
-#=============================================================================
-# Config loading
-#=============================================================================
+
+#-----------------------------------------------------------------------------
+# Clan database loading
+#-----------------------------------------------------------------------------
 
 sub _load_clans
 {
   my ($self) = @_;
   my $cfg = TNNT::Config->instance()->config();
 
-  #--- if the configuration entry doesn't exist, just return empty hash
+  #--- if the configuration entry doesn't exist, just return empty array ref
 
   if(!exists $cfg->{'clandb'} || !$cfg->{'clandb'}) {
-    return {};
+    return [];
   }
 
   #--- if the clandb specification doesn't specify absolute path, prepend the
@@ -82,7 +94,8 @@ sub _load_clans
     die sprintf('Failed to query clan database (%s)', $sth->errstr());
   }
 
-  #--- read the clan info from the database
+  #--- read the clan info from the database into a hash, this hash will then
+  #--- be converted into the final array
 
   my %clans;
   my $i = 0;
@@ -98,50 +111,78 @@ sub _load_clans
     );
   }
 
+  #--- convert hash to array
+
+  my @clans;
+  foreach my $clan_name (keys %clans) {
+    $clans[ $clans{$clan_name}->n() ] = $clans{$clan_name};
+  }
+
   #--- finish
 
-  return \%clans;
+  return \@clans;
 }
 
 
-#=============================================================================
+#-----------------------------------------------------------------------------
 # Clans iterator function.
-#=============================================================================
+#-----------------------------------------------------------------------------
 
 sub iter_clans
 {
   my ($self, $cb) = @_;
 
-  for my $clan (sort keys %{$self->clans()}) {
-    $cb->($self->clans()->{$clan});
-  }
+  do { $cb->($_) } for @{$self->clans()};
 
   return $self;
 }
 
 
 
-#=============================================================================
+#-----------------------------------------------------------------------------
 # Find clan by playername or player object ref.
-#=============================================================================
+#-----------------------------------------------------------------------------
 
-sub find_clan
+sub get_by_player
 {
   my ($self, $player) = @_;
 
-  if(ref($player)) {
+  #--- if the player argument is a ref, we take that as a Player class
+  #--- instance
+
+  if(blessed $player) {
+    croak "Argument 'player' is wrong class" if !$player->isa('TNNT::Player');
     $player = $player->name();
   }
 
-  my ($clan_name) = grep {
-    $self->clans()->{$_}->is_member($player)
-  } keys %{$self->clans()};
+  #--- if the playername already is in the lookup table, return the cached
+  #--- value
 
-  if($clan_name) {
-    return $self->clans()->{$clan_name};
-  } else {
-    return undef;
+  if(exists $self->_players_lookup()->{$player}) {
+    return $self->_players_lookup()->{$player}
   }
+
+  #--- otherwise we need to perform a search, the result is cached for later
+  #--- reuse
+
+  my ($clan) = grep { $_->is_member($player) } @{$self->clans()};
+  $self->_players_lookup()->{$player} = $clan;
+
+  #--- finish
+
+  return $clan;
+}
+
+
+#-----------------------------------------------------------------------------
+# Return clan by numeric id
+#-----------------------------------------------------------------------------
+
+sub get_by_id
+{
+  my ($self, $id) = @_;
+
+  return $self->clans()->[$id];
 }
 
 
@@ -153,7 +194,7 @@ sub add_game
 {
   my ($self, $game) = @_;
 
-  my $clan = $self->find_clan($game->player());
+  my $clan = $self->get_by_player($game->player());
   return if !$clan;
 
   $clan->add_game($game);
@@ -179,9 +220,10 @@ sub export
 
   #--- produce list of clans with full information
 
-  foreach my $clan_name (keys %{$self->clans()}) {
-    my $clan = $self->clans()->{$clan_name};
+  $self->iter_clans(sub {
+    my ($clan) = @_;
     my $i = $clan->n();
+
     $clans[$i] = {
       n            => $i,
       name         => $clan->name(),
@@ -193,6 +235,7 @@ sub export
       ascs         => $clan->export_ascensions(),
       achievements => $clan->achievements(),
       scorelog     => $clan->export_scores(),
+      udeaths_rank => $clan->udeaths_rank(),
       unique_deaths => [
         map { [ $_->[0], $_->[1]->n() ] } @{$clan->unique_deaths()}
       ],
@@ -217,7 +260,7 @@ sub export
     my @trophy_names = qw(
       firstasc mostascs mostcond lowscore highscore minturns gimpossible
       maxstreak allroles allraces allaligns allgenders allconducts allachieve
-      mostgames
+      mostgames uniquedeaths
     );
 
     for my $race (qw(hum elf dwa gno orc)) {
@@ -240,7 +283,7 @@ sub export
 
     $clans[$i]{'trophies'} = \@trophies if @trophies;
 
-  }
+  });
 
   #--- produce list of clan indices ordered by score
 

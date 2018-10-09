@@ -21,9 +21,15 @@ has name => (
   default => 'uniquedeaths',
 );
 
+# reference to the top clan Clan instance
+
 has topclan => (
   is => 'rwp',
 );
+
+# tracking structure, the clan ids (Clan's 'n' attribute) are the first level
+# hash key, the second level hash key is the normalized death message and
+# value is Game intance reference
 
 has _clan_track => (
   is => 'ro',
@@ -35,6 +41,13 @@ has _config => (
   builder => '_build_config',
 );
 
+# order of clans in the Unique Deaths ladder, the array elements are clan
+# instance references
+
+has clan_ladder => (
+  is => 'rw',
+  default => sub { [] },
+);
 
 
 #=============================================================================
@@ -99,6 +112,7 @@ sub add_game
 {
   my ($self, $game) = @_;
   my $player = $game->player();
+  my $clans = TNNT::ClanList->instance();
   my $clan = $player->clan();
 
   #--- only clan non-rejected games
@@ -107,46 +121,68 @@ sub add_game
 
   #--- init clan tracking
 
-  if(!exists $self->_clan_track()->{$clan->name()}) {
-    $self->_clan_track()->{$clan->name()} = {};
+  if(!exists $self->_clan_track()->{$clan->n()}) {
+    $self->_clan_track()->{$clan->n()} = {};
   }
 
-  my $ctrk = $self->_clan_track()->{$clan->name()};
+  my $ctrk = $self->_clan_track()->{$clan->n()};
   my $death = $self->_normalize_death($game);
 
-  #--- new unique death
+  #--- if new unique death, add it to the tracking hash, add it to clan's
+  #--- unique deaths list, re-sort the clan ladder and see if the unique
+  #--- deaths leading clan has changed
 
   if(!exists $ctrk->{$death}) {
-    $ctrk->{$death} = $game;
-    push(@{$clan->unique_deaths()}, [ $death, $game ]);
 
-    # the first clan game
-    if(!$self->topclan()) {
-      $clan->add_score(TNNT::ScoringEntry->new(
-        trophy => 'clan-' . $self->name(),
-        game => [ $game ],
-        when => $game->endtime(),
-        data => { count => scalar(keys %$ctrk) },
-      ));
-      $self->_set_topclan($clan);
+    # track the new unique death
+    $ctrk->{$death} = $game;
+    push(
+      @{$clan->unique_deaths()},
+      [ $death, $game ]
+    );
+
+    # resort the unique deaths clan ladder
+    $self->clan_ladder([
+      map {
+        $clans->get_by_id($_);
+      }
+      sort {
+        scalar keys %{$self->_clan_track()->{$b}}
+        <=>
+        scalar keys %{$self->_clan_track()->{$a}}
+      } keys %{$self->_clan_track()}
+    ]);
+
+    # update clan ranks
+    for(my $i = 0; $i < @{$self->clan_ladder()}; $i++) {
+      $self->clan_ladder()->[$i]->udeaths_rank($i + 1);
     }
 
-    # change in the lead
-    elsif(
-      scalar(keys %{$ctrk})
-      >
-      scalar(keys %{$self->_clan_track()->{$self->topclan()->name()}})
+    if(
+      # there's no top clan yet
+      !$self->topclan()
+      # OR there is a new top clan
+      || $self->topclan() != $self->clan_ladder()->[0]
     ) {
-      $self->topclan()->remove_score('clan-' . $self->name());
-      $clan->add_score(TNNT::ScoringEntry->new(
+      # remove old scoring entry
+      if($self->topclan()) {
+        $self->topclan()->remove_score('clan-' . $self->name());
+      }
+      # set the new top clan attribute
+      $self->_set_topclan($self->clan_ladder()->[0]);
+      # create new scoring entry
+      $self->topclan()->add_score(TNNT::ScoringEntry->new(
         trophy => 'clan-' . $self->name(),
-        game => [ $game ],
         when => $game->endtime(),
-        data => { count => scalar(keys %$ctrk) },
+        games => [ $game ],
+        data => { uniqdeaths => scalar(keys %$ctrk) },
       ));
-      $self->_set_topclan($clan);
     }
   }
+
+  #--- finish
+
+  return $self;
 }
 
 

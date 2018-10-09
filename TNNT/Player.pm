@@ -82,7 +82,7 @@ sub _build_clan
   my ($self) = @_;
 
   my $clans = TNNT::ClanList->instance();
-  return $clans->find_clan($self);
+  return $clans->get_by_player($self);
 }
 
 

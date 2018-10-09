@@ -93,12 +93,12 @@ sub filter_score
 
   #--- exclusive filter, indicated by the first element having prepended !
 
-  elsif(@filter && substr($filter[0], 0, 0) eq '!') {
+  elsif(@filter && substr($filter[0], 0, 1) eq '!') {
     do {
       push(@$result, $_);
     } for grep {
       my $score = $_;
-      grep { $score->{'trophy'} ne $_ } map { s/^!// } @filter;
+      !grep { $score->trophy() eq $_ } map { s/^!//r } @filter;
     } @{$self->scores()};
   }
 
@@ -109,8 +109,7 @@ sub filter_score
       push(@$result, $_);
     } for grep {
       my $score = $_;
-      !@filter
-      || grep { $score->{'trophy'} eq $_ } @filter;
+      grep { $score->trophy() eq $_ } @filter;
     } @{$self->scores()};
   }
 
