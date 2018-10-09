@@ -10,6 +10,7 @@
 
 <body>
 
+[% INCLUDE header.tt page = 'trophies' %]
 <h1>Trophies</h1>
 
 <table class="trophies">

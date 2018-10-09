@@ -1,0 +1,53 @@
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT - The November NetHack Tournament</title>
+  <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+
+<body>
+
+[% INCLUDE header.tt page = 'index' %]
+
+<div id="salespitch">
+  <h3> Do you love to play <a href="https://nethack.org">NetHack</a>? </h3>
+  <h3> Want to show everyone your personal <a href="players.html">prowess?</a></h3>
+  <h3> Join a <a href="clans.html">clan</a> and team up to accomplish feats too hard for one player?</h3>
+  <h3> Or just mess around and see <!-- Link to unique deaths page here? --> how many different ways you can <a href="deaths.html">get yourself killed?</a> </h3>
+  <h3> Then come join us in November <!-- put js countdown here? --> for a month of NetHacking fun.</h3>
+  <!-- or maybe put js countdown here, with a "The tournament starts in:\n X days HH:MM:SS" message, that disappears or turns into a "Play Now" after it's actually November -->
+</div>
+
+<hr>
+
+<article>
+  <h3> How to Play </h3>
+  <p>
+    Register an account on the US <a href="https://hardfought.org/nethack">Hardfought nethack server</a>, then ssh in to any of the US, EU, or AU servers and select the TNNT game option. That's all there is to it!
+  </p>
+  <p>
+    To create, join, or manage clans, go <a href="https://hardfought.org/tnnt/signin">here</a>. Clans can only be created up until $DATE, and you can only move between clans up until $OTHERDATE!
+  </p>
+
+  <!-- was going to put a section for "helpful links" here, but not sure they're needed since the header is pretty obvious -->
+
+  <h3> More Information </h3>
+  <p>
+    For more general information on NetHack, check out <a href="https://en.wikipedia.org/wiki/NetHack">Wikipedia</a>,
+    the <a href="https://nethackwiki.com">NetHackWiki</a>, and <a href="https://thegreatestgameyouwilleverplay.com">The Greatest Game You Will Ever Play</a>.
+  </p>
+  <p>
+    For more information about the TNNT tournament, see the <a href="about.html">About page</a>.
+  </p>
+  <p>
+    TNNT chat discussion happens on the <a href="https://freenode.net">Freenode</a> IRC server, on the #tnnt and #hardfought channels. <a href="https://webchat.freenode.net/?channels=#tnnt">Click here to start chatting.</a>
+  </p>
+</article>
+
+</body>
+
+</html>
+

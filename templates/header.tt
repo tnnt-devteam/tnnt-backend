@@ -1,0 +1,32 @@
+<header>
+  <div id="headerbar">
+    <h1>The November Nethack Tournament</h1>
+  </div>
+  <table id="navlogo">
+      <tr>
+          <td class="leftmenu"></td>
+          <td id="logo" rowspan="3">
+              <!-- <object style="display:inline" data="tnnt_square_logo.svg" type="image/svg+xml"></objec -->
+              <img src="tnnt_square_logo.svg" width="100px" height="100px" />
+          </td>
+          <td class="rightmenu"></td>
+      </tr>
+      <tr>
+          <td class="leftmenu">
+              <a href="index.html" class="menu [% IF page == 'index' %] menusel [% END %]">HOME</a>
+              <a href="trophies.html" class="menu [% IF page == 'trophies' %] menusel [% END %]">TROPHIES</a>
+              <a href="clans.html" class="menu [% IF page == 'clans' %] menusel [% END %]">CLANS</a>
+          </td>
+          <td class="rightmenu">
+              <a href="players.html" class="menu [% IF page == 'players' %] menusel [% END %]">PLAYERS</a>
+              <!-- I'd like to get rid of the Hardfought link, and replace it with a Deaths page (between players and about), but I don't know if we had planned to have one. -->
+              <a href="about.html" class="menu [% IF page == 'about' %] menusel [% END %]">ABOUT</a>
+              <a href="https://hardfought.org/" class="menu">HARDFOUGHT</a>
+          </td>
+      </tr>
+      <tr id="lowerheader">
+          <td></td>
+          <td></td>
+      </tr>
+  </table>
+</header>
