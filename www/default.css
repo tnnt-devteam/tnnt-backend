@@ -1,21 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900');
 
 body {
-  background-color: white;
-  color: black;
+  background-color: #003;
+  color: #f2f5ff;
   font-family: 'Lato', sans-serif;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 2em;
   font-weight: 400;
-}
-
-h1 {
-  text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  font-size: 400%;
+  margin: 0;
 }
 
 h2 {
@@ -32,9 +25,9 @@ h2 {
 }
 
 .dim {
-  color: rgb(100,100,100);
+  color: #99b;
   font-weight: 300;
-  font-size: 66%;
+  font-size: 80%;
   vertical-align: middle;
 }
 
@@ -52,12 +45,13 @@ a:visited {
 }
 
 a:hover {
-  text-decoration: underline;
+  color:#fd0;
+  /* text-decoration: underline; */
 }
 
 span.streak {
   display: inline-block;
-  background: #ddd;
+  background: #336;
   padding: 0 0.3em;
 }
 
@@ -90,12 +84,13 @@ td, th {
 }
 
 th {
-  font-weight: 300;
+  font-weight: 500;
 }
 
 thead tr.framed {
-  border-bottom: 0.1em solid black;
-  border-top: 0.1em solid black;
+  border-bottom: 0.1em solid #668;
+  border-top: 0.1em solid #668;
+  background-color: #237;
 }
 
 tfoot tr.overline {
@@ -185,13 +180,14 @@ div.achieve-item {
 /* style for the non-attained achievements */
 
 div.achieve-item.not-achieved {
-  background: #ddd;
+  background: #224;
 }
 
 /* style for the attained achievements */
 
 div.achieve-item.achieved {
-  background: #dfd;
+  background: #c90;
+  border: 0.3em solid #960; /* optional; I could go either way on this */
 }
 
 /* style for the achievement summary with in-laid progress bar */
@@ -203,11 +199,11 @@ div.achieve-summary {
   color: #888;
   position: relative;
   width: 100%;
-  background-color: #ddd;
+  background-color: #224;
 }
 
 div.achieve-bar {
-  background-color: #dfd;
+  background-color: #c90;
   height: 2rem;
 }
 
@@ -268,4 +264,127 @@ td.trophy-na {
   font-size: 166%;
   color: #ddd;
   text-align: center;
+}
+
+/*====================================================================
+  === HEADER BAR =====================================================
+  ====================================================================*/
+
+header {
+  width:100%;
+  margin:0;
+}
+
+/* Can't have background color set on the whole header; it creates artifacts
+ * around the bottom of the element. */
+#headerbar {
+  background-color:#237;
+  width:100%;
+  margin: 0;
+  text-align:center;
+}
+
+#headerbar h1 {
+  text-transform: uppercase;
+  /* font-variant:small-caps; */
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  font-size: 200%;
+  margin: 0;
+  padding: 0.2em 0 0.2em 0;
+  text-shadow: 0.1em 0.1em black;
+}
+
+a.menu {
+  color : #f2f5ff;
+  text-decoration : inherit;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+  text-shadow : 0.1em 0.1em black;
+  letter-spacing: 0.1em;
+  margin : 0;
+}
+
+a.menusel {
+  color : #59f;
+  margin : 0;
+}
+
+table#navlogo {
+    width: 100%;
+    margin: 0;
+}
+
+table#navlogo tr {
+    background-color: #237;
+}
+
+table#navlogo tr#lowerheader {
+    /* should appear as the body background color */
+    background-color: #003;
+}
+
+table#navlogo td {
+    border-bottom: 2pt solid #f2f5ff;
+    /* border-left:0; */
+}
+
+table#navlogo td.leftmenu {
+    min-width:45%;
+    text-align:right;
+}
+
+table#navlogo td.rightmenu {
+    min-width:45%;
+    text-align:left;
+}
+
+table#navlogo td#logo {
+    padding: 0;
+    text-align: center;
+    width: 100px;
+    border-left: 2pt solid #f2f5ff;
+    border-right:2pt solid #f2f5ff;
+}
+
+table#navlogo tr#lowerheader td {
+    border-bottom:none;
+}
+
+/*====================================================================
+  === MAIN PAGE ======================================================
+  ====================================================================*/
+
+#salespitch {
+    text-align: center;
+    margin: 0.5em 0 1em 0;
+    /* border-bottom: 0.1em solid #668; */
+}
+
+#salespitch h3 {
+    margin: 0;
+    margin-top: 0.8em;
+    /* margin-bottom: 0.3em; */
+}
+
+#salespitch a {
+    color: #59f;
+}
+
+#salespitch a:hover {
+  color:#fd0;
+}
+
+hr {
+    width: 60%;
+    color: #668;
+}
+
+article {
+    max-width: 50%;
+}
+
+/* so as not to step on the toes of other links... */
+article a {
+    color: #59f;
 }
