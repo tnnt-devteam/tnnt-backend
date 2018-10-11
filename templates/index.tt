@@ -16,7 +16,7 @@
   <h3> Do you love to play <a href="https://nethack.org">NetHack</a>? </h3>
   <h3> Want to show everyone your personal <a href="players.html">prowess?</a></h3>
   <h3> Join a <a href="clans.html">clan</a> and team up to accomplish feats too hard for one player?</h3>
-  <h3> Or just mess around and see <!-- Link to unique deaths page here? --> how many different ways you can <a href="deaths.html">get yourself killed?</a> </h3>
+  <h3> Or just mess around and see <!-- Link to unique deaths page here? --> how many different ways you can get yourself killed?</h3>
   <h3> Then come join us in November <!-- put js countdown here? --> for a month of NetHacking fun.</h3>
   <!-- or maybe put js countdown here, with a "The tournament starts in:\n X days HH:MM:SS" message, that disappears or turns into a "Play Now" after it's actually November -->
 </div>
