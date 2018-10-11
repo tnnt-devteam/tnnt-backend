@@ -19,9 +19,8 @@
           </td>
           <td class="rightmenu">
               <a href="players.html" class="menu [% IF page == 'players' %] menusel [% END %]">PLAYERS</a>
-              <!-- I'd like to get rid of the Hardfought link, and replace it with a Deaths page (between players and about), but I don't know if we had planned to have one. -->
               <a href="about.html" class="menu [% IF page == 'about' %] menusel [% END %]">ABOUT</a>
-              <a href="https://hardfought.org/" class="menu">HARDFOUGHT</a>
+              <a href="rules.html" class="menu [% IF page == 'rules' %] menusel [% END %]">RULES</a>
           </td>
       </tr>
       <tr id="lowerheader">

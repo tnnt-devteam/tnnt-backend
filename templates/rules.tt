@@ -1,0 +1,205 @@
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::Rules</title>
+  <link rel="stylesheet" type="text/css" href="default.css">
+</head>
+
+<body>
+
+[% INCLUDE header.tt page = 'rules' %]
+
+<article>
+  <h3>General Rules</h3>
+  <p>
+    Use your common sense: don't hack into the game servers, don't deliberately
+    corrupt or leak memory or otherwise try to crash or hang up the game, don't
+    abuse the RNG, and don't be a jerk.
+  </p>
+  <p>
+    For now, bots are banned as well.
+    If they're unbanned at some point in the future, they will still be
+    disallowed from impersonating a human (playing on an account registered to
+    a human) or cybernetically enhancing a human clan (playing in a clan that
+    contains humans).
+  </p>
+  <p>
+    However, anything within the normal execution of the game is fair game.
+    This includes farming, scumming, abusing program bugs, reading dead
+    characters' dump logs, viewing ttyrecs of your own or others' games, using
+    interface enhancers like InterHack, and hanging out on IRC to see if the
+    gray stone you picked up in Mines' End gets livelogged as the luckstone.
+  </p>
+
+  <h3>Clans</h3>
+  <p>
+    To create clans, invite players to your clan, and accept invitations to
+    others' clans, go <a href="clanmgmt/">here</a>.
+  </p>
+  <p>
+    For the 2018 tournament, there are no limits on the size of a clan, and the
+    scoring is designed so that adding new clan members, however inexperienced,
+    cannot hurt the clan overall.
+  </p>
+  <p>
+    At November 10th at midnight UTC, clan membership will become frozen;
+    people can still leave or be kicked out of clans, but cannot create new
+    clans or join new clans. Anyone who starts their first tournament game
+    after this date may optionally join or create a clan within 24 hours of
+    starting their game.
+  </p>
+  <p>
+  </p>
+
+  <h3>Scoring</h3>
+  <p>
+    Not accounting for trophies, all ascensions are worth 50 points each.There
+    are several ways to get more points:
+  </p>
+
+  <h4>Trophies</h4>
+  <p>
+    Various accomplishments across one or multiple games earn you trophies,
+    which come with an associated boatload of points. To see how to earn these,
+    go to the <a href="trophies.html">Trophies page</a> and hover over them;
+    they will show up as a tooltip.
+    <!-- TODO: Do we want to stick a trophy score table here anyway? -->
+  </p>
+
+  <h4>Ascending with Conducts</h4>
+  <table>
+    <thead>
+      <tr class="framed">
+        <th>Conduct</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr> <td>Pacifist</td>          <td>50</td> </tr>
+      <tr> <td>Zen</td>               <td>50</td> </tr>
+      <tr> <td>Nudist</td>            <td>50</td> </tr>
+      <tr> <td>Foodless</td>          <td>30</td> </tr>
+      <tr> <td>Illiterate</td>        <td>20</td> </tr>
+      <tr> <td>Elberethless</td>      <td>20</td> </tr>
+      <tr> <td>Vegan</td>             <td>15</td> </tr>
+      <tr> <td>Weaponless</td>        <td>10</td> </tr>
+      <tr> <td>Atheist</td>           <td>10</td> </tr>
+      <tr> <td>Vegetarian</td>        <td> 5</td> </tr>
+      <tr> <td>Genocideless</td>      <td> 5</td> </tr>
+      <tr> <td>Wishless</td>          <td> 4</td> </tr>
+      <tr> <td>Artifact wishless</td> <td> 1</td> </tr>
+      <tr> <td>Polyselfless</td>      <td> 1</td> </tr>
+      <tr> <td>Polyobjectless</td>    <td> 1</td> </tr>
+    </tbody>
+  </table>
+  <p>
+    For conducts that necessarily imply other conducts, such as Vegan and
+    Vegetarian, keeping the more stringent conduct will score points for both
+    it and the less stringent conduct. For example, a foodless ascension is
+    actually worth 50 points, because the player will get the points for Vegan
+    and Vegetarian as well.
+  </p>
+
+  <h4>Speedrunning</h4>
+  <p>
+    Games that are won in under 20,000 turns score additional bonus points
+    equal to 500,000 divided by the turncount of the game. For instance, a game
+    that finishes in 5,000 turns will score 100 bonus points, whereas a game
+    that barely finishes in 20,000 turns scores 25 points. No points are
+    awarded for games longer than 20,000 turns.
+  </p>
+
+  <h4>Streaking</h4>
+  <p>
+    A streak is a series of consecutive winning games by the same player, each
+    of which begins after the last one ends. Each consecutive streak game has
+    its ascension points (plus bonuses for speedrunning or conducts) multiplied
+    by a number which increases as the streak gets longer. This number is 1.1
+    for the second game of a streak, 1.2 for the third, 1.4 for the fourth, and
+    so on.
+  </p>
+
+  <h4>Achievements</h4>
+  <p>
+    Achievements are worth 1 point each, across all games (if you get the same
+    achievement in two or more games, you still only get 1 point for that
+    achievement counting towards your individual score.) If you get all
+    possible achievements and the All Achievements trophy, each achievement
+    counts for 2 points instead.
+  </p>
+  <p>
+    Achievement-related points are counted towards your individual score
+    directly, and are not multiplied by any streak you may have.
+  </p>
+
+  <h4>Clan Scoring</h4>
+  <p>
+    Clans' games are scored based on the highest score for a given character
+    race/role/alignment/gender combination. That is, if one player in a clan
+    ascends a Val-Dwa-Fem-Law with no frills and gets 50 points, the clan will
+    have 50 points for that win; but if another player in the same clan ascends
+    another Val-Dwa-Fem-Law and gets 10 points for a conduct, scoring 60 points
+    for that game, the clan's 50 points for the older win are replaced with the
+    higher scoring 60-point game.
+  </p>
+  <p>
+    Many of the trophies which can be earned individually can also be earned
+    collectively by a clan, for the same amount of points. If an individual
+    earns one of these trophies on their own, their clan will also get the
+    trophy.
+  </p>
+
+  <h3>The Great and Lesser Race/Role</h3>
+  <p>
+    Most of the major trophies are explained as tooltips on the Trophies page;
+    hover over the trophy title to see it. The "Great Race/Role" and "Lesser
+    Race/Role", however, need a bit more explanation.
+  </p>
+
+  <p>
+    The Great Race/Role is obtained by making several ascensions, all of which
+    use that race or role, and represent all possible other combinations of
+    role/race and align0 that are valid to begin the game with. For instance,
+    The Great Archeologist consists of ascending an Arc-Dwa-Law, Arc-Gno-Neu,
+    Arc-Hum-Law, and Arc-Hum-Neu. Note that your starting alignment is
+    considered, not your final alignment, so you can't use helm of opposite
+    alignment tricks. The gender of the characters is also completely
+    irrelevant.
+  </p>
+
+  <p>
+    There is one exception to the above: those rules would make The Great Human
+    require a ton of games, since every role can be a human, usually with
+    multiple alignment choices. So instead, The Great Human consists of
+    ascending one of each role as a human - but only for roles which can
+    <i>only</i> be played as humans (Knight, Samurai, Monk, Tourist). Unlike
+    the other Great Race trophies, alignment doesn't matter, so you only need to
+    complete one Monk instead of three.
+  </p>
+
+  <p>
+    The Lesser Race/Role works identically to the Great, but instead of
+    ascending, you must instead complete a game with each required character
+    combination where you successfully retrieve the luckstone from the bottom
+    of the Mines <b>and</b> retrieve the prize from the end of Sokoban.
+  </p>
+
+  <p>
+    The Great Race/Role is worth fifty additional points for each character
+    combination it requires, and The Lesser Race/Role is worth five additional
+    points for each character combination it requires. Like other trophies,
+    these can also be earned collectively by a clan.
+  </p>
+
+  <h3></h3>
+  <p>
+  </p>
+
+</article>
+
+</body>
+
+</html>
