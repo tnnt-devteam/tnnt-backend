@@ -66,9 +66,15 @@ my $data = $score->export();
 
 #--- output JSON data
 
-if($cmd->json_only()) {
+if(defined (my $out = $cmd->json_only())) {
   my $js = JSON->new()->pretty(1);
-  print $js->encode($data);
+  if($out eq '') {
+    print $js->encode($data);
+  } else {
+    open(my $fh, '>', $out) or die "Cannot open file '$out'";
+    print $fh $js->encode($data);
+    close($fh);
+  }
 }
 
 #--- process the templates

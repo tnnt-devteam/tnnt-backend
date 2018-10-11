@@ -43,9 +43,9 @@ sub BUILD {
   my ($self, $args) = @_;
 
   if(!GetOptions(
-    'debug' => sub { $self->_set_debug(1); },
-    'json'  => sub { $self->_set_json_only(1); },
-    'help'  => sub { $self->help(); },
+    'debug'   => sub { $self->_set_debug(1); },
+    'json:s'  => sub { $self->_set_json_only($_[1]); },
+    'help'    => sub { $self->help(); },
   )) {
     die 'Invalid command-line argument';
   }
@@ -64,10 +64,10 @@ THE NOVEMBER NETHACK TOURNAMENT scoreboard
 """"""""""""""""""""""""""""""""""""""""""
 Command line options:
 
-  --debug  turn on debug mode
-  --json   output JSON data to STDOUT instead of compiling templates into
-           HTML files
-  --help   display this help
+  --debug        turn on debug mode
+  --json[=FILE]  output JSON data to STDOUT or user-specified file instead of
+                 compiling templates into HTML files
+  --help         display this help
 
 EOHD
 
