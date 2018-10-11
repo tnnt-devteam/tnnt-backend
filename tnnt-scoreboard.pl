@@ -11,6 +11,7 @@ use v5.10;
 use FindBin qw($Bin);
 use lib "$Bin";
 
+use JSON;
 use Try::Tiny;
 use Moo;
 use TNNT::Cmdline;
@@ -19,7 +20,6 @@ use TNNT::Source;
 use TNNT::ClanList;
 use TNNT::Score;
 use TNNT::Template;
-use Data::Dumper;
 
 $| = 1;
 
@@ -62,11 +62,20 @@ for my $src (@sources) {
 #--- compile the scoreboard
 
 $score->process();
+my $data = $score->export();
+
+#--- output JSON data
+
+if($cmd->json_only()) {
+  my $js = JSON->new()->pretty(1);
+  print $js->encode($data);
+}
 
 #--- process the templates
 
-my $data = $score->export();
-my $t = TNNT::Template->new(data => $data);
-$t->process();
-$t->process('players', 'player', $data->{'players'}{'ordered'});
-$t->process('clans', 'clan', $data->{'clans'}{'ordered'});
+else {
+  my $t = TNNT::Template->new(data => $data);
+  $t->process();
+  $t->process('players', 'player', $data->{'players'}{'ordered'});
+  $t->process('clans', 'clan', $data->{'clans'}{'ordered'});
+}
