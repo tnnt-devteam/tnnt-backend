@@ -26,24 +26,49 @@
 <article>
   <h3> How to Play </h3>
   <p>
-    Register an account on the US <a href="https://hardfought.org/nethack">Hardfought nethack server</a>, then ssh in to any of the US, EU, or AU servers and select the TNNT game option. That's all there is to it!
+    You will need an <a href="https://en.wikipedia.org/wiki/SSH">SSH client</a>
+    to connect to the game servers. Linux and Mac OS typically come with this
+    installed; Windows users can use either a free client like
+    <a href="https://putty.org">PuTTY</a> or Windows Subsystem for Linux.
   </p>
   <p>
-    To create, join, or manage clans, go <a href="https://hardfought.org/tnnt/signin">here</a>. Clans can only be created up until $DATE, and you can only move between clans up until $OTHERDATE!
+    TNNT is hosted by <a href="https://hardfought.org/nethack">hardfought.org</a>.
+    Connect to "nethack@hardfought.org" via SSH, and register an account.
+    Then, you can choose any of three servers to play on:
+    <ul>
+      <li>hardfought.org: US East (Vermont)</li>
+      <li>eu.hardfought.org: Europe (London)</li>
+      <li>au.hardfought.org: Australia (Sydney)</li>
+    </ul>
+    Connect to your preferred server the same way via SSH and select the TNNT game
+    option. That's all there is to it!
+  </p>
+  <p>
+    To create, join, or manage clans, go
+    <a href="https://hardfought.org/tnnt/signin">here</a>.
+    Clans can only be created up until $DATE, and you can only move between
+    clans up until $OTHERDATE!
   </p>
 
   <!-- was going to put a section for "helpful links" here, but not sure they're needed since the header is pretty obvious -->
 
   <h3> More Information </h3>
   <p>
-    For more general information on NetHack, check out <a href="https://en.wikipedia.org/wiki/NetHack">Wikipedia</a>,
-    the <a href="https://nethackwiki.com">NetHackWiki</a>, and <a href="https://thegreatestgameyouwilleverplay.com">The Greatest Game You Will Ever Play</a>.
+    For more general information on NetHack, check out
+    <a href="https://en.wikipedia.org/wiki/NetHack">Wikipedia</a>,
+    the <a href="https://nethackwiki.com">NetHackWiki</a>,
+    and <a href="https://thegreatestgameyouwilleverplay.com">The Greatest Game You Will Ever Play</a>.
   </p>
   <p>
-    For more information about the TNNT tournament, see the <a href="about.html">About page</a>.
+   For more information about the TNNT tournament, see the <a href="about.html">About page</a>
+   and <a href="rules.html">Rules page</a>.
   </p>
   <p>
-    TNNT chat discussion happens on the <a href="https://freenode.net">Freenode</a> IRC server, on the #tnnt and #hardfought channels. <a href="https://webchat.freenode.net/?channels=#tnnt">Click here to start chatting.</a>
+    TNNT chat discussion happens on the <a href="https://freenode.net">Freenode</a>
+    IRC server, on the #tnnt and #hardfought channels. All TNNT discussion is
+    on-topic in these channels, and this is the best way to reach the admins if
+    you have any issues.
+    <a href="https://webchat.freenode.net/?channels=#tnnt">Click here to open the chat.</a>
   </p>
 </article>
 
