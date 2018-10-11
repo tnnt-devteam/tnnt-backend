@@ -88,8 +88,8 @@ th {
 }
 
 thead tr.framed {
-  border-bottom: 0.1em solid #668;
-  border-top: 0.1em solid #668;
+  border-bottom: 0.1em solid #abf;
+  border-top: 0.1em solid #abf;
   background-color: #237;
 }
 
@@ -186,8 +186,10 @@ div.achieve-item.not-achieved {
 /* style for the attained achievements */
 
 div.achieve-item.achieved {
-  background: #c90;
-  border: 0.3em solid #960; /* optional; I could go either way on this */
+  /* background: #c90; */
+  background-color: #237;
+  /* optional; I could go either way on this */
+  /* border: 0.3em solid #960;  */
 }
 
 /* style for the achievement summary with in-laid progress bar */
@@ -196,14 +198,15 @@ div.achieve-summary {
   grid-column-start: 1;
   grid-column-end: 5;
   text-align: center;
-  color: #888;
+  color: #f2f5ff;
   position: relative;
   width: 100%;
   background-color: #224;
 }
 
 div.achieve-bar {
-  background-color: #c90;
+  /* background-color: #c90; */
+  background-color: #237;
   height: 2rem;
 }
 
@@ -272,7 +275,7 @@ td.trophy-na {
 
 header {
   width:100%;
-  margin:0;
+  margin:0 0 1em 0;
 }
 
 /* Can't have background color set on the whole header; it creates artifacts
