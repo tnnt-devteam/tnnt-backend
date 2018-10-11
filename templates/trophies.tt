@@ -29,7 +29,10 @@
     [%# === FIRST ASCENSIONS ============================================== %]
 
     <tr>
-      <td class="trophy-name">First Ascension</td>
+      <td class="trophy-name"
+          title="First player to ascend during the tournament. 150 points.">
+        First Ascension
+      </td>
       <td class="trophy-single">
         [% IF trophies.players.exists('firstasc');
           plink(trophies.players.firstasc);
@@ -45,7 +48,10 @@
     [%# === MOST ASCENSIONS =============================================== %]
 
     <tr>
-      <td class="trophy-name">Most Ascensions</td>
+      <td class="trophy-name"
+          title="Player with the most overall ascensions. 250 points.">
+        Most Ascensions
+      </td>
       <td class="trophy-single">
         [% IF trophies.players.exists('mostasc');
           plink(trophies.players.mostasc);
@@ -61,7 +67,10 @@
     [%# === LOWEST TURNCOUNTS ============================================= %]
 
     <tr>
-      <td class="trophy-name">Lowest Turncount</td>
+      <td class="trophy-name"
+          title="Ascension with the lowest turn count. 250 points.">
+        Lowest Turncount
+      </td>
       <td class="trophy-single">
         [% IF trophies.players.exists('minturns');
           plink(trophies.players.minturns);
@@ -77,7 +86,10 @@
     [%# === MOST CONDUCTS ================================================= %]
 
     <tr>
-      <td class="trophy-name">Most Conducts</td>
+      <td class="trophy-name"
+          title="Ascension with the maximum number of intact conducts. 250 points.">
+        Most Conducts
+      </td>
       <td class="trophy-single">
         [% IF trophies.players.exists('mostcond');
           plink(trophies.players.mostcond);
@@ -93,7 +105,10 @@
     [%# === LOWEST SCORE ================================================== %]
 
     <tr>
-      <td class="trophy-name">Lowest Score</td>
+      <td class="trophy-name"
+          title="Ascension with the lowest score. 150 points.">
+        Lowest Score
+      </td>
       <td class="trophy-single">
         [% IF trophies.players.exists('lowscore');
           plink(trophies.players.lowscore);
@@ -109,7 +124,10 @@
     [%# === HIGHEST SCORE ================================================= %]
 
     <tr>
-      <td class="trophy-name">Highest Score</td>
+      <td class="trophy-name"
+          title="Ascension with the highest score. 150 points.">
+        Highest Score
+      </td>
       <td class="trophy-single">
         [% IF trophies.players.exists('highscore');
           plink(trophies.players.highscore);
@@ -125,7 +143,8 @@
     [%# === LONGEST STREAK ================================================ %]
 
     <tr>
-      <td class="trophy-name">Longest Streak</td>
+      <td class="trophy-name"
+          title="Longest streak of consecutive winning games. 250 points.">Longest Streak</td>
       [% IF trophies.players.exists('maxstreak') %]
         <td class="trophy-single">[% plink(trophies.players.maxstreak) %]</td>
       [% END %]
@@ -137,7 +156,10 @@
     [%# === BOTH GENDERS ================================================== %]
 
     <tr>
-      <td class="trophy-name">Both Genders</td>
+      <td class="trophy-name"
+          title="At least one ascension with each gender. 40 points.">
+        Both Genders
+      </td>
       <td class="trophy-multi">[% IF trophies.players.exists('allgenders') %]
           [% FOREACH plr IN trophies.players.allgenders %]
             [% plink(plr) %]
@@ -156,7 +178,10 @@
     [%# === ALL ALIGNMENTS ================================================ %]
 
     <tr>
-      <td class="trophy-name">All Alignments</td>
+      <td class="trophy-name"
+          title="At least one ascension with each alignment. 60 points.">
+        All Alignments
+      </td>
       <td class="trophy-multi">[% IF trophies.players.exists('allaligns') %]
           [% FOREACH plr IN trophies.players.allaligns %]
             [% plink(plr) %]
@@ -175,7 +200,10 @@
     [%# === ALL RACES ===================================================== %]
 
     <tr>
-      <td class="trophy-name">All Races</td>
+      <td class="trophy-name"
+          title="At least one ascension with each race. 100 points.">
+        All Races
+      </td>
       <td class="trophy-multi">[% IF trophies.players.exists('allraces') %]
           [% FOREACH plr IN trophies.players.allraces %]
             [% plink(plr) %]
@@ -191,10 +219,13 @@
       </td>
     </tr>
 
-    [%# === ALL RACES ===================================================== %]
+    [%# === ALL ROLES ===================================================== %]
 
     <tr>
-      <td class="trophy-name">All Roles</td>
+      <td class="trophy-name"
+          title="At least one ascension with each role. 260 points.">
+        All Roles
+      </td>
       <td class="trophy-multi">[% IF trophies.players.exists('allroles') %]
           [% FOREACH plr IN trophies.players.allroles %]
             [% plink(plr) %]
@@ -213,7 +244,10 @@
     [%# === ALL CONDUCTS ================================================== %]
 
     <tr>
-      <td class="trophy-name">All Conducts</td>
+      <td class="trophy-name"
+          title="Across all ascensions, preserves each conduct at least once. 300 points.">
+        All Conducts
+      </td>
       <td class="trophy-multi">[% IF trophies.players.exists('allconducts') %]
           [% FOREACH plr IN trophies.players.allconducts %]
             [% plink(plr) %]
@@ -232,7 +266,10 @@
     [%# === ALL ACHIEVEMENTS ============================================== %]
 
     <tr>
-      <td class="trophy-name">All Achievements</td>
+      <td class="trophy-name"
+          title="Across all ascensions, completes each achievement at least once. Doubles achievement score.">
+        All Achievements
+      </td>
       <td class="trophy-multi">[% IF trophies.players.exists('allachieve') %]
           [% FOREACH plr IN trophies.players.allachieve %]
             [% plink(plr) %]
@@ -251,7 +288,10 @@
     [%# === THE GREAT IMPOSSIBLE ========================================== %]
 
     <tr>
-      <td class="trophy-name">The Great Impossible</td>
+      <td class="trophy-name"
+          title="One ascension that keeps every single tracked conduct intact. If you accomplish this, you win the Internet (and 5000 points).">
+        The Great Impossible
+      </td>
       <td class="trophy-multi">[% IF trophies.players.exists('gimpossible') %]
           [% FOREACH plr IN trophies.players.gimpossible %]
             [% plink(plr) %]
@@ -270,7 +310,10 @@
     [%# === UNIQUE DEATHS ================================================= %]
 
     <tr>
-      <td class="trophy-name">Unique Deaths</td>
+      <td class="trophy-name"
+          title="Highest amount of unique end-of-game reasons. 200 points.">
+        Unique Deaths
+      </td>
       <td class="trophy-na">N/A</td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('uniquedeaths');
@@ -282,7 +325,10 @@
     [%# === MOST UNIQUE ASCENSIONS ======================================== %]
 
     <tr>
-      <td class="trophy-name">Most Unique Ascensions</td>
+      <td class="trophy-name"
+          title="Highest number of unique ascension character race/role/align0 combos. 200 points.">
+        Most Unique Ascensions
+      </td>
       <td class="trophy-na">N/A</td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('uniqascs');
@@ -294,7 +340,10 @@
     [%# === MOST GAMES OVER 1000 TURNS ==================================== %]
 
     <tr>
-      <td class="trophy-name">Most Games</td>
+      <td class="trophy-name"
+          title="Highest number of games that lasted over 1000 turns. 100 points.">
+        Most Games
+      </td>
       <td class="trophy-na">N/A</td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('mostgames');
@@ -306,7 +355,10 @@
     [%# === NETHACK MASTER ================================================ %]
 
     <tr>
-      <td class="trophy-name">NetHack Master</td>
+      <td class="trophy-name"
+          title="Ascend all 73 possible race/role/align0 combos.">
+        NetHack Master
+      </td>
       <td class="trophy-na">N/A</td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('master');
@@ -320,7 +372,10 @@
     [%# === NETHACK DOMINATOR ============================================= %]
 
     <tr>
-      <td class="trophy-name">NetHack Dominator</td>
+      <td class="trophy-name"
+          title="Be a NetHack Master, and also achieve each conduct at least once in a winning game.">
+        NetHack Dominator
+      </td>
       <td class="trophy-na">N/A</td>
       <td class="trophy-multi">
         [% IF trophies.clans.exists('dominator');
@@ -334,7 +389,10 @@
     [%# === MEDUSA CUP ==================================================== %]
 
     <tr>
-      <td class="trophy-name">Medusa Cup</td>
+      <td class="trophy-name"
+          title="Highest total clan score for a clan with no ascensions.">
+        Medusa Cup
+      </td>
       <td class="trophy-na">N/A</td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('medusacup');
@@ -349,7 +407,7 @@
       [% FOREACH rr IN ['race', 'role'] %]
         [% FOREACH cat IN config.nethack.item('great' _ rr).keys.sort %]
           <tr>
-            <td class="trophy-name">
+            <td class="trophy-name" title="See Rules page for explanation.">
               [% config.trophies.item(gl _ rr _ ':' _ cat.lower).title %]
             </td>
             <td class="trophy-multi">
