@@ -176,6 +176,7 @@ div.achieve-item {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 /* style for the non-attained achievements */
@@ -188,7 +189,9 @@ div.achieve-item.not-achieved {
 
 div.achieve-item.achieved {
   background: #c90;
-  border: 0.3em solid #960; /* optional; I could go either way on this */
+  color: #000;
+  font-weight: 600;
+  /* border: 0.3em solid #960; */ /* optional; I could go either way on this */
 }
 
 /* style for the achievement summary with in-laid progress bar */
@@ -201,11 +204,13 @@ div.achieve-summary {
   position: relative;
   width: 100%;
   background-color: #224;
+  border-radius: 5px;
 }
 
 div.achieve-bar {
   background-color: #c90;
   height: 2rem;
+  border-radius: 5px;
 }
 
 div.achieve-msg {
