@@ -11,7 +11,6 @@
 <body>
 
 [% INCLUDE header.tt page = 'players' %]
-<h1>Players</h1>
 
 <table>
   <thead>

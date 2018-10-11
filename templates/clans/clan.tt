@@ -13,6 +13,7 @@
 
 <body>
 
+[% INCLUDE header.tt %]
 <h1>[% cln.name %]</h1>
 
 <div class="row">
