@@ -9,6 +9,7 @@ body {
   flex-direction: column;
   font-weight: 400;
   margin: 0;
+  overflow-x: hidden;
 }
 
 h2 {
@@ -175,6 +176,7 @@ div.achieve-item {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
 }
 
 /* style for the non-attained achievements */
@@ -186,8 +188,9 @@ div.achieve-item.not-achieved {
 /* style for the attained achievements */
 
 div.achieve-item.achieved {
-  /* background: #c90; */
-  background-color: #237;
+  background: #c90;
+  color: #000;
+  font-weight: 600;
   /* optional; I could go either way on this */
   /* border: 0.3em solid #960;  */
 }
@@ -202,12 +205,14 @@ div.achieve-summary {
   position: relative;
   width: 100%;
   background-color: #224;
+  border-radius: 5px;
 }
 
 div.achieve-bar {
   /* background-color: #c90; */
   background-color: #237;
   height: 2rem;
+  border-radius: 5px;
 }
 
 div.achieve-msg {
@@ -274,16 +279,19 @@ td.trophy-na {
   ====================================================================*/
 
 header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   width:100%;
-  margin:0 0 1em 0;
+  margin:auto;
 }
 
 /* Can't have background color set on the whole header; it creates artifacts
  * around the bottom of the element. */
 #headerbar {
   background-color:#237;
-  width:100%;
-  margin: 0;
+  width:101%;
+  margin:auto;
   text-align:center;
 }
 
@@ -293,7 +301,7 @@ header {
   font-weight: 500;
   letter-spacing: 0.25em;
   font-size: 200%;
-  margin: 0;
+  margin: auto;
   padding: 0.2em 0 0.2em 0;
   text-shadow: 0.1em 0.1em black;
 }
@@ -315,7 +323,6 @@ a.menusel {
 
 table#navlogo {
     width: 100%;
-    margin: 0;
 }
 
 table#navlogo tr {
@@ -333,17 +340,19 @@ table#navlogo td {
 }
 
 table#navlogo td.leftmenu {
-    min-width:45%;
+    width:50%;
     text-align:right;
+    margin-left:auto;
 }
 
 table#navlogo td.rightmenu {
-    min-width:45%;
+    width:50%;
     text-align:left;
+    margin-left:auto;
 }
 
 table#navlogo td#logo {
-    padding: 0;
+    padding: 0 1em 0 1em;
     text-align: center;
     width: 100px;
     border-left: 2pt solid #f2f5ff;

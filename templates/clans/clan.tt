@@ -9,11 +9,12 @@
   <title>TNNT::[% cln.name %]</title>
   <base href="../">
   <link rel="stylesheet" type="text/css" href="default.css">
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 
 <body>
 
-[% INCLUDE header.tt %]
+[% INCLUDE header.tt page = 'clans' %]
 <h1>[% cln.name %]</h1>
 
 <div class="row">

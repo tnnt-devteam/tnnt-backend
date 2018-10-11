@@ -7,11 +7,12 @@
   <title>TNNT::[% player %]</title>
   <base href="../">
   <link rel="stylesheet" type="text/css" href="default.css">
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 
 <body>
 
-[% INCLUDE header.tt %]
+[% INCLUDE header.tt page = 'players' %]
 <h1>[% player %]</h1>
 
 [%# ======================================================================= %]
