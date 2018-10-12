@@ -20,6 +20,7 @@ use TNNT::Source;
 use TNNT::ClanList;
 use TNNT::Score;
 use TNNT::Template;
+use Data::Dumper;
 
 $| = 1;
 
