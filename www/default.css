@@ -400,3 +400,32 @@ article {
 article a {
     color: #59f;
 }
+
+#countdown {
+  font-size: 133%;
+  text-align: center;
+}
+
+#countdown .before {
+  display: none;
+}
+
+#countdown .during {
+  display: none;
+}
+
+#countdown .over {
+  display: none;
+}
+
+#countdown .counter {
+  display: none;
+}
+
+#countdown .when {
+  display: none;
+}
+
+span#counter {
+  color: #59f;
+}

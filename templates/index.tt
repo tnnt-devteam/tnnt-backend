@@ -6,6 +6,7 @@
 <head>
   <title>TNNT - The November NetHack Tournament</title>
   [% INCLUDE headlinks.tt %]
+  <script type="text/javascript" src="countdown.js"></script>
 </head>
 
 <body>
@@ -19,6 +20,15 @@
   <h3> Or just mess around and see <!-- Link to unique deaths page here? --> how many different ways you can get yourself killed?</h3>
   <h3> Then come join us in November <!-- put js countdown here? --> for a month of NetHacking fun.</h3>
   <!-- or maybe put js countdown here, with a "The tournament starts in:\n X days HH:MM:SS" message, that disappears or turns into a "Play Now" after it's actually November -->
+  <p id="countdown">
+    <span class="initial">&nbsp;</span>
+    <span class="before">The tournament starts in</span>
+    <span class="during">The tournament ends in</span>
+    <span class="over">The tournament is over; see you all next November</span>
+    <span class="counter">
+      <span id="counter"></span> on <span id="when"></span>!
+    </span>
+  </p>
 </div>
 
 <hr>
