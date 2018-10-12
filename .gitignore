@@ -7,3 +7,4 @@ clandb.sqlite
 file
 t*.pl
 config.json
+data*.json
