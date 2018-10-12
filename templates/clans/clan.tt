@@ -8,8 +8,7 @@
 <head>
   <title>TNNT::[% cln.name %]</title>
   <base href="../">
-  <link rel="stylesheet" type="text/css" href="default.css">
-  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+  [% INCLUDE headlinks.tt %]
 </head>
 
 <body>

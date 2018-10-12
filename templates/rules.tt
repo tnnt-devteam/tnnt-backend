@@ -5,7 +5,7 @@
 
 <head>
   <title>TNNT::Rules</title>
-  <link rel="stylesheet" type="text/css" href="default.css">
+  [% INCLUDE headlinks.tt %]
 </head>
 
 <body>
