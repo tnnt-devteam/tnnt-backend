@@ -106,6 +106,16 @@
       "points" : 250,
     },
 
+    "realtime" : {
+      "title"  : "Fastest Realtime",
+      "points" : 250,
+    },
+
+    "clan-realtime" : {
+      "title"  : "Fastest Realtime",
+      "points" : 250,
+    },
+
     "streak"   : {
       "title"  : "Streak",
     },

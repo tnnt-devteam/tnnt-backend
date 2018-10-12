@@ -42,7 +42,7 @@
     <a href="https://putty.org">PuTTY</a> or Windows Subsystem for Linux.
   </p>
   <p>
-    TNNT is hosted by <a href="https://hardfought.org/nethack">hardfought.org</a>.
+    TNNT is hosted by <a href="/nethack">hardfought.org</a>.
     Connect to "nethack@hardfought.org" via SSH, and register an account.
     Then, you can choose any of three servers to play on:
     <ul>
@@ -55,7 +55,7 @@
   </p>
   <p>
     To create, join, or manage clans, go
-    <a href="https://hardfought.org/tnnt/signin">here</a>.
+    <a href="/tnnt/clanmgmt">here</a>.
     Clan membership (creating and joining) will be frozen after November 10th!
   </p>
 
