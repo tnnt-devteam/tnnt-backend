@@ -283,7 +283,7 @@ header {
   align-items: center;
   flex-direction: column;
   width:100%;
-  margin:auto;
+  margin:0 auto 1em auto;
 }
 
 /* Can't have background color set on the whole header; it creates artifacts
