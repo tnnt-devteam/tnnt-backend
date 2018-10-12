@@ -164,3 +164,28 @@ lists real trophies, not things like single ascensions, individual streaks etc.
 **`clans`.`ordered`**
 
 List of clan indices ordered by clan scores.
+
+
+### trophies
+
+This section primarily exists to generate the Trophies page. It has two
+sub-sections: `players` and `clans`. Both of these have the same structure,
+so we will describe them at once.
+
+The keys under `players` or `clans` are the trophy short words such as
+*minturns*, *mostascs* or *gimpossible*. Where the trophy can only be held
+by one player/clan, there's only single value. Otherwise, the value is a list
+of values.
+
+The exception here are trophies Great/Lesser Race/Role. These are under keys
+`greatfoo` and `lesserfoo` and have subkeys such `greatrace:orc`,
+`greatrole:hum`, `lesserrace:elf` etc.
+
+Note, that only trophies that have been achieved are listed in the `trophies`
+section.
+
+
+### config
+
+This section simply includes the entirety of config.json file, so that
+templates can use configuration data when needed.
