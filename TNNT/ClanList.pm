@@ -258,9 +258,9 @@ sub export
     my $cfg = TNNT::Config->instance()->config();
 
     my @trophy_names = qw(
-      firstasc mostascs mostcond lowscore highscore minturns gimpossible
-      maxstreak allroles allraces allaligns allgenders allconducts allachieve
-      mostgames uniquedeaths
+      firstasc mostascs mostcond lowscore highscore minturns realtime
+      gimpossible maxstreak allroles allraces allaligns allgenders allconducts
+      allachieve mostgames uniquedeaths
     );
 
     for my $race (qw(hum elf dwa gno orc)) {

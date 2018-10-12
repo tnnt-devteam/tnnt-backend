@@ -30,6 +30,7 @@ use TNNT::Tracker::MostCond;
 use TNNT::Tracker::LowScore;
 use TNNT::Tracker::HighScore;
 use TNNT::Tracker::MinTurns;
+use TNNT::Tracker::Realtime;
 use TNNT::Tracker::Streak;
 use TNNT::Tracker::AllCats;
 use TNNT::Tracker::ClanAscension;
@@ -79,6 +80,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::LowScore);
   $tr->add_tracker(new TNNT::Tracker::HighScore);
   $tr->add_tracker(new TNNT::Tracker::MinTurns);
+  $tr->add_tracker(new TNNT::Tracker::Realtime);
   $tr->add_tracker(new TNNT::Tracker::Streak);
   $tr->add_tracker(new TNNT::Tracker::AllCats);
   $tr->add_tracker(new TNNT::Tracker::ClanAscension);
@@ -207,6 +209,18 @@ sub export
   if(defined $tr->get_tracker_by_name('minturns')->clan()) {
     $d{'trophies'}{'clans'}{'minturns'}
     = $tr->get_tracker_by_name('minturns')->clan()->n();
+  }
+
+  # Fastest Realtime
+
+  if(defined $tr->get_tracker_by_name('realtime')->player()) {
+    $d{'trophies'}{'players'}{'realtime'}
+    = $tr->get_tracker_by_name('realtime')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('realtime')->clan()) {
+    $d{'trophies'}{'clans'}{'realtime'}
+    = $tr->get_tracker_by_name('realtime')->clan()->n();
   }
 
   # Most Conducts in single game
