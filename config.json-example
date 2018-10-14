@@ -1817,10 +1817,10 @@
       "descr"        : "Give a ring of adornment to a succubus"
     },
 
-    "unwin": {
+    "expelled": {
       "tnntachieve2" : "0x800000",
-      "title"        : "TODO",
-      "descr"        : "TODO"
+      "title"        : "No Soup For You!",
+      "descr"        : "Get expelled from the Quest"
     },
 
     "noseknows": {
@@ -1851,6 +1851,168 @@
       "tnntachieve2" : "0x10000000",
       "title"        : "Dust to Dust",
       "descr"        : "Wrest one last charge from a wand of wishing"
+    },
+
+    "amethyst": {
+      "tnntachieve2" : "0x20000000",
+      "title"        : "Teetotaler",
+      "descr"        : "Neutralize a potion of booze with an amethyst"
+    },
+
+    "skeleton": {
+      "tnntachieve2" : "0x40000000",
+      "title"        : "Spooky Scary Skeletons",
+      "descr"        : "Get scared by the rattling of a skeleton"
+    },
+
+    "ludios": {
+      "tnntachieve2" : "0x80000000",
+      "title"        : "Ocean's Eleven",
+      "descr"        : "Enter Fort Ludios"
+    },
+
+    "croesus": {
+      "tnntachieve2" : "0x100000000",
+      "title"        : "I Did It For The Money",
+      "descr"        : "Kill Croesus"
+    },
+
+    "liar": {
+      "tnntachieve2" : "0x200000000",
+      "title"        : "Gullible",
+      "descr"        : "Lie to a vault guard about your name"
+    },
+
+    "lucky": {
+      "tnntachieve2" : "0x400000000",
+      "title"        : "Luck of the Grasshopper",
+      "descr"        : "Reach +13 Luck"
+    },
+
+    "unlucky": {
+      "tnntachieve2" : "0x800000000",
+      "title"        : "Murphy's Law",
+      "descr"        : "Reach -13 Luck"
+    },
+
+    "greased": {
+      "tnntachieve2" : "0x1000000000",
+      "title"        : "Looking Slick",
+      "descr"        : "Grease a piece of armor"
+    },
+
+    "vibrating": {
+      "tnntachieve2" : "0x2000000000",
+      "title"        : "Watch Your Footing",
+      "descr"        : "Step onto the vibrating square"
+    },
+
+    "grandtour": {
+      "tnntachieve2" : "0x4000000000",
+      "title"        : "The Grand Tour",
+      "descr"        : "Step onto each high altar on the Astral Plane"
+    },
+
+    "partveget": {
+      "tnntachieve2" : "0x8000000000",
+      "title"        : "Friends Not Food",
+      "descr"        : "Reach your quest leader with vegetarian conduct intact"
+    },
+
+    "partvegan": {
+      "tnntachieve2" : "0x10000000000",
+      "title"        : "Animal Rights Activist",
+      "descr"        : "Reach your quest leader with vegan conduct intact"
+    },
+
+    "partfoodl": {
+      "tnntachieve2" : "0x20000000000",
+      "title"        : "Anti Gulp",
+      "descr"        : "Reach your quest leader with foodless conduct intact"
+    },
+
+    "partathe": {
+      "tnntachieve2" : "0x40000000000",
+      "title"        : "No Help from Above",
+      "descr"        : "Reach your quest leader with atheist conduct intact"
+    },
+
+    "partweap": {
+      "tnntachieve2" : "0x80000000000",
+      "title"        : "Wax On Wax Off",
+      "descr"        : "Reach your quest leader with weaponless conduct intact"
+    },
+
+    "partpaci": {
+      "tnntachieve2" : "0x100000000000",
+      "title"        : "Thou Shalt Not Kill",
+      "descr"        : "Reach your quest leader with pacifist conduct intact"
+    },
+
+    "partillit": {
+      "tnntachieve2" : "0x200000000000",
+      "title"        : "Me No Do Words Good",
+      "descr"        : "Reach your quest leader with illiterate conduct intact"
+    },
+
+    "partppile": {
+      "tnntachieve2" : "0x400000000000",
+      "title"        : "Lost My Transmutation License",
+      "descr"        : "Reach your quest leader with polypileless conduct intact"
+    },
+
+    "partpself": {
+      "tnntachieve2" : "0x800000000000",
+      "title"        : "True to Form",
+      "descr"        : "Reach your quest leader with polyselfless conduct intact"
+    },
+
+    "partwishl": {
+      "tnntachieve2" : "0x1000000000000",
+      "title"        : "Self Sufficient",
+      "descr"        : "Reach your quest leader with wishless conduct intact"
+    },
+
+    "partartwsh": {
+      "tnntachieve2" : "0x2000000000000",
+      "title"        : "Leave the Artifacts to the Gods",
+      "descr"        : "Reach your quest leader with artifact wishless conduct intact"
+    },
+
+    "partelber": {
+      "tnntachieve2" : "0x4000000000000",
+      "title"        : "No Help From The Floor",
+      "descr"        : "Reach your quest leader with Elberethless conduct intact"
+    },
+
+    "partzen": {
+      "tnntachieve2" : "0x8000000000000",
+      "title"        : "Feeling Your Way",
+      "descr"        : "Reach your quest leader with zen (permablind) conduct intact"
+    },
+
+    "partnudist": {
+      "tnntachieve2" : "0x10000000000000",
+      "title"        : "Going Commando",
+      "descr"        : "Reach your quest leader with nudist conduct intact"
+    },
+
+    "partgeno": {
+      "tnntachieve2" : "0x20000000000000",
+      "title"        : "Make Love, Not War",
+      "descr"        : "Reach your quest leader with genocideless conduct intact"
+    },
+
+    "partall": {
+      "tnntachieve2" : "0x3fff8000000000",
+      "title"        : "The Respectably-Sized Impossible",
+      "descr"        : "Reach your quest leader with every single tracked conduct intact"
+    },
+
+    "swapchest": {
+      "tnntachieve2" : "0x40000000000000",
+      "title"        : "It's Dangerous To Go Alone! Take This",
+      "descr"        : "Put an item into a swap chest"
     },
 
   },
