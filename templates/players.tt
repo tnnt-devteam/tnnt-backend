@@ -22,8 +22,8 @@
       <th>games</th>
       <th>ratio</th>
       <th>achieve</th>
-      <th>score</th>
-      <th>cond</th>
+      <th>overall score</th>
+      <th>conducts</th>
       <th>dlvl</th>
     </tr>
   </thead>
@@ -57,7 +57,7 @@
           [% END %]
         </td>
 
-        <td class="num">[% players.all.item(plr).ach.size %]</td>
+        <td class="num">[% players.all.item(plr).achievements.size %]</td>
 
         <td class="num">[% players.all.item(plr).score %]</td>
 
