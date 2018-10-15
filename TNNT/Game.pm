@@ -210,7 +210,7 @@ sub _build_achievements
     my @found = grep {
       exists $cfg->{$_}{$field}
       && $cfg->{$_}{$field}
-      && hex($cfg->{$_}{$field}) & $self->$field()
+      && (hex($cfg->{$_}{$field}) & $self->$field()) == hex($cfg->{$_}{$field})
     } keys %$cfg;
 
     push(@achievements, @found) if @found;
