@@ -34,6 +34,16 @@ try {
   exit(1);
 };
 
+#--- check for & create a lock file
+
+if(-f '/tmp/tnnt-scoreboard.lock') {
+  die "tnnt-scoreboard: Another instance running, aborting\n";
+}
+open(my $fh_lock, '>', '/tmp/tnnt-scoreboard.lock')
+  or die "tnnt-scoreboard: Failed to create a lock file, aborting\n";
+print $fh_lock $$;
+close($fh_lock);
+
 #--- load configuration file
 
 my $cfg = TNNT::Config->instance(config_file => "$Bin/config.json");
@@ -85,3 +95,7 @@ if($cmd->html()) {
   $t->process('players', 'player', $data->{'players'}{'ordered'});
   $t->process('clans', 'clan', $data->{'clans'}{'ordered'});
 }
+
+#--- clear the lock file
+
+unlink('/tmp/tnnt-scoreboard.lock');
