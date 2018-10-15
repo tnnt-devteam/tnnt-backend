@@ -66,7 +66,7 @@ my $data = $score->export();
 
 #--- output JSON data
 
-if(defined (my $out = $cmd->json_only())) {
+if(defined (my $out = $cmd->json())) {
   my $js = JSON->new()->pretty(1);
   if($out eq '') {
     print $js->encode($data);
@@ -79,7 +79,7 @@ if(defined (my $out = $cmd->json_only())) {
 
 #--- process the templates
 
-else {
+if($cmd->html()) {
   my $t = TNNT::Template->new(data => $data);
   $t->process();
   $t->process('players', 'player', $data->{'players'}{'ordered'});
