@@ -10,6 +10,8 @@ use Moo;
 with 'MooX::Singleton';
 
 use JSON;
+use Scalar::Util qw(blessed);
+use Carp;
 
 
 
@@ -108,6 +110,62 @@ sub iter_sources
       name => $src,
       %{$self->config()->{'sources'}{$src}},
     );
+  }
+}
+
+
+#-----------------------------------------------------------------------------
+# For given point of time returns -1 = before/0 = during/1 = after depending
+# on tournament time limits configuration. The argument can have three forms:
+#
+# - Game instance ref, then starttime/endtime attributes are used
+# - scalar, then it is taken as a single time point
+# - undefined, the above option is taken with current time
+#-----------------------------------------------------------------------------
+
+sub time_phase
+{
+  my ($self, $t) = @_;
+  my ($tcfg, $cfg_starttime, $cfg_endtime);
+
+  #--- if the entire time section in config is missing, be always in 'during'
+  #--- phase
+
+  return 0 if !exists $self->config()->{'time'};
+  $tcfg = $self->config()->{'time'};
+
+  #--- if the argument is undefined, use current time
+
+  if(!defined $t) {
+    $t = time();
+  }
+
+  #--- load the limits
+
+  if(exists $tcfg->{'starttime'}) { $cfg_starttime = $tcfg->{'starttime'} };
+  if(exists $tcfg->{'endtime'})   { $cfg_endtime   = $tcfg->{'endtime'}   };
+
+  #--- if the argument is a Game reference, check whether the game is in-range
+
+  if(blessed $t && $t->isa('TNNT::Game')) {
+    if($t->starttime() < $cfg_starttime) { return -1; }
+    if($t->endttime() >= $cfg_endtime) { return 1; }
+    return 0
+  }
+
+  #--- if the argument is a reference, it's invalid
+
+  elsif(ref $t) {
+    croak 'TNNT::Config/time_phase: Argument is an invalid reference';
+  }
+
+  #--- the argument is scalar non-reference, we will consider it a single time
+  #--- point
+
+  else {
+    if($t < $cfg_starttime) { return -1; }
+    if($t >= $cfg_endtime) { return 1; }
+    return 0;
   }
 }
 
