@@ -148,8 +148,12 @@ sub time_phase
   #--- if the argument is a Game reference, check whether the game is in-range
 
   if(blessed $t && $t->isa('TNNT::Game')) {
-    if($t->starttime() < $cfg_starttime) { return -1; }
-    if($t->endttime() >= $cfg_endtime) { return 1; }
+    if(defined $cfg_starttime && $t->starttime() < $cfg_starttime) {
+      return -1;
+    }
+    if(defined $cfg_endtime && $t->endtime() >= $cfg_endtime) {
+      return 1;
+    }
     return 0
   }
 
@@ -163,8 +167,8 @@ sub time_phase
   #--- point
 
   else {
-    if($t < $cfg_starttime) { return -1; }
-    if($t >= $cfg_endtime) { return 1; }
+    if(defined $cfg_starttime && $t < $cfg_starttime) { return -1; }
+    if(defined $cfg_endtime && $t >= $cfg_endtime) { return 1; }
     return 0;
   }
 }
