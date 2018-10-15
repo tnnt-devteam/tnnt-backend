@@ -203,7 +203,7 @@
 
     [% FOREACH ach IN config.item('achievements-ordered') %]
     <div
-      class="achieve-item[% IF cln.achievements.grep(ach).size %] achieved[% ELSE %] not-achieved[% END %]"
+      class="achieve-item[% IF cln.achievements.grep('^' _ ach _ '$').size %] achieved[% ELSE %] not-achieved[% END %]"
       title="[% config.achievements.item(ach).descr %]"
     >
       [% config.achievements.item(ach).title %]
