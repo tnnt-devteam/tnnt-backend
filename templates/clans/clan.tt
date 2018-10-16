@@ -205,6 +205,7 @@
     <div
       class="achieve-item[% IF cln.achievements.grep('^' _ ach _ '$').size %] achieved[% ELSE %] not-achieved[% END %]"
       title="[% config.achievements.item(ach).descr %]"
+      [% IF ach == 'ndexperience' %] style="font-variant:small-caps" [% END %]
     >
       [% config.achievements.item(ach).title %]
     </div>
