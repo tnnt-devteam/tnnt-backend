@@ -1,0 +1,200 @@
+[%#
+  This template is just an example of various things that can be done with the
+  data from the TNNT Scoreboard backend. Not for production use.
+%]
+
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::Example</title>
+</head>
+
+<body>
+
+[%# ###########################################################################
+###############################################################################
+############################################################################ %]
+
+<h1>Overall Statistics</h1>
+
+[% IF games.all.size %]
+  <table>
+    <tbody>
+      <tr>
+        <td>Clans</td>
+        <td>[% clans.all.size %]
+      </tr>
+      <tr>
+        <td>Players</td>
+        <td>[% players.all.size %]
+      </tr>
+      <tr>
+        <td>Games</td>
+        <td>[% games.all.size %]
+      </tr>
+      <tr>
+        <td>Ascensions</td>
+        <td>[% games.ascs.size %]
+      </tr>
+      <tr>
+        <td>Ascending players</td>
+        <td>
+          [%
+            SET cnt = 0;
+            FOREACH p IN players.all.keys;
+              IF players.all.item(p).exists('ascs');
+                SET cnt = cnt + 1;
+              END;
+            END;
+            cnt;
+          %]
+        </td>
+      </tr>
+    </tbody>
+  </table>
+[% ELSE %]
+  <p>No games played yet</p>
+[% END %]
+
+[%# ###########################################################################
+###############################################################################
+############################################################################ %]
+
+<h1>List of Top 10 Players</h1>
+
+[% IF players.all.size %]
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>player</th>
+        <th>clan</th>
+        <th>games</th>
+        <th>wins</th>
+        <th>score</th>
+        <th>ach</th>
+      </tr>
+    </thead>
+    <tbody>
+      [% SET i = 1; FOREACH plr IN players.ordered %]
+        [% SET p = players.all.item(plr) %]
+        <tr>
+           <td>[% i; SET i = i + 1 %]</td>
+           <td>[% plink(plr) %]</td>
+           <td>[% IF p.exists('clan'); clink(clans.all.item(p.clan)); END %]</td>
+           <td>[% p.games.size %]</td>
+           <td>[% p.ascs.size %]</td>
+           <td>[% p.score %]</td>
+           <td>[% p.achievements.size %]</td>
+        </tr>
+        [% LAST IF i == 10 + 1 %]
+      [% END %]
+    </tbody>
+  </table>
+[% ELSE %]
+  <p>No players have played so far</p>
+[% END %]
+
+[%# ###########################################################################
+###############################################################################
+############################################################################ %]
+
+<h1>List of Top 10 Clans</h1>
+
+[% IF clans.all.size %]
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>clan</th>
+        <th>score</th>
+        <th>games</th>
+        <th>wins</th>
+        <th>ach</th>
+      </tr>
+    </thead>
+    <tbody>
+      [% SET i = 1; FOREACH clan_idx IN clans.ordered %]
+        [% SET c = clans.all.item(clan_idx) %]
+        <tr>
+          <td>[% i; SET i = i + 1 %]</td>
+          <td>[% clink(c) %]</td>
+          <td>[% c.score %]</td>
+          <td>[% c.games.size %]</td>
+          <td>[% c.ascs.size %]</td>
+          <td>[% c.achievements.size %]</td>
+        </tr>
+        [% LAST IF i == 10 + 1 %]
+      [% END %]
+    </tbody>
+  </table>
+[% ELSE %]
+  <p>There are no clans yet</p>
+[% END %]
+
+[%# ###########################################################################
+###############################################################################
+############################################################################ %]
+
+<h1>Last 10 Ascensions</h1>
+
+[% IF games.ascs.size %]
+  <table>
+    <thead>
+      [% INCLUDE game.tt head=1 aswon=1 %]
+    </thead>
+    <tbody>
+      [%
+        SET i = games.ascs.size;
+        SET cnt = 10;
+        FOREACH game IN games.ascs.reverse;
+          INCLUDE game.tt aswon=1;
+          SET i = i - 1;
+          SET cnt = cnt - 1;
+          LAST IF cnt < 1;
+        END;
+      %]
+    </tbody>
+  </table>
+[% ELSE %]
+  <p>There are not ascensions yet</p>
+[% END %]
+
+[%# ###########################################################################
+###############################################################################
+############################################################################ %]
+
+<h1>Last 10 Games</h1>
+
+[% IF games.all.size %]
+  <table>
+    <thead>
+      [% INCLUDE game.tt head=1 aswon=1 %]
+    </thead>
+    <tbody>
+      [%
+        SET i = games.all.size;
+        SET cnt = 10;
+        FOREACH game IN games.all.reverse;
+          INCLUDE game.tt game=game.n;
+          SET i = i - 1;
+          SET cnt = cnt - 1;
+          LAST IF cnt < 1;
+        END;
+      %]
+    </tbody>
+  </table>
+[% ELSE %]
+  <p>There are not games yet</p>
+[% END %]
+
+[%# ###########################################################################
+###############################################################################
+############################################################################ %]
+
+</body>
+
+</html>

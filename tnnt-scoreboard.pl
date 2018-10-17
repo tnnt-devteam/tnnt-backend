@@ -75,6 +75,17 @@ for my $src (@sources) {
 $score->process();
 my $data = $score->export();
 
+#--- record tournament phase
+
+my $phase = $cfg->time_phase();
+if($phase == 0) {
+  $data->{'aux'}{'phase'} = 'during';
+} elsif($phase == -1) {
+  $data->{'aux'}{'phase'} = 'before';
+} elsif($phase == 1) {
+  $data->{'aux'}{'phase'} = 'after';
+}
+
 #--- output JSON data
 
 if(defined (my $out = $cmd->json())) {
