@@ -108,6 +108,7 @@ sub read
 
   #--- other variables
 
+  my $cfg = TNNT::Config->instance();
   my $file = $self->logfile();
   my $fpos = $self->fpos();
   my $lines = $self->lines();
@@ -140,7 +141,7 @@ sub read
       chomp($l);
       my $row = $self->_parse_xlogfile_row($l);
       my $game = new TNNT::Game(%$row, src => $self);
-      $cb->($game);
+      $cb->($game) if $cfg->time_phase($game) == 0;
       $lines++;
     }
 
