@@ -114,12 +114,17 @@
 
   <h4>Streaking</h4>
   <p>
-    A streak is a series of consecutive winning games by the same player, each
-    of which begins after the last one ends. Each consecutive streak game has
-    its ascension points (plus bonuses for speedrunning or conducts) multiplied
-    by a number which increases as the streak gets longer. This number is 1.1
-    for the second game of a streak, 1.2 for the third, 1.4 for the fourth, and
-    so on.
+    A streak is a series of consecutive winning games by the same player. When
+    accounting for the multiple servers, the rule is that the first game you
+    start on any server after winning the previous game in a streak is the
+    candidate game for continuing the streak; other simultaneous games have no
+    effect on the streak.
+  </p>
+  <p>
+    Each consecutive streak game has its ascension points (plus bonuses for
+    speedrunning or conducts) multiplied by a number which increases as the
+    streak gets longer. This number is 1.1 for the second game of a streak, 1.2
+    for the third, 1.4 for the fourth, and so on.
   </p>
 
   <h4>Achievements</h4>
