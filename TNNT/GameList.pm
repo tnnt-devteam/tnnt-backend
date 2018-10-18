@@ -111,6 +111,36 @@ sub export_games
 }
 
 
+#-----------------------------------------------------------------------------
+# Output the game list as xlogfile rows (through a call-back).
+#-----------------------------------------------------------------------------
+
+sub export_xlogfile
+{
+  my ($self, $cb) = @_;
+  my $cfg = TNNT::Config->instance()->config();
+
+  #--- sanity checks, we are doing them here so that the Game/export_xlogfile
+  #--- doesn't have to do them for every line
+
+  return undef if !ref($cb);
+
+  if(
+    !exists $cfg->{'fields'}
+    || !ref $cfg->{'fields'}
+    || !@{$cfg->{'fields'}}
+  ) {
+    die "Tried to --coalesce xlogfile, but fields not configured\n";
+  }
+
+  #--- invoke export_xlogfile() on each game and return the result
+
+  $self->iter_games(sub {
+    $cb->($_->export_xlogfile());
+  });
+}
+
+
 
 #=============================================================================
 

@@ -42,6 +42,14 @@ has html => (
   default => 1,
 );
 
+# --coalesce
+# takes file as an argument and makes the scoreboard export single coalesced
+# xlogfile for use by external consumers (such as the NetHack Scoreboard)
+
+has coalesce => (
+  is => 'rwp',
+);
+
 
 
 #=============================================================================
@@ -52,10 +60,11 @@ sub BUILD {
   my ($self, $args) = @_;
 
   if(!GetOptions(
-    'debug'   => sub { $self->_set_debug(1); },
-    'json:s'  => sub { $self->_set_json($_[1]); },
-    'html!'   => sub { $self->_set_html($_[1]); },
-    'help'    => sub { $self->help(); },
+    'debug'      => sub { $self->_set_debug(1); },
+    'json:s'     => sub { $self->_set_json($_[1]); },
+    'html!'      => sub { $self->_set_html($_[1]); },
+    'coalesce=s' => sub { $self->_set_coalesce($_[1]); },
+    'help'       => sub { $self->help(); },
   )) {
     die 'Invalid command-line argument';
   }
@@ -74,10 +83,11 @@ THE NOVEMBER NETHACK TOURNAMENT scoreboard
 """"""""""""""""""""""""""""""""""""""""""
 Command line options:
 
-  --debug        turn on debug mode
-  --nohtml       do not compile templates to HTML
-  --json[=FILE]  dump JSON data to STDOUT or user-specified file
-  --help         display this help
+  --debug          turn on debug mode
+  --nohtml         do not compile templates to HTML
+  --json[=FILE]    dump JSON data to STDOUT or user-specified file
+  --coalesce=FILE  create merged xlogfile
+  --help           display this help
 
 EOHD
 

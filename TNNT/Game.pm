@@ -37,6 +37,9 @@ has maxlvl    => ( is => 'ro', required => 1 );
 has hp        => ( is => 'ro', required => 1 );
 has maxhp     => ( is => 'ro', required => 1 );
 has deaths    => ( is => 'ro', required => 1 );
+has version   => ( is => 'ro', required => 1 );
+has deathdate => ( is => 'ro', required => 1 );
+has birthdate => ( is => 'ro', required => 1 );
 has elbereths => ( is => 'ro' );
 
 # convert hexdecimal values
@@ -390,6 +393,61 @@ sub export
   }
 
   return \%d;
+}
+
+
+#-----------------------------------------------------------------------------
+# Export the game as a single xlogfile row
+#-----------------------------------------------------------------------------
+
+sub export_xlogfile
+{
+  my ($self) = @_;
+
+  #--- existence of this configuration entry is verified by GameList
+
+  my $fields = TNNT::Config->instance()->config()->{'fields'};
+
+  #--- iterate over fields
+
+  my @xrow;
+
+  for my $field (@$fields) {
+
+    # conduct/achieve
+    if($field eq 'conduct' || $field eq 'achieve') {
+      push(
+        @xrow,
+        sprintf('%s=0x%03x', $field, $self->$field())
+      );
+      next;
+    }
+
+    # tnntachieveX
+    if($field =~ /^tnntachieve/) {
+      push(
+        @xrow,
+        sprintf('%s=0x%016x', $field, ($self->$field() // 0))
+      );
+      next;
+    }
+
+    # src
+    if($field eq 'src') {
+      push(@xrow, 'src=' . $self->src()->name());
+      next;
+    }
+
+    # default
+    push(
+      @xrow,
+      $field . '=' . ( $self->$field() // '' )
+    );
+  }
+
+  #--- finish
+
+  return join("\t", @xrow);
 }
 
 
