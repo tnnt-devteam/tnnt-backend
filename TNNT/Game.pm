@@ -37,6 +37,9 @@ has maxlvl    => ( is => 'ro', required => 1 );
 has hp        => ( is => 'ro', required => 1 );
 has maxhp     => ( is => 'ro', required => 1 );
 has deaths    => ( is => 'ro', required => 1 );
+has version   => ( is => 'ro', required => 1 );
+has deathdate => ( is => 'ro', required => 1 );
+has birthdate => ( is => 'ro', required => 1 );
 has elbereths => ( is => 'ro' );
 
 # convert hexdecimal values
