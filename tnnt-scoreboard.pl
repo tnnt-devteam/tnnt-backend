@@ -107,6 +107,22 @@ if($cmd->html()) {
   $t->process('clans', 'clan', $data->{'clans'}{'ordered'});
 }
 
+#--- write out merged xlogfile
+
+if($cmd->coalesce()) {
+  my $file_fin = $cmd->coalesce();
+  my $file_tmp = $file_fin . ".$$";
+
+  open(my $fh, '>', $file_tmp) or die "Cannot open file '$file_tmp'";
+  $score->export_xlogfile(sub {
+    print $fh $_[0], "\n";
+  });
+  close($fh);
+
+  rename($file_tmp, $file_fin)
+    or die "Failed to rename a file ($file_tmp -> $file_fin)";
+}
+
 #--- clear the lock file
 
 unlink('/tmp/tnnt-scoreboard.lock');

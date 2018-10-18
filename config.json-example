@@ -44,6 +44,40 @@
   "clandb" : "clandb.sqlite",
 
   #---------------------------------------------------------------------------
+  #--- List of fields that should be written into coalesced xlogfile --------
+  #---------------------------------------------------------------------------
+
+  "fields" : [
+    "version",
+    "points",
+    "deathlev",
+    "maxlvl",
+    "hp",
+    "maxhp",
+    "deaths",
+    "deathdate",
+    "birthdate",
+    "role",
+    "race",
+    "gender",
+    "align",
+    "name",
+    "death",
+    "conduct",
+    "turns",
+    "achieve",
+    "tnntachieve0",
+    "tnntachieve1",
+    "tnntachieve2",
+    "realtime",
+    "starttime",
+    "endtime",
+    "gender0",
+    "align0",
+    "src",
+  ],
+
+  #---------------------------------------------------------------------------
   #--- Trophies definitions --------------------------------------------------
   #---------------------------------------------------------------------------
 
