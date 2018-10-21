@@ -10,6 +10,7 @@ use integer;
 
 use Moo;
 use TNNT::Config;
+use JSON;
 
 with 'TNNT::ScoringList';
 
@@ -118,6 +119,26 @@ sub is_ascended
   my ($self) = @_;
 
   return ($self->death() =~ /^ascended/);
+}
+
+
+#-----------------------------------------------------------------------------
+# Return true if the game is scummed
+#-----------------------------------------------------------------------------
+
+sub is_scummed
+{
+  my ($self) = @_;
+  my $cfg = TNNT::Config->instance()->config();
+
+  return undef if !exists $cfg->{'scum'};
+
+  return 1 if $self->turns() < $cfg->{'scum'}{'minturns'};
+  if($self->death() =~ /^(quit|escaped)/) {
+    return 1 if $self->turns() < $cfg->{'scum'}{'minquitturns'};
+  }
+
+  return undef;
 }
 
 
@@ -386,6 +407,7 @@ sub export
     src          => $self->src()->name(),
     clan_unique  => $self->clan_unique(),
     dumplog      => $self->dumplog(),
+    scum         => $self->is_scummed() ? JSON::true : JSON::false,
   );
 
   if($self->is_ascended()) {

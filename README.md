@@ -66,6 +66,8 @@ player's clan
 * `dumplog` is a URL of the dumplog
 * `n` is the index (sometimes useful when passing ref to the game
 itself)
+* `scum` indicates if the game is regarded as scummmed; scumming
+criteria are defined in configuration
 
 **`games`.`ascs`**  
 
