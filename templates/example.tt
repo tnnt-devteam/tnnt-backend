@@ -154,7 +154,7 @@
           INCLUDE game.tt aswon=1;
           SET i = i - 1;
           SET cnt = cnt - 1;
-          LAST IF cnt < 1;
+          LAST IF cnt < 1 || i < 1;
         END;
       %]
     </tbody>
@@ -179,10 +179,12 @@
         SET i = games.all.size;
         SET cnt = 10;
         FOREACH game IN games.all.reverse;
-          INCLUDE game.tt game=game.n;
+          IF !game.scum;
+            INCLUDE game.tt game=game.n;
+            SET cnt = cnt - 1;
+          END;
           SET i = i - 1;
-          SET cnt = cnt - 1;
-          LAST IF cnt < 1;
+          LAST IF cnt < 1 || i < 1;
         END;
       %]
     </tbody>
