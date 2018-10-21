@@ -1,6 +1,7 @@
 [%#
   This include accepts following parameters:
 
+  game  ... (required) game's index (in games.all array)
   head  ... output only table heading
   aswon ... display this with conducts information, if not set, only
             death message is shown as conducts are not relevant for non-
