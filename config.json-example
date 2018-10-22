@@ -547,6 +547,11 @@
       "title" : "All Achievements",
     },
 
+    "noscum" : {
+      "title"  : "Never Scum a Game",
+      "points" : 10,
+    },
+
     #--- great race/role -----------------------------------------------------
 
     "greatrace:orc" : {

@@ -40,6 +40,7 @@ use TNNT::Tracker::AllCombos;
 use TNNT::Tracker::GImpossible;
 use TNNT::Tracker::GreatFoo;
 use TNNT::Tracker::UniqueDeaths;
+use TNNT::Tracker::NoScumming;
 use TNNT::Tracker::MedusaCup;
 
 
@@ -90,6 +91,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::GImpossible);
   $tr->add_tracker(new TNNT::Tracker::GreatFoo);
   $tr->add_tracker(new TNNT::Tracker::UniqueDeaths);
+  $tr->add_tracker(new TNNT::Tracker::NoScumming);
   # this needs to be the last tracker
   $tr->add_tracker(new TNNT::Tracker::MedusaCup);
 }
@@ -355,6 +357,14 @@ sub export
   my $medusacup_tr = $tr->get_tracker_by_name('clan-medusacup');
   if(defined $medusacup_tr->topclan()) {
     $d{'trophies'}{'clans'}{'medusacup'} = $medusacup_tr->topclan()->n();
+  }
+
+  # Never Scum a Game
+
+  my $noscum_tr = $tr->get_tracker_by_name('noscum');
+  my $noscum_holders = $noscum_tr->holders();
+  if(@$noscum_holders) {
+    $d{'trophies'}{'players'}{'noscum'} = $noscum_holders;
   }
 
   #--- finish
