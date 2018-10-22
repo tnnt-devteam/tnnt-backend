@@ -80,6 +80,10 @@ table {
   padding: 1em;
 }
 
+table.trophies {
+  width: 70%;
+}
+
 td, th {
   padding: 0.3em 0.6em;
 }
@@ -255,16 +259,19 @@ td.trophy-name {
   text-transform: uppercase;
   padding-right: 2em;
   font-weight: 300;
+  width: 30%;
 }
 
 td.trophy-single {
   font-size: 200%;
   font-weight: 300;
+  width: 30%;
 }
 
 td.trophy-multi {
   font-weight: 300;
   font-size: 133%
+  width: 30%;
 }
 
 td.trophy-na {
@@ -272,6 +279,7 @@ td.trophy-na {
   font-size: 166%;
   color: #ddd;
   text-align: center;
+  width: 30%;
 }
 
 /*====================================================================
