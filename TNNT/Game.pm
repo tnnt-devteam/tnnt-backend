@@ -133,7 +133,10 @@ sub is_scummed
 
   return undef if !exists $cfg->{'scum'};
 
-  return 1 if $self->turns() < $cfg->{'scum'}{'minturns'};
+  return 1 if
+    exists $cfg->{'scum'}{'minturns'}
+    && $self->turns() < $cfg->{'scum'}{'minturns'};
+
   if($self->death() =~ /^(quit|escaped)/) {
     return 1 if $self->turns() < $cfg->{'scum'}{'minquitturns'};
   }
