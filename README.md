@@ -109,6 +109,7 @@ of streak games (only exists for players with streaks)
 exists for players that are clan members)
 * `trophies` is list of scoring entries (the same as in `scores`), but
 only with actual trophies)
+* `scum` is a count of scummed games, this field always exists
 
 **`players`.`ordered`**
 

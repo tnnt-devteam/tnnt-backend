@@ -420,6 +420,20 @@
       </td>
     </tr>
 
+    [%# === MEDUSA CUP ==================================================== %]
+
+    <tr>
+      <td class="trophy-name">Never Scum a Game</td>
+      <td class="trophy-multi">
+        [% IF trophies.players.exists('noscum');
+          FOREACH plr IN trophies.players.noscum;
+            plink(plr); ' ';
+          END;
+        END %]
+      </td>
+      <td class="trophy-na">N/A</td>
+    </tr>
+
     [%# === GREATER/LESSER FOO ============================================ %]
 
     [% FOREACH gl IN ['great', 'lesser'] %]

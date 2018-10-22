@@ -28,8 +28,14 @@
   #--- Scum game qualifiers --------------------------------------------------
   #---------------------------------------------------------------------------
 
+  # 'minturns' is minimum number of turns that the game needs to last for it
+  # to be considered non-scummed
+  #
+  # 'minquitturns' is the minimum number of turns that the game needs to last
+  # to be considered non-scummed if it is either quit or escaped
+
   "scum" : {
-    "minturns" : 10,
+    # "minturns" : 10,
     "minquitturns": 100,
   },
 
@@ -539,6 +545,11 @@
 
     "clan-allachieve" : {
       "title" : "All Achievements",
+    },
+
+    "noscum" : {
+      "title"  : "Never Scum a Game",
+      "points" : 10,
     },
 
     #--- great race/role -----------------------------------------------------
