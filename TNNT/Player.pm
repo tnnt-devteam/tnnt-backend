@@ -67,6 +67,13 @@ has streaks => (
   default => sub { [] },
 );
 
+# scummed games counter
+
+has scum => (
+  is => 'rwp',
+  default => 0,
+);
+
 
 
 #=============================================================================
@@ -117,6 +124,12 @@ sub add_game
   if($game->maxlvl() > ($self->maxlvl() // 0)) {
     $self->_set_maxlvl($game->maxlvl());
   }
+
+  #--- keep counter of scummed games
+
+  if($game->is_scummed()) {
+    $self->_set_scum($self->scum() + 1);
+  }
 }
 
 
@@ -136,6 +149,7 @@ sub export
     score        => $self->sum_score(),
     maxlvl       => $self->maxlvl(),
     rank         => $self->rank(),
+    scum         => $self->scum(),
   );
 
   if($self->clan()) {
