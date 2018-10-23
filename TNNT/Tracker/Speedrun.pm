@@ -43,7 +43,7 @@ sub add_game
   my $bonus = 0;
   if(
     !$cfg->{'trophies'}{'speedrun'}{'cutoff'}
-    || $cfg->{'trophies'}{'speedrun'}{'cutoff'} < $game->turns()
+    || $cfg->{'trophies'}{'speedrun'}{'cutoff'} >= $game->turns()
   ) {
     $bonus = int( $cfg->{'trophies'}{'speedrun'}{'factor'} / $game->turns() );
   }
