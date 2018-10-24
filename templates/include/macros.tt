@@ -1,3 +1,12 @@
 [%- MACRO number(n) GET n.chunk(-3).join(',') -%]
-[%- MACRO plink(p) GET '<a href="players/' _ p _ '.html">' _ p _ '</a>' -%]
 [%- MACRO clink(c) GET '<a href="clans/' _ c.n _ '.html">' _ c.name _ '</a>' -%]
+
+[%-
+  MACRO plink(p) BLOCK;
+    IF players.all.exists(p);
+      GET '<a href="players/' _ p _ '.html">' _ p _ '</a>';
+    ELSE;
+      GET p;
+    END;
+  END;
+-%]
