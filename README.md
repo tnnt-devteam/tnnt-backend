@@ -9,8 +9,17 @@ tournament. Work in progress.
 Display usage summary and exit.
 
 **--json**, **--json**=*file*  
-Instead of compiling templates into HTML files output JSON formatted
-data on standard output or into specified file.
+Output the scoreboard's internal data that are passed into templates as JSON
+text file, either on output or to specified file.
+
+**--nohtml**  
+Do not compile templates into HTML. Useful when you only want to get the
+JSON data.
+
+**--coalesce**=*file*  
+Merge the source xlogfiles into one unified xlogfile. This can be used by
+external consumer to see the tournament as a single source.
+
 
 ## TEMPLATE DATA
 
