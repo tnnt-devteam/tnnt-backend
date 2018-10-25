@@ -37,6 +37,7 @@ use TNNT::Tracker::ClanAscension;
 use TNNT::Tracker::UniqueAscs;
 use TNNT::Tracker::MostGames;
 use TNNT::Tracker::AllCombos;
+use TNNT::Tracker::RSImpossible;
 use TNNT::Tracker::GImpossible;
 use TNNT::Tracker::GreatFoo;
 use TNNT::Tracker::UniqueDeaths;
@@ -88,6 +89,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::UniqueAscs);
   $tr->add_tracker(new TNNT::Tracker::MostGames);
   $tr->add_tracker(new TNNT::Tracker::AllCombos);
+  $tr->add_tracker(new TNNT::Tracker::RSImpossible);
   $tr->add_tracker(new TNNT::Tracker::GImpossible);
   $tr->add_tracker(new TNNT::Tracker::GreatFoo);
   $tr->add_tracker(new TNNT::Tracker::UniqueDeaths);
@@ -302,6 +304,18 @@ sub export
 
   if(@{$achieve_tr->clans_track()}) {
     $d{'trophies'}{'clans'}{'allachieve'} = $achieve_tr->clans_track();
+  }
+
+  # The Respectably-Sized Impossible
+
+  my $achieve_rsi = $tr->get_tracker_by_name('rsimpossible');
+
+  if(@{$achieve_rsi->players()}) {
+    $d{'trophies'}{'players'}{'rsimpossible'} = $achieve_rsi->players();
+  }
+
+  if(@{$achieve_rsi->clans()}) {
+    $d{'trophies'}{'clans'}{'rsimpossible'} = $achieve_rsi->clans();
   }
 
   # The Great Impossible

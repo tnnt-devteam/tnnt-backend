@@ -304,6 +304,25 @@
       </td>
     </tr>
 
+    [%# === THE RESPECTABLY-SIZED IMPOSSIBLE ============================== %]
+
+    <tr>
+      <td class="trophy-name">The Respectably-Sized Impossible</td>
+      <td class="trophy-multi">[% IF trophies.players.exists('rsimpossible') %]
+          [% FOREACH plr IN trophies.players.rsimpossible %]
+            [% plink(plr) %]
+          [% END %]
+        [% END %]
+      </td>
+      <td class="trophy-multi">
+      [% IF trophies.clans.exists('rsimpossible') %]
+          [% FOREACH cln IN trophies.clans.rsimpossible %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        [% END %]
+      </td>
+    </tr>
+
     [%# === THE GREAT IMPOSSIBLE ========================================== %]
 
     <tr>
