@@ -65,9 +65,12 @@ sub add_game
 
   return if !$game->is_ascended();
 
-  #--- these are the 12 canonical conducts tracked by vanilla NetHack
+  #--- 15 tracked conducts of NetHack 3.6
 
-  if(($game->conduct() & 4095) == 4095) {
+  if(
+    ($game->conduct() & 8191) == 8191
+    && ($game->achieve() & 12288) == 12288
+  ) {
 
     # player scoring
     if(!exists $self->_playertrk()->{$game->player()->name()}) {
