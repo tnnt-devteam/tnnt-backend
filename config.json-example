@@ -2080,12 +2080,6 @@
       "descr"        : "Reach your quest leader with genocideless conduct intact"
     },
 
-    "partall": {
-      "tnntachieve2" : "0x3fff8000000000",
-      "title"        : "The Respectably-Sized Impossible",
-      "descr"        : "Reach your quest leader with every single tracked conduct intact"
-    },
-
     "swapchest": {
       "tnntachieve2" : "0x40000000000000",
       "title"        : "It's Dangerous To Go Alone! Take This",
