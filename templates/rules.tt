@@ -13,7 +13,7 @@
 [% INCLUDE header.tt page = 'rules' %]
 
 <article>
-  <h3>General Rules</h3>
+  <h4>General Rules</h4>
   <p>
     Use your common sense: don't hack into the game servers, don't deliberately
     corrupt or leak memory or otherwise try to crash or hang up the game, don't
@@ -34,7 +34,7 @@
     gray stone you picked up in Mines' End gets livelogged as the luckstone.
   </p>
 
-  <h3>Clans</h3>
+  <h4>Clans</h4>
   <p>
     To create clans, invite players to your clan, and accept invitations to
     others' clans, go <a href="clanmgmt/">here</a>.
@@ -54,7 +54,7 @@
   <p>
   </p>
 
-  <h3>Scoring</h3>
+  <h4>Scoring</h4>
   <p>
     Not accounting for trophies, all ascensions are worth 50 points each.There
     are several ways to get more points:
@@ -139,7 +139,25 @@
     Achievement-related points are counted towards your individual score
     directly, and are not multiplied by any streak you may have.
   </p>
-
+  <p>
+    Below is a listing of every achievement a player can earn in-game, and a description
+    of that achievement and what needs to be done to earn it.
+  </p>
+  <p>
+  <table>
+    <thead>
+      <tr class="framed">
+        <th>Achievement</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      [% FOREACH ach IN config.item('achievements-ordered') %]
+      <tr> <td class="ach">[% config.achievements.item(ach).title %]</td> <td class="descr">[% config.achievements.item(ach).descr %]</td> </tr> 
+      [% END %]
+    </tbody>
+  </table>
+  </p>
   <h4>Clan Scoring</h4>
   <p>
     Clans' games are scored based on the highest score for a given character

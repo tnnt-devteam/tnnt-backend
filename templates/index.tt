@@ -34,7 +34,7 @@
 <hr>
 
 <article>
-  <h3> How to Play </h3>
+  <h4> How to Play </h4>
   <p>
     You will need an <a href="https://en.wikipedia.org/wiki/SSH">SSH client</a>
     to connect to the game servers. Linux and Mac OS typically come with this
@@ -61,7 +61,7 @@
 
   <!-- was going to put a section for "helpful links" here, but not sure they're needed since the header is pretty obvious -->
 
-  <h3> More Information </h3>
+  <h4> More Information </h4>
   <p>
     For more general information on NetHack, check out
     <a href="https://en.wikipedia.org/wiki/NetHack">Wikipedia</a>,

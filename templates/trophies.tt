@@ -56,6 +56,7 @@
         [% IF trophies.players.exists('mostasc');
           plink(trophies.players.mostasc);
         END %]
+        ([% players.all.item(trophies.players.mostasc).ascs.size %])
       </td>
       <td class="trophy-single">
       [% IF trophies.clans.exists('mostasc');
@@ -113,6 +114,7 @@
         [% IF trophies.players.exists('mostcond');
           plink(trophies.players.mostcond);
         END %]
+      ([% players.all.item(trophies.players.mostcond).maxcond %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('mostcond');

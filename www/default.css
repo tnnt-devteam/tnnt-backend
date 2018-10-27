@@ -8,7 +8,7 @@ body {
   align-items: center;
   flex-direction: column;
   font-weight: 400;
-  margin: 0;
+  margin: 0 0 1em 0;
   overflow-x: hidden;
 }
 
@@ -18,6 +18,12 @@ h2 {
   letter-spacing: 0.1em;
   font-size: 200%;
   text-align: center;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 1.17em;
+  color: #FFF400;
 }
 
 .num {
@@ -98,8 +104,17 @@ thead tr.framed {
   background-color: #237;
 }
 
+td.ach {
+  font-weight: 200;
+}
+
+td.descr {
+  font-weight: 200;
+  font-style: italic;
+}
+
 tfoot tr.overline {
-  border-top: 0.1em solid black;
+  border-top: 0.01em solid white;
 }
 
 td.total {

@@ -13,7 +13,7 @@
 [% INCLUDE header.tt page = 'about' %]
 
 <article>
-  <h3>History</h3>
+  <h4>History</h4>
   <p>
     The long-running
     <a href="https://nethackwiki.com/wiki//dev/null/nethack_tournament">
@@ -37,7 +37,7 @@
     checking to see if there's a tournament.
   </p>
 
-  <h3>So TNNT is devnull?</h3>
+  <h4>So TNNT is devnull?</h4>
   <p>
     TNNT is <i>not</i> devnull. As per krystal's wishes, the devnull name,
     tournament structure, and game changes have been retired. TNNT is a fresh
@@ -45,7 +45,7 @@
     the various components of the tournament were designed from scratch.
   </p>
 
-  <h3>What about the devnull challenges?</h3>
+  <h4>What about the devnull challenges?</h4>
   <p>
     As with the rest of devnull, the challenges have been permanently retired
     and are not implemented in TNNT. However, TNNT does add some of its own
@@ -59,7 +59,7 @@
     a link handy).
   </p>
 
-  <h3>Contributors</h3>
+  <h4>Contributors</h4>
   <ul>
     <li>Tangles: Server admin and programmer. Ensures that the various interactions between the game and the server network are working properly.</li>
     <li>Mandevil: Creator of the scoreboard, the website, and the backend that turns raw game logs into tables of game statistics and trophies.</li>
