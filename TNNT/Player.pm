@@ -177,7 +177,7 @@ sub export
   my $cfg = TNNT::Config->instance()->config();
 
   my @trophy_names = qw(
-    firstasc mostascs mostcond lowscore highscore minturns realtime
+    firstasc mostasc mostcond lowscore highscore minturns realtime
     rsimpossible gimpossible maxstreak allroles allraces allaligns allgenders
     allconducts allachieve noscum
   );
