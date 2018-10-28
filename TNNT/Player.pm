@@ -74,6 +74,24 @@ has scum => (
   default => 0,
 );
 
+# lowest turncount win
+
+has minturns => (
+  is => 'rwp',
+);
+
+# minscore win
+
+has minscore => (
+  is => 'rwp',
+);
+
+# highscore win
+
+has highscore => (
+  is => 'rwp',
+);
+
 
 
 #=============================================================================
@@ -125,10 +143,67 @@ sub add_game
     $self->_set_maxlvl($game->maxlvl());
   }
 
+  #--- track lowest turncount win
+
+  if(
+    $game->is_ascended()
+    && (
+      !defined $self->minturns()
+      || $game->turns() < ($self->minturns())
+    )
+  ) {
+    $self->_set_minturns($game->turns());
+  }
+
+  #--- track lowest score win
+
+  if(
+    $game->is_ascended()
+    && (
+      !defined $self->minscore()
+      || $game->points() < $self->minscore()
+    )
+  ) {
+    $self->_set_minscore($game->points());
+  }
+
+  #--- track highest score win
+
+  if(
+    $game->is_ascended()
+    && (
+      !defined $self->highscore()
+      || $game->points() > $self->highscore()
+    )
+  ) {
+    $self->_set_highscore($game->points());
+  }
+
   #--- keep counter of scummed games
 
   if($game->is_scummed()) {
     $self->_set_scum($self->scum() + 1);
+  }
+}
+
+
+#-----------------------------------------------------------------------------
+# Get the length of player's longest streak or undef.
+#-----------------------------------------------------------------------------
+
+sub _get_maxstreak_length
+{
+  my ($self) = @_;
+  my $streaks = $self->streaks();
+
+  my ($longest_streak) = sort {
+     $b->count_games() <=> $a->count_games()
+   } @{$streaks};
+
+  if($longest_streak) {
+    return $longest_streak->count_games();
+  } else {
+    return undef;
   }
 }
 
@@ -158,6 +233,23 @@ sub export
 
   if(defined $self->maxcond()) {
     $d{'maxcond'} = $self->maxcond();
+  }
+
+  if(defined $self->minturns()) {
+    $d{'minturns'} = $self->minturns();
+  }
+
+  if(defined $self->minscore()) {
+    $d{'minscore'} = $self->minscore();
+  }
+
+  if(defined $self->highscore()) {
+    $d{'highscore'} = $self->highscore();
+  }
+
+  $d{'maxstreaklen'} = $self->_get_maxstreak_length();
+  if(!defined $d{'maxstreaklen'}) {
+    delete $d{'maxstreaklen'};
   }
 
   if($self->count_ascensions()) {
