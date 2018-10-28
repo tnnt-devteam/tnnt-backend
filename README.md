@@ -108,8 +108,11 @@ Each player is a hash with following keys:
 * `achievements` is list of player's achievements (this key always
 exists, even if empty)
 * `maxcond` is player's maximum of conducts reached in single game
-(only exists for ascending
-players)
+(only exists for ascending players)
+* `minturns` is a turncount of player's fastest gametime ascension
+* `minscore` is player's minimum score for a winning game
+* `highscore` is player's high score for a winning game
+* `maxstreaklen` is player's longest streak's length
 * `ratio` is player's ascension ratio (only exists for ascending
 players)
 * `streaks` is list of player's streaks, streaks are in turn lists
@@ -172,6 +175,8 @@ the game that cause the new death reason to be logged for the clan
 lists real trophies, not things like single ascensions, individual streaks etc.
 * `rank` is clan's rank in clan competition
 * `score` is summary clan score
+* `games1000t` is count of clan's games over 1000 turns
+* `unique_ascs` is count of clan's unique (ie. non-repeating) ascensions
 
 **`clans`.`ordered`**
 
