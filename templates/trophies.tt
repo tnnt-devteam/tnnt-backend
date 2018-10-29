@@ -56,6 +56,7 @@
         [% IF trophies.players.exists('mostasc');
           plink(trophies.players.mostasc);
         END %]
+        ([% players.all.item(trophies.players.mostasc).ascs.size %])
       </td>
       <td class="trophy-single">
       [% IF trophies.clans.exists('mostasc');
@@ -75,6 +76,7 @@
         [% IF trophies.players.exists('minturns');
           plink(trophies.players.minturns);
         END %]
+        ([% players.all.item(trophies.players.minturns).minturns %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('minturns');
@@ -113,6 +115,7 @@
         [% IF trophies.players.exists('mostcond');
           plink(trophies.players.mostcond);
         END %]
+        ([% players.all.item(trophies.players.mostcond).maxcond %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('mostcond');
@@ -132,6 +135,7 @@
         [% IF trophies.players.exists('lowscore');
           plink(trophies.players.lowscore);
         END %]
+        ([% number(players.all.item(trophies.players.lowscore).minscore) %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('lowscore');
@@ -151,6 +155,7 @@
         [% IF trophies.players.exists('highscore');
           plink(trophies.players.highscore);
         END %]
+        ([% number(players.all.item(trophies.players.highscore).highscore) %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('highscore');
@@ -165,7 +170,10 @@
       <td class="trophy-name"
           title="Longest streak of consecutive winning games. 250 points.">Longest Streak</td>
       [% IF trophies.players.exists('maxstreak') %]
-        <td class="trophy-single">[% plink(trophies.players.maxstreak) %]</td>
+        <td class="trophy-single">
+          [% plink(trophies.players.maxstreak) %]
+          ([% players.all.item(trophies.players.maxstreak).maxstreaklen %])
+        </td>
       [% END %]
       [% IF trophies.clans.exists('maxstreak') %]
         <td class="trophy-single">[% clink(clans.all.item(trophies.clans.maxstreak)) %]</td>
@@ -304,6 +312,25 @@
       </td>
     </tr>
 
+    [%# === THE RESPECTABLY-SIZED IMPOSSIBLE ============================== %]
+
+    <tr>
+      <td class="trophy-name" title="Reach your quest leader while keeping every single tracked conduct intact. 500 points">The Respectably-Sized Impossible</td>
+      <td class="trophy-multi">[% IF trophies.players.exists('rsimpossible') %]
+          [% FOREACH plr IN trophies.players.rsimpossible %]
+            [% plink(plr) %]
+          [% END %]
+        [% END %]
+      </td>
+      <td class="trophy-multi">
+      [% IF trophies.clans.exists('rsimpossible') %]
+          [% FOREACH cln IN trophies.clans.rsimpossible %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        [% END %]
+      </td>
+    </tr>
+
     [%# === THE GREAT IMPOSSIBLE ========================================== %]
 
     <tr>
@@ -336,7 +363,10 @@
       <td class="trophy-na">N/A</td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('uniquedeaths');
-             clink(clans.all.item(trophies.clans.uniquedeaths));
+          clink(clans.all.item(trophies.clans.uniquedeaths));
+          ' (';
+          clans.all.item(trophies.clans.uniquedeaths).unique_deaths.size;
+          ')';
         END %]
       </td>
     </tr>
@@ -351,7 +381,10 @@
       <td class="trophy-na">N/A</td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('uniqascs');
-             clink(clans.all.item(trophies.clans.uniqascs));
+          clink(clans.all.item(trophies.clans.uniqascs));
+          ' (';
+          clans.all.item(trophies.clans.uniqascs).unique_ascs;
+          ')';
         END %]
       </td>
     </tr>
@@ -366,7 +399,10 @@
       <td class="trophy-na">N/A</td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('mostgames');
-             clink(clans.all.item(trophies.clans.mostgames));
+          clink(clans.all.item(trophies.clans.mostgames));
+          ' (';
+          clans.all.item(trophies.clans.mostgames).games100t;
+          ')';
         END %]
       </td>
     </tr>

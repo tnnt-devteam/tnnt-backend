@@ -164,6 +164,7 @@
         [% FOREACH game IN cln.ascs.reverse %]
           [% INCLUDE game.tt aswon=1 markuniq=1 %]
           [% SET i = i - 1 %]
+          [% LAST IF cnt == 0 || i == 0 %]
         [% END %]
       </tbody>
 
@@ -178,9 +179,9 @@
       [% SET i = cln.games.size; SET cnt = 10; %]
       [% IF i %]
         [% FOREACH game IN cln.games.reverse %]
-          [% INCLUDE game.tt markuniq=1 %]
+          [% IF !games.all.item(game).scum; INCLUDE game.tt markuniq=1; SET cnt = cnt - 1; END %]
           [% SET i = i - 1 %]
-          [% SET cnt = cnt - 1; LAST IF cnt == 0 %]
+          [% LAST IF cnt == 0 || i == 0 %]
         [% END %]
       [% ELSE %]
         <tr>

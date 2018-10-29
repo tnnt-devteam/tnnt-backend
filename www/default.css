@@ -8,7 +8,7 @@ body {
   align-items: center;
   flex-direction: column;
   font-weight: 400;
-  margin: 0;
+  margin: 0 0 1em 0;
   overflow-x: hidden;
 }
 
@@ -18,6 +18,12 @@ h2 {
   letter-spacing: 0.1em;
   font-size: 200%;
   text-align: center;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 1.17em;
+  color: #FFF400;
 }
 
 .num {
@@ -80,6 +86,10 @@ table {
   padding: 1em;
 }
 
+table.trophies {
+  width: 70%;
+}
+
 td, th {
   padding: 0.3em 0.6em;
 }
@@ -94,8 +104,17 @@ thead tr.framed {
   background-color: #237;
 }
 
+td.ach {
+  font-weight: 200;
+}
+
+td.descr {
+  font-weight: 200;
+  font-style: italic;
+}
+
 tfoot tr.overline {
-  border-top: 0.1em solid black;
+  border-top: 0.01em solid white;
 }
 
 td.total {
@@ -255,16 +274,19 @@ td.trophy-name {
   text-transform: uppercase;
   padding-right: 2em;
   font-weight: 300;
+  width: 30%;
 }
 
 td.trophy-single {
   font-size: 200%;
   font-weight: 300;
+  width: 30%;
 }
 
 td.trophy-multi {
   font-weight: 300;
   font-size: 133%
+  width: 30%;
 }
 
 td.trophy-na {
@@ -272,6 +294,7 @@ td.trophy-na {
   font-size: 166%;
   color: #ddd;
   text-align: center;
+  width: 30%;
 }
 
 /*====================================================================

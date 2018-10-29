@@ -52,6 +52,20 @@ has udeaths_rank => (
   default => -1,
 );
 
+# games over 1000 turns
+
+has games1000t => (
+  is => 'rwp',
+);
+
+# unique ascensions
+
+has unique_ascs => (
+  is => 'rw',
+  default => 0,
+);
+
+
 
 #=============================================================================
 #=== METHODS =================================================================
@@ -115,6 +129,11 @@ sub is_admin
 
 sub add_game
 {
+  my ($self, $game) = @_;
+
+  if($game->turns() > 1000) {
+    $self->_set_games1000t(($self->games1000t // 0) + 1);
+  }
 }
 
 

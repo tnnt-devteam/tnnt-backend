@@ -1,13 +1,16 @@
 #!/usr/bin/env perl
 
 #=============================================================================
-# Track the Great Impossible trophy for both players and clans.
+# Track the Respectably-Sized Impossible trophy for both players and clans.
+# tnntachive2: 0x3fff8000000000
 #=============================================================================
 
-package TNNT::Tracker::GImpossible;
+package TNNT::Tracker::RSImpossible;
 
 use Moo;
 use TNNT::ScoringEntry;
+
+no warnings 'portable';
 
 
 
@@ -17,7 +20,7 @@ use TNNT::ScoringEntry;
 
 has name => (
   is => 'ro',
-  default => 'gimpossible',
+  default => 'rsimpossible',
 );
 
 # player tracking information
@@ -61,15 +64,10 @@ sub add_game
   my $trk = $self->_clantrk();
   my $cfg = TNNT::Config->instance()->config();
 
-  #--- only ascended games
-
-  return if !$game->is_ascended();
-
-  #--- 15 tracked conducts of NetHack 3.6
+  #--- All required achievements
 
   if(
-    ($game->conduct() & 8191) == 8191
-    && ($game->achieve() & 12288) == 12288
+    ($game->tnntachieve2() & 0x3fff8000000000) == 0x3fff8000000000
   ) {
 
     # player scoring

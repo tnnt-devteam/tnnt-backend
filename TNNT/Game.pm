@@ -59,16 +59,19 @@ has achieve   => (
 
 has tnntachieve0 => (
   is => 'ro',
+  default => 0,
   coerce => sub { no warnings 'portable'; hex($_[0]) },
 );
 
 has tnntachieve1 => (
   is => 'ro',
+  default => 0,
   coerce => sub { no warnings 'portable'; hex($_[0]) },
 );
 
 has tnntachieve2 => (
   is => 'ro',
+  default => 0,
   coerce => sub { no warnings 'portable'; hex($_[0]) },
 );
 

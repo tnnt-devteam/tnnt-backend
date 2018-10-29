@@ -529,6 +529,16 @@
       "points" : 5000,
     },
 
+    "rsimpossible" : {
+      "title"  : "The Respectably-Sized Impossible",
+      "points" : 500,
+    },
+
+    "clan-rsimpossible" : {
+      "title"  : "The Respectably-Sized Impossible",
+      "points" : 500,
+    },
+
     "clan-medusacup" : {
       "title"  : "The Medusa Cup",
       "points" : 100,
@@ -2068,12 +2078,6 @@
       "tnntachieve2" : "0x20000000000000",
       "title"        : "Make Love, Not War",
       "descr"        : "Reach your quest leader with genocideless conduct intact"
-    },
-
-    "partall": {
-      "tnntachieve2" : "0x3fff8000000000",
-      "title"        : "The Respectably-Sized Impossible",
-      "descr"        : "Reach your quest leader with every single tracked conduct intact"
     },
 
     "swapchest": {

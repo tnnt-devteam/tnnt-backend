@@ -241,6 +241,8 @@ sub export
       unique_ascs  => $clan->export_ascensions(sub {
         $_[0]->clan_unique();
       }),
+      games100t    => $clan->games1000t(),
+      unique_ascs  => $clan->unique_ascs(),
     };
 
     # ascension ratio
@@ -257,9 +259,9 @@ sub export
     my $cfg = TNNT::Config->instance()->config();
 
     my @trophy_names = qw(
-      firstasc mostascs mostcond lowscore highscore minturns realtime
-      gimpossible maxstreak allroles allraces allaligns allgenders allconducts
-      allachieve mostgames uniquedeaths
+      firstasc mostasc mostcond lowscore highscore minturns realtime
+      rsimpossible gimpossible maxstreak allroles allraces allaligns allgenders
+      allconducts allachieve mostgames uniquedeaths
     );
 
     for my $race (qw(hum elf dwa gno orc)) {

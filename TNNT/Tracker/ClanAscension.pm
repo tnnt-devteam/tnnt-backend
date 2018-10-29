@@ -98,6 +98,7 @@ sub add_game
     elsif(!exists $clan_trk->{$combo}) {
       $clan->add_score($se);
       $clan_trk->{$combo} = $game->sum_score(@filter);
+      $clan->unique_ascs($clan->unique_ascs() + 1);
     }
   }
 
