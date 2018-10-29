@@ -23,7 +23,7 @@ h2 {
 h4 {
   font-weight: 600;
   font-size: 1.17em;
-  color: #FFF400;
+  color: #eb0;
 }
 
 .num {
@@ -105,11 +105,11 @@ thead tr.framed {
 }
 
 td.ach {
-  font-weight: 200;
+  font-weight: 400;
 }
 
 td.descr {
-  font-weight: 200;
+  font-weight: 400;
   font-style: italic;
 }
 

@@ -114,11 +114,25 @@
 
   <h4>Streaking</h4>
   <p>
-    A streak is a series of consecutive winning games by the same player. When
-    accounting for the multiple servers, the rule is that the first game you
-    start on any server after winning the previous game in a streak is the
-    candidate game for continuing the streak; other simultaneous games have no
-    effect on the streak.
+    A streak is a series of consecutive winning games by the same player. Because you
+    can play on multiple servers, the rule is that the first game you start on any
+    server after winning the previous game in a streak is the candidate game for
+    continuing the streak; other simultaneous games will not be counted for your streak.
+  </p>
+  <p>
+    If you simply play consecutive games, starting the next after you ascend the last,
+    then each game counts towards your streak, even if they are played on different servers.
+  </p>
+  <p>
+    However, if you start games on different servers concurrently, not every game will be
+    eligible for your streak.  For example, suppose you ascend game A, then start game B,
+    and start game C on another server before ascending game B.  You then ascend game C –
+    this does not count towards your streak, because game B came first.  If you ascend game B,
+    this will count towards your streak.  You could then start game D and ascend it, in which
+    case your longer streak would be extended, A-B-D.
+  </p>
+  <p>
+    For those familiar with DCSS tournaments, these rules are the same as theirs.
   </p>
   <p>
     Each consecutive streak game has its ascension points (plus bonuses for
@@ -158,6 +172,7 @@
     </tbody>
   </table>
   </p>
+
   <h4>Clan Scoring</h4>
   <p>
     Clans' games are scored based on the highest score for a given character
@@ -183,39 +198,73 @@
   </p>
 
   <p>
-    The Great Race/Role is obtained by making several ascensions, all of which
-    use that race or role, and represent all possible other combinations of
-    role/race and align0 that are valid to begin the game with. For instance,
-    The Great Archeologist consists of ascending an Arc-Dwa-Law, Arc-Gno-Neu,
-    Arc-Hum-Law, and Arc-Hum-Neu. Note that your starting alignment is
-    considered, not your final alignment, so you can't use helm of opposite
-    alignment tricks. The gender of the characters is also completely
-    irrelevant.
+    The Great Race/Role is a multi-ascension trophy, and gives extra credit
+    for playing, for example, “all the gnomes” – The Great Gnome, or “all the wizards”
+    – The Great Wizard.  Gender does not matter.  Alignment does not matter for
+    The Great Race, but it does for The Great Role.  Only starting alignment is counted.
   </p>
 
   <p>
-    There is one exception to the above: those rules would make The Great Human
-    require a ton of games, since every role can be a human, usually with
-    multiple alignment choices. So instead, The Great Human consists of
-    ascending one of each role as a human - but only for roles which can
-    <i>only</i> be played as humans (Knight, Samurai, Monk, Tourist). Unlike
-    the other Great Race trophies, alignment doesn't matter, so you only need to
-    complete one Monk instead of three.
+    The Great Human is a special case, and requires you to play only those roles
+    which must be human, as shown in the table below.  The required Monk can be
+    of any alignment.
   </p>
 
   <p>
-    The Lesser Race/Role works identically to the Great, but instead of
-    ascending, you must instead complete a game with each required character
-    combination where you successfully retrieve the luckstone from the bottom
-    of the Mines <b>and</b> retrieve the prize from the end of Sokoban.
+    These may be achieved by individual players or by clans working together.
   </p>
+
+  <p>
+    Below is a table of requirements for each race or role:
+
+  <table>
+    <thead>
+      <tr class="framed">
+        <th>Trophy</th>
+        <th>Number of Ascensions</th>
+        <th>Requirements</th>
+        <th>Points Earned</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr> <td>The Great Orc</td>   <td>4</td> <td>Bar, Ran, Rog, Wiz</td> 		   <td>200</td> </tr>
+      <tr> <td>The Great Gnome</td> <td>5</td> <td>Arc, Cav, Hea, Ran, Wiz</td> 	   <td>250</td> </tr>
+      <tr> <td>The Great Dwarf</td> <td>3</td> <td>Arc, Cav, Val</td> 			   <td>150</td> </tr>
+      <tr> <td>The Great Elf</td> 	 <td>3</td> <td>Pri, Ran, Wiz</td> 		   <td>150</td> </tr>
+      <tr> <td>The Great Human</td> <td>4</td> <td>Kni, Mon, Sam, Tou</td> 		   <td>200</td> </tr>
+      <tr> <td>The Great Arc</td>   <td>4</td> <td>Hum-L, Hum-N, Dwa-L, Gno-N</td> 	   <td>200</td> </tr>
+      <tr> <td>The Great Bar</td>   <td>3</td> <td>Hum-N, Hum-C, Orc-C</td> 		   <td>150</td> </tr>
+      <tr> <td>The Great Cav</td>   <td>4</td> <td>Hum-L, Hum-N, Dwa-L, Gno-N</td> 	   <td>200</td> </tr>
+      <tr> <td>The Great Hea</td>   <td>2</td> <td>Hum-N, Gno-N</td> 			   <td>100</td> </tr>
+      <tr> <td>The Great Mon</td>   <td>3</td> <td>Hum-L, Hum-N, Hum-C</td> 		   <td>150</td> </tr>
+      <tr> <td>The Great Pri</td>   <td>4</td> <td>Hum-L, Hum-N, Hum-C, Elf-C</td> 	   <td>200</td> </tr>
+      <tr> <td>The Great Ran</td>   <td>5</td> <td>Hum-N, Hum-C, Elf-C, Gno-N, Orc-C</td>  <td>250</td> </tr>
+      <tr> <td>The Great Rog</td>   <td>2</td> <td>Hum-C, Orc-C</td> 			   <td>100</td> </tr>
+      <tr> <td>The Great Val</td>   <td>3</td> <td>Hum-L, Hum-N, Dwa-L</td> 		   <td>150</td> </tr>
+      <tr> <td>The Great Wiz</td>   <td>5</td> <td>Hum-N, Hum-C, Elf-C, Gno-N, Orc-C</td>  <td>250</td> </tr>
+    </tbody>
+  </table>
+
+  </p>
+
+  <p>
+    The Lesser Race/Role works identically to the Great, but instead of ascending,
+    you must instead complete a game with each required character combination
+    where you successfully retrieve the luckstone from the bottom of the Mines
+    <strong>AND</strong> retrieve the prize from the end of Sokoban. 
 
   <p>
     The Great Race/Role is worth fifty additional points for each character
-    combination it requires, and The Lesser Race/Role is worth five additional
-    points for each character combination it requires. Like other trophies,
-    these can also be earned collectively by a clan.
+    combination it requires (as shown in the table above), and The Lesser
+    Race/Role is worth five additional points for each character combination it
+    requires. Like other trophies, these can also be earned collectively by a clan.
   </p>
+
+  <p>
+    You can earn points for both the Lesser and Great of the same Race or Role,
+    since it is possible to ascend without completing Sokoban and/or retrieving
+    the Mines’ End luckstone.
+  </p> 
 
   <h3></h3>
   <p>
