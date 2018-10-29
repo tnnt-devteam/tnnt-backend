@@ -291,7 +291,7 @@ sub combo
 
 
 #-----------------------------------------------------------------------------
-# Format duration field into homan readable form
+# Format realtime field into homan readable form.
 #-----------------------------------------------------------------------------
 
 sub _format_duration
@@ -299,6 +299,7 @@ sub _format_duration
   my ($self) = @_;
 
   my $realtime = $self->realtime();
+
   my ($d, $h, $m, $s) = (0,0,0,0);
   my $duration;
 

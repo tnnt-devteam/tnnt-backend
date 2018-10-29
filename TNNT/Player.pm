@@ -92,6 +92,15 @@ has highscore => (
   is => 'rwp',
 );
 
+# fastest gametime
+
+has realtime => (
+  is => 'rwp',
+);
+
+has realtime_fmt => (
+  is => 'rwp',
+);
 
 
 #=============================================================================
@@ -179,6 +188,19 @@ sub add_game
     $self->_set_highscore($game->points());
   }
 
+  #--- track fastest gametime win
+
+  if(
+    $game->is_ascended()
+    && (
+      !defined $self->realtime()
+      || $game->realtime() < $self->realtime()
+    )
+  ) {
+    $self->_set_realtime($game->realtime());
+    $self->_set_realtime_fmt($game->_format_duration());
+  }
+
   #--- keep counter of scummed games
 
   if($game->is_scummed()) {
@@ -261,6 +283,10 @@ sub export
 
   if(@{$self->streaks()}) {
     $d{'streaks'} = [ map { $_->export_games() } @{$self->streaks()} ]
+  }
+
+  if(defined $self->realtime()) {
+    $d{'realtime'} = $self->realtime_fmt();
   }
 
   #--- trophies (selected trophies for showcasing on the player page)
