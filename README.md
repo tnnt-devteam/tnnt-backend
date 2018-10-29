@@ -113,6 +113,8 @@ exists, even if empty)
 * `minscore` is player's minimum score for a winning game
 * `highscore` is player's high score for a winning game
 * `maxstreaklen` is player's longest streak's length
+* `realtime` is player's fastest realtime of a winning game, in human readable
+format
 * `ratio` is player's ascension ratio (only exists for ascending
 players)
 * `streaks` is list of player's streaks, streaks are in turn lists
