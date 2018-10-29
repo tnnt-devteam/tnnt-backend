@@ -445,7 +445,7 @@
 
     <tr>
       <td class="trophy-name"
-          title="Highest total clan score for a clan with no ascensions.">
+          title="Highest total clan score for a clan with no ascensions. 100 points.">
         Medusa Cup
       </td>
       <td class="trophy-na">N/A</td>
@@ -459,7 +459,8 @@
     [%# === NEVER SCUM A GAME ============================================= %]
 
     <tr>
-      <td class="trophy-name">Never Scum a Game</td>
+      <td class="trophy-name"
+          title="Moral cleanliness; never become degraded with scummy behavior. 10 points.">Never Scum a Game</td>
       <td class="trophy-multi">
         [% IF trophies.players.exists('noscum');
           FOREACH plr IN trophies.players.noscum;
