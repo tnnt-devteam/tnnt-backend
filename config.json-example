@@ -2082,6 +2082,18 @@
       "descr"        : "Put an item into a swap chest"
     },
 
+    "dtchat": {
+      "tnntachieve2" : "0x80000000000000",
+      "title"        : "The True Dungeon Masters",
+      "descr"        : "Chat with an active devteam member"
+    },
+
+    "dtquest": {
+      "tnntachieve2" : "0x100000000000000",
+      "title"        : "There Is No Spoon",
+      "descr"        : "Finish the task the devteam requires of you"
+    },
+
   },
 
   #---------------------------------------------------------------------------
