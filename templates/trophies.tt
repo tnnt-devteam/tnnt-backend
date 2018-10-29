@@ -76,6 +76,23 @@
       </td>
     </tr>
 
+    [%# === FASTEST REALTIME ============================================== %]
+
+    <tr>
+      <td class="trophy-name">Fastest Realtime</td>
+      <td class="trophy-single">
+        [% IF trophies.players.exists('realtime');
+          plink(trophies.players.realtime);
+        END %]
+        ([% players.all.item(trophies.players.realtime).realtime %])
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('realtime');
+          clink(clans.all.item(trophies.clans.realtime));
+        END %]
+      </td>
+    </tr>
+
     [%# === MOST CONDUCTS ================================================= %]
 
     <tr>
