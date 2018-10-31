@@ -305,7 +305,9 @@ sub export
   #--- get clans' rank
 
   for(my $i = 0; $i < @clans_by_score; $i++) {
-    $clans[$clans_by_score[$i]]{'rank'} = $i + 1;
+    if(@{$clans[$clans_by_score[$i]]{'games'}}) {
+      $clans[$clans_by_score[$i]]{'rank'} = $i + 1;
+    }
   }
 
   #--- finish
