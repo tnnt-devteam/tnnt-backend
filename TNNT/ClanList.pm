@@ -242,7 +242,6 @@ sub export
         $_[0]->clan_unique();
       }),
       games100t    => $clan->games1000t(),
-      unique_ascs  => $clan->unique_ascs(),
     };
 
     # ascension ratio

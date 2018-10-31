@@ -388,7 +388,7 @@
         [% IF trophies.clans.exists('uniqascs');
           clink(clans.all.item(trophies.clans.uniqascs));
           ' (';
-          clans.all.item(trophies.clans.uniqascs).unique_ascs;
+          clans.all.item(trophies.clans.uniqascs).unique_ascs.size;
           ')';
         END %]
       </td>
