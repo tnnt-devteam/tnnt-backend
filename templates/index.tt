@@ -222,7 +222,7 @@
     </tbody>
   </table>
 [% ELSE %]
-  <p>There are not ascensions yet</p>
+  <p>There are no ascensions yet</p>
 [% END %]
 
 [%# ###########################################################################
@@ -252,7 +252,7 @@
     </tbody>
   </table>
 [% ELSE %]
-  <p>There are not games yet</p>
+  <p>There are no games played yet</p>
 [% END %]
 
 </body>

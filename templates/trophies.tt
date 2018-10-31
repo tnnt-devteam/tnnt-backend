@@ -55,8 +55,8 @@
       <td class="trophy-single">
         [% IF trophies.players.exists('mostasc');
           plink(trophies.players.mostasc);
+          ' ('; players.all.item(trophies.players.mostasc).ascs.size; ')';
         END %]
-        ([% players.all.item(trophies.players.mostasc).ascs.size %])
       </td>
       <td class="trophy-single">
       [% IF trophies.clans.exists('mostasc');
@@ -75,8 +75,8 @@
       <td class="trophy-single">
         [% IF trophies.players.exists('minturns');
           plink(trophies.players.minturns);
+          ' ('; players.all.item(trophies.players.minturns).minturns; ')';
         END %]
-        ([% players.all.item(trophies.players.minturns).minturns %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('minturns');
@@ -95,8 +95,8 @@
       <td class="trophy-single">
         [% IF trophies.players.exists('realtime');
           plink(trophies.players.realtime);
+          ' ('; players.all.item(trophies.players.realtime).realtime; ')';
         END %]
-        ([% players.all.item(trophies.players.realtime).realtime %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('realtime');
@@ -115,8 +115,8 @@
       <td class="trophy-single">
         [% IF trophies.players.exists('mostcond');
           plink(trophies.players.mostcond);
+          ' ('; players.all.item(trophies.players.mostcond).maxcond; ')';
         END %]
-        ([% players.all.item(trophies.players.mostcond).maxcond %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('mostcond');
@@ -135,8 +135,8 @@
       <td class="trophy-single">
         [% IF trophies.players.exists('lowscore');
           plink(trophies.players.lowscore);
+          ' ('; number(players.all.item(trophies.players.lowscore).minscore); ')';
         END %]
-        ([% number(players.all.item(trophies.players.lowscore).minscore) %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('lowscore');
@@ -155,8 +155,8 @@
       <td class="trophy-single">
         [% IF trophies.players.exists('highscore');
           plink(trophies.players.highscore);
+          ' ('; number(players.all.item(trophies.players.highscore).highscore); ')';
         END %]
-        ([% number(players.all.item(trophies.players.highscore).highscore) %])
       </td>
       <td class="trophy-single">
         [% IF trophies.clans.exists('highscore');
@@ -173,7 +173,7 @@
       [% IF trophies.players.exists('maxstreak') %]
         <td class="trophy-single">
           [% plink(trophies.players.maxstreak) %]
-          ([% players.all.item(trophies.players.maxstreak).maxstreaklen %])
+          ' ('; players.all.item(trophies.players.maxstreak).maxstreaklen; ')';
         </td>
       [% END %]
       [% IF trophies.clans.exists('maxstreak') %]
