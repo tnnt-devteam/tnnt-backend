@@ -34,7 +34,9 @@
 
           [%# === rank ==================================================== %]
 
-          <td class="num">[% i; SET i = i + 1 %]</td>
+          <td class="num">
+            [% IF clan.exists('rank'); GET i; ELSE; '·'; END; SET i = i + 1 %]
+          </td>
 
           [%# === clan name / members ===================================== %]
 
