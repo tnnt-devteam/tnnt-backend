@@ -169,16 +169,20 @@
 
     <tr>
       <td class="trophy-name"
-          title="Longest streak of consecutive winning games. 250 points.">Longest Streak</td>
-      [% IF trophies.players.exists('maxstreak') %]
-        <td class="trophy-single">
-          [% plink(trophies.players.maxstreak) %]
+          title="Longest streak of consecutive winning games. 250 points.">
+        Longest Streak
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.players.exists('maxstreak');
+          plink(trophies.players.maxstreak);
           ' ('; players.all.item(trophies.players.maxstreak).maxstreaklen; ')';
-        </td>
-      [% END %]
-      [% IF trophies.clans.exists('maxstreak') %]
-        <td class="trophy-single">[% clink(clans.all.item(trophies.clans.maxstreak)) %]</td>
-      [% END %]
+        END %]
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('maxstreak');
+          clink(clans.all.item(trophies.clans.maxstreak));
+        END %]
+      </td>
     </tr>
 
     [%# === BOTH GENDERS ================================================== %]
