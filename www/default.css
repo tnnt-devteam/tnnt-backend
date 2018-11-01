@@ -87,7 +87,11 @@ table {
 }
 
 table.trophies {
-  width: 70%;
+  max-width: 70%;
+}
+
+table.clans {
+  max-width: 70%;
 }
 
 td, th {

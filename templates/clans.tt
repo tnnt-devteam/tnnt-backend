@@ -12,10 +12,7 @@
 
 [% INCLUDE header.tt page = 'clans' %]
 
-<a href="/tnnt/clanmgmt">CLAN MANAGEMENT</a>
-<br />
-
-<table>
+<table class="clans">
 
   <thead>
     <tr class="framed">
