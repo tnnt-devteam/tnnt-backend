@@ -104,15 +104,27 @@ sub close
   my @streaks = splice(@_);
   my @pruned;
 
+  # iterate over all streaks in this instance
   for(my $i = 0; $i < @{$self->streaks()}; $i++) {
+
+    # handle two distinct cases:
+    # a) no streaks are passed as an argument or the current streak is
+    #    in the list of streaks in the argument (IF block)
+    # b) streaks are passed as an argument and the current streak is
+    #    not in that list (ELSE block)
     if(
       !@streaks
       || (grep { $_ == $i } @streaks)
     ) {
+      # if the streak length is 2 or more, invoke the callback (presumably to
+      # create one or more scoring entries)
       if($cb && $self->streak($i)->count_games() > 1) {
         $cb->($self->streak($i));
       }
     } else {
+      # if the current iteration streak is not closed, move it into the list
+      # of streaks that were not closed, which will then become the new streak
+      # list
       push(@pruned, $self->streak($i));
     }
   }
