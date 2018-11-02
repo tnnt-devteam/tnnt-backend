@@ -94,9 +94,22 @@ sub add_game
   #--- StreakList instance
 
   if($self->player_streak($player_name)) {
-    $self->player_streak($player_name)->add_game($game, sub {
-      $game->player()->add_score($self->score($_[0]));
-    });
+    $self->player_streak($player_name)->add_game($game,
+      # streak closing callback, gets (streak) as argument
+      sub {
+        $game->player()->add_score($self->score($_[0]));
+      },
+      # game adding callback, gets (game, index) as argument
+      sub {
+        die if !$_[0]->isa('TNNT::Game');
+        $game->add_score(TNNT::ScoringEntry->new(
+          trophy => $self->name(),
+          points => int(
+            $_[0]->sum_score('ascension', 'speedrun', 'conduct')
+            * $_[1] * 0.1),
+        ));
+      }
+    );
   }
 
   #--- if the player IS NOT yet tracked, create new StreakList instance for

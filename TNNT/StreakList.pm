@@ -136,13 +136,14 @@ sub close
 
 #=============================================================================
 # Process a game, creating, extending and closing streaks as required. When
-# a streak of length 2 or longer is closed, callback is invoked with a list
-# of games that form the streak.
+# a streak of length 2 or longer is closed, callback 1 is invoked with a list
+# of games that form the streak. Callback 2 is invoked for every game that
+# forms a streak when it's added (though not on the first game).
 #=============================================================================
 
 sub add_game
 {
-  my ($self, $game, $cb) = @_;
+  my ($self, $game, $cb1, $cb2) = @_;
 
   #--- find eligible streaks
 
@@ -163,14 +164,15 @@ sub add_game
   elsif(@eligible && $game->is_ascended()) {
     my $top_streak = shift @eligible;
     $self->streak($top_streak)->add_game($game);
-    $self->close($cb, @eligible) if @eligible;
+    if($cb2) { $cb2->($game, $self->streak($top_streak)->count_games()-1); }
+    $self->close($cb1, @eligible) if @eligible;
   }
 
   #--- if eligible streak exists and the game is not ascended
   #--- break all eligible streaks
 
   elsif(@eligible && !$game->is_ascended()) {
-    $self->close($cb, @eligible);
+    $self->close($cb1, @eligible);
   }
 }
 
