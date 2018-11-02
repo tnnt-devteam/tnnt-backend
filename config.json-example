@@ -1728,7 +1728,7 @@
 
     "demogorgon" : {
       "tnntachieve1" : "0x800000000000000",
-      "title"        : "Demo-Slayer",
+      "title"        : "Demogorgone",
       "descr"        : "Kill Demogorgon"
     },
 
@@ -1746,7 +1746,7 @@
 
     "dispater" : {
       "tnntachieve1" : "0x4000000000000000",
-      "title"        : "Dispater-Slayer",
+      "title"        : "Dispater-Dispatcher",
       "descr"        : "Kill Dispater"
     },
 
