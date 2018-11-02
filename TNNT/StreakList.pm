@@ -104,15 +104,27 @@ sub close
   my @streaks = splice(@_);
   my @pruned;
 
+  # iterate over all streaks in this instance
   for(my $i = 0; $i < @{$self->streaks()}; $i++) {
+
+    # handle two distinct cases:
+    # a) no streaks are passed as an argument or the current streak is
+    #    in the list of streaks in the argument (IF block)
+    # b) streaks are passed as an argument and the current streak is
+    #    not in that list (ELSE block)
     if(
       !@streaks
       || (grep { $_ == $i } @streaks)
     ) {
+      # if the streak length is 2 or more, invoke the callback (presumably to
+      # create one or more scoring entries)
       if($cb && $self->streak($i)->count_games() > 1) {
         $cb->($self->streak($i));
       }
     } else {
+      # if the current iteration streak is not closed, move it into the list
+      # of streaks that were not closed, which will then become the new streak
+      # list
       push(@pruned, $self->streak($i));
     }
   }
@@ -124,13 +136,14 @@ sub close
 
 #=============================================================================
 # Process a game, creating, extending and closing streaks as required. When
-# a streak of length 2 or longer is closed, callback is invoked with a list
-# of games that form the streak.
+# a streak of length 2 or longer is closed, callback 1 is invoked with a list
+# of games that form the streak. Callback 2 is invoked for every game that
+# forms a streak when it's added (though not on the first game).
 #=============================================================================
 
 sub add_game
 {
-  my ($self, $game, $cb) = @_;
+  my ($self, $game, $cb1, $cb2) = @_;
 
   #--- find eligible streaks
 
@@ -151,14 +164,15 @@ sub add_game
   elsif(@eligible && $game->is_ascended()) {
     my $top_streak = shift @eligible;
     $self->streak($top_streak)->add_game($game);
-    $self->close($cb, @eligible) if @eligible;
+    if($cb2) { $cb2->($game, $self->streak($top_streak)->count_games()-1); }
+    $self->close($cb1, @eligible) if @eligible;
   }
 
   #--- if eligible streak exists and the game is not ascended
   #--- break all eligible streaks
 
   elsif(@eligible && !$game->is_ascended()) {
-    $self->close($cb, @eligible);
+    $self->close($cb1, @eligible);
   }
 }
 
