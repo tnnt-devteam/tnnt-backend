@@ -107,6 +107,7 @@ sub add_game
           points => int(
             $_[0]->sum_score('ascension', 'speedrun', 'conduct')
             * $_[1] * 0.1),
+          when => $game->endtime(),
         ));
       }
     );
