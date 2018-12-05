@@ -78,7 +78,7 @@ sub add_game
   my $get_new_clan = sub {
     my @sorted =
     sort {
-      $a->sum_score('!clan-medusacup') <=> $b->sum_score('!clan-medusacup')
+      $b->sum_score('!clan-medusacup') <=> $a->sum_score('!clan-medusacup')
     } # eligible clan instance refs
     map {
       $self->eligible_clans()->{$_}
