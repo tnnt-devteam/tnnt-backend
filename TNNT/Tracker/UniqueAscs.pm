@@ -104,7 +104,7 @@ sub add_game
 
   elsif(
     $self->topuniq() < keys %{$trk->{$clan}}
-    || $self->topclan()->name() ne $clan->name()
+    && $self->topclan()->name() ne $clan->name()
   ) {
     $self->topclan()->remove_score($self->name());
     $self->_set_topclan($clan);
