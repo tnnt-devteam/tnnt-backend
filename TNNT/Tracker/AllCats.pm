@@ -76,16 +76,15 @@ has clans => (
 sub track_data
 {
   my ($self, $subj) = @_;
-
-  $subj = $subj->name() if ref($subj);
+  my $subj_name = $subj->name() if ref($subj);
 
   if($subj->isa('TNNT::Player')) {
-    if(exists $self->player_track()->{$subj}) {
-      return $self->player_track()->{$subj}
+    if(exists $self->player_track()->{$subj_name}) {
+      return $self->player_track()->{$subj_name}
     }
   } else {
-    if(exists $self->clan_track()->{$subj}) {
-      return $self->clan_track()->{$subj}
+    if(exists $self->clan_track()->{$subj_name}) {
+      return $self->clan_track()->{$subj_name}
     }
   }
 
