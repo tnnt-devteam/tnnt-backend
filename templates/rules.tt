@@ -33,6 +33,11 @@
     interface enhancers like InterHack, and hanging out on IRC to see if the
     gray stone you picked up in Mines' End gets livelogged as the luckstone.
   </p>
+  <p>
+    Digging for victory is fine, of course, but please make sure to set !bones
+    in your rc file so that you don't leave useless bones and throw away other
+    players' interesting bones on your way down.
+  </p>
 
   <h4>Clans</h4>
   <p>
@@ -167,7 +172,7 @@
     </thead>
     <tbody>
       [% FOREACH ach IN config.item('achievements-ordered') %]
-      <tr> <td class="ach">[% config.achievements.item(ach).title %]</td> <td class="descr">[% config.achievements.item(ach).descr %]</td> </tr> 
+      <tr> <td class="ach">[% config.achievements.item(ach).title %]</td> <td class="descr">[% config.achievements.item(ach).descr %]</td> </tr>
       [% END %]
     </tbody>
   </table>
@@ -251,7 +256,7 @@
     The Lesser Race/Role works identically to the Great, but instead of ascending,
     you must instead complete a game with each required character combination
     where you successfully retrieve the luckstone from the bottom of the Mines
-    <strong>AND</strong> retrieve the prize from the end of Sokoban. 
+    <strong>AND</strong> retrieve the prize from the end of Sokoban.
 
   <p>
     The Great Race/Role is worth fifty additional points for each character
@@ -264,7 +269,7 @@
     You can earn points for both the Lesser and Great of the same Race or Role,
     since it is possible to ascend without completing Sokoban and/or retrieving
     the Mines’ End luckstone.
-  </p> 
+  </p>
 
   <h3></h3>
   <p>
