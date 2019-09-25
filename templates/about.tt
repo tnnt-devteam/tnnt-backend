@@ -28,11 +28,10 @@
     The tribute tournament was never planned to run for a second year;
     instead, respecting devnull's wishes to shut down completely and not keep
     its name going, plans for a new tournament were laid. This new tournament
-    would be based off the newly available development version of NetHack
-    (currently NetHack 3.6.2), and would remain a primarily vanilla-like
-    tournament, unlike other tournaments like
-    <a href="https://junethack.net">Junethack</a> which focus on variant play.
-    It was also decided to keep the tradition of running the tournament
+    would be based off the newly available development version of NetHack, and
+    would remain a primarily vanilla-like tournament, unlike other tournaments
+    like <a href="https://junethack.net">Junethack</a> which focus on variant
+    play.  It was also decided to keep the tradition of running the tournament
     throughout November, when a lot of veteran players come out of the woodwork
     checking to see if there's a tournament.
   </p>
@@ -50,8 +49,8 @@
     As with the rest of devnull, the challenges have been permanently retired
     and are not implemented in TNNT. However, TNNT does add some of its own
     gameplay content, including features that don't exist in any variants. It's
-    a bit of a work in progress, and added gameplay features in 2018 will
-    probably be minimal, but we expect to add more in subsequent years.
+    a bit of a work in progress. We plan to keep adding a bit of new content
+    every year.
   </p>
   <p>
     If you are looking for the code powering the devnull challenges, to use as
@@ -63,7 +62,7 @@
   <ul>
     <li>Tangles: Server admin and programmer. Ensures that the various interactions between the game and the server network are working properly.</li>
     <li>Mandevil: Creator of the scoreboard, the website, and the backend that turns raw game logs into tables of game statistics and trophies.</li>
-    <li>aosdict: Author of the achievements system and tournament designer.</li>
+    <li>aosdict: Author of the achievements system and various in-game features.</li>
     <li>K2: Server admin and jack-of-all-trades programmer, maintainer, problem fixer, and designer.</li>
     <li>Elenmirie: Overall tournament designer, project manager, coordinator, and alpha tester.</li>
     <li>Raisse, Jilles, Hothraxxa, and oh6: Tournament designers and alpha testers.</li>
