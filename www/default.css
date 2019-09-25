@@ -26,6 +26,12 @@ h4 {
   color: #eb0;
 }
 
+h5 {
+  font-weight: 500;
+  font-size: 1em;
+  color: #eb0;
+}
+
 .num {
   text-align: right;
   letter-spacing: 0.04em;

@@ -28,8 +28,8 @@
   </p>
   <p>
     However, anything within the normal execution of the game is fair game.
-    This includes farming, scumming, abusing program bugs, reading dead
-    characters' dump logs, viewing ttyrecs of your own or others' games, using
+    This includes farming, scumming, abusing program bugs, reading other
+    characters' dumplogs, viewing ttyrecs of your own or others' games, using
     interface enhancers like InterHack, and hanging out on IRC to see if the
     gray stone you picked up in Mines' End gets livelogged as the luckstone.
   </p>
@@ -45,9 +45,9 @@
     others' clans, go <a href="clanmgmt/">here</a>.
   </p>
   <p>
-    For the 2018 tournament, there are no limits on the size of a clan, and the
-    scoring is designed so that adding new clan members, however inexperienced,
-    cannot hurt the clan overall.
+    Clan size is capped at 12, and a clan is not allowed to have more than 12
+    pending invitations. The scoring is designed so that adding new clan
+    members, however inexperienced, cannot hurt the clan overall.
   </p>
   <p>
     At November 10th at midnight UTC, clan membership will become frozen;
@@ -61,51 +61,175 @@
 
   <h4>Scoring</h4>
   <p>
-    Not accounting for trophies, all ascensions are worth 50 points each. There
-    are several ways to get more points:
+    The primary way to score points is by ascending. Ascensions start out at 50
+    points each, but repeated ascensions with the same role/race combination
+    scale down in points according to Z-score rules.
   </p>
+  <p>
+    Z-score rules make the second ascension worth 1/2 as much, the third 1/3 as
+    much, the fourth 1/4 as much, and so on. Fractional points will be rounded
+    down, so ascending a role/race combination the second time will earn 25
+    points instead of 50. The third will earn 16. The fourth 12. However,
+    ascending a new combination will earn the full 50 points.
+  </p>
+
+  <h5>Clan Scoring</h5>
+  <p>
+    Clans' games also use Z-scoring on race/role combinations for repeated
+    ascensions, but bonus conduct, speedrun, or streak points earned on
+    ascensions are not affected by this and merely add into the total clan
+    score. For example, if player A in a clan ascends a Val-Dwa-Fem-Law with no
+    frills and player B ascends another Val-Dwa-Fem-Law and gets 10 bonus
+    conduct points, the clan earns 85 points (50 + 25 + 10). It doesn't really
+    matter which ascension came second and only scored 25.
+  </p>
+  <p>
+    Many of the trophies which can be earned individually can also be earned
+    collectively by a clan, for the same amount of points. If an individual
+    earns one of these trophies on their own, their clan will also get the
+    trophy.
+  </p>
+
 
   <h4>Trophies</h4>
   <p>
     Various accomplishments across one or multiple games earn you trophies,
     which come with an associated boatload of points. To see how to earn these,
     go to the <a href="trophies.html">Trophies page</a> and hover over them;
-    they will show up as a tooltip.
+    they will show up as a tooltip. The Great and Lesser Race/Role trophies
+    need a bit more explanation.
     <!-- TODO: Do we want to stick a trophy score table here anyway? -->
   </p>
 
+  <h5>The Great and Lesser Race/Role</h5>
+  <p>
+    The Great Race/Role are a set of multi-ascension trophies, and gives extra
+    credit for playing all of the interesting character combinations for a given
+    race or role. Gender does not matter. Alignment does not matter for The
+    Great Race, but it does for The Great Role.  Only starting alignment is
+    counted - tricks with changing your alignment in-game won't work.
+  </p>
+  <p>
+    The Great Human is a special case, and requires you to play only those roles
+    which must be human, as shown in the table below.  The required Monk can be
+    of any alignment.
+  </p>
+  <p>
+    Similarly, there is no such thing as the Great Knight, Samurai, or Tourist,
+    because only a single race and alignment combination can be played with it.
+  </p>
+  <p>
+    These may be achieved by individual players or by clans working together.
+  </p>
+
+  <p>
+    Below is a table of requirements for each race or role:
+
+  <table>
+    <thead>
+      <tr class="framed">
+        <th>Trophy</th>
+        <th>Number of Ascensions</th>
+        <th>Requirements</th>
+        <th>Points Earned</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr> <td>The Great Orc</td>   <td>4</td> <td>Bar, Ran, Rog, Wiz</td> 		   <td>200</td> </tr>
+      <tr> <td>The Great Gnome</td> <td>5</td> <td>Arc, Cav, Hea, Ran, Wiz</td> 	   <td>250</td> </tr>
+      <tr> <td>The Great Dwarf</td> <td>3</td> <td>Arc, Cav, Val</td> 			   <td>150</td> </tr>
+      <tr> <td>The Great Elf</td> 	 <td>3</td> <td>Pri, Ran, Wiz</td> 		   <td>150</td> </tr>
+      <tr> <td>The Great Human</td> <td>4</td> <td>Kni, Mon, Sam, Tou</td> 		   <td>200</td> </tr>
+      <tr> <td>The Great Archeologist</td>   <td>4</td> <td>Hum-L, Hum-N, Dwa-L, Gno-N</td> 	   <td>200</td> </tr>
+      <tr> <td>The Great Barbarian</td>   <td>3</td> <td>Hum-N, Hum-C, Orc-C</td> 		   <td>150</td> </tr>
+      <tr> <td>The Great Caveperson</td>   <td>4</td> <td>Hum-L, Hum-N, Dwa-L, Gno-N</td> 	   <td>200</td> </tr>
+      <tr> <td>The Great Healer</td>   <td>2</td> <td>Hum-N, Gno-N</td> 			   <td>100</td> </tr>
+      <tr> <td>The Great Monk</td>   <td>3</td> <td>Hum-L, Hum-N, Hum-C</td> 		   <td>150</td> </tr>
+      <tr> <td>The Great Priest</td>   <td>4</td> <td>Hum-L, Hum-N, Hum-C, Elf-C</td> 	   <td>200</td> </tr>
+      <tr> <td>The Great Ranger</td>   <td>5</td> <td>Hum-N, Hum-C, Elf-C, Gno-N, Orc-C</td>  <td>250</td> </tr>
+      <tr> <td>The Great Rogue</td>   <td>2</td> <td>Hum-C, Orc-C</td> 			   <td>100</td> </tr>
+      <tr> <td>The Great Valkyrie</td>   <td>3</td> <td>Hum-L, Hum-N, Dwa-L</td> 		   <td>150</td> </tr>
+      <tr> <td>The Great Wiz</td>   <td>5</td> <td>Hum-N, Hum-C, Elf-C, Gno-N, Orc-C</td>  <td>250</td> </tr>
+    </tbody>
+  </table>
+
+  </p>
+
+  <p>
+    The Lesser Race/Role works identically to the Great, but instead of ascending,
+    you must instead complete a game with each required character combination
+    where you successfully retrieve the luckstone from the bottom of the Mines
+    <strong>AND</strong> retrieve the prize from the end of Sokoban.
+
+  <p>
+    The Great Race/Role is worth fifty additional points for each character
+    combination it requires (as shown in the table above), and The Lesser
+    Race/Role is worth five additional points for each character combination it
+    requires. Like other trophies, these can also be earned collectively by a clan.
+  </p>
+
+  <p>
+    You can earn points for both the Lesser and Great of the same Race or Role,
+    since it is possible to ascend without completing Sokoban and/or retrieving
+    the Mines' End luckstone.
+  </p>
+
   <h4>Ascending with Conducts</h4>
+  <p>
+    Conducts consist of point multipliers which are applied to a base score of
+    50 points (earning less than 50 points due to Z-scoring won't affect your
+    conduct bonus points).  Ascending with more than one conduct is harder, so
+    it multiplies the multipliers together for a bigger bonus.
+  </p>
+  <p>
+    The exact formula for the number of bonus points is
+    <!-- We could use MathJAX here, but it probably isn't needed for a few equations. -->
+    <i>50 &times; <big>((</big>multiplier1 &times; multiplier2 &times; ...<big>)</big> &minus; 1<big>)</big></i>
+  </p>
   <table>
     <thead>
       <tr class="framed">
         <th>Conduct</th>
-        <th>Points</th>
+        <th>Multiplier</th>
       </tr>
     </thead>
     <tbody>
-      <tr> <td>Pacifist</td>          <td>50</td> </tr>
-      <tr> <td>Zen</td>               <td>50</td> </tr>
-      <tr> <td>Nudist</td>            <td>50</td> </tr>
-      <tr> <td>Foodless</td>          <td>30</td> </tr>
-      <tr> <td>Illiterate</td>        <td>20</td> </tr>
-      <tr> <td>Elberethless</td>      <td>20</td> </tr>
-      <tr> <td>Vegan</td>             <td>15</td> </tr>
-      <tr> <td>Weaponless</td>        <td>10</td> </tr>
-      <tr> <td>Atheist</td>           <td>10</td> </tr>
-      <tr> <td>Vegetarian</td>        <td> 5</td> </tr>
-      <tr> <td>Genocideless</td>      <td> 5</td> </tr>
-      <tr> <td>Wishless</td>          <td> 4</td> </tr>
-      <tr> <td>Artifact wishless</td> <td> 1</td> </tr>
-      <tr> <td>Polyselfless</td>      <td> 1</td> </tr>
-      <tr> <td>Polyobjectless</td>    <td> 1</td> </tr>
+      <tr> <td>Zen</td>                                              <td align="right"> 2.2x</td> </tr>
+      <tr> <td>Pacifist</td>                                         <td align="right">   2x</td> </tr>
+      <tr> <td>Nudist</td>                                           <td align="right">   2x</td> </tr>
+      <tr> <td>Foodless</td>                                         <td align="right">   2x</td> </tr>
+      <tr> <td>Never kill the Wizard<sup>&dagger;</sup></td>         <td align="right"> 1.6x</td> </tr>
+      <tr> <td>Never kill a Rider<sup>&dagger;</sup></td>            <td align="right"> 1.4x</td> </tr>
+      <tr> <td>Illiterate</td>                                       <td align="right"> 1.4x</td> </tr>
+      <tr> <td>Vegan</td>                                            <td align="right"> 1.4x</td> </tr>
+      <tr> <td>Weaponless</td>                                       <td align="right"> 1.2x</td> </tr>
+      <tr> <td>Atheist</td>                                          <td align="right"> 1.2x</td> </tr>
+      <tr> <td>Never kill Vlad<sup>&dagger;</sup></td>               <td align="right"> 1.2x</td> </tr>
+      <tr> <td>Vegetarian</td>                                       <td align="right"> 1.1x</td> </tr>
+      <tr> <td>Genocideless</td>                                     <td align="right"> 1.1x</td> </tr>
+      <tr> <td>Elberethless</td>                                     <td align="right"> 1.1x</td> </tr>
+      <tr> <td>Wishless</td>                                         <td align="right"> 1.1x</td> </tr>
+      <tr> <td>Bonesless</td>                                        <td align="right"> 1.1x</td> </tr>
+      <tr> <td>Swapchestless<sup>*</sup></td>                        <td align="right"> 1.1x</td> </tr>
+      <tr> <td>Never kill your quest nemesis<sup>&dagger;</sup></td> <td align="right"> 1.1x</td> </tr>
+      <tr> <td>Never kill the High Priest of Moloch<sup>&dagger;</sup></td> <td align="right"> 1.05x</td> </tr>
+      <tr> <td>Survivor</td>                                         <td align="right">1.05x</td> </tr>
+      <tr> <td>Artifact wishless</td>                                <td align="right">1.02x</td> </tr>
+      <tr> <td>Polyselfless</td>                                     <td align="right">1.02x</td> </tr>
+      <tr> <td>Polyobjectless</td>                                   <td align="right">1.02x</td> </tr>
     </tbody>
   </table>
   <p>
+    <small>* Never remove an item from a swap chest. Inserting items does not break the conduct.</small>
+  </p>
+  <p>
+    <small>&dagger; You can't let them die by any means. This is how it works for UnNetHack in Junethack.</small>
+  </p>
+  <p>
     For conducts that necessarily imply other conducts, such as Vegan and
-    Vegetarian, keeping the more stringent conduct will score points for both
-    it and the less stringent conduct. For example, a foodless ascension is
-    actually worth 50 points, because the player will get the points for Vegan
-    and Vegetarian as well.
+    Vegetarian, the multiplier for the less stringent conducts are not counted.
+    For example, a foodless ascension only earns the 2x for foodless, and the
+    1.4x for Vegan and 1.1x for vegetarian are not factored in.
   </p>
 
   <h4>Speedrunning</h4>
@@ -163,6 +287,7 @@
     of that achievement and what needs to be done to earn it.
   </p>
   <p>
+  <!-- TODO: hide this table by default, have it expandable? -->
   <table>
     <thead>
       <tr class="framed">
@@ -176,103 +301,6 @@
       [% END %]
     </tbody>
   </table>
-  </p>
-
-  <h4>Clan Scoring</h4>
-  <p>
-    Clans' games are scored based on the highest score for a given character
-    race/role/alignment/gender combination. That is, if one player in a clan
-    ascends a Val-Dwa-Fem-Law with no frills and gets 50 points, the clan will
-    have 50 points for that win; but if another player in the same clan ascends
-    another Val-Dwa-Fem-Law and gets 10 points for a conduct, scoring 60 points
-    for that game, the clan's 50 points for the older win are replaced with the
-    higher scoring 60-point game.
-  </p>
-  <p>
-    Many of the trophies which can be earned individually can also be earned
-    collectively by a clan, for the same amount of points. If an individual
-    earns one of these trophies on their own, their clan will also get the
-    trophy.
-  </p>
-
-  <h3>The Great and Lesser Race/Role</h3>
-  <p>
-    Most of the major trophies are explained as tooltips on the Trophies page;
-    hover over the trophy title to see it. The "Great Race/Role" and "Lesser
-    Race/Role", however, need a bit more explanation.
-  </p>
-
-  <p>
-    The Great Race/Role is a multi-ascension trophy, and gives extra credit
-    for playing, for example, “all the gnomes” – The Great Gnome, or “all the wizards”
-    – The Great Wizard.  Gender does not matter.  Alignment does not matter for
-    The Great Race, but it does for The Great Role.  Only starting alignment is counted.
-  </p>
-
-  <p>
-    The Great Human is a special case, and requires you to play only those roles
-    which must be human, as shown in the table below.  The required Monk can be
-    of any alignment.
-  </p>
-
-  <p>
-    These may be achieved by individual players or by clans working together.
-  </p>
-
-  <p>
-    Below is a table of requirements for each race or role:
-
-  <table>
-    <thead>
-      <tr class="framed">
-        <th>Trophy</th>
-        <th>Number of Ascensions</th>
-        <th>Requirements</th>
-        <th>Points Earned</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr> <td>The Great Orc</td>   <td>4</td> <td>Bar, Ran, Rog, Wiz</td> 		   <td>200</td> </tr>
-      <tr> <td>The Great Gnome</td> <td>5</td> <td>Arc, Cav, Hea, Ran, Wiz</td> 	   <td>250</td> </tr>
-      <tr> <td>The Great Dwarf</td> <td>3</td> <td>Arc, Cav, Val</td> 			   <td>150</td> </tr>
-      <tr> <td>The Great Elf</td> 	 <td>3</td> <td>Pri, Ran, Wiz</td> 		   <td>150</td> </tr>
-      <tr> <td>The Great Human</td> <td>4</td> <td>Kni, Mon, Sam, Tou</td> 		   <td>200</td> </tr>
-      <tr> <td>The Great Arc</td>   <td>4</td> <td>Hum-L, Hum-N, Dwa-L, Gno-N</td> 	   <td>200</td> </tr>
-      <tr> <td>The Great Bar</td>   <td>3</td> <td>Hum-N, Hum-C, Orc-C</td> 		   <td>150</td> </tr>
-      <tr> <td>The Great Cav</td>   <td>4</td> <td>Hum-L, Hum-N, Dwa-L, Gno-N</td> 	   <td>200</td> </tr>
-      <tr> <td>The Great Hea</td>   <td>2</td> <td>Hum-N, Gno-N</td> 			   <td>100</td> </tr>
-      <tr> <td>The Great Mon</td>   <td>3</td> <td>Hum-L, Hum-N, Hum-C</td> 		   <td>150</td> </tr>
-      <tr> <td>The Great Pri</td>   <td>4</td> <td>Hum-L, Hum-N, Hum-C, Elf-C</td> 	   <td>200</td> </tr>
-      <tr> <td>The Great Ran</td>   <td>5</td> <td>Hum-N, Hum-C, Elf-C, Gno-N, Orc-C</td>  <td>250</td> </tr>
-      <tr> <td>The Great Rog</td>   <td>2</td> <td>Hum-C, Orc-C</td> 			   <td>100</td> </tr>
-      <tr> <td>The Great Val</td>   <td>3</td> <td>Hum-L, Hum-N, Dwa-L</td> 		   <td>150</td> </tr>
-      <tr> <td>The Great Wiz</td>   <td>5</td> <td>Hum-N, Hum-C, Elf-C, Gno-N, Orc-C</td>  <td>250</td> </tr>
-    </tbody>
-  </table>
-
-  </p>
-
-  <p>
-    The Lesser Race/Role works identically to the Great, but instead of ascending,
-    you must instead complete a game with each required character combination
-    where you successfully retrieve the luckstone from the bottom of the Mines
-    <strong>AND</strong> retrieve the prize from the end of Sokoban.
-
-  <p>
-    The Great Race/Role is worth fifty additional points for each character
-    combination it requires (as shown in the table above), and The Lesser
-    Race/Role is worth five additional points for each character combination it
-    requires. Like other trophies, these can also be earned collectively by a clan.
-  </p>
-
-  <p>
-    You can earn points for both the Lesser and Great of the same Race or Role,
-    since it is possible to ascend without completing Sokoban and/or retrieving
-    the Mines’ End luckstone.
-  </p>
-
-  <h3></h3>
-  <p>
   </p>
 
 </article>
