@@ -46,7 +46,7 @@
   <td class="nowrap">
     [% row.role %]-[% row.race %]-[% row.gender %]-[% row.align %]
     [% IF markuniq %]
-      <span class="clan-unique">[% IF row.clan_unique; '·'; END %]</span>
+      <span class="clan-unique">[% IF row.clan_unique; '&middot;'; END %]</span>
     [% END %]
   </td>
   <td class="num">[% number(row.turns) %]</td>
