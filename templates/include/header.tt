@@ -16,11 +16,13 @@
               <a href="index.html" class="menu [% IF page == 'index' %] menusel [% END %]">HOME</a>
               <a href="trophies.html" class="menu [% IF page == 'trophies' %] menusel [% END %]">TROPHIES</a>
               <a href="clans.html" class="menu [% IF page == 'clans' %] menusel [% END %]">CLANS</a>
+              <a href="players.html" class="menu [% IF page == 'players' %] menusel [% END %]">PLAYERS</a>
           </td>
           <td class="rightmenu">
-              <a href="players.html" class="menu [% IF page == 'players' %] menusel [% END %]">PLAYERS</a>
-              <a href="about.html" class="menu [% IF page == 'about' %] menusel [% END %]">ABOUT</a>
               <a href="rules.html" class="menu [% IF page == 'rules' %] menusel [% END %]">RULES</a>
+              <a href="about.html" class="menu [% IF page == 'about' %] menusel [% END %]">ABOUT</a>
+              <a href="https://i.kym-cdn.com/entries/icons/original/000/023/967/obiwan.jpg" class="menu [% IF page == 'archive' %] menusel [% END %]">ARCHIVE</a>
+              <a href="/tnnt/clanmgmt" class="menu [% IF page == 'settings' %] menusel [% END %]">MY CLAN</a>
           </td>
       </tr>
       <tr id="lowerheader">
