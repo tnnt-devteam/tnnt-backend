@@ -1993,91 +1993,91 @@
     "partveget": {
       "tnntachieve2" : "0x8000000000",
       "title"        : "Friends Not Food",
-      "descr"        : "Reach your quest leader with vegetarian conduct intact"
+      "descr"        : "Assigned your quest with vegetarian conduct intact"
     },
 
     "partvegan": {
       "tnntachieve2" : "0x10000000000",
       "title"        : "Animal Rights Activist",
-      "descr"        : "Reach your quest leader with vegan conduct intact"
+      "descr"        : "Assigned your quest with vegan conduct intact"
     },
 
     "partfoodl": {
       "tnntachieve2" : "0x20000000000",
       "title"        : "Anti Gulp",
-      "descr"        : "Reach your quest leader with foodless conduct intact"
+      "descr"        : "Assigned your quest with foodless conduct intact"
     },
 
     "partathe": {
       "tnntachieve2" : "0x40000000000",
       "title"        : "No Help from Above",
-      "descr"        : "Reach your quest leader with atheist conduct intact"
+      "descr"        : "Assigned your quest with atheist conduct intact"
     },
 
     "partweap": {
       "tnntachieve2" : "0x80000000000",
       "title"        : "Wax On Wax Off",
-      "descr"        : "Reach your quest leader with weaponless conduct intact"
+      "descr"        : "Assigned your quest with weaponless conduct intact"
     },
 
     "partpaci": {
       "tnntachieve2" : "0x100000000000",
       "title"        : "Thou Shalt Not Kill",
-      "descr"        : "Reach your quest leader with pacifist conduct intact"
+      "descr"        : "Assigned your quest with pacifist conduct intact"
     },
 
     "partillit": {
       "tnntachieve2" : "0x200000000000",
       "title"        : "Me No Do Words Good",
-      "descr"        : "Reach your quest leader with illiterate conduct intact"
+      "descr"        : "Assigned your quest with illiterate conduct intact"
     },
 
     "partppile": {
       "tnntachieve2" : "0x400000000000",
       "title"        : "Lost My Transmutation License",
-      "descr"        : "Reach your quest leader with polypileless conduct intact"
+      "descr"        : "Assigned your quest with polypileless conduct intact"
     },
 
     "partpself": {
       "tnntachieve2" : "0x800000000000",
       "title"        : "True to Form",
-      "descr"        : "Reach your quest leader with polyselfless conduct intact"
+      "descr"        : "Assigned your quest with polyselfless conduct intact"
     },
 
     "partwishl": {
       "tnntachieve2" : "0x1000000000000",
       "title"        : "Self Sufficient",
-      "descr"        : "Reach your quest leader with wishless conduct intact"
+      "descr"        : "Assigned your quest with wishless conduct intact"
     },
 
     "partartwsh": {
       "tnntachieve2" : "0x2000000000000",
       "title"        : "Leave the Artifacts to the Gods",
-      "descr"        : "Reach your quest leader with artifact wishless conduct intact"
+      "descr"        : "Assigned your quest with artifact wishless conduct intact"
     },
 
     "partelber": {
       "tnntachieve2" : "0x4000000000000",
       "title"        : "No Help From The Floor",
-      "descr"        : "Reach your quest leader with Elberethless conduct intact"
+      "descr"        : "Assigned your quest with Elberethless conduct intact"
     },
 
     "partzen": {
       "tnntachieve2" : "0x8000000000000",
       "title"        : "Feeling Your Way",
-      "descr"        : "Reach your quest leader with zen (permablind) conduct intact"
+      "descr"        : "Assigned your quest with zen (permablind) conduct intact"
     },
 
     "partnudist": {
       "tnntachieve2" : "0x10000000000000",
       "title"        : "Going Commando",
-      "descr"        : "Reach your quest leader with nudist conduct intact"
+      "descr"        : "Assigned your quest with nudist conduct intact"
     },
 
     "partgeno": {
       "tnntachieve2" : "0x20000000000000",
       "title"        : "Make Love, Not War",
-      "descr"        : "Reach your quest leader with genocideless conduct intact"
+      "descr"        : "Assigned your quest with genocideless conduct intact"
     },
 
     "swapchest": {
