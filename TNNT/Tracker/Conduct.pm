@@ -45,7 +45,7 @@ sub add_game
 
   my $cfg = TNNT::Config->instance()->config();
   my $multiplier = 1;
-  foreach my $conduct ($game->conducts()) {
+  foreach my $conduct ($game->conducts_filtered()) {
     $multiplier *= $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
   }
   $multiplier--;

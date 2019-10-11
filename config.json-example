@@ -925,6 +925,16 @@
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
       "illi", "paci", "food",
     ],
+
+    # this defines, for scoring purposes, conducts, that imply another one or
+    # more conducts
+
+    "supersede" : [
+      [ "illi", "elbe" ],
+      [ "food", "vegt", "vegn" ],
+      [ "vegn", "vegt" ],
+      [ "wish", "arti" ],
+    ],
   },
 
   #---------------------------------------------------------------------------

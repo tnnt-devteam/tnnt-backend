@@ -220,6 +220,32 @@ sub conducts
 
 
 
+#=============================================================================
+# Return list of conducts, but filter out conducts, that are superseded by
+# a higher level conduct (e.g. wishless supersedes artiwishless).
+#=============================================================================
+
+sub conducts_filtered
+{
+  my ($self) = shift;
+  my $cfg = TNNT::Config->instance()->config();
+  my (@conducts) = $self->conducts();
+
+  return @conducts if !exists $cfg->{'conducts'}{'supersede'};
+  $cfg = $cfg->{'conducts'}{'supersede'};
+
+  foreach my $row (@$cfg) {
+    my ($super, @rest) = @$row;
+    if(grep { $super eq $_ } @conducts) {
+      @conducts = grep { my $x = $_; !grep { $_ eq $x } @rest } @conducts;
+    }
+  }
+
+  return @conducts;
+}
+
+
+
 #-----------------------------------------------------------------------------
 # Create list of achievements out of the xlogfile fields 'achieve' and TNNT
 # specific 'tnntachieve0' and 'tnntachieve1'. The result is an array of
