@@ -33,7 +33,6 @@ use TNNT::Tracker::MinTurns;
 use TNNT::Tracker::Realtime;
 use TNNT::Tracker::Streak;
 use TNNT::Tracker::AllCats;
-use TNNT::Tracker::ClanAscension;
 use TNNT::Tracker::UniqueAscs;
 use TNNT::Tracker::MostGames;
 use TNNT::Tracker::AllCombos;
@@ -88,7 +87,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::MinTurns);
   $tr->add_tracker(new TNNT::Tracker::Realtime);
   $tr->add_tracker(new TNNT::Tracker::AllCats);
-  $tr->add_tracker(new TNNT::Tracker::ClanAscension);
+  # superseded by new Ascension tracker
   $tr->add_tracker(new TNNT::Tracker::UniqueAscs);
   $tr->add_tracker(new TNNT::Tracker::MostGames);
   $tr->add_tracker(new TNNT::Tracker::AllCombos);

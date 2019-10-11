@@ -189,6 +189,7 @@
 
     "clan-ascension" : {
       "title"  : "Ascension",
+      "points" : 50,
     },
 
     "conduct" : {

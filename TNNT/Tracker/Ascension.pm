@@ -28,7 +28,6 @@ use Moo;
 use TNNT::ScoringEntry;
 
 
-
 #=============================================================================
 #=== ATTRIBUTES ==============================================================
 #=============================================================================
@@ -61,59 +60,69 @@ sub add_game
     $game,
   ) = @_;
 
-  #--- variables
-
-  my $ptrk = $self->_player_track;   # player track shortcut
-  my %breakdown;                     # scoring breakdown
-  my $base;                          # ascension base value
-
   #--- only ascended games
 
   return if !$game->is_ascended();
 
-  #--- track player ascensions and get z-score divisor
+  #--- list of entities (players, clans) we'll be processing
 
-  my $pzdivisor = ++$ptrk->{$game->name}{$game->role}{$game->race};
+  my @entities = ($game->player);
+  push(@entities, $game->player->clan) if $game->player->clan;
+
+  #--- iterate over entities
+
+  foreach my $entity (@entities) {
+    my $is_clan = $entity->isa('TNNT::Clan');
+    my %breakdown;
+    my $trk = $is_clan ? $self->_clan_track : $self->_player_track;
+
+  #--- track ascensions and get number of repeated wins for current game's
+  #--- role-race combination
+
+    my $zdivisor = ++$trk->{$entity->name}{$game->role}{$game->race};
 
   #--- create scoring entry
 
-  my $se = new TNNT::ScoringEntry(
-    trophy => $self->name(),
-    games => [ $game ],
-    when => $game->endtime(),
-    data => { 'breakdown' => \%breakdown },
-  );
+    my $se = new TNNT::ScoringEntry(
+      trophy => ($is_clan ? 'clan-':'') . $self->name(),
+      games => [ $game ],
+      when => $game->endtime(),
+      data => { 'breakdown' => \%breakdown },
+    );
 
-  $base = $breakdown{'bpoints'} = $se->points;
+  #--- get base value for ascension
 
-  $game->player()->add_score($se);
-  $game->add_score($se);
+    my $base = $breakdown{'bpoints'} = $se->points;
+
+  #--- attach the scoring entries to player/clan
+
+    $entity->add_score($se);
 
   #--- apply z-score scale-down to the point value
 
-  $breakdown{'zpoints'} = int($base / $pzdivisor);
-  $breakdown{'repeat'} = $pzdivisor;
+    $breakdown{'zpoints'} = int($base / $zdivisor);
+    $breakdown{'repeat'} = $zdivisor;
 
   #--- add conduct bonus
   # The 'conduct' scoring list is added to ascended games by the 'Conduct'
   # tracker, which must run before this one
 
-  if(my $conduct_se = $game->get_score('conduct')) {
-    $breakdown{'conducts'} = $conduct_se->data;
-    $breakdown{'cpoints'} = int($base * $breakdown{'conducts'}{'multiplier'});
-  } else {
-    $breakdown{'cpoints'} = 0;
-  }
+    if(my $conduct_se = $game->get_score('conduct')) {
+      $breakdown{'conducts'} = $conduct_se->data;
+      $breakdown{'cpoints'} = int($base * $breakdown{'conducts'}{'multiplier'});
+    } else {
+      $breakdown{'cpoints'} = 0;
+    }
 
   #--- add speedrunning bonus
   # The 'speedrun' scoring list is added to ascended games by the 'Conduct'
   # tracker, which must run before this one
 
-  if(my $speedrun_se = $game->get_score('speedrun')) {
-    $breakdown{'spoints'} = $speedrun_se->get_data('speedrun');
-  } else {
-    $breakdown{'spoints'} = 0;
-  }
+    if(my $speedrun_se = $game->get_score('speedrun')) {
+      $breakdown{'spoints'} = $speedrun_se->get_data('speedrun');
+    } else {
+      $breakdown{'spoints'} = 0;
+    }
 
   #--- add streaking bonus
   # The 'streak' scoring list is added to ascended games by the 'Streak'
@@ -122,28 +131,32 @@ sub add_game
   # bonus and speedrun bonus and adds a multiplier, which increases with the
   # number of streaked games
 
-  if(my $streak_se = $game->get_score('streak')) {
-    my $streak_multiplier;
-    $streak_multiplier = $streak_se->get_data('streakmult');
-    $breakdown{'streak'}{'multiplier'} = $streak_multiplier;
-    $breakdown{'streak'}{'index'} = $streak_se->get_data('streakidx');
-    $breakdown{'tpoints'} = int((
-      $breakdown{'zpoints'}
-      + $breakdown{'cpoints'}
-      + $breakdown{'spoints'}
-    ) * ($streak_multiplier - 1));
-  } else {
-    $breakdown{'tpoints'} = 0;
-  }
+    if(my $streak_se = $game->get_score('streak')) {
+      my $streak_multiplier;
+      $streak_multiplier = $streak_se->get_data('streakmult');
+      $breakdown{'streak'}{'multiplier'} = $streak_multiplier;
+      $breakdown{'streak'}{'index'} = $streak_se->get_data('streakidx');
+      $breakdown{'tpoints'} = int((
+        $base
+        + $breakdown{'cpoints'}
+        + $breakdown{'spoints'}
+      ) * ($streak_multiplier - 1));
+    } else {
+      $breakdown{'tpoints'} = 0;
+    }
 
   #--- save the final calculated score
 
-  $se->points(
-    $breakdown{'zpoints'}         # z-score
-    + $breakdown{'cpoints'}       # conduct bonus
-    + $breakdown{'spoints'}       # speedrun bonus
-    + $breakdown{'tpoints'}       # streak bonus
-  );
+    $se->points(
+      $breakdown{'zpoints'}         # z-score
+      + $breakdown{'cpoints'}       # conduct bonus
+      + $breakdown{'spoints'}       # speedrun bonus
+      + $breakdown{'tpoints'}       # streak bonus
+    );
+
+  #--- end of entity iteration
+
+  }
 
   #--- finish
 
