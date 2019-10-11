@@ -1,7 +1,10 @@
 #!/usr/bin/env perl
 
 #=============================================================================
-# Tracker for speedrun ascensions.
+# Tracker for speedrun ascensions. This will add zero-point dummy scoring
+# entry to every ascended game that qualifies for the speedrun bonus. This
+# entry is then used to score ascensions, so this tracked must be run before
+# the Ascension tracker.
 #=============================================================================
 
 package TNNT::Tracker::Speedrun;
@@ -53,12 +56,10 @@ sub add_game
   if($bonus) {
     my $se = new TNNT::ScoringEntry(
       trophy => $self->name(),
-      games => [ $game ],
-      when => $game->endtime(),
-      points => $bonus,
+      points => 0,
+      data => { speedrun => $bonus },
     );
 
-    $game->player()->add_score($se);
     $game->add_score($se);
   }
 

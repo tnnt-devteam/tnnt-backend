@@ -73,9 +73,13 @@ sub BUILD
   #--- register trackers
 
   $tr->add_tracker(new TNNT::Tracker::Achievements);
-  $tr->add_tracker(new TNNT::Tracker::Ascension);
+  # following trackers create data for scoring ascensions and must run before
+  # the Ascension tracker
   $tr->add_tracker(new TNNT::Tracker::Conduct);
   $tr->add_tracker(new TNNT::Tracker::Speedrun);
+  $tr->add_tracker(new TNNT::Tracker::Streak);
+  # Ascension tracker uses data from the above trackers
+  $tr->add_tracker(new TNNT::Tracker::Ascension);
   $tr->add_tracker(new TNNT::Tracker::FirstAsc);
   $tr->add_tracker(new TNNT::Tracker::MostAsc);
   $tr->add_tracker(new TNNT::Tracker::MostCond);
@@ -83,7 +87,6 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::HighScore);
   $tr->add_tracker(new TNNT::Tracker::MinTurns);
   $tr->add_tracker(new TNNT::Tracker::Realtime);
-  $tr->add_tracker(new TNNT::Tracker::Streak);
   $tr->add_tracker(new TNNT::Tracker::AllCats);
   $tr->add_tracker(new TNNT::Tracker::ClanAscension);
   $tr->add_tracker(new TNNT::Tracker::UniqueAscs);

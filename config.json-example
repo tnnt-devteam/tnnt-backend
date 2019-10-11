@@ -198,76 +198,91 @@
     "conduct:food" : {
       "title"  : "Conduct: Foodless",
       "points" : 30,
+      "multi"  : 2,
     },
 
     "conduct:vegn" : {
       "title"  : "Conduct: Vegan",
       "points" : 15,
+      "multi"  : 1.4,
     },
 
     "conduct:vegt" : {
       "title"  : "Conduct: Vegetarian",
       "points" : 5,
+      "multi"  : 1.1,
     },
 
     "conduct:athe" : {
       "title"  : "Conduct: Atheist",
       "points" : 10,
+      "multi"  : 1.2,
     },
 
     "conduct:weap" : {
       "title"  : "Conduct: Weaponless",
       "points" : 10,
+      "multi"  : 1.2,
     },
 
     "conduct:paci" : {
       "title"  : "Conduct: Pacifist",
       "points" : 50,
+      "multi"  : 2,
     },
 
     "conduct:illi" : {
       "title"  : "Conduct: Illiterate",
       "points" : 20,
+      "multi"  : 1.4,
     },
 
     "conduct:pile" : {
       "title"  : "Conduct: Polypileless",
       "points" : 1,
+      "multi"  : 1.02,
     },
 
     "conduct:self" : {
       "title"  : "Conduct: Polyselfless",
       "points" : 1,
+      "multi"  : 1.02,
     },
 
     "conduct:wish" : {
       "title"  : "Conduct: Wishless",
       "points" : 4,
+      "multi"  : 1.1,
     },
 
     "conduct:arti" : {
       "title"  : "Conduct: Artiwishless",
       "points" : 1,
+      "multi"  : 1.02,
     },
 
     "conduct:geno" : {
       "title"  : "Conduct: Genocideless",
       "points" : 5,
+      "multi"  : 1.02,
     },
 
     "conduct:elbe" : {
       "title"  : "Conduct: Elberethless",
       "points" : 20,
+      "multi"  : 1.1,
     },
 
     "conduct:zen"  : {
       "title"  : "Conduct: Zen",
       "points" : 50,
+      "multi"  : 2.2,
     },
 
     "conduct:nude" : {
       "title"  : "Conduct: Nude",
       "points" : 50,
+      "multi"  : 2,
     },
 
     # speedrunning bonus is int(factor / turns); if cutoff is defined then

@@ -14,7 +14,12 @@
 #
 # - bpoints   ... base point value of the ascension
 # - zpoints   ... z-scaled value of the ascension
+# - cpoints   ... bonus for conducts
+# - spoints   ... speedrunning bonus
+# - tpoints   ... streak bonus
 # - repeat    ... how many times this character combo was won
+# - conducts  ... info about conducts, not present if all broken
+# - streak    ... info about streak the game is part of
 #=============================================================================
 
 package TNNT::Tracker::Ascension;
@@ -60,6 +65,7 @@ sub add_game
 
   my $ptrk = $self->_player_track;   # player track shortcut
   my %breakdown;                     # scoring breakdown
+  my $base;                          # ascension base value
 
   #--- only ascended games
 
@@ -78,16 +84,66 @@ sub add_game
     data => { 'breakdown' => \%breakdown },
   );
 
-  $breakdown{'bpoints'} = $se->points;
+  $base = $breakdown{'bpoints'} = $se->points;
 
   $game->player()->add_score($se);
   $game->add_score($se);
 
   #--- apply z-score scale-down to the point value
 
-  $se->points(int($se->points / $pzdivisor));
-  $breakdown{'zpoints'} = $se->points;
+  $breakdown{'zpoints'} = int($base / $pzdivisor);
   $breakdown{'repeat'} = $pzdivisor;
+
+  #--- add conduct bonus
+  # The 'conduct' scoring list is added to ascended games by the 'Conduct'
+  # tracker, which must run before this one
+
+  if(my $conduct_se = $game->get_score('conduct')) {
+    $breakdown{'conducts'} = $conduct_se->data;
+    $breakdown{'cpoints'} = int($base * $breakdown{'conducts'}{'multiplier'});
+  } else {
+    $breakdown{'cpoints'} = 0;
+  }
+
+  #--- add speedrunning bonus
+  # The 'speedrun' scoring list is added to ascended games by the 'Conduct'
+  # tracker, which must run before this one
+
+  if(my $speedrun_se = $game->get_score('speedrun')) {
+    $breakdown{'spoints'} = $speedrun_se->get_data('speedrun');
+  } else {
+    $breakdown{'spoints'} = 0;
+  }
+
+  #--- add streaking bonus
+  # The 'streak' scoring list is added to ascended games by the 'Streak'
+  # tracker, which must run before this one. Bonus for streaking is different
+  # from the previous one in that it takes the sum of all the zscore, conduct
+  # bonus and speedrun bonus and adds a multiplier, which increases with the
+  # number of streaked games
+
+  if(my $streak_se = $game->get_score('streak')) {
+    my $streak_multiplier;
+    $streak_multiplier = $streak_se->get_data('streakmult');
+    $breakdown{'streak'}{'multiplier'} = $streak_multiplier;
+    $breakdown{'streak'}{'index'} = $streak_se->get_data('streakidx');
+    $breakdown{'tpoints'} = int((
+      $breakdown{'zpoints'}
+      + $breakdown{'cpoints'}
+      + $breakdown{'spoints'}
+    ) * ($streak_multiplier - 1));
+  } else {
+    $breakdown{'tpoints'} = 0;
+  }
+
+  #--- save the final calculated score
+
+  $se->points(
+    $breakdown{'zpoints'}         # z-score
+    + $breakdown{'cpoints'}       # conduct bonus
+    + $breakdown{'spoints'}       # speedrun bonus
+    + $breakdown{'tpoints'}       # streak bonus
+  );
 
   #--- finish
 
