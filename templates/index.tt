@@ -69,6 +69,16 @@
     and <a href="https://thegreatestgameyouwilleverplay.com">The Greatest Game You Will Ever Play</a>.
   </p>
   <p>
+    TNNT-related in-game commands include:
+    <ul>
+      <li>#tnntstats: a listing of all TNNT-related goals</li>
+      <li>#achievements: shows all achievements, completed and those not</li>
+      <li>#snacks: shows all foods eaten</li>
+      <li>#species: shows all eligible species killed and not killed</li>
+      <li>#conduct: not a new macro for TNNT, but this will show TNNT-specific conducts</li> 
+    </ul>
+  </p>
+  <p>
     For more information about the TNNT tournament, see the <a href="about.html">About page</a>
     and <a href="rules.html">Rules page</a>.
   </p>
