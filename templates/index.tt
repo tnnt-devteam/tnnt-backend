@@ -46,7 +46,7 @@
     Connect to "nethack@hardfought.org" via SSH, and register an account.
     Then, you can choose any of three servers to play on:
     <ul>
-      <li>hardfought.org: US East (Vermont)</li>
+      <li>hardfought.org: USA (East Coast)</li>
       <li>eu.hardfought.org: Europe (London)</li>
       <li>au.hardfought.org: Australia (Sydney)</li>
     </ul>
@@ -67,6 +67,16 @@
     <a href="https://en.wikipedia.org/wiki/NetHack">Wikipedia</a>,
     the <a href="https://nethackwiki.com">NetHackWiki</a>,
     and <a href="https://thegreatestgameyouwilleverplay.com">The Greatest Game You Will Ever Play</a>.
+  </p>
+  <p>
+    TNNT-related in-game commands include:
+    <ul>
+      <li>#tnntstats: a listing of all TNNT-related goals</li>
+      <li>#achievements: shows all achievements, completed and those not</li>
+      <li>#snacks: shows all foods eaten</li>
+      <li>#species: shows all eligible species killed and not killed</li>
+      <li>#conduct: not a new macro for TNNT, but this will show TNNT-specific conducts</li> 
+    </ul>
   </p>
   <p>
     For more information about the TNNT tournament, see the <a href="about.html">About page</a>

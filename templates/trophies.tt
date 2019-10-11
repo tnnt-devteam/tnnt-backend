@@ -320,7 +320,7 @@
     [%# === THE RESPECTABLY-SIZED IMPOSSIBLE ============================== %]
 
     <tr>
-      <td class="trophy-name" title="Reach your quest leader while keeping every single tracked conduct intact. 500 points">The Respectably-Sized Impossible</td>
+      <td class="trophy-name" title="Assigned your quest while keeping every single tracked conduct intact. 500 points">The Respectably-Sized Impossible</td>
       <td class="trophy-multi">[% IF trophies.players.exists('rsimpossible') %]
           [% FOREACH plr IN trophies.players.rsimpossible %]
             [% plink(plr) %]
