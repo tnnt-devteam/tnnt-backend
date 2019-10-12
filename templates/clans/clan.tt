@@ -162,7 +162,7 @@
       <tbody>
         [% SET i = cln.ascs.size %]
         [% FOREACH game IN cln.ascs.reverse %]
-          [% INCLUDE game.tt aswon=1 markuniq=1 %]
+          [% INCLUDE game.tt aswon=1 %]
           [% SET i = i - 1 %]
         [% END %]
       </tbody>
