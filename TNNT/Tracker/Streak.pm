@@ -97,17 +97,18 @@ sub add_game
     $self->player_streak($player_name)->add_game($game,
       # streak closing callback, gets (streak) as argument
       sub {
-        $game->player()->add_score($self->score($_[0]));
+        $self->score($_[0]);
       },
       # game adding callback, gets (game, index) as argument
       sub {
         die if !$_[0]->isa('TNNT::Game');
         $game->add_score(TNNT::ScoringEntry->new(
           trophy => $self->name(),
-          points => int(
-            $_[0]->sum_score('ascension', 'speedrun', 'conduct')
-            * $_[1] * 0.1),
-          when => $game->endtime(),
+          points => 0,
+          data => {
+            streakidx => $_[1],
+            streakmult => 1 + (($_[1] - 1) * 0.1)
+          },
         ));
       }
     );

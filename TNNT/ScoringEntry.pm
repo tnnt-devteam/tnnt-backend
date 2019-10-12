@@ -28,7 +28,7 @@ has trophy => (
 # configuration, no need to specify this
 
 has points => (
-  is => 'rwp',
+  is => 'rw',
 );
 
 # when was the scoring entry achieved; this is the endtime of the last game
@@ -102,7 +102,7 @@ sub BUILD
       die "The trophy '$trophy' not defined in configuration";
     }
 
-    $self->_set_points($points);
+    $self->points($points);
   }
 }
 

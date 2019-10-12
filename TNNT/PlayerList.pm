@@ -126,24 +126,38 @@ sub export_players
 
   # ordering by
   # 1. score (desc),
-  # 2. maxdlvl (desc),
-  # 3. endtime of last game (asc)
+  # 2. achievements (desc)
+  # 3. ascensions (desc)
+  # 4. maxdlvl (desc),
+  # 5. endtime of last game (asc)
 
   $d{'ordered'} = [
     sort {
       my $vb = $self->players()->{$b}->sum_score();
       my $va = $self->players()->{$a}->sum_score();
+      my $acha = @{$self->players()->{$a}->achievements()};
+      my $achb = @{$self->players()->{$b}->achievements()};
+      my $asca = $self->players()->{$a}->count_ascensions();
+      my $ascb = $self->players()->{$b}->count_ascensions();
       my $maxdlvlb = $self->players()->{$b}->maxlvl();
       my $maxdlvla = $self->players()->{$a}->maxlvl();
 
       if($vb == $va) {
-        if($maxdlvlb == $maxdlvla) {
-          return
-          $self->players()->{$a}->last_game()->endtime()
-          <=>
-          $self->players()->{$b}->last_game()->endtime()
+        if($achb == $acha) {
+          if($ascb == $asca) {
+            if($maxdlvlb == $maxdlvla) {
+              return
+              $self->players()->{$a}->last_game()->endtime()
+              <=>
+              $self->players()->{$b}->last_game()->endtime()
+            } else {
+              return $maxdlvlb <=> $maxdlvla;
+            }
+          } else {
+            return $ascb <=> $asca;
+          }
         } else {
-          return $maxdlvlb <=> $maxdlvla;
+          return $achb <=> $acha;
         }
       } else {
         return $vb <=> $va;

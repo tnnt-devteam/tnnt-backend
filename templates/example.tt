@@ -10,6 +10,7 @@
 
 <head>
   <title>TNNT::Example</title>
+  <link rel="stylesheet" type="text/css" href="default.css">
 </head>
 
 <body>
@@ -68,7 +69,7 @@
 [% IF players.all.size %]
   <table>
     <thead>
-      <tr>
+      <tr class="framed">
         <th>#</th>
         <th>player</th>
         <th>clan</th>
@@ -107,7 +108,7 @@
 [% IF clans.all.size %]
   <table>
     <thead>
-      <tr>
+      <tr class="framed">
         <th>#</th>
         <th>clan</th>
         <th>score</th>
@@ -144,7 +145,7 @@
 [% IF games.ascs.size %]
   <table>
     <thead>
-      [% INCLUDE game.tt head=1 aswon=1 %]
+      [% INCLUDE game.tt head=1 aswon=1 class="framed" %]
     </thead>
     <tbody>
       [%
@@ -172,7 +173,7 @@
 [% IF games.all.size %]
   <table>
     <thead>
-      [% INCLUDE game.tt head=1 aswon=1 %]
+      [% INCLUDE game.tt head=1 aswon=1 class="framed" %]
     </thead>
     <tbody>
       [%

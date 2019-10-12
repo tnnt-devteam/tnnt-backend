@@ -25,7 +25,7 @@
 <table>
 
   <thead>
-    <tr class="framed"><th colspan=2">general information</th></tr>
+    <tr class="framed"><th colspan=2>general information</th></tr>
   </thead>
 
   <tr>
@@ -108,7 +108,7 @@
 <table class="clan-members">
 
   <thead>
-    <tr class="framed"><th colspan=2">members</th></tr>
+    <tr class="framed"><th colspan=2>members</th></tr>
   </thead>
 
   <tr>
@@ -162,7 +162,7 @@
       <tbody>
         [% SET i = cln.ascs.size %]
         [% FOREACH game IN cln.ascs.reverse %]
-          [% INCLUDE game.tt aswon=1 markuniq=1 %]
+          [% INCLUDE game.tt aswon=1 %]
           [% SET i = i - 1 %]
           [% LAST IF cnt == 0 || i == 0 %]
         [% END %]
@@ -275,7 +275,7 @@
     ======================================================================= %]
 
 [% IF cln.score %]
-  <h2>SCORING BREAKDOWN</h2>
+  <h2 id="scoring">SCORING BREAKDOWN</h2>
 
   <table>
 
@@ -289,6 +289,7 @@
     </thead>
 
     <tbody>
+
       [% FOREACH se IN cln.scores.reverse %]
         <tr>
           <td>[% se.when_fmt %]</td>
@@ -306,7 +307,60 @@
           </td>
           <td class="num">[% se.points %]</td>
         </tr>
+
+        [% IF se.trophy == 'clan-ascension' %]
+
+          <tr class="ascbreakdown">
+            <td></td>
+            <td></td>
+            <td>
+              Z-score
+              (1/[% se.data.breakdown.repeat %],
+              [% se.data.breakdown.combo %])
+            </td>
+            <td class="num">[% se.data.breakdown.zpoints %]</td>
+          </tr>
+
+          [% IF se.data.breakdown.cpoints %]
+
+            <tr class="ascbreakdown">
+              <td></td>
+              <td></td>
+              <td>
+                Conducts ([% se.data.breakdown.conducts.ncond %],
+                [% se.data.breakdown.conducts.conducts_txt %])
+              </td>
+              <td class="num">[% se.data.breakdown.cpoints %]</td>
+            </tr>
+
+          [% END %]
+
+          [% IF se.data.breakdown.spoints %]
+
+            <tr class="ascbreakdown">
+              <td></td>
+              <td></td>
+              <td>Speedrun</td>
+              <td class="num">[% se.data.breakdown.spoints %]</td>
+            </tr>
+
+          [% END %]
+
+          [% IF se.data.breakdown.tpoints %]
+
+            <tr class="ascbreakdown">
+              <td></td>
+              <td></td>
+              <td>Streak ([% se.data.breakdown.streak.index %])</td>
+              <td class="num">[% se.data.breakdown.tpoints %]</td>
+            </tr>
+
+          [% END %]
+
+        [% END %]
+
       [% END %]
+
     </tbody>
 
     <tfoot>
