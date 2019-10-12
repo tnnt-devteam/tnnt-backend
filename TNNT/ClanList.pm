@@ -286,16 +286,26 @@ sub export
   });
 
   #--- produce list of clan indices ordered by score
+  # if score is equal, sorting is by number of ascensions, number of
+  # achievements, number of games and clan name, respectively
 
   @clans_by_score =
 
   map { $_->{'n'} }
   sort {
     if($b->{'score'} == $a->{'score'}) {
-      if(scalar @{$b->{'ascs'}} == scalar @{$a->{'ascs'}}) {
-        return @{$b->{'achievements'}} <=> scalar @{$a->{'achievements'}}
+      if(@{$b->{'ascs'}} == @{$a->{'ascs'}}) {
+        if(@{$b->{'achievements'}} == @{$a->{'achievements'}}) {
+          if(@{$b->{'games'}} == @{$a->{'games'}}) {
+            return $a->{'name'} cmp $b->{'name'}
+          } else {
+            return @{$b->{'games'}} <=> @{$a->{'games'}};
+          }
+        } else {
+          return @{$b->{'achievements'}} <=> @{$a->{'achievements'}}
+        }
       } else {
-        return scalar @{$b->{'ascs'}} <=> scalar @{$a->{'ascs'}}
+        return @{$b->{'ascs'}} <=> @{$a->{'ascs'}}
       }
     } else {
       return $b->{'score'} <=> $a->{'score'}
