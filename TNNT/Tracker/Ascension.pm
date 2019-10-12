@@ -102,6 +102,7 @@ sub add_game
 
     $breakdown{'zpoints'} = int($base / $zdivisor);
     $breakdown{'repeat'} = $zdivisor;
+    $breakdown{'combo'} = $game->role . '-' . $game->race;
 
   #--- add conduct bonus
   # The 'conduct' scoring list is added to ascended games by the 'Conduct'
