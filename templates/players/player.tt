@@ -201,7 +201,7 @@
     ======================================================================= %]
 
 [% IF plr.score %]
-  <h2>SCORING BREAKDOWN</h2>
+  <h2 id="scoring">SCORING BREAKDOWN</h2>
 
   <table>
 
@@ -215,6 +215,7 @@
     </thead>
 
     <tbody>
+
       [% FOREACH se IN plr.scores.reverse %]
         <tr>
           <td>[% se.when_fmt %]</td>
@@ -230,7 +231,60 @@
           </td>
           <td class="num">[% se.points %]</td>
         </tr>
+
+        [% IF se.trophy == 'ascension' %]
+
+          <tr class="ascbreakdown">
+            <td></td>
+            <td></td>
+            <td>
+              Z-score
+              (1/[% se.data.breakdown.repeat %],
+              [% se.data.breakdown.combo %])
+            </td>
+            <td class="num">[% se.data.breakdown.zpoints %]</td>
+          </tr>
+
+          [% IF se.data.breakdown.cpoints %]
+
+            <tr class="ascbreakdown">
+              <td></td>
+              <td></td>
+              <td>
+                Conducts ([% se.data.breakdown.conducts.ncond %],
+                [% se.data.breakdown.conducts.conducts_txt %])
+              </td>
+              <td class="num">[% se.data.breakdown.cpoints %]</td>
+            </tr>
+
+          [% END %]
+
+          [% IF se.data.breakdown.spoints %]
+
+            <tr class="ascbreakdown">
+              <td></td>
+              <td></td>
+              <td>Speedrun</td>
+              <td class="num">[% se.data.breakdown.spoints %]</td>
+            </tr>
+
+          [% END %]
+
+          [% IF se.data.breakdown.tpoints %]
+
+            <tr class="ascbreakdown">
+              <td></td>
+              <td></td>
+              <td>Streak ([% se.data.breakdown.streak.index %])</td>
+              <td class="num">[% se.data.breakdown.tpoints %]</td>
+            </tr>
+
+          [% END %]
+
+        [% END %]
+
       [% END %]
+
     </tbody>
 
     <tfoot>
