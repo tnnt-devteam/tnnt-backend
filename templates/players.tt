@@ -57,7 +57,7 @@
           [% END %]
         </td>
 
-        <td class="num">[% players.all.item(plr).ach.size %]</td>
+        <td class="num">[% players.all.item(plr).achievements.size %]</td>
 
         <td class="num">[% players.all.item(plr).score %]</td>
 
