@@ -196,12 +196,14 @@
       <tr> <td>Pacifist</td>                                         <td align="right">   2&times;</td> </tr>
       <tr> <td>Nudist</td>                                           <td align="right">   2&times;</td> </tr>
       <tr> <td>Foodless</td>                                         <td align="right">   2&times;</td> </tr>
+      <tr> <td>Permahallucinating</td>                               <td align="right">   2&times;</td> </tr>
       <tr> <td>Never kill the Wizard<sup>&dagger;</sup></td>         <td align="right"> 1.6&times;</td> </tr>
       <tr> <td>Never kill a Rider<sup>&dagger;</sup></td>            <td align="right"> 1.4&times;</td> </tr>
       <tr> <td>Illiterate</td>                                       <td align="right"> 1.4&times;</td> </tr>
       <tr> <td>Vegan</td>                                            <td align="right"> 1.4&times;</td> </tr>
       <tr> <td>Weaponless</td>                                       <td align="right"> 1.2&times;</td> </tr>
       <tr> <td>Atheist</td>                                          <td align="right"> 1.2&times;</td> </tr>
+      <tr> <td>Artifactless</td>                                     <td align="right"> 1.2&times;</td> </tr>
       <tr> <td>Never kill Vlad<sup>&dagger;</sup></td>               <td align="right"> 1.2&times;</td> </tr>
       <tr> <td>Vegetarian</td>                                       <td align="right"> 1.1&times;</td> </tr>
       <tr> <td>Genocideless</td>                                     <td align="right"> 1.1&times;</td> </tr>
@@ -212,6 +214,8 @@
       <tr> <td>Never kill your quest nemesis<sup>&dagger;</sup></td> <td align="right"> 1.1&times;</td> </tr>
       <tr> <td>Never kill the High Priest of Moloch<sup>&dagger;</sup></td> <td align="right"> 1.05&times;</td> </tr>
       <tr> <td>Survivor</td>                                         <td align="right">1.05&times;</td> </tr>
+      <tr> <td>Petless</td>                                          <td align="right">1.05&times;</td> </tr>
+      <tr> <td>Permadeaf</td>                                        <td align="right">1.05&times;</td> </tr>
       <tr> <td>Artifact wishless</td>                                <td align="right">1.02&times;</td> </tr>
       <tr> <td>Polyselfless</td>                                     <td align="right">1.02&times;</td> </tr>
       <tr> <td>Polyobjectless</td>                                   <td align="right">1.02&times;</td> </tr>
