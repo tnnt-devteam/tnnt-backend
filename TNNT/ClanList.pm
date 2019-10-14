@@ -297,7 +297,7 @@ sub export
       if(@{$b->{'ascs'}} == @{$a->{'ascs'}}) {
         if(@{$b->{'achievements'}} == @{$a->{'achievements'}}) {
           if(@{$b->{'games'}} == @{$a->{'games'}}) {
-            return $a->{'name'} cmp $b->{'name'}
+            return lc($a->{'name'}) cmp lc($b->{'name'})
           } else {
             return @{$b->{'games'}} <=> @{$a->{'games'}};
           }
