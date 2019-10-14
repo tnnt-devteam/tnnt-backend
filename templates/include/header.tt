@@ -6,8 +6,10 @@
       <tr>
           <td class="leftmenu"></td>
           <td id="logo" rowspan="3">
+              <a href="index.html">
               <!-- <object style="display:inline" data="tnnt_square_logo.svg" type="image/svg+xml"></objec -->
               <img src="tnnt_square_logo.svg" width="100px" height="100px" />
+              </a>
           </td>
           <td class="rightmenu"></td>
       </tr>
