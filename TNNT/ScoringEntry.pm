@@ -257,6 +257,32 @@ sub get_points
   }
 }
 
+
+
+#=============================================================================
+# Return scoring entry type, that is one of 'ascension', 'trophy' and
+# 'achievement'. FIXME: This should be defined in configuration file, this is
+# only a dirty hack.
+#=============================================================================
+
+sub get_type
+{
+  my ($self) = @_;
+  my $t = $self->trophy;
+
+  if($t eq 'ascension' || $t eq 'clan-ascension') {
+    return 'ascension';
+  } elsif($t =~ /^ach:/ || $t =~ /^clan-ach:/) {
+    return 'achievement';
+  } elsif($t eq 'speedrun' || $t eq 'conduct' || $t eq 'streak') {
+    return undef;
+  } else {
+    return 'trophy';
+  }
+}
+
+
+
 #----------------------------------------------------------------------------
 # Format the when field
 #----------------------------------------------------------------------------
@@ -284,6 +310,7 @@ sub export
     when   => $self->get_when(),
     when_fmt => $self->_format_when(),
     data   => $self->data(),
+    type   => $self->get_type(),
   };
 }
 
