@@ -17,7 +17,12 @@ with 'TNNT::GameList::AddGame';
 #=== ATTRIBUTES ==============================================================
 #=============================================================================
 
-# trophy shortname, if not defined in the config, the instantiation fails
+# trophy shortname, if not defined in the config, the instantiation fails;
+# NOTE: naming this trophy is a bit of misnomer and should probably be changed
+# to something clearer; not all scoring entries need to correspond with trophies
+# users see; in particular 'conduct', 'speedrun' and 'streak' should only appear
+# as entries attached to Game class instances and are used to calculate value
+# of 'ascension' and 'clan-ascension' scoring entries
 
 has trophy => (
   is => 'ro',
