@@ -185,7 +185,9 @@ sub score
       $self->clan()->add_score(new TNNT::ScoringEntry(
         trophy => 'clan-maxstreak',
         games => $streak,
-        data  => { len => $streak-> count_games() },
+        data  => {
+          len => $streak-> count_games(), achiever => $self->player->name
+        },
         when => $streak->last_game()->endtime(),
       ));
     }

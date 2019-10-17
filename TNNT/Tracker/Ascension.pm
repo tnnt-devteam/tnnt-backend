@@ -87,7 +87,7 @@ sub add_game
       trophy => ($is_clan ? 'clan-':'') . $self->name(),
       games => [ $game ],
       when => $game->endtime(),
-      data => { 'breakdown' => \%breakdown },
+      data => { 'breakdown' => \%breakdown, achiever => $game->name },
     );
 
   #--- get base value for ascension

@@ -7,6 +7,7 @@
   <title>TNNT::[% player %]</title>
   <base href="../">
   <link rel="stylesheet" type="text/css" href="default.css">
+  <script src="js/scbd-filter.js"></script>
 </head>
 
 <body>
@@ -203,12 +204,18 @@
 [% IF plr.score %]
   <h2 id="scoring">SCORING BREAKDOWN</h2>
 
+  <p class="scbd-filter">
+  <span class="filter-entry enabled" data-filter="ascension">ascensions</span>
+  <span class="filter-entry enabled" data-filter="trophy">trophies</span>
+  <span class="filter-entry enabled" data-filter="achievement">achievements</span>
+  </p>
+
   <table>
 
     <thead>
       <tr class="framed">
         <th>date</th>
-        <th>name</th>
+        <th>type</th>
         <th>title</th>
         <th>points</th>
       </tr>
@@ -217,9 +224,9 @@
     <tbody>
 
       [% FOREACH se IN plr.scores.reverse %]
-        <tr>
+        <tr class="[% se.type %]">
           <td>[% se.when_fmt %]</td>
-          <td>[% se.trophy %]</td>
+          <td>[% se.type %]</td>
           <td>
             [% IF config.trophies.exists(se.trophy) %]
               [% config.trophies.item(se.trophy).title %]
@@ -234,7 +241,7 @@
 
         [% IF se.trophy == 'ascension' %]
 
-          <tr class="ascbreakdown">
+          <tr class="ascension ascbreakdown">
             <td></td>
             <td></td>
             <td>
@@ -247,7 +254,7 @@
 
           [% IF se.data.breakdown.cpoints %]
 
-            <tr class="ascbreakdown">
+            <tr class="ascension ascbreakdown">
               <td></td>
               <td></td>
               <td>
@@ -261,7 +268,7 @@
 
           [% IF se.data.breakdown.spoints %]
 
-            <tr class="ascbreakdown">
+            <tr class="ascension ascbreakdown">
               <td></td>
               <td></td>
               <td>Speedrun</td>
@@ -272,7 +279,7 @@
 
           [% IF se.data.breakdown.tpoints %]
 
-            <tr class="ascbreakdown">
+            <tr class="ascension ascbreakdown">
               <td></td>
               <td></td>
               <td>Streak ([% se.data.breakdown.streak.index %])</td>

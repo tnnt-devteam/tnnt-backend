@@ -85,7 +85,6 @@ sub add_game
         $player->add_score(TNNT::ScoringEntry->new(
           trophy => 'allachieve',
           when => $game->endtime(),
-          game => [ $game ],
           points => $self->total_ach_number(),
         ));
         push(@{$self->players_track()}, $player->name());
@@ -100,7 +99,7 @@ sub add_game
       $clan->add_score(TNNT::ScoringEntry->new(
         trophy => 'clan-ach:' . $ach,
         when => $game->endtime(),
-        game => [ $game ],
+        data => { achiever => $game->name },
       ));
 
       # check if all achievements were attained and create a scoring entry

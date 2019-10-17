@@ -90,7 +90,7 @@ sub add_game
     my $se_clan = new TNNT::ScoringEntry(
       trophy => 'clan-' . $self->name(),
       games  => [ $game ],
-      data   => { score => $game->points() },
+      data   => { score => $game->points(), achiever => $game->name },
       when   => $game->endtime(),
     );
 

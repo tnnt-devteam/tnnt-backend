@@ -80,15 +80,16 @@ sub add_game
 
     my $se_player = new TNNT::ScoringEntry(
       trophy => $self->name(),
-      games  => [ $game ],
       data   => { nconds => scalar($game->conducts()) },
       when   => $game->endtime(),
     );
 
     my $se_clan = new TNNT::ScoringEntry(
       trophy => 'clan-' . $self->name(),
-      games  => [ $game ],
-      data   => { nconds => scalar($game->conducts()) },
+      data   => {
+        nconds => scalar($game->conducts()),
+        achiever => $game->name,
+      },
       when   => $game->endtime(),
     );
 

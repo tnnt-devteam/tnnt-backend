@@ -75,7 +75,6 @@ sub add_game
       $self->_playertrk()->{$game->player()->name()} = $game;
       $game->player->add_score(TNNT::ScoringEntry->new(
         trophy => $self->name(),
-        game => [ $game ],
         when => $game->endtime(),
       ));
       push(@{$self->players()}, $game->player()->name());
@@ -86,7 +85,7 @@ sub add_game
       $self->_clantrk()->{$clan->name()} = $game;
       $clan->add_score(TNNT::ScoringEntry->new(
         trophy => 'clan-' . $self->name(),
-        game => [ $game ],
+        data => { achiever => $game->name },
         when => $game->endtime(),
       ));
       push(@{$self->clans()}, $clan->n());

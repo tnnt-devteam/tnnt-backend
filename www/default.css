@@ -275,3 +275,21 @@ td.trophy-na {
   color: #ddd;
   text-align: center;
 }
+
+/*====================================================================
+  === SCORING LOG ====================================================
+  ====================================================================*/
+
+.filter-entry {
+  margin-left: 1em;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter-entry.disabled:before {
+  content: "◻ ";
+}
+
+.filter-entry.enabled:before {
+  content: "◼ ";
+}
