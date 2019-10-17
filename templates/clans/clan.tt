@@ -2,13 +2,13 @@
 [%- SET cln = clans.all.item(clan); -%]
 <!doctype html>
 
-
 <html>
 
 <head>
   <title>TNNT::[% cln.name %]</title>
   <base href="../">
-  [% INCLUDE headlinks.tt %]
+  <link rel="stylesheet" type="text/css" href="default.css">
+  <script src="js/scbd-filter.js"></script>
 </head>
 
 <body>
@@ -277,12 +277,19 @@
 [% IF cln.score %]
   <h2 id="scoring">SCORING BREAKDOWN</h2>
 
+  <p class="scbd-filter">
+  <span class="filter-entry enabled" data-filter="ascension">ascensions</span>
+  <span class="filter-entry enabled" data-filter="trophy">trophies</span>
+  <span class="filter-entry enabled" data-filter="achievement">achievements</span>
+  </p>
+
   <table>
 
     <thead>
       <tr class="framed">
         <th>date</th>
-        <th>name</th>
+        <th>type</th>
+        <th>achieved by</th>
         <th>title</th>
         <th>points</th>
       </tr>
@@ -291,9 +298,10 @@
     <tbody>
 
       [% FOREACH se IN cln.scores.reverse %]
-        <tr>
+        <tr class="[% se.type %]">
           <td>[% se.when_fmt %]</td>
-          <td>[% se.trophy.replace('clan-', '') %]</td>
+          <td>[% se.type %]</td>
+          <td>[% se.data.achiever %]</td>
           <td>
             [%
               IF config.trophies.exists(se.trophy);
@@ -310,7 +318,8 @@
 
         [% IF se.trophy == 'clan-ascension' %]
 
-          <tr class="ascbreakdown">
+          <tr class="ascension ascbreakdown">
+            <td></td>
             <td></td>
             <td></td>
             <td>
@@ -323,7 +332,8 @@
 
           [% IF se.data.breakdown.cpoints %]
 
-            <tr class="ascbreakdown">
+            <tr class="ascension ascbreakdown">
+              <td></td>
               <td></td>
               <td></td>
               <td>
@@ -337,7 +347,8 @@
 
           [% IF se.data.breakdown.spoints %]
 
-            <tr class="ascbreakdown">
+            <tr class="ascension ascbreakdown">
+              <td></td>
               <td></td>
               <td></td>
               <td>Speedrun</td>
@@ -348,7 +359,8 @@
 
           [% IF se.data.breakdown.tpoints %]
 
-            <tr class="ascbreakdown">
+            <tr class="ascension ascbreakdown">
+              <td></td>
               <td></td>
               <td></td>
               <td>Streak ([% se.data.breakdown.streak.index %])</td>

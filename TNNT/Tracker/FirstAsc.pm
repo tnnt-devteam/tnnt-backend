@@ -78,13 +78,12 @@ sub add_game
 
     my $se_player = new TNNT::ScoringEntry(
       trophy => 'firstasc',
-      games => [ $game ],
       when => $game->endtime(),
     );
 
     my $se_clan = new TNNT::ScoringEntry(
       trophy => 'clan-firstasc',
-      games => [ $game ],
+      data => { achiever => $game->name },
       when => $game->endtime(),
     );
 
