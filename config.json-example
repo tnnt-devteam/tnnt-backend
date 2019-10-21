@@ -30,7 +30,7 @@
 
   # 'minturns' is minimum number of turns that the game needs to last for it
   # to be considered non-scummed
-  #
+  # 
   # 'minquitturns' is the minimum number of turns that the game needs to last
   # to be considered non-scummed if it is either quit or escaped
 
@@ -291,7 +291,7 @@
 
     "speedrun" : {
       "title"  : "Speedrun",
-      "factor" : 500000,
+      "factor" : 20000,
       "cutoff" : null
     },
 
@@ -955,7 +955,7 @@
     "gehennom" : {
       "achieve" : "0x002",
       "title"   : "Feel the Burn",
-      "descr"   : "Enter the Gehennom"
+      "descr"   : "Enter Gehennom"
     },
 
     "candelabrum" : {
@@ -1311,7 +1311,7 @@
     "banekill" : {
       "tnntachieve0" : "0x2000000000000",
       "title"        : "What It Was Made For",
-      "descr"        : "Kill a appropriate monster with a Bane weapon"
+      "descr"        : "Kill an appropriate monster with a Bane weapon"
     },
 
     "diggrave" : {
@@ -1760,7 +1760,7 @@
 
     "yeenoghu" : {
       "tnntachieve1" : "0x1000000000000000",
-      "title"        : "Yee-No-Go"
+      "title"        : "Yee-No-Go",
       "descr"        : "Kill Yeenoghu"
     },
 
@@ -1954,7 +1954,7 @@
       "tnntachieve2" : "0x10000000",
       "title"        : "Dust to Dust",
       "descr"        : "Wrest one last charge from a wand of wishing"
-    }
+    },
 
     "amethyst": {
       "tnntachieve2" : "0x20000000",
@@ -2122,7 +2122,7 @@
       "tnntachieve2" : "0x100000000000000",
       "title"        : "There Is No Spoon",
       "descr"        : "Finish the task the devteam requires of you"
-    },
+    }
 
   },
 

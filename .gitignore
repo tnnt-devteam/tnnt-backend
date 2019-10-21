@@ -8,3 +8,4 @@ file
 t*.pl
 config.json
 data*.json
+*.log
