@@ -351,7 +351,7 @@
               <td></td>
               <td></td>
               <td></td>
-              <td>Speedrun</td>
+              <td>Speedrun ([% se.data.breakdown.turns %] turns)</td>
               <td class="num">[% se.data.breakdown.spoints %]</td>
             </tr>
 
@@ -377,7 +377,7 @@
 
     <tfoot>
       <tr class="overline">
-        <td colspan=3 class="total">
+        <td colspan=4 class="total">
           [% cln.scores.size %] entr[% IF cln.scores.size == 1 %]y[% ELSE %]ies[% END %]
         </td>
         <td class="num">[% cln.score %]</td>

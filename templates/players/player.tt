@@ -274,7 +274,7 @@
             <tr class="ascension ascbreakdown">
               <td></td>
               <td></td>
-              <td>Speedrun</td>
+              <td>Speedrun ([% se.data.breakdown.turns %] turns)</td>
               <td class="num">[% se.data.breakdown.spoints %]</td>
             </tr>
 

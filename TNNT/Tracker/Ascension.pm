@@ -121,6 +121,7 @@ sub add_game
 
     if(my $speedrun_se = $game->get_score('speedrun')) {
       $breakdown{'spoints'} = $speedrun_se->get_data('speedrun');
+      $breakdown{'turns'} = $game->turns;
     } else {
       $breakdown{'spoints'} = 0;
     }
