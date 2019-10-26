@@ -2122,6 +2122,288 @@
       "tnntachieve2" : "0x100000000000000",
       "title"        : "There Is No Spoon",
       "descr"        : "Finish the task the devteam requires of you"
+    },
+
+    "ach192": {
+      "tnntachieve2" : "0x8000000000000000",
+      "title"        : "DIRGE",
+      "descr"        : "Instakill an enemy with poison"
+    },
+
+    "ach193": {
+      "tnntachieve3" : "0x1",
+      "title"        : "Gender Bender",
+      "descr"        : "Change gender two or more times"
+    },
+
+    "ach194": {
+      "tnntachieve3" : "0x2",
+      "title"        : "The Deathly Hallows",
+      "descr"        : "Wield a wand of death while wearing an invisibility cloak and amulet of life saving"
+    },
+
+    "ach195": {
+      "tnntachieve3" : "0x4",
+      "title"        : "Indiana Jones",
+      "descr"        : "Disarm a monster with a bullwhip"
+    },
+
+    "ach196": {
+      "tnntachieve3" : "0x8",
+      "title"        : "Pilgrim",
+      "descr"        : "Visit every type of aligned altar"
+    },
+
+    "ach197": {
+      "tnntachieve3" : "0x10",
+      "title"        : "Wanton Waste",
+      "descr"        : "Break an identified, charged wand of wishing"
+    },
+
+    "ach198": {
+      "tnntachieve3" : "0x20",
+      "title"        : "Poseidon",
+      "descr"        : "Kill a sea monster with a trident"
+    },
+
+    "ach199": {
+      "tnntachieve3" : "0x40",
+      "title"        : "It's 4:20 Somewhere",
+      "descr"        : "Stone a monster"
+    },
+
+    "ach200": {
+      "tnntachieve3" : "0x80",
+      "title"        : "Orpheus",
+      "descr"        : "Activate a drawbridge with the passtune"
+    },
+
+    "ach201": {
+      "tnntachieve3" : "0x100",
+      "title"        : "Michelin Guide",
+      "descr"        : "Identify both sources of food detection"
+    },
+
+    "ach202": {
+      "tnntachieve3" : "0x200",
+      "title"        : "All You Ever Wanted",
+      "descr"        : "Get a wish from every wish source"
+    },
+
+    "ach203": {
+      "tnntachieve3" : "0x400",
+      "title"        : "Touch It With A 10 Foot Pole",
+      "descr"        : "Kill a floating eye with a polearm"
+    },
+
+    "ach204": {
+      "tnntachieve3" : "0x800",
+      "title"        : "Jeweler",
+      "descr"        : "Identify all rings"
+    },
+
+    "ach205": {
+      "tnntachieve3" : "0x1000",
+      "title"        : "Mikado",
+      "descr"        : " Identify all wands"
+    },
+
+    "ach206": {
+      "tnntachieve3" : "0x2000",
+      "title"        : "King of Bling",
+      "descr"        : "Identify all amulets"
+    },
+
+    "ach207": {
+      "tnntachieve3" : "0x4000",
+      "title"        : "Bookworm",
+      "descr"        : "Identify all spellbooks"
+    },
+
+    "ach208": {
+      "tnntachieve3" : "0x8000",
+      "title"        : "Scholar",
+      "descr"        : "Identify all scrolls"
+    },
+
+    "ach209": {
+      "tnntachieve3" : "0x10000",
+      "title"        : "Alchemist",
+      "descr"        : "Identify all potions"
+    },
+
+    "ach210": {
+      "tnntachieve3" : "0x20000",
+      "title"        : "Fashionista",
+      "descr"        : "Identify all non-obvious cloaks, helms, boots, and gloves"
+    },
+
+    "ach211": {
+      "tnntachieve3" : "0x40000",
+      "title"        : "Minesweeper",
+      "descr"        : "Disarm all land mines in Fort Ludios without blowing any up"
+    },
+
+    "ach212": {
+      "tnntachieve3" : "0x80000",
+      "title"        : "Hyperliterate",
+      "descr"        : "Read every readable item in the game"
+    },
+
+    "ach213": {
+      "tnntachieve3" : "0x100000",
+      "title"        : "Civilized Cooking",
+      "descr"        : "Open a tin with a tin opener"
+    },
+
+    "ach214": {
+      "tnntachieve3" : "0x200000",
+      "title"        : "007",
+      "descr"        : "Unlock something with a credit card"
+    },
+
+    "ach215": {
+      "tnntachieve3" : "0x400000",
+      "title"        : "Bob Ross",
+      "descr"        : "Release a picture-painting demon from a camera"
+    },
+
+    "ach216": {
+      "tnntachieve3" : "0x800000",
+      "title"        : "Got No Talent",
+      "descr"        : "Scare something by playing music"
+    },
+
+    "ach217": {
+      "tnntachieve3" : "0x1000000",
+      "title"        : "Cookie Monster",
+      "descr"        : "Read a fortune without eating its cookie"
+    },
+
+    "ach218": {
+      "tnntachieve3" : "0x2000000",
+      "title"        : "Say Hello To My Evil Friend",
+      "descr"        : "Have a non-guaranteed demon lord gated in or summoned"
+    },
+
+    "ach219": {
+      "tnntachieve3" : "0x4000000",
+      "title"        : "Death onna Stick",
+      "descr"        : "Kill a member of 25 different monster species"
+    },
+
+    "ach220": {
+      "tnntachieve3" : "0x8000000",
+      "title"        : "Bring out your Dead",
+      "descr"        : "Kill a member of 50 different monster species"
+    },
+
+    "ach221": {
+      "tnntachieve3" : "0x10000000",
+      "title"        : "Diverse Death-Dealer",
+      "descr"        : "Kill a member of 100 different monster species"
+    },
+
+    "ach222": {
+      "tnntachieve3" : "0x20000000",
+      "title"        : "Grim Reaper",
+      "descr"        : "Kill a member of 200 different monster species"
+    },
+
+    "ach223": {
+      "tnntachieve3" : "0x40000000",
+      "title"        : "Gotta Kill 'em All",
+      "descr"        : "Kill a member of all eligible monster species"
+    },
+
+    "ach224": {
+      "tnntachieve3" : "0x80000000",
+      "title"        : "Learn the Alphabet",
+      "descr"        : "Kill a member of each species from a to z"
+    },
+
+    "ach225": {
+      "tnntachieve3" : "0x100000000",
+      "title"        : "Make your Mark",
+      "descr"        : "Engrave with an athame"
+    },
+
+    "ach226": {
+      "tnntachieve3" : "0x200000000",
+      "title"        : "One Hit KO",
+      "descr"        : "Deal a monster its maximum HP or more of damage (minimum 20)"
+    },
+
+    "ach227": {
+      "tnntachieve3" : "0x400000000",
+      "title"        : "Drink It To The Next Level",
+      "descr"        : "Level up by drinking from a sink"
+    },
+
+    "ach228": {
+      "tnntachieve3" : "0x800000000",
+      "title"        : "Why Won't You DIE Already",
+      "descr"        : "Kill the Wizard of Yendor 20 or more times"
+    },
+
+    "ach229": {
+      "tnntachieve3" : "0x1000000000",
+      "title"        : "You're About To Die",
+      "descr"        : "You Scrub, Get a special message saying you're about to die, you scrub"
+    },
+
+    "ach230": {
+      "tnntachieve3" : "0x2000000000",
+      "title"        : "Six Pack",
+      "descr"        : "Stock an ice box with 6 or more potions of booze"
+    },
+
+    "ach231": {
+      "tnntachieve3" : "0x4000000000",
+      "title"        : "Bar Brawler",
+      "descr"        : "Kill a monster with HP damage by smashing a bottle on it"
+    },
+
+    "ach232": {
+      "tnntachieve3" : "0x8000000000",
+      "title"        : "Extreme Omnivore",
+      "descr"        : "Eat an object from every common, edible object class"
+    },
+
+    "ach233": {
+      "tnntachieve3" : "0x10000000000",
+      "title"        : "Extinctionist Lite",
+      "descr"        : "Genocide 20 or more monster species"
+    },
+
+    "ach234": {
+      "tnntachieve3" : "0x20000000000",
+      "title"        : "Dudley's Hero",
+      "descr"        : "Extinct newts"
+    },
+
+    "ach235": {
+      "tnntachieve3" : "0x40000000000",
+      "title"        : "Ice Jesus",
+      "descr"        : "Walk on top of lava unharmed"
+    },
+
+    "ach236": {
+      "tnntachieve3" : "0x80000000000",
+      "title"        : "Rare Loot",
+      "descr"        : "Acquire an athame that was generated in the inventory of a lich"
+    },
+
+    "ach237": {
+      "tnntachieve3" : "0x100000000000",
+      "title"        : "Boy Scout",
+      "descr"        : "Complete Sokoban without incurring any penalties for rule-breaking"
+    },
+
+    "ach238": {
+      "tnntachieve3" : "0x200000000000",
+      "title"        : "Sounds Hollow",
+      "descr"        : " Reveal a secret door with a stethoscope"
     }
 
   },

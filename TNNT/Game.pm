@@ -75,6 +75,12 @@ has tnntachieve2 => (
   coerce => sub { no warnings 'portable'; hex($_[0]) },
 );
 
+has tnntachieve3 => (
+  is => 'ro',
+  default => 0,
+  coerce => sub { no warnings 'portable'; hex($_[0]) },
+);
+
 # reference to TNNT::Player object
 
 has player => (
@@ -261,7 +267,7 @@ sub _build_achievements
 
   my @achievements;
 
-  for my $field (qw(achieve tnntachieve0 tnntachieve1 tnntachieve2)) {
+  for my $field (qw(achieve tnntachieve0 tnntachieve1 tnntachieve2 tnntachieve3)) {
     next if !$self->$field();
     my @found = grep {
       exists $cfg->{$_}{$field}

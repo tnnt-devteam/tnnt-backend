@@ -67,7 +67,7 @@ sub add_game
   #--- All required achievements
 
   if(
-    ($game->tnntachieve2() & 0x3fff8000000000) == 0x3fff8000000000
+    ($game->tnntachieve3() & 0x3fff800000000000) == 0x3fff800000000000
   ) {
 
     # player scoring

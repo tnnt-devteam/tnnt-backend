@@ -68,10 +68,10 @@ sub order_achievements
     my ($ach_a, $ach_b) = ($a, $b);
     my ($field_a) = grep {
       exists $achievements->{$ach_a}{$_}
-    } (qw(achieve tnntachieve0 tnntachieve1 tnntachieve2));
+    } (qw(achieve tnntachieve0 tnntachieve1 tnntachieve2 tnntachieve3));
     my ($field_b) = grep {
       exists $achievements->{$ach_b}{$_}
-    } (qw(achieve tnntachieve0 tnntachieve1 tnntachieve2));
+    } (qw(achieve tnntachieve0 tnntachieve1 tnntachieve2 tnntachieve3));
 
     # we are here assuming that the order of the field names is actually
     # alphabetically ascending!
@@ -90,6 +90,7 @@ sub order_achievements
     || exists $achievements->{$_}{'tnntachieve0'}
     || exists $achievements->{$_}{'tnntachieve1'}
     || exists $achievements->{$_}{'tnntachieve2'}
+    || exists $achievements->{$_}{'tnntachieve3'}
   } keys %$achievements ];
 }
 
