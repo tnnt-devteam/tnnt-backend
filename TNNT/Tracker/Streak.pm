@@ -108,7 +108,7 @@ sub add_game
           points => 0,
           data => {
             streakidx => $_[1],
-            streakmult => 1 + (($_[1] - 1) * 0.1)
+            streakmult => 1 + ($_[1] * 0.1),
           },
         ));
       }
