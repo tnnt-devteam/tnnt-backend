@@ -104,10 +104,11 @@ sub add_game
         die if !$_[0]->isa('TNNT::Game');
         $game->add_score(TNNT::ScoringEntry->new(
           trophy => $self->name(),
+          when => $game->endtime,
           points => 0,
           data => {
             streakidx => $_[1],
-            streakmult => 1 + (($_[1] - 1) * 0.1)
+            streakmult => 1 + ($_[1] * 0.1),
           },
         ));
       }
