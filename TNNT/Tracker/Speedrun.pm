@@ -56,6 +56,7 @@ sub add_game
   if($bonus) {
     my $se = new TNNT::ScoringEntry(
       trophy => $self->name(),
+      when => $game->endtime,
       points => 0,
       data => { speedrun => $bonus },
     );

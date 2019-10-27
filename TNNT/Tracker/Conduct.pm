@@ -57,6 +57,7 @@ sub add_game
   if($multiplier) {
     my $se = new TNNT::ScoringEntry(
       trophy => $self->name(),
+      when => $game->endtime,
       points => 0,
       data => {
         conducts => [ $game->conducts() ],
