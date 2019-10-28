@@ -2403,7 +2403,13 @@
     "ach238": {
       "tnntachieve3" : "0x200000000000",
       "title"        : "Sounds Hollow",
-      "descr"        : " Reveal a secret door with a stethoscope"
+      "descr"        : "Reveal a secret door with a stethoscope"
+    },
+
+    "ach239": {
+      "tnntachieve3" : "0x400000000000",
+      "title"        : "DO YOU WANT TO DO THIS BRO? BECAUSE IT'S THUNDERDOME TIME!",
+      "descr"        : "Defeat the NPC from the NPC Deathmatch quest"
     }
 
   },
