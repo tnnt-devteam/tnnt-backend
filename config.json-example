@@ -1091,7 +1091,7 @@
     "ach16": { "tnntachieve0": "0x8000", "title": "Always Talk to the Wise Old Man", "descr": "Chat with Izchak" },
     "ach17": { "tnntachieve0": "0x10000", "title": "Isaac Newton", "descr": "Get fruit by kicking a tree" },
     "ach18": { "tnntachieve0": "0x20000", "title": "Dungeon Economics", "descr": "Buy or sell something at a shop" },
-    "ach19": { "tnntachieve0": "0x40000", "title": "Stop", "descr": "Thief!, Be chased by the Keystone Kops" },
+    "ach19": { "tnntachieve0": "0x40000", "title": "Stop, Thief!", "descr": "Be chased by the Keystone Kops" },
     "ach20": { "tnntachieve0": "0x80000", "title": "Wash it Clean", "descr": "Uncurse an item in a fountain" },
     "ach21": { "tnntachieve0": "0x100000", "title": "Well-Read", "descr": "Learn a level 5+ spell" },
     "ach22": { "tnntachieve0": "0x200000", "title": "Pet Whisperer", "descr": "Tame a monster by feeding it" },
