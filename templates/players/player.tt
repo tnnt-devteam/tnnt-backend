@@ -8,6 +8,7 @@
   <base href="../">
   <link rel="stylesheet" type="text/css" href="default.css">
   <script src="js/scbd-filter.js"></script>
+  <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 
 <body>
