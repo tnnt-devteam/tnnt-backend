@@ -198,92 +198,137 @@
 
     "conduct:food" : {
       "title"  : "Conduct: Foodless",
-      "points" : 30,
       "multi"  : 2
     },
 
     "conduct:vegn" : {
       "title"  : "Conduct: Vegan",
-      "points" : 15,
       "multi"  : 1.4
     },
 
     "conduct:vegt" : {
       "title"  : "Conduct: Vegetarian",
-      "points" : 5,
       "multi"  : 1.1
     },
 
     "conduct:athe" : {
       "title"  : "Conduct: Atheist",
-      "points" : 10,
       "multi"  : 1.2
     },
 
     "conduct:weap" : {
       "title"  : "Conduct: Weaponless",
-      "points" : 10,
       "multi"  : 1.2
     },
 
     "conduct:paci" : {
       "title"  : "Conduct: Pacifist",
-      "points" : 50,
       "multi"  : 2
     },
 
     "conduct:illi" : {
       "title"  : "Conduct: Illiterate",
-      "points" : 20,
       "multi"  : 1.4
     },
 
     "conduct:pile" : {
       "title"  : "Conduct: Polypileless",
-      "points" : 1,
       "multi"  : 1.02
     },
 
     "conduct:self" : {
       "title"  : "Conduct: Polyselfless",
-      "points" : 1,
       "multi"  : 1.02
     },
 
     "conduct:wish" : {
       "title"  : "Conduct: Wishless",
-      "points" : 4,
       "multi"  : 1.1
     },
 
     "conduct:arti" : {
       "title"  : "Conduct: Artiwishless",
-      "points" : 1,
       "multi"  : 1.02
     },
 
     "conduct:geno" : {
       "title"  : "Conduct: Genocideless",
-      "points" : 5,
       "multi"  : 1.02
     },
 
     "conduct:elbe" : {
       "title"  : "Conduct: Elberethless",
-      "points" : 20,
       "multi"  : 1.1
     },
 
     "conduct:zen"  : {
       "title"  : "Conduct: Zen",
-      "points" : 50,
       "multi"  : 2.2
     },
 
     "conduct:nude" : {
       "title"  : "Conduct: Nude",
-      "points" : 50,
       "multi"  : 2
+    },
+
+    "conduct:halu" : {
+      "title"  : "Conduct: Permahallucinating",
+      "multi"  : 2
+    },
+
+    "conduct:wiz" : {
+      "title"  : "Conduct: Never kill the Wizard",
+      "multi"  : 1.6
+    },
+
+    "conduct:ride" : {
+      "title"  : "Conduct: Never kill a Rider",
+      "multi"  : 1.4
+    },
+
+    "conduct:arts" : {
+      "title"  : "Conduct: Artifactless",
+      "multi"  : 1.2
+    },
+
+    "conduct:vlad" : {
+      "title"  : "Conduct: Never kill Vlad",
+      "multi"  : 1.2
+    },
+
+    "conduct:bone" : {
+      "title"  : "Conduct: Bonesless",
+      "multi"  : 1.1
+    },
+
+    "conduct:swap" : {
+      "title"  : "Conduct: Swapchestless",
+      "multi"  : 1.1
+    },
+
+    "conduct:neme" : {
+      "title"  : "Conduct: Never kill your quest nemesis",
+      "multi"  : 1.1
+    },
+
+    "conduct:prst" : {
+      "title"  : "Conduct: Never kill the High Priest of Moloch",
+      "multi"  : 1.05
+    },
+
+    "conduct:surv" : {
+      "title"  : "Conduct: Survivor",
+      "multi"  : 1.05
+    },
+
+    "conduct:pets" : {
+      "title"  : "Conduct: Petless",
+      "multi"  : 1.05
+    },
+
+    "conduct:deaf" : {
+      "title"  : "Conduct: Permadeaf",
+      "multi"  : 1.05
     },
 
     # speedrunning bonus is int(factor / turns); if cutoff is defined then
@@ -895,36 +940,50 @@
   "conducts" : {
 
     "conduct" : {
-      "1"    : "food",
-      "2"    : "vegn",
-      "4"    : "vegt",
-      "8"    : "athe",
-      "16"   : "weap",
-      "32"   : "paci",
-      "64"   : "illi",
-      "128"  : "pile",
-      "256"  : "self",
-      "512"  : "wish",
-      "1024" : "arti",
-      "2048" : "geno",
-      "4096" : "elbe"
+      "1"        : "food",
+      "2"        : "vegn",
+      "4"        : "vegt",
+      "8"        : "athe",
+      "16"       : "weap",
+      "32"       : "paci",
+      "64"       : "illi",
+      "128"      : "pile",
+      "256"      : "self",
+      "512"      : "wish",
+      "1024"     : "arti",
+      "2048"     : "geno",
+      "4096"     : "elbe",
+      "8192"     : "surv",
+      "16384"    : "swap",
+      "32768"    : "neme",
+      "65536"    : "vlad",
+      "131072"   : "wiz",
+      "262144"   : "prst",
+      "524288"   : "ride",
+      "1048576"  : "arts",
+      "2097152"  : "pets",
+      "4194304"  : "deaf",
+      "8388608"  : "halu",
+      "16777216" : "bone"
     },
 
     "achieve" : {
-      "4096" : "zen",
-      "8192" : "nude"
+      "33554432" : "zen",
+      "67108864" : "nude"
     },
 
     "order" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "elbe", "illi", "paci", "food", "zen", "nude"
+      "elbe", "illi", "paci", "food", "zen", "nude", "halo", "wiz", "ride",
+      "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
     ],
 
     # this defines what counts as "all conducts"
 
     "all" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "illi", "paci", "food"
+      "elbe", "illi", "paci", "food", "zen", "nude", "halo", "wiz", "ride",
+      "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
     ],
 
     # this defines, for scoring purposes, conducts, that imply another one or
