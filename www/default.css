@@ -199,7 +199,7 @@ div.achieve-top {
 /* the individual achievement box, a grid element */
 
 div.achieve-item {
-  padding: 1em;
+  padding: 1.4em;
   height: 3.5em;
   text-align: center;
   display: flex;
