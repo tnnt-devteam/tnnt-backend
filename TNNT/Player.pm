@@ -49,6 +49,10 @@ has maxcond => (
   is => 'rwp',
 );
 
+has maxach => (
+  is => 'rwp',
+);
+
 has maxlvl => (
   is => 'rwp',
 );
@@ -144,6 +148,12 @@ sub add_game
 
   if($game->is_ascended && $game->conducts() > ($self->maxcond() // 0)) {
     $self->_set_maxcond(scalar($game->conducts()));
+  }
+
+  #--- track highest number of achievements
+
+  if(@{$game->achievements} > ($self->maxach() // 0)) {
+    $self->_set_maxach(scalar(@{$game->achievements}));
   }
 
   #--- track maximum depth reached
@@ -257,6 +267,10 @@ sub export
     $d{'maxcond'} = $self->maxcond();
   }
 
+  if(defined $self->maxach()) {
+    $d{'maxach'} = $self->maxach();
+  }
+
   if(defined $self->minturns()) {
     $d{'minturns'} = $self->minturns();
   }
@@ -295,7 +309,7 @@ sub export
   my $cfg = TNNT::Config->instance()->config();
 
   my @trophy_names = qw(
-    firstasc mostasc mostcond lowscore highscore minturns realtime
+    firstasc mostasc mostcond mostach lowscore highscore minturns realtime
     rsimpossible gimpossible maxstreak allroles allraces allaligns allgenders
     allconducts allachieve noscum
   );

@@ -125,6 +125,26 @@
       </td>
     </tr>
 
+    [%# === MOST ACHIEVEMENTS ================================================= %]
+
+    <tr>
+      <td class="trophy-name"
+          title="Game with the maximum number of achievements. 50 points.">
+        Most Achievements in a Game
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.players.exists('mostach');
+          plink(trophies.players.mostach);
+          ' ('; players.all.item(trophies.players.mostach).maxach; ')';
+        END %]
+      </td>
+      <td class="trophy-single">
+        [% IF trophies.clans.exists('mostach');
+          clink(clans.all.item(trophies.clans.mostach));
+        END %]
+      </td>
+    </tr>
+
     [%# === LOWEST SCORE ================================================== %]
 
     <tr>

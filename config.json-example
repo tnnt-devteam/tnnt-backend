@@ -30,7 +30,7 @@
 
   # 'minturns' is minimum number of turns that the game needs to last for it
   # to be considered non-scummed
-  # 
+  #
   # 'minquitturns' is the minimum number of turns that the game needs to last
   # to be considered non-scummed if it is either quit or escaped
 
@@ -126,6 +126,16 @@
     "clan-mostcond" : {
       "title"  : "Most Conducts in One Ascension",
       "points" : 250
+    },
+
+    "mostach" : {
+      "title"  : "Most Achievements in One Game",
+      "points" : 50
+    },
+
+    "clan-mostach" : {
+      "title"  : "Most Achievements in One Game",
+      "points" : 50
     },
 
     "lowscore" : {

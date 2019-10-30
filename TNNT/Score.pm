@@ -27,6 +27,7 @@ use TNNT::Tracker::Speedrun;
 use TNNT::Tracker::FirstAsc;
 use TNNT::Tracker::MostAsc;
 use TNNT::Tracker::MostCond;
+use TNNT::Tracker::MostAch;
 use TNNT::Tracker::LowScore;
 use TNNT::Tracker::HighScore;
 use TNNT::Tracker::MinTurns;
@@ -82,6 +83,7 @@ sub BUILD
   $tr->add_tracker(new TNNT::Tracker::FirstAsc);
   $tr->add_tracker(new TNNT::Tracker::MostAsc);
   $tr->add_tracker(new TNNT::Tracker::MostCond);
+  $tr->add_tracker(new TNNT::Tracker::MostAch);
   $tr->add_tracker(new TNNT::Tracker::LowScore);
   $tr->add_tracker(new TNNT::Tracker::HighScore);
   $tr->add_tracker(new TNNT::Tracker::MinTurns);
@@ -239,6 +241,18 @@ sub export
   if(defined $tr->get_tracker_by_name('mostcond')->clan()) {
     $d{'trophies'}{'clans'}{'mostcond'}
     = $tr->get_tracker_by_name('mostcond')->clan()->n();
+  }
+
+  # Most Achievements in single game
+
+  if(defined $tr->get_tracker_by_name('mostach')->player()) {
+    $d{'trophies'}{'players'}{'mostach'}
+    = $tr->get_tracker_by_name('mostach')->player()->name();
+  }
+
+  if(defined $tr->get_tracker_by_name('mostach')->clan()) {
+    $d{'trophies'}{'clans'}{'mostach'}
+    = $tr->get_tracker_by_name('mostach')->clan()->n();
   }
 
   # Lowest Score
