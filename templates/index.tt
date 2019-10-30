@@ -51,7 +51,10 @@
       <li>au.hardfought.org: Australia (Sydney)</li>
     </ul>
     Connect to your preferred server the same way via SSH and select the TNNT game
-    option. That's all there is to it!
+    option. That's all there is to it! If you'd like to play with the TNNT tileset,
+    or you're at a location that blocks everything except web access, check out our
+    <a href="/nethack/hterm">hterm</a> page, you can play this way from any of the three
+    servers listed above.
   </p>
   <p>
     To create, join, or manage clans, go

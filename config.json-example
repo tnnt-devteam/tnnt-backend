@@ -208,92 +208,137 @@
 
     "conduct:food" : {
       "title"  : "Conduct: Foodless",
-      "points" : 30,
       "multi"  : 2
     },
 
     "conduct:vegn" : {
       "title"  : "Conduct: Vegan",
-      "points" : 15,
       "multi"  : 1.4
     },
 
     "conduct:vegt" : {
       "title"  : "Conduct: Vegetarian",
-      "points" : 5,
       "multi"  : 1.1
     },
 
     "conduct:athe" : {
       "title"  : "Conduct: Atheist",
-      "points" : 10,
       "multi"  : 1.2
     },
 
     "conduct:weap" : {
       "title"  : "Conduct: Weaponless",
-      "points" : 10,
       "multi"  : 1.2
     },
 
     "conduct:paci" : {
       "title"  : "Conduct: Pacifist",
-      "points" : 50,
       "multi"  : 2
     },
 
     "conduct:illi" : {
       "title"  : "Conduct: Illiterate",
-      "points" : 20,
       "multi"  : 1.4
     },
 
     "conduct:pile" : {
       "title"  : "Conduct: Polypileless",
-      "points" : 1,
       "multi"  : 1.02
     },
 
     "conduct:self" : {
       "title"  : "Conduct: Polyselfless",
-      "points" : 1,
       "multi"  : 1.02
     },
 
     "conduct:wish" : {
       "title"  : "Conduct: Wishless",
-      "points" : 4,
       "multi"  : 1.1
     },
 
     "conduct:arti" : {
       "title"  : "Conduct: Artiwishless",
-      "points" : 1,
       "multi"  : 1.02
     },
 
     "conduct:geno" : {
       "title"  : "Conduct: Genocideless",
-      "points" : 5,
       "multi"  : 1.02
     },
 
     "conduct:elbe" : {
       "title"  : "Conduct: Elberethless",
-      "points" : 20,
       "multi"  : 1.1
     },
 
     "conduct:zen"  : {
       "title"  : "Conduct: Zen",
-      "points" : 50,
       "multi"  : 2.2
     },
 
     "conduct:nude" : {
       "title"  : "Conduct: Nude",
-      "points" : 50,
       "multi"  : 2
+    },
+
+    "conduct:halu" : {
+      "title"  : "Conduct: Permahallucinating",
+      "multi"  : 2
+    },
+
+    "conduct:wiz" : {
+      "title"  : "Conduct: Never kill the Wizard",
+      "multi"  : 1.6
+    },
+
+    "conduct:ride" : {
+      "title"  : "Conduct: Never kill a Rider",
+      "multi"  : 1.4
+    },
+
+    "conduct:arts" : {
+      "title"  : "Conduct: Artifactless",
+      "multi"  : 1.2
+    },
+
+    "conduct:vlad" : {
+      "title"  : "Conduct: Never kill Vlad",
+      "multi"  : 1.2
+    },
+
+    "conduct:bone" : {
+      "title"  : "Conduct: Bonesless",
+      "multi"  : 1.1
+    },
+
+    "conduct:swap" : {
+      "title"  : "Conduct: Swapchestless",
+      "multi"  : 1.1
+    },
+
+    "conduct:neme" : {
+      "title"  : "Conduct: Never kill your quest nemesis",
+      "multi"  : 1.1
+    },
+
+    "conduct:prst" : {
+      "title"  : "Conduct: Never kill the High Priest of Moloch",
+      "multi"  : 1.05
+    },
+
+    "conduct:surv" : {
+      "title"  : "Conduct: Survivor",
+      "multi"  : 1.05
+    },
+
+    "conduct:pets" : {
+      "title"  : "Conduct: Petless",
+      "multi"  : 1.05
+    },
+
+    "conduct:deaf" : {
+      "title"  : "Conduct: Permadeaf",
+      "multi"  : 1.05
     },
 
     # speedrunning bonus is int(factor / turns); if cutoff is defined then
@@ -905,36 +950,50 @@
   "conducts" : {
 
     "conduct" : {
-      "1"    : "food",
-      "2"    : "vegn",
-      "4"    : "vegt",
-      "8"    : "athe",
-      "16"   : "weap",
-      "32"   : "paci",
-      "64"   : "illi",
-      "128"  : "pile",
-      "256"  : "self",
-      "512"  : "wish",
-      "1024" : "arti",
-      "2048" : "geno",
-      "4096" : "elbe"
+      "1"        : "food",
+      "2"        : "vegn",
+      "4"        : "vegt",
+      "8"        : "athe",
+      "16"       : "weap",
+      "32"       : "paci",
+      "64"       : "illi",
+      "128"      : "pile",
+      "256"      : "self",
+      "512"      : "wish",
+      "1024"     : "arti",
+      "2048"     : "geno",
+      "4096"     : "elbe",
+      "8192"     : "surv",
+      "16384"    : "swap",
+      "32768"    : "neme",
+      "65536"    : "vlad",
+      "131072"   : "wiz",
+      "262144"   : "prst",
+      "524288"   : "ride",
+      "1048576"  : "arts",
+      "2097152"  : "pets",
+      "4194304"  : "deaf",
+      "8388608"  : "halu",
+      "16777216" : "bone"
     },
 
     "achieve" : {
-      "4096" : "zen",
-      "8192" : "nude"
+      "33554432" : "zen",
+      "67108864" : "nude"
     },
 
     "order" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "elbe", "illi", "paci", "food", "zen", "nude"
+      "elbe", "illi", "paci", "food", "zen", "nude", "halo", "wiz", "ride",
+      "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
     ],
 
     # this defines what counts as "all conducts"
 
     "all" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "illi", "paci", "food"
+      "elbe", "illi", "paci", "food", "zen", "nude", "halo", "wiz", "ride",
+      "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
     ],
 
     # this defines, for scoring purposes, conducts, that imply another one or
@@ -1005,1417 +1064,264 @@
     },
 
     "meluckstone" : {
-      "achieve" : "0x200",
+      "achieve" : "0x100",
       "title"   : "Are You Feeling Lucky",
       "descr"   : "Get the luckstone from Mines' End"
     },
 
     "sokoban" : {
-      "achieve" : "0x400",
+      "achieve" : "0x200",
       "title"   : "Boulder Pusher",
       "descr"   : "Finish Sokoban"
     },
 
     "medusa" : {
-      "achieve" : "0x800",
+      "achieve" : "0x400",
       "title"   : "Anti-Stoner",
       "descr"   : "Kill Medusa"
     },
 
   #--- TNNT specific achievements --------------------------------------------
 
-    "minetnaltar" : {
-      "tnntachieve0" : "0x1",
-      "title"        : "Back to Civilisation",
-      "descr"        : "Step onto the Minetown altar"
-    },
-
-    "oracle" : {
-      "tnntachieve0" : "0x2",
-      "title"        : "Sage Advice",
-      "descr"        : "Consult the Oracle"
-    },
-
-    "quest" : {
-      "tnntachieve0" : "0x4",
-      "title"        : "The Archetypal Hero",
-      "descr"        : "Get admitted to the Quest"
-    },
-
-    "passtune" : {
-      "tnntachieve0" : "0x8",
-      "title"        : "Musical Mastermind",
-      "descr"        : "Learn the passtune"
-    },
-
-    "protection" : {
-      "tnntachieve0" : "0x10",
-      "title"        : "Indulgences",
-      "descr"        : "Buy protection from a priest"
-    },
-
-    "survpetri" : {
-      "tnntachieve0" : "0x20",
-      "title"        : "Part-time Statue",
-      "descr"        : "Survive stoning"
-    },
-
-    "survslime" : {
-      "tnntachieve0" : "0x40",
-      "title"        : "The Blob",
-      "descr"        : "Survive sliming"
-    },
-
-    "survdrown" : {
-      "tnntachieve0" : "0x80",
-      "title"        : "Captain Ahab",
-      "descr"        : "Survive being grabbed by a sea monster"
-    },
-
-    "lycanthrope" : {
-      "tnntachieve0" : "0x100",
-      "title"        : "Furry Little Problem",
-      "descr"        : "Cure lycanthropy"
-    },
-
-    "deathlyill" : {
-      "tnntachieve0" : "0x200",
-      "title"        : "New Lease on Life",
-      "descr"        : "Cure deathly illness"
-    },
-
-    "throne" : {
-      "tnntachieve0" : "0x400",
-      "title"        : "The Royal Treatment",
-      "descr"        : "Sit on a throne"
-    },
-
-    "sink" : {
-      "tnntachieve0" : "0x800",
-      "title"        : "It'll Turn Up Later",
-      "descr"        : "Drop a ring in a sink"
-    },
-
-    "nazgul" : {
-      "tnntachieve0" : "0x1000",
-      "title"        : "Nine for Mortal Men Doomed to Die ... Again",
-      "descr"        : "Kill all nine Nazgûl"
-    },
-
-    "erinyes" : {
-      "tnntachieve0" : "0x2000",
-      "title"        : "Furious",
-      "descr"        : "Kill all three erinyes"
-    },
-
-    "altarconv" : {
-      "tnntachieve0" : "0x4000",
-      "title"        : "Orthodoxy",
-      "descr"        : "Convert an altar"
-    },
-
-    "izchak" : {
-      "tnntachieve0" : "0x8000",
-      "title"        : "Always Talk to the Wise Old Man",
-      "descr"        : "Chat with Izchak"
-    },
-
-    "treefruit" : {
-      "tnntachieve0" : "0x10000",
-      "title"        : "Isaac Newton",
-      "descr"        : "Get fruit by kicking a tree"
-    },
-
-    "shopping" : {
-      "tnntachieve0" : "0x20000",
-      "title"        : "Dungeon Economics",
-      "descr"        : "Buy something at a shop"
-    },
-
-    "kops" : {
-      "tnntachieve0" : "0x40000",
-      "title"        : "Stop, Thief!",
-      "descr"        : "Be chased by the Keystone Kops"
-    },
-
-    "fountuncurs" : {
-      "tnntachieve0" : "0x80000",
-      "title"        : "Wash it Clean",
-      "descr"        : "Uncurse an item in a fountain"
-    },
-
-    "lvl5spell" : {
-      "tnntachieve0" : "0x100000",
-      "title"        : "Well-Read",
-      "descr"        : "Learn a level 5+ spell"
-    },
-
-    "tamefood" : {
-      "tnntachieve0" : "0x200000",
-      "title"        : "Pet Whisperer",
-      "descr"        : "Tame a monster by feeding it"
-    },
-
-    "tameother" : {
-      "tnntachieve0" : "0x400000",
-      "title"        : "Beast Master",
-      "descr"        : "Tame a monster without using food"
-    },
-
-    "crowned" : {
-      "tnntachieve0" : "0x800000",
-      "title"        : "The Chosen One",
-      "descr"        : "Get crowned"
-    },
-
-    "artigift" : {
-      "tnntachieve0" : "0x1000000",
-      "title"        : "Go Forth and Smite",
-      "descr"        : "Receive an artifact gift from your deity"
-    },
-
-    "excalibur" : {
-      "tnntachieve0" : "0x2000000",
-      "title"        : "Some Watery Tart",
-      "descr"        : "Be gifted Excalibur"
-    },
-
-    "makedsm" : {
-      "tnntachieve0" : "0x4000000",
-      "title"        : "Hand Crafted",
-      "descr"        : "Make a dragon scale mail"
-    },
-
-    "nymphrob" : {
-      "tnntachieve0" : "0x8000000",
-      "title"        : "A Little Light Larceny",
-      "descr"        : "Get robbed by a nymph"
-    },
-
-    "leppysteal" : {
-      "tnntachieve0" : "0x10000000",
-      "title"        : "Pot of Greed",
-      "descr"        : "Have your purse lightened by a leprechaun"
-    },
-
-    "foocubus" : {
-      "tnntachieve0" : "0x20000000",
-      "title"        : "The Birds and the Bees",
-      "descr"        : "Dally with a foocubus"
-    },
-
-    "trapper" : {
-      "tnntachieve0" : "0x40000000",
-      "title"        : "The Most Dangerous Game",
-      "descr"        : "Catch a monster in a trap set by you"
-    },
-
-    "orcmass" : {
-      "tnntachieve0" : "0x80000000",
-      "title"        : "Minetown Avenger",
-      "descr"        : "Kill every orc in Orctown"
-    },
-
-    "bigroom" : {
-      "tnntachieve0" : "0x100000000",
-      "title"        : "All Clear",
-      "descr"        : "Kill all hostiles in the Big Room"
-    },
-
-    "unpunish" : {
-      "tnntachieve0" : "0x200000000",
-      "title"        : "Liberated",
-      "descr"        : "Get yourself unpunished"
-    },
-
-    "sinkcrash" : {
-      "tnntachieve0" : "0x400000000",
-      "title"        : "It's Called That For a Reason",
-      "descr"        : "Come to earth by levitating over a sink"
-    },
-
-    "gemtouchid" : {
-      "tnntachieve0" : "0x800000000",
-      "title"        : "Diamond in the Rough",
-      "descr"        : "Identify a gem with a touchstone"
-    },
-
-    "scribe" : {
-      "tnntachieve0" : "0x1000000000",
-      "title"        : "Scribe",
-      "descr"        : "Write a scroll with a magic marker"
-    },
-
-    "writebook" : {
-      "tnntachieve0" : "0x2000000000",
-      "title"        : "First Edition",
-      "descr"        : "Write a book"
-    },
-
-    "dragonrider" : {
-      "tnntachieve0" : "0x4000000000",
-      "title"        : "Dragon Rider",
-      "descr"        : "Ride a dragon"
-    },
-
-    "egglay" : {
-      "tnntachieve0" : "0x8000000000",
-      "title"        : "Motherhood",
-      "descr"        : "Lay an egg"
-    },
-
-    "fooproof" : {
-      "tnntachieve0" : "0x10000000000",
-      "title"        : "Shimmer",
-      "descr"        : "Fireproof an item"
-    },
-
-    "unigem" : {
-      "tnntachieve0" : "0x20000000000",
-      "title"        : "They Like Shiny Things",
-      "descr"        : "Throw a gem at a unicorn"
-    },
-
-    "trolltin" : {
-      "tnntachieve0" : "0x40000000000",
-      "title"        : "Reincarnation Cancelled",
-      "descr"        : "Tin a troll"
-    },
-
-    "ghostkill" : {
-      "tnntachieve0" : "0x80000000000",
-      "title"        : "Kill it Twice",
-      "descr"        : "Destroy a ghost"
-    },
-
-    "revive" : {
-      "tnntachieve0" : "0x100000000000",
-      "title"        : "Only Mostly Dead",
-      "descr"        : "Revive a corpse"
-    },
-
-    "turn" : {
-      "tnntachieve0" : "0x200000000000",
-      "title"        : "Buffy",
-      "descr"        : "Destroy an undead with #turn"
-    },
-
-    "milration" : {
-      "tnntachieve0" : "0x400000000000",
-      "title"        : "Wasn't a Meal, Wasn't Ready, And You Shouldn't Have Eaten It",
-      "descr"        : "Eat a military ration"
-    },
-
-    "drawbridge" : {
-      "tnntachieve0" : "0x800000000000",
-      "title"        : "Have Fun Storming the Castle",
-      "descr"        : "Blow up the Castle drawbridge"
-    },
-
-    "lifesaved" : {
-      "tnntachieve0" : "0x1000000000000",
-      "title"        : "Insert Quarter to Continue",
-      "descr"        : "Get life-saved"
-    },
-
-    "banekill" : {
-      "tnntachieve0" : "0x2000000000000",
-      "title"        : "What It Was Made For",
-      "descr"        : "Kill an appropriate monster with a Bane weapon"
-    },
-
-    "diggrave" : {
-      "tnntachieve0" : "0x4000000000000",
-      "title"        : "Buried Treasure",
-      "descr"        : "Dig up a grave not in a graveyard"
-    },
-
-    "molochpri" : {
-      "tnntachieve0" : "0x8000000000000",
-      "title"        : "Holy War",
-      "descr"        : "Kill a priest of Moloch"
-    },
-
-    "quake" : {
-      "tnntachieve0" : "0x10000000000000",
-      "title"        : "Movers and Shakers",
-      "descr"        : "Cause an earthquake"
-    },
-
-    "snakecharm" : {
-      "tnntachieve0" : "0x20000000000000",
-      "title"        : "Snake Charmer",
-      "descr"        : "Pacify a snake with a flute"
-    },
-
-    "dragonkill" : {
-      "tnntachieve0" : "0x40000000000000",
-      "title"        : "Dragonslayer",
-      "descr"        : "Kill a dragon"
-    },
-
-    "tinfoilhat" : {
-      "tnntachieve0" : "0x80000000000000",
-      "title"        : "Tin Foil Hat",
-      "descr"        : "Dodge a brainsucking attack"
-    },
-
-    "boomerang" : {
-      "tnntachieve0" : "0x100000000000000",
-      "title"        : "Right Back at Ya",
-      "descr"        : "Hit an enemy with a thrown boomerang"
-    },
-
-    "silverdam" : {
-      "tnntachieve0" : "0x200000000000000",
-      "title"        : "It Burnsss",
-      "descr"        : "Deal silver damage to a silver-hating monster"
-    },
-
-    "crysknife" : {
-      "tnntachieve0" : "0x400000000000000",
-      "title"        : "Arrakis",
-      "descr"        : "Make a crysknife"
-    },
-
-    "rubberhose" : {
-      "tnntachieve0" : "0x800000000000000",
-      "title"        : "Kop Training Program",
-      "descr"        : "Kill a monster with a rubber hose"
-    },
-
-    "cornuthaum" : {
-      "tnntachieve0" : "0x1000000000000000",
-      "title"        : "Obligatory Pointy Hat",
-      "descr"        : "Put on a cornuthaum as a wizard"
-    },
-
-    "mithril" : {
-      "tnntachieve0" : "0x2000000000000000",
-      "title"        : "Hobbit Skin",
-      "descr"        : "Wear a mithril coat"
-    },
-
-    "graffiti" : {
-      "tnntachieve0" : "0x4000000000000000",
-      "title"        : "The Words of the Prophets",
-      "descr"        : "Read 5 random graffiti"
-    },
-
-    "pudding" : {
-      "tnntachieve0" : "0x8000000000000000",
-      "title"        : "Are You Still Pudding Farming",
-      "descr"        : "Split a pudding"
-    },
-
-    "meatring" : {
-      "tnntachieve1" : "0x1",
-      "title"        : "Wearable Snack",
-      "descr"        : "Wear a meat ring"
-    },
-
-    "icebox" : {
-      "tnntachieve1" : "0x2",
-      "title"        : "Frozen Treats",
-      "descr"        : "Loot an ice box"
-    },
-
-    "figurine" : {
-      "tnntachieve1" : "0x4",
-      "title"        : "Pygmalion",
-      "descr"        : "Create a monster from a figurine"
-    },
-
-    "nerd" : {
-      "tnntachieve1" : "0x8",
-      "title"        : "Nerd",
-      "descr"        : "Read a spellbook while wearing lenses and a T-shirt"
-    },
-
-    "charge" : {
-      "tnntachieve1" : "0x10",
-      "title"        : "Recharged",
-      "descr"        : "Charge an object"
-    },
-
-    "kickwall" : {
-      "tnntachieve1" : "0x20",
-      "title"        : "Get Your Kicks",
-      "descr"        : "Kick an item embedded in a wall or rock"
-    },
-
-    "grapple" : {
-      "tnntachieve1" : "0x40",
-      "title"        : "Spiderman",
-      "descr"        : "Grab an item with a grappling hook"
-    },
-
-    "coirefill" : {
-      "tnntachieve1" : "0x80",
-      "title"        : "More Light",
-      "descr"        : "Refill the Candelabrum after it burns out after the Invocation"
-    },
-
-    "allfruit" : {
-      "tnntachieve1" : "0x100",
-      "title"        : "Balanced Diet",
-      "descr"        : "Eat one of each type of produce in one game"
-    },
-
-    "allfood" : {
-      "tnntachieve1" : "0x200",
-      "title"        : "Smorgasbord",
-      "descr"        : "Eat every type of food in the game"
-    },
-
-    "refilllamp" : {
-      "tnntachieve1" : "0x400",
-      "title"        : "Fill 'Er Up",
-      "descr"        : "Fill an oil lamp with a potion of oil"
-    },
-
-    "oilid" : {
-      "tnntachieve1" : "0x800",
-      "title"        : "Curse the Darkness",
-      "descr"        : "Identify a potion of oil by applying it"
-    },
-
-    "gremlin" : {
-      "tnntachieve1" : "0x1000",
-      "title"        : "Bright Light, Bright Light",
-      "descr"        : "Kill gremlin with any light source"
-    },
-
-    "alchemy" : {
-      "tnntachieve1" : "0x2000",
-      "title"        : "Chemistry 101",
-      "descr"        : "Alchemize two potions in an established recipe"
-    },
-
-    "stinkcloud" : {
-      "tnntachieve1" : "0x4000",
-      "title"        : "Get Your Gas Mask",
-      "descr"        : "Kill a monster with a stinking cloud"
-    },
-
-    "readtpnovel" : {
-      "tnntachieve1" : "0x8000",
-      "title"        : "Escape to Discworld",
-      "descr"        : "Read a Terry Pratchett novel"
-    },
-
-    "ndexperience" : {
-      "tnntachieve1" : "0x10000",
-      "title"        : "Near Death Experience",
-      "descr"        : "#chat to Death while carrying a Terry Pratchett Novel"
-    },
-
-    "allgems" : {
-      "tnntachieve1" : "0x20000",
-      "title"        : "Jeweler",
-      "descr"        : "Identify every type of valuable gemstone"
-    },
-
-    "statueprize" : {
-      "tnntachieve1" : "0x40000",
-      "title"        : "Prize Inside!",
-      "descr"        : "Get a spellbook by breaking a randomly-generated statue"
-    },
-
-    "summonnymph" : {
-      "tnntachieve1" : "0x80000",
-      "title"        : "Ding-a-Ling",
-      "descr"        : "Summon a nymph by ringing a cursed bell"
-    },
-
-    "growpet" : {
-      "tnntachieve1" : "0x100000",
-      "title"        : "Best Friends Forever",
-      "descr"        : "Take your starting pet to full adulthood"
-    },
-
-    "diver" : {
-      "tnntachieve1" : "0x200000",
-      "title"        : "Diver",
-      "descr"        : "Dive into a moat or pool and retrieve an item from the bottom"
-    },
-
-    "wumpusride" : {
-      "tnntachieve1" : "0x400000",
-      "title"        : "Ceiling Clinging Commute",
-      "descr"        : "Ride a wumpus over water"
-    },
-
-    "woodchuck" : {
-      "tnntachieve1" : "0x800000",
-      "title"        : "How Much Wood?",
-      "descr"        : "Kill or tame a woodchuck"
-    },
-
-    "archon" : {
-      "tnntachieve1" : "0x1000000",
-      "title"        : "Storm the Gates of Heaven",
-      "descr"        : "Kill an Archon"
-    },
-
-    "tamesshifter" : {
-      "tnntachieve1" : "0x2000000",
-      "title"        : "Shifty",
-      "descr"        : "Tame a shapeshifter in any way"
-    },
-
-    "catlady" : {
-      "tnntachieve1" : "0x4000000",
-      "title"        : "Cat Lady",
-      "descr"        : "Tame seven “f” in the course of one game"
-    },
-
-    "schroedinger" : {
-      "tnntachieve1" : "0x8000000",
-      "title"        : "Collapse the Wavefunction",
-      "descr"        : "Open the box containing Schroedinger's Cat"
-    },
-
-    "freeprisoner" : {
-      "tnntachieve1" : "0x10000000",
-      "title"        : "I'm Free! I'm Free!",
-      "descr"        : "Free a prisoner"
-    },
-
-    "petrescue" : {
-      "tnntachieve1" : "0x20000000",
-      "title"        : "Pet Rescue",
-      "descr"        : "Free a pet from a trap that you didn't create yourself"
-    },
-
-    "spam" : {
-      "tnntachieve1" : "0x40000000",
-      "title"        : "Spam, Spam, Spam",
-      "descr"        : "Read a scroll of mail"
-    },
-
-    "royaljelly" : {
-      "tnntachieve1" : "0x80000000",
-      "title"        : "Superfood",
-      "descr"        : "Gain strength by eating royal jelly"
-    },
-
-    "foodintr" : {
-      "tnntachieve1" : "0x100000000",
-      "title"        : "You Are What You Eat",
-      "descr"        : "Gain an intrinsic by eating a corpse (or tin or glob)"
-    },
-
-    "bankrupt" : {
-      "tnntachieve1" : "0x200000000",
-      "title"        : "The Art of the Deal",
-      "descr"        : "Bankrupt a shopkeeper by getting all their money"
-    },
-
-    "polypet" : {
-      "tnntachieve1" : "0x400000000",
-      "title"        : "Distinction Without Difference",
-      "descr"        : "Polymorph a pet using a polytrap"
-    },
-
-    "transgender" : {
-      "tnntachieve1" : "0x800000000",
-      "title"        : "Transgender",
-      "descr"        : "Put on an amulet of change"
-    },
-
-    "hatchegg" : {
-      "tnntachieve1" : "0x1000000000",
-      "title"        : "Father Figure",
-      "descr"        : "Hatch an egg not laid by you and have it come out tame"
-    },
-
-    "nursedance" : {
-      "tnntachieve1" : "0x2000000000",
-      "title"        : "Hello, Nurse!",
-      "descr"        : "Get a nurse to heal you or raise your max HP"
-    },
-
-    "pitkill" : {
-      "tnntachieve1" : "0x4000000000",
-      "title"        : "It's The Pits",
-      "descr"        : "Kill something while you are stuck in a pit"
-    },
-
-    "invisikill" : {
-      "tnntachieve1" : "0x8000000000",
-      "title"        : "Never Saw It Coming",
-      "descr"        : "Kill invisible monster without see invisible"
-    },
-
-    "shafted" : {
-      "tnntachieve1" : "0x10000000000",
-      "title"        : "Shafted",
-      "descr"        : "Fall down a shaft"
-    },
-
-    "twobits" : {
-      "tnntachieve1" : "0x20000000000",
-      "title"        : "Potions of Booze Cost More Than That",
-      "descr"        : "Get two bits for an ale from a priest"
-    },
-
-    "extkop" : {
-      "tnntachieve1" : "0x40000000000",
-      "title"        : "Horatius at the Bridge",
-      "descr"        : "Extinct any kind of soldier or kop"
-    },
-
-    "nymphmirror" : {
-      "tnntachieve1" : "0x80000000000",
-      "title"        : "Who's That Pretty Girl in the Mirror, There?",
-      "descr"        : "Deflect a nymph with a mirror"
-    },
-
-    "bribe" : {
-      "tnntachieve1" : "0x100000000000",
-      "title"        : "Money Talks",
-      "descr"        : "Bribe a demon lord"
-    },
-
-    "vault": {
-      "tnntachieve1" : "0x200000000000",
-      "title"        : "Breaking and Entering",
-      "descr"        : "Enter a vault"
-    },
-
-    "zoo": {
-      "tnntachieve1" : "0x400000000000",
-      "title"        : "Who Was That David Person Anyway?",
-      "descr"        : "Enter a treasure zoo"
-    },
-
-    "throneroom": {
-      "tnntachieve1" : "0x800000000000",
-      "title"        : "Absolute Monarchy",
-      "descr"        : "Enter a throne room"
-    },
-
-    "lephall": {
-      "tnntachieve1" : "0x1000000000000",
-      "title"        : "They're After Me Lucky Charms",
-      "descr"        : "Enter a leprechaun hall"
-    },
-
-    "beehive": {
-      "tnntachieve1" : "0x2000000000000",
-      "title"        : "Hive Mind",
-      "descr"        : "Enter a beehive"
-    },
-
-    "graveyard": {
-      "tnntachieve1" : "0x4000000000000",
-      "title"        : "Day of the Dead",
-      "descr"        : "Enter a graveyard"
-    },
-
-    "anthole": {
-      "tnntachieve1" : "0x8000000000000",
-      "title"        : "Team a Headquarters",
-      "descr"        : "Enter an anthole"
-    },
-
-    "barracks": {
-      "tnntachieve1" : "0x10000000000000",
-      "title"        : "Halt, Who Goes There?",
-      "descr"        : "Enter a barracks"
-    },
-
-    "swamp": {
-      "tnntachieve1" : "0x20000000000000",
-      "title"        : "Dungeon Ecology",
-      "descr"        : "Enter a swamp"
-    },
-
-    "cocknest": {
-      "tnntachieve1" : "0x40000000000000",
-      "title"        : "Statue Showcase",
-      "descr"        : "Enter a cockatrice nest"
-    },
-
-    "asmodeus" : {
-      "tnntachieve1" : "0x80000000000000",
-      "title"        : "Asmodead",
-      "descr"        : "Kill Asmodeus"
-    },
-
-    "baalzebub" : {
-      "tnntachieve1" : "0x100000000000000",
-      "title"        : "Fly Swatter",
-      "descr"        : "Kill Baalzebub"
-    },
-
-    "orcus" : {
-      "tnntachieve1" : "0x200000000000000",
-      "title"        : "That Wand is Mine",
-      "descr"        : "Kill Orcus"
-    },
-
-    "juiblex" : {
-      "tnntachieve1" : "0x400000000000000",
-      "title"        : "Squish Squish",
-      "descr"        : "Kill Juiblex"
-    },
-
-    "demogorgon" : {
-      "tnntachieve1" : "0x800000000000000",
-      "title"        : "Demogorgone",
-      "descr"        : "Kill Demogorgon"
-    },
-
-    "yeenoghu" : {
-      "tnntachieve1" : "0x1000000000000000",
-      "title"        : "Yee-No-Go",
-      "descr"        : "Kill Yeenoghu"
-    },
-
-    "geryon" : {
-      "tnntachieve1" : "0x2000000000000000",
-      "title"        : "Geryon-Slayer",
-      "descr"        : "Kill Geryon"
-    },
-
-    "dispater" : {
-      "tnntachieve1" : "0x4000000000000000",
-      "title"        : "Dispater-Dispatcher",
-      "descr"        : "Kill Dispater"
-    },
-
-    "death" : {
-      "tnntachieve1" : "0x8000000000000000",
-      "title"        : "Conqueror of Death",
-      "descr"        : "Kill Death"
-    },
-
-    "pestilence" : {
-      "tnntachieve2" : "0x1",
-      "title"        : "Curer of Pestilence",
-      "descr"        : "Kill Pestilence"
-    },
-
-    "famine" : {
-      "tnntachieve2" : "0x2",
-      "title"        : "Feeder of Famine",
-      "descr"        : "Kill Famine"
-    },
-
-    "disgrace" : {
-      "tnntachieve2" : "0x4",
-      "title"        : "You Had ONE Job",
-      "descr"        : "Escape the Astral Plane in celestial disgrace"
-    },
-
-    "alignchange": {
-      "tnntachieve2" : "0x8",
-      "title"        : "Under New Management",
-      "descr"        : "Change your alignment by any means"
-    },
-
-    "heisenberg": {
-      "tnntachieve2" : "0x10",
-      "title"        : "Heisenberg",
-      "descr"        : "Become uncertain about your position or velocity"
-    },
-
-    "spooky": {
-      "tnntachieve2" : "0x20",
-      "title"        : "Who You Gonna Call?",
-      "descr"        : "Get scared by a ghost"
-    },
-
-    "dejavu": {
-      "tnntachieve2" : "0x40",
-      "title"        : "Groundhog Day",
-      "descr"        : "Return to a forgotten level"
-    },
-
-    "unholy": {
-      "tnntachieve2" : "0x80",
-      "title"        : "Tainted",
-      "descr"        : "Dip an item in unholy water"
-    },
-
-    "dissolve": {
-      "tnntachieve2" : "0x100",
-      "title"        : "Hydrochloric",
-      "descr"        : "Dissolve iron bars with acid"
-    },
-
-    "brokenothin": {
-      "tnntachieve2" : "0x200",
-      "title"        : "Predictably, Nothing Happens",
-      "descr"        : "Break an identified wand of nothing"
-    },
-
-    "neutralize": {
-      "tnntachieve2" : "0x400",
-      "title"        : "Neutralized",
-      "descr"        : "Cancel a monster"
-    },
-
-    "magivore": {
-      "tnntachieve2" : "0x800",
-      "title"        : "Magivore",
-      "descr"        : "Gain a magical intrinsic by eating a piece of jewelry"
-    },
-
-    "aklys": {
-      "tnntachieve2" : "0x1000",
-      "title"        : "Rope-a-Dope",
-      "descr"        : "Kill a monster with a thrown aklys"
-    },
-
-    "horndip": {
-      "tnntachieve2" : "0x2000",
-      "title"        : "Panacea",
-      "descr"        : "Neutralize a harmful potion with a unicorn horn"
-    },
-
-    "crunch": {
-      "tnntachieve2" : "0x4000",
-      "title"        : "Hulk Smash",
-      "descr"        : "Kill a monster with a heavy iron ball"
-    },
-
-    "rich": {
-      "tnntachieve2" : "0x8000",
-      "title"        : "Croesus Competitor",
-      "descr"        : "Finish a game carrying at least 50000 gold"
-    },
-
-    "filthyrich": {
-      "tnntachieve2" : "0x10000",
-      "title"        : "Croesus Buyout",
-      "descr"        : "Finish a game carrying at least 100000 gold"
-    },
-
-    "crysball": {
-      "tnntachieve2" : "0x20000",
-      "title"        : "Palantir",
-      "descr"        : "Successfully apply a crystal ball"
-    },
-
-    "maxxed": {
-      "tnntachieve2" : "0x40000",
-      "title"        : "Peak Condition",
-      "descr"        : "Raise all attributes to at least 18"
-    },
-
-    "playerbones": {
-      "tnntachieve2" : "0x80000",
-      "title"        : "Those Who Came Before",
-      "descr"        : "Sight another player's bones pile"
-    },
-
-    "roguebones": {
-      "tnntachieve2" : "0x100000",
-      "title"        : "Imitation Bones",
-      "descr"        : "Step onto the Rogue level fake bones pile"
-    },
-
-    "familiar": {
-      "tnntachieve2" : "0x200000",
-      "title"        : "Replacement Goldfish",
-      "descr"        : "Cast create familiar"
-    },
-
-    "adorn": {
-      "tnntachieve2" : "0x400000",
-      "title"        : "Pop the Question",
-      "descr"        : "Give a ring of adornment to a succubus"
-    },
-
-    "expelled": {
-      "tnntachieve2" : "0x800000",
-      "title"        : "No Soup For You!",
-      "descr"        : "Get expelled from the Quest"
-    },
-
-    "noseknows": {
-      "tnntachieve2" : "0x1000000",
-      "title"        : "Discerning Palate",
-      "descr"        : "Gain intrinsic food appraisal"
-    },
-
-    "soldierant": {
-      "tnntachieve2" : "0x2000000",
-      "title"        : "Playerbanebane",
-      "descr"        : "Kill a soldier ant"
-    },
-
-    "summon": {
-      "tnntachieve2" : "0x4000000",
-      "title"        : "Banishing Spells Not Included",
-      "descr"        : "Summon a demon lord"
-    },
-
-    "chicken": {
-      "tnntachieve2" : "0x8000000",
-      "title"        : "Tastes Like Chicken",
-      "descr"        : "Eat chickatrice or cockatrice meat"
-    },
-
-    "wrest": {
-      "tnntachieve2" : "0x10000000",
-      "title"        : "Dust to Dust",
-      "descr"        : "Wrest one last charge from a wand of wishing"
-    },
-
-    "amethyst": {
-      "tnntachieve2" : "0x20000000",
-      "title"        : "Teetotaler",
-      "descr"        : "Neutralize a potion of booze with an amethyst"
-    },
-
-    "skeleton": {
-      "tnntachieve2" : "0x40000000",
-      "title"        : "Spooky Scary Skeletons",
-      "descr"        : "Get scared by the rattling of a skeleton"
-    },
-
-    "ludios": {
-      "tnntachieve2" : "0x80000000",
-      "title"        : "Ocean's Eleven",
-      "descr"        : "Enter Fort Ludios"
-    },
-
-    "croesus": {
-      "tnntachieve2" : "0x100000000",
-      "title"        : "I Did It For The Money",
-      "descr"        : "Kill Croesus"
-    },
-
-    "liar": {
-      "tnntachieve2" : "0x200000000",
-      "title"        : "Gullible",
-      "descr"        : "Lie to a vault guard about your name"
-    },
-
-    "lucky": {
-      "tnntachieve2" : "0x400000000",
-      "title"        : "Luck of the Grasshopper",
-      "descr"        : "Reach +13 Luck"
-    },
-
-    "unlucky": {
-      "tnntachieve2" : "0x800000000",
-      "title"        : "Murphy's Law",
-      "descr"        : "Reach -13 Luck"
-    },
-
-    "greased": {
-      "tnntachieve2" : "0x1000000000",
-      "title"        : "Looking Slick",
-      "descr"        : "Grease a piece of armor"
-    },
-
-    "vibrating": {
-      "tnntachieve2" : "0x2000000000",
-      "title"        : "Watch Your Footing",
-      "descr"        : "Step onto the vibrating square"
-    },
-
-    "grandtour": {
-      "tnntachieve2" : "0x4000000000",
-      "title"        : "The Grand Tour",
-      "descr"        : "Step onto each high altar on the Astral Plane"
-    },
-
-    "partveget": {
-      "tnntachieve2" : "0x8000000000",
-      "title"        : "Friends Not Food",
-      "descr"        : "Assigned your quest with vegetarian conduct intact"
-    },
-
-    "partvegan": {
-      "tnntachieve2" : "0x10000000000",
-      "title"        : "Animal Rights Activist",
-      "descr"        : "Assigned your quest with vegan conduct intact"
-    },
-
-    "partfoodl": {
-      "tnntachieve2" : "0x20000000000",
-      "title"        : "Anti Gulp",
-      "descr"        : "Assigned your quest with foodless conduct intact"
-    },
-
-    "partathe": {
-      "tnntachieve2" : "0x40000000000",
-      "title"        : "No Help from Above",
-      "descr"        : "Assigned your quest with atheist conduct intact"
-    },
-
-    "partweap": {
-      "tnntachieve2" : "0x80000000000",
-      "title"        : "Wax On Wax Off",
-      "descr"        : "Assigned your quest with weaponless conduct intact"
-    },
-
-    "partpaci": {
-      "tnntachieve2" : "0x100000000000",
-      "title"        : "Thou Shalt Not Kill",
-      "descr"        : "Assigned your quest with pacifist conduct intact"
-    },
-
-    "partillit": {
-      "tnntachieve2" : "0x200000000000",
-      "title"        : "Me No Do Words Good",
-      "descr"        : "Assigned your quest with illiterate conduct intact"
-    },
-
-    "partppile": {
-      "tnntachieve2" : "0x400000000000",
-      "title"        : "Lost My Transmutation License",
-      "descr"        : "Assigned your quest with polypileless conduct intact"
-    },
-
-    "partpself": {
-      "tnntachieve2" : "0x800000000000",
-      "title"        : "True to Form",
-      "descr"        : "Assigned your quest with polyselfless conduct intact"
-    },
-
-    "partwishl": {
-      "tnntachieve2" : "0x1000000000000",
-      "title"        : "Self Sufficient",
-      "descr"        : "Assigned your quest with wishless conduct intact"
-    },
-
-    "partartwsh": {
-      "tnntachieve2" : "0x2000000000000",
-      "title"        : "Leave the Artifacts to the Gods",
-      "descr"        : "Assigned your quest with artifact wishless conduct intact"
-    },
-
-    "partelber": {
-      "tnntachieve2" : "0x4000000000000",
-      "title"        : "No Help From The Floor",
-      "descr"        : "Assigned your quest with Elberethless conduct intact"
-    },
-
-    "partzen": {
-      "tnntachieve2" : "0x8000000000000",
-      "title"        : "Feeling Your Way",
-      "descr"        : "Assigned your quest with zen (permablind) conduct intact"
-    },
-
-    "partnudist": {
-      "tnntachieve2" : "0x10000000000000",
-      "title"        : "Going Commando",
-      "descr"        : "Assigned your quest with nudist conduct intact"
-    },
-
-    "partgeno": {
-      "tnntachieve2" : "0x20000000000000",
-      "title"        : "Make Love, Not War",
-      "descr"        : "Assigned your quest with genocideless conduct intact"
-    },
-
-    "swapchest": {
-      "tnntachieve2" : "0x40000000000000",
-      "title"        : "It's Dangerous To Go Alone! Take This",
-      "descr"        : "Put an item into a swap chest"
-    },
-
-    "dtchat": {
-      "tnntachieve2" : "0x80000000000000",
-      "title"        : "The True Dungeon Masters",
-      "descr"        : "Chat with an active devteam member"
-    },
-
-    "dtquest": {
-      "tnntachieve2" : "0x100000000000000",
-      "title"        : "There Is No Spoon",
-      "descr"        : "Finish the task the devteam requires of you"
-    },
-
-    "ach192": {
-      "tnntachieve2" : "0x8000000000000000",
-      "title"        : "DIRGE",
-      "descr"        : "Instakill an enemy with poison"
-    },
-
-    "ach193": {
-      "tnntachieve3" : "0x1",
-      "title"        : "Gender Bender",
-      "descr"        : "Change gender two or more times"
-    },
-
-    "ach194": {
-      "tnntachieve3" : "0x2",
-      "title"        : "The Deathly Hallows",
-      "descr"        : "Wield a wand of death while wearing an invisibility cloak and amulet of life saving"
-    },
-
-    "ach195": {
-      "tnntachieve3" : "0x4",
-      "title"        : "Indiana Jones",
-      "descr"        : "Disarm a monster with a bullwhip"
-    },
-
-    "ach196": {
-      "tnntachieve3" : "0x8",
-      "title"        : "Pilgrim",
-      "descr"        : "Visit every type of aligned altar"
-    },
-
-    "ach197": {
-      "tnntachieve3" : "0x10",
-      "title"        : "Wanton Waste",
-      "descr"        : "Break an identified, charged wand of wishing"
-    },
-
-    "ach198": {
-      "tnntachieve3" : "0x20",
-      "title"        : "Poseidon",
-      "descr"        : "Kill a sea monster with a trident"
-    },
-
-    "ach199": {
-      "tnntachieve3" : "0x40",
-      "title"        : "It's 4:20 Somewhere",
-      "descr"        : "Stone a monster"
-    },
-
-    "ach200": {
-      "tnntachieve3" : "0x80",
-      "title"        : "Orpheus",
-      "descr"        : "Activate a drawbridge with the passtune"
-    },
-
-    "ach201": {
-      "tnntachieve3" : "0x100",
-      "title"        : "Michelin Guide",
-      "descr"        : "Identify both sources of food detection"
-    },
-
-    "ach202": {
-      "tnntachieve3" : "0x200",
-      "title"        : "All You Ever Wanted",
-      "descr"        : "Get a wish from every wish source"
-    },
-
-    "ach203": {
-      "tnntachieve3" : "0x400",
-      "title"        : "Touch It With A 10 Foot Pole",
-      "descr"        : "Kill a floating eye with a polearm"
-    },
-
-    "ach204": {
-      "tnntachieve3" : "0x800",
-      "title"        : "Jeweler",
-      "descr"        : "Identify all rings"
-    },
-
-    "ach205": {
-      "tnntachieve3" : "0x1000",
-      "title"        : "Mikado",
-      "descr"        : " Identify all wands"
-    },
-
-    "ach206": {
-      "tnntachieve3" : "0x2000",
-      "title"        : "King of Bling",
-      "descr"        : "Identify all amulets"
-    },
-
-    "ach207": {
-      "tnntachieve3" : "0x4000",
-      "title"        : "Bookworm",
-      "descr"        : "Identify all spellbooks"
-    },
-
-    "ach208": {
-      "tnntachieve3" : "0x8000",
-      "title"        : "Scholar",
-      "descr"        : "Identify all scrolls"
-    },
-
-    "ach209": {
-      "tnntachieve3" : "0x10000",
-      "title"        : "Alchemist",
-      "descr"        : "Identify all potions"
-    },
-
-    "ach210": {
-      "tnntachieve3" : "0x20000",
-      "title"        : "Fashionista",
-      "descr"        : "Identify all non-obvious cloaks, helms, boots, and gloves"
-    },
-
-    "ach211": {
-      "tnntachieve3" : "0x40000",
-      "title"        : "Minesweeper",
-      "descr"        : "Disarm all land mines in Fort Ludios without blowing any up"
-    },
-
-    "ach212": {
-      "tnntachieve3" : "0x80000",
-      "title"        : "Hyperliterate",
-      "descr"        : "Read every readable item in the game"
-    },
-
-    "ach213": {
-      "tnntachieve3" : "0x100000",
-      "title"        : "Civilized Cooking",
-      "descr"        : "Open a tin with a tin opener"
-    },
-
-    "ach214": {
-      "tnntachieve3" : "0x200000",
-      "title"        : "007",
-      "descr"        : "Unlock something with a credit card"
-    },
-
-    "ach215": {
-      "tnntachieve3" : "0x400000",
-      "title"        : "Bob Ross",
-      "descr"        : "Release a picture-painting demon from a camera"
-    },
-
-    "ach216": {
-      "tnntachieve3" : "0x800000",
-      "title"        : "Got No Talent",
-      "descr"        : "Scare something by playing music"
-    },
-
-    "ach217": {
-      "tnntachieve3" : "0x1000000",
-      "title"        : "Cookie Monster",
-      "descr"        : "Read a fortune without eating its cookie"
-    },
-
-    "ach218": {
-      "tnntachieve3" : "0x2000000",
-      "title"        : "Say Hello To My Evil Friend",
-      "descr"        : "Have a non-guaranteed demon lord gated in or summoned"
-    },
-
-    "ach219": {
-      "tnntachieve3" : "0x4000000",
-      "title"        : "Death onna Stick",
-      "descr"        : "Kill a member of 25 different monster species"
-    },
-
-    "ach220": {
-      "tnntachieve3" : "0x8000000",
-      "title"        : "Bring out your Dead",
-      "descr"        : "Kill a member of 50 different monster species"
-    },
-
-    "ach221": {
-      "tnntachieve3" : "0x10000000",
-      "title"        : "Diverse Death-Dealer",
-      "descr"        : "Kill a member of 100 different monster species"
-    },
-
-    "ach222": {
-      "tnntachieve3" : "0x20000000",
-      "title"        : "Grim Reaper",
-      "descr"        : "Kill a member of 200 different monster species"
-    },
-
-    "ach223": {
-      "tnntachieve3" : "0x40000000",
-      "title"        : "Gotta Kill 'em All",
-      "descr"        : "Kill a member of all eligible monster species"
-    },
-
-    "ach224": {
-      "tnntachieve3" : "0x80000000",
-      "title"        : "Learn the Alphabet",
-      "descr"        : "Kill a member of each species from a to z"
-    },
-
-    "ach225": {
-      "tnntachieve3" : "0x100000000",
-      "title"        : "Make your Mark",
-      "descr"        : "Engrave with an athame"
-    },
-
-    "ach226": {
-      "tnntachieve3" : "0x200000000",
-      "title"        : "One Hit KO",
-      "descr"        : "Deal a monster its maximum HP or more of damage (minimum 20)"
-    },
-
-    "ach227": {
-      "tnntachieve3" : "0x400000000",
-      "title"        : "Drink It To The Next Level",
-      "descr"        : "Level up by drinking from a sink"
-    },
-
-    "ach228": {
-      "tnntachieve3" : "0x800000000",
-      "title"        : "Why Won't You DIE Already",
-      "descr"        : "Kill the Wizard of Yendor 20 or more times"
-    },
-
-    "ach229": {
-      "tnntachieve3" : "0x1000000000",
-      "title"        : "You're About To Die",
-      "descr"        : "You Scrub, Get a special message saying you're about to die, you scrub"
-    },
-
-    "ach230": {
-      "tnntachieve3" : "0x2000000000",
-      "title"        : "Six Pack",
-      "descr"        : "Stock an ice box with 6 or more potions of booze"
-    },
-
-    "ach231": {
-      "tnntachieve3" : "0x4000000000",
-      "title"        : "Bar Brawler",
-      "descr"        : "Kill a monster with HP damage by smashing a bottle on it"
-    },
-
-    "ach232": {
-      "tnntachieve3" : "0x8000000000",
-      "title"        : "Extreme Omnivore",
-      "descr"        : "Eat an object from every common, edible object class"
-    },
-
-    "ach233": {
-      "tnntachieve3" : "0x10000000000",
-      "title"        : "Extinctionist Lite",
-      "descr"        : "Genocide 20 or more monster species"
-    },
-
-    "ach234": {
-      "tnntachieve3" : "0x20000000000",
-      "title"        : "Dudley's Hero",
-      "descr"        : "Extinct newts"
-    },
-
-    "ach235": {
-      "tnntachieve3" : "0x40000000000",
-      "title"        : "Ice Jesus",
-      "descr"        : "Walk on top of lava unharmed"
-    },
-
-    "ach236": {
-      "tnntachieve3" : "0x80000000000",
-      "title"        : "Rare Loot",
-      "descr"        : "Acquire an athame that was generated in the inventory of a lich"
-    },
-
-    "ach237": {
-      "tnntachieve3" : "0x100000000000",
-      "title"        : "Boy Scout",
-      "descr"        : "Complete Sokoban without incurring any penalties for rule-breaking"
-    },
-
-    "ach238": {
-      "tnntachieve3" : "0x200000000000",
-      "title"        : "Sounds Hollow",
-      "descr"        : " Reveal a secret door with a stethoscope"
-    }
-
+    "ach1": { "tnntachieve0": "0x1", "title": "Back to Civilisation", "descr": "Step onto the Minetown altar" },
+    "ach2": { "tnntachieve0": "0x2", "title": "Sage Advice", "descr": "Consult the Oracle" },
+    "ach3": { "tnntachieve0": "0x4", "title": "The Archetypal Hero", "descr": "Get admitted to the Quest" },
+    "ach4": { "tnntachieve0": "0x8", "title": "Musical Mastermind", "descr": "Learn the passtune" },
+    "ach5": { "tnntachieve0": "0x10", "title": "Indulgences", "descr": "Buy protection from a priest" },
+    "ach6": { "tnntachieve0": "0x20", "title": "Part-time Statue", "descr": "Survive stoning" },
+    "ach7": { "tnntachieve0": "0x40", "title": "The Blob", "descr": "Survive sliming" },
+    "ach8": { "tnntachieve0": "0x80", "title": "Captain Ahab", "descr": "Survive being grabbed by a sea monster" },
+    "ach9": { "tnntachieve0": "0x100", "title": "Furry Little Problem", "descr": "Cure lycanthropy" },
+    "ach10": { "tnntachieve0": "0x200", "title": "New Lease on Life", "descr": "Cure deathly illness" },
+    "ach11": { "tnntachieve0": "0x400", "title": "The Royal Treatment", "descr": "Sit on a throne" },
+    "ach12": { "tnntachieve0": "0x800", "title": "It'll Turn Up Later", "descr": "Drop a ring in a sink" },
+    "ach13": { "tnntachieve0": "0x1000", "title": "Nine for Mortal Men Doomed to Die ... Again", "descr": "Kill all nine Nazgûl" },
+    "ach14": { "tnntachieve0": "0x2000", "title": "Furious", "descr": "Kill all three erinyes" },
+    "ach15": { "tnntachieve0": "0x4000", "title": "Orthodoxy", "descr": "Convert an altar" },
+    "ach16": { "tnntachieve0": "0x8000", "title": "Always Talk to the Wise Old Man", "descr": "Chat with Izchak" },
+    "ach17": { "tnntachieve0": "0x10000", "title": "Isaac Newton", "descr": "Get fruit by kicking a tree" },
+    "ach18": { "tnntachieve0": "0x20000", "title": "Dungeon Economics", "descr": "Buy or sell something at a shop" },
+    "ach19": { "tnntachieve0": "0x40000", "title": "Stop, Thief!", "descr": "Be chased by the Keystone Kops" },
+    "ach20": { "tnntachieve0": "0x80000", "title": "Wash it Clean", "descr": "Uncurse an item in a fountain" },
+    "ach21": { "tnntachieve0": "0x100000", "title": "Well-Read", "descr": "Learn a level 5+ spell" },
+    "ach22": { "tnntachieve0": "0x200000", "title": "Pet Whisperer", "descr": "Tame a monster by feeding it" },
+    "ach23": { "tnntachieve0": "0x400000", "title": "Beast Master", "descr": "Tame a monster without using food" },
+    "ach24": { "tnntachieve0": "0x800000", "title": "The Chosen One", "descr": "Get crowned" },
+    "ach25": { "tnntachieve0": "0x1000000", "title": "Go Forth and Smite", "descr": "Receive an artifact gift from your deity" },
+    "ach26": { "tnntachieve0": "0x2000000", "title": "Some Watery Tart", "descr": "Be gifted Excalibur" },
+    "ach27": { "tnntachieve0": "0x4000000", "title": "Hand Crafted", "descr": "Make a dragon scale mail" },
+    "ach28": { "tnntachieve0": "0x8000000", "title": "A Little Light Larceny", "descr": "Get robbed by a nymph" },
+    "ach29": { "tnntachieve0": "0x10000000", "title": "Pot of Greed", "descr": "Have your purse lightened by a leprechaun" },
+    "ach30": { "tnntachieve0": "0x20000000", "title": "The Birds and the Bees", "descr": "Dally with a foocubus" },
+    "ach31": { "tnntachieve0": "0x40000000", "title": "The Most Dangerous Game", "descr": "Catch a monster in a trap set by you" },
+    "ach32": { "tnntachieve0": "0x80000000", "title": "Minetown Avenger", "descr": "Kill every orc in Orctown" },
+    "ach33": { "tnntachieve0": "0x100000000", "title": "All Clear", "descr": "Kill all hostiles in the Big Room" },
+    "ach34": { "tnntachieve0": "0x200000000", "title": "Liberated", "descr": "Get yourself unpunished" },
+    "ach35": { "tnntachieve0": "0x400000000", "title": "It's Called That For a Reason", "descr": "Come to earth by levitating over a sink" },
+    "ach36": { "tnntachieve0": "0x800000000", "title": "Diamond in the Rough", "descr": "Identify a gem with a touchstone" },
+    "ach37": { "tnntachieve0": "0x1000000000", "title": "Scribe", "descr": "Write a scroll with a magic marker" },
+    "ach38": { "tnntachieve0": "0x2000000000", "title": "First Edition", "descr": "Write a book" },
+    "ach39": { "tnntachieve0": "0x4000000000", "title": "Dragon Rider", "descr": "Ride a dragon" },
+    "ach40": { "tnntachieve0": "0x8000000000", "title": "Motherhood", "descr": "Lay an egg" },
+    "ach41": { "tnntachieve0": "0x10000000000", "title": "Shimmer", "descr": "Fireproof an item" },
+    "ach42": { "tnntachieve0": "0x20000000000", "title": "They Like Shiny Things", "descr": "Throw a gem at a unicorn" },
+    "ach43": { "tnntachieve0": "0x40000000000", "title": "Reincarnation Cancelled", "descr": "Tin a troll" },
+    "ach44": { "tnntachieve0": "0x80000000000", "title": "Kill it Twice", "descr": "Destroy a ghost" },
+    "ach45": { "tnntachieve0": "0x100000000000", "title": "Only Mostly Dead", "descr": "Revive a corpse" },
+    "ach46": { "tnntachieve0": "0x200000000000", "title": "Buffy", "descr": "Destroy an undead with #turn" },
+    "ach47": { "tnntachieve0": "0x400000000000", "title": "Wasn't a Meal", "descr": "Wasn't Ready, And You Shouldn't Have Eaten It, Eat a military ration" },
+    "ach48": { "tnntachieve0": "0x800000000000", "title": "Have Fun Storming the Castle", "descr": "Blow up the Castle drawbridge" },
+    "ach49": { "tnntachieve0": "0x1000000000000", "title": "Insert Quarter to Continue", "descr": "Get life-saved" },
+    "ach50": { "tnntachieve0": "0x2000000000000", "title": "What It Was Made For", "descr": "Kill a appropriate monster with a Bane weapon" },
+    "ach51": { "tnntachieve0": "0x4000000000000", "title": "Buried Treasure", "descr": "Dig up a grave not in a graveyard" },
+    "ach52": { "tnntachieve0": "0x8000000000000", "title": "Holy War", "descr": "Kill a priest of Moloch" },
+    "ach53": { "tnntachieve0": "0x10000000000000", "title": "Movers and Shakers", "descr": "Cause an earthquake" },
+    "ach54": { "tnntachieve0": "0x20000000000000", "title": "Snake Charmer", "descr": "Pacify a snake with a flute" },
+    "ach55": { "tnntachieve0": "0x40000000000000", "title": "Dragonslayer", "descr": "Kill a dragon" },
+    "ach56": { "tnntachieve0": "0x80000000000000", "title": "Tin Foil Hat", "descr": "Dodge a brainsucking attack" },
+    "ach57": { "tnntachieve0": "0x100000000000000", "title": "Right Back at Ya", "descr": "Hit an enemy with a thrown boomerang" },
+    "ach58": { "tnntachieve0": "0x200000000000000", "title": "It Burnsss", "descr": "Deal silver damage to a silver-hating monster" },
+    "ach59": { "tnntachieve0": "0x400000000000000", "title": "Arrakis", "descr": "Make a crysknife" },
+    "ach60": { "tnntachieve0": "0x800000000000000", "title": "Kop Training Program", "descr": "Kill a monster with a rubber hose" },
+    "ach61": { "tnntachieve0": "0x1000000000000000", "title": "Obligatory Pointy Hat", "descr": "Put on a cornuthaum as a wizard" },
+    "ach62": { "tnntachieve0": "0x2000000000000000", "title": "Hobbit Skin", "descr": "Wear a mithril coat" },
+    "ach63": { "tnntachieve0": "0x4000000000000000", "title": "The Words of the Prophets", "descr": "Read 3 random graffiti" },
+    "ach64": { "tnntachieve0": "0x8000000000000000", "title": "Are You Still Pudding Farming", "descr": "Split a pudding" },
+    "ach65": { "tnntachieve1": "0x1", "title": "Wearable Snack", "descr": "Wear a meat ring" },
+    "ach66": { "tnntachieve1": "0x2", "title": "Frozen Treats", "descr": "Loot an ice box" },
+    "ach67": { "tnntachieve1": "0x4", "title": "Pygmalion", "descr": "Create a monster from a figurine" },
+    "ach68": { "tnntachieve1": "0x8", "title": "Nerd", "descr": "Read a spellbook while wearing lenses and a T-shirt" },
+    "ach69": { "tnntachieve1": "0x10", "title": "Recharged", "descr": "Charge an object" },
+    "ach70": { "tnntachieve1": "0x20", "title": "Get Your Kicks", "descr": "Kick an item embedded in a wall or rock" },
+    "ach71": { "tnntachieve1": "0x40", "title": "Spiderman", "descr": "Grab an item with a grappling hook" },
+    "ach72": { "tnntachieve1": "0x80", "title": "More Light", "descr": "Refill the Candelabrum after it burns out after the Invocation" },
+    "ach73": { "tnntachieve1": "0x100", "title": "Balanced Diet", "descr": "Eat one of each type of produce in one game" },
+    "ach74": { "tnntachieve1": "0x200", "title": "Smorgasbord", "descr": "Eat every type of food in the game" },
+    "ach75": { "tnntachieve1": "0x400", "title": "Fill 'Er Up", "descr": "Fill an oil lamp with a potion of oil" },
+    "ach76": { "tnntachieve1": "0x800", "title": "Curse the Darkness", "descr": "Identify a potion of oil by applying it" },
+    "ach77": { "tnntachieve1": "0x1000", "title": "Bright Light", "descr": "Bright Light, Kill gremlin with any light source" },
+    "ach78": { "tnntachieve1": "0x2000", "title": "Chemistry 101", "descr": "Alchemize two potions in an established recipe" },
+    "ach79": { "tnntachieve1": "0x4000", "title": "Get Your Gas Mask", "descr": "Kill a monster with a stinking cloud" },
+    "ach80": { "tnntachieve1": "0x8000", "title": "Escape to Discworld", "descr": "Read a Terry Pratchett novel" },
+    "ach81": { "tnntachieve1": "0x10000", "title": "Near Death Experience", "descr": "#chat to Death while carrying a Terry Pratchett novel" },
+    "ach82": { "tnntachieve1": "0x20000", "title": "Mineralogist", "descr": "Identify every type of valuable gemstone" },
+    "ach83": { "tnntachieve1": "0x40000", "title": "Prize Inside!", "descr": "Get a spellbook by breaking a randomly-generated statue" },
+    "ach84": { "tnntachieve1": "0x80000", "title": "Ding-a-Ling", "descr": "Summon a nymph by ringing a cursed bell" },
+    "ach85": { "tnntachieve1": "0x100000", "title": "Best Friends Forever", "descr": "Take your starting pet to full adulthood" },
+    "ach86": { "tnntachieve1": "0x200000", "title": "Diver", "descr": "Dive into a moat or pool and retrieve an item from the bottom" },
+    "ach87": { "tnntachieve1": "0x400000", "title": "Ceiling Clinging Commute", "descr": "Ride a wumpus over water" },
+    "ach88": { "tnntachieve1": "0x800000", "title": "How Much Wood?", "descr": "Kill or tame a woodchuck" },
+    "ach89": { "tnntachieve1": "0x1000000", "title": "Storm the Gates of Heaven", "descr": "Kill an Archon" },
+    "ach90": { "tnntachieve1": "0x2000000", "title": "Shifty", "descr": "Tame a shapeshifter in any way" },
+    "ach91": { "tnntachieve1": "0x4000000", "title": "Cat Lady", "descr": "Tame seven “f” in the course of one game" },
+    "ach92": { "tnntachieve1": "0x8000000", "title": "Collapse the Wavefunction", "descr": "Open the box containing Schroedinger's Cat" },
+    "ach93": { "tnntachieve1": "0x10000000", "title": "I'm Free! I'm Free!", "descr": "Free a prisoner" },
+    "ach94": { "tnntachieve1": "0x20000000", "title": "Pet Rescue", "descr": "Free a pet from a trap that you didn't create yourself" },
+    "ach95": { "tnntachieve1": "0x40000000", "title": "Spam", "descr": "Spam, Spam, Read a scroll of mail" },
+    "ach96": { "tnntachieve1": "0x80000000", "title": "Superfood", "descr": "Gain strength by eating royal jelly" },
+    "ach97": { "tnntachieve1": "0x100000000", "title": "You Are What You Eat", "descr": "Gain an intrinsic by eating a corpse (or tin or glob)" },
+    "ach98": { "tnntachieve1": "0x200000000", "title": "The Art of the Deal", "descr": "Bankrupt a shopkeeper by getting all their money" },
+    "ach99": { "tnntachieve1": "0x400000000", "title": "Distinction Without Difference", "descr": "Polymorph a pet using a polytrap" },
+    "ach100": { "tnntachieve1": "0x800000000", "title": "Transgender", "descr": "Put on an amulet of change" },
+    "ach101": { "tnntachieve1": "0x1000000000", "title": "Father Figure", "descr": "Hatch an egg not laid by you and have it come out tame" },
+    "ach102": { "tnntachieve1": "0x2000000000", "title": "Hello", "descr": "Nurse!, Get a nurse to heal you or raise your max HP" },
+    "ach103": { "tnntachieve1": "0x4000000000", "title": "It's The Pits", "descr": "Kill something while you are stuck in a pit" },
+    "ach104": { "tnntachieve1": "0x8000000000", "title": "Never Saw It Coming", "descr": "Kill invisible monster without see invisible" },
+    "ach105": { "tnntachieve1": "0x10000000000", "title": "Shafted", "descr": "Fall down a shaft" },
+    "ach106": { "tnntachieve1": "0x20000000000", "title": "Potions of Booze Cost More Than That", "descr": "Get two bits for an ale from a priest" },
+    "ach107": { "tnntachieve1": "0x40000000000", "title": "Horatius at the Bridge", "descr": "Extinct soldiers or Keystone Kops" },
+    "ach108": { "tnntachieve1": "0x80000000000", "title": "Who's That Pretty Girl in the Mirror", "descr": "There?, Deflect a nymph with a mirror" },
+    "ach109": { "tnntachieve1": "0x100000000000", "title": "Money Talks", "descr": "Bribe a demon lord with at least 25000 gold" },
+    "ach110": { "tnntachieve1": "0x200000000000", "title": "Breaking and Entering", "descr": "Enter a vault" },
+    "ach111": { "tnntachieve1": "0x400000000000", "title": "Who Was That David Person Anyway?", "descr": "Enter a treasure zoo" },
+    "ach112": { "tnntachieve1": "0x800000000000", "title": "Absolute Monarchy", "descr": "Enter a throne room" },
+    "ach113": { "tnntachieve1": "0x1000000000000", "title": "They're After Me Lucky Charms", "descr": "Enter a leprechaun hall" },
+    "ach114": { "tnntachieve1": "0x2000000000000", "title": "Hive Mind", "descr": "Enter a beehive" },
+    "ach115": { "tnntachieve1": "0x4000000000000", "title": "Day of the Dead", "descr": "Enter a graveyard" },
+    "ach116": { "tnntachieve1": "0x8000000000000", "title": "Team a Headquarters", "descr": "Enter an anthole" },
+    "ach117": { "tnntachieve1": "0x10000000000000", "title": "Halt", "descr": "Who Goes There?, Enter a barracks" },
+    "ach118": { "tnntachieve1": "0x20000000000000", "title": "Dungeon Ecology", "descr": "Enter a swamp" },
+    "ach119": { "tnntachieve1": "0x40000000000000", "title": "Statue Showcase", "descr": "Enter a cockatrice nest" },
+    "ach120": { "tnntachieve1": "0x80000000000000", "title": "Asmodead", "descr": "Kill Asmodeus" },
+    "ach121": { "tnntachieve1": "0x100000000000000", "title": "Fly Swatter", "descr": "Kill Baalzebub" },
+    "ach122": { "tnntachieve1": "0x200000000000000", "title": "That Wand is Mine", "descr": "Kill Orcus" },
+    "ach123": { "tnntachieve1": "0x400000000000000", "title": "Squish Squish", "descr": "Kill Juiblex" },
+    "ach124": { "tnntachieve1": "0x800000000000000", "title": "Demogorgone", "descr": "Kill Demogorgon" },
+    "ach125": { "tnntachieve1": "0x1000000000000000", "title": "Yee-No-Go", "descr": "Kill Yeenoghu" },
+    "ach126": { "tnntachieve1": "0x2000000000000000", "title": "Geryon-Slayer", "descr": "Kill Geryon" },
+    "ach127": { "tnntachieve1": "0x4000000000000000", "title": "Dispater-Dispatcher", "descr": "Kill Dispater" },
+    "ach128": { "tnntachieve1": "0x8000000000000000", "title": "Conqueror of Death", "descr": "Kill Death" },
+    "ach129": { "tnntachieve2": "0x1", "title": "Curer of Pestilence", "descr": "Kill Pestilence" },
+    "ach130": { "tnntachieve2": "0x2", "title": "Feeder of Famine", "descr": "Kill Famine" },
+    "ach131": { "tnntachieve2": "0x4", "title": "Under New Management", "descr": "Change your alignment by any means" },
+    "ach132": { "tnntachieve2": "0x8", "title": "Heisenberg", "descr": "Become uncertain about your position or velocity" },
+    "ach133": { "tnntachieve2": "0x10", "title": "Who You Gonna Call?", "descr": "Get scared by a ghost" },
+    "ach134": { "tnntachieve2": "0x20", "title": "Groundhog Day", "descr": "Return to a forgotten level" },
+    "ach135": { "tnntachieve2": "0x40", "title": "Tainted", "descr": "Dip an item in unholy water" },
+    "ach136": { "tnntachieve2": "0x80", "title": "Hydrochloric", "descr": "Dissolve iron bars with acid" },
+    "ach137": { "tnntachieve2": "0x100", "title": "Predictably", "descr": "Nothing Happens, Break an identified wand of nothing" },
+    "ach138": { "tnntachieve2": "0x200", "title": "Neutralized", "descr": "Cancel a monster" },
+    "ach139": { "tnntachieve2": "0x400", "title": "Magivore", "descr": "Gain a magical intrinsic by eating a piece of jewelry" },
+    "ach140": { "tnntachieve2": "0x800", "title": "Rope-a-Dope", "descr": "Kill a monster with a thrown aklys" },
+    "ach141": { "tnntachieve2": "0x1000", "title": "Panacea", "descr": "Neutralize a harmful potion with a unicorn horn" },
+    "ach142": { "tnntachieve2": "0x2000", "title": "Hulk Smash", "descr": "Kill a monster with a heavy iron ball" },
+    "ach143": { "tnntachieve2": "0x4000", "title": "Croesus Competitor", "descr": "Finish a game carrying at least 50000 gold" },
+    "ach144": { "tnntachieve2": "0x8000", "title": "Croesus Buyout", "descr": "Finish a game carrying at least 100000 gold" },
+    "ach145": { "tnntachieve2": "0x10000", "title": "Palantir", "descr": "Successfully apply a crystal ball" },
+    "ach146": { "tnntachieve2": "0x20000", "title": "Peak Condition", "descr": "Raise all attributes to at least 18" },
+    "ach147": { "tnntachieve2": "0x40000", "title": "Those Who Came Before", "descr": "Sight another player's bones pile" },
+    "ach148": { "tnntachieve2": "0x80000", "title": "Imitation Bones", "descr": "Step onto the Rogue level fake bones pile" },
+    "ach149": { "tnntachieve2": "0x100000", "title": "Replacement Goldfish", "descr": "Cast create familiar" },
+    "ach150": { "tnntachieve2": "0x200000", "title": "Pop the Question", "descr": "Give a ring of adornment to a succubus" },
+    "ach151": { "tnntachieve2": "0x400000", "title": "No Soup For You!", "descr": "Get expelled from the Quest" },
+    "ach152": { "tnntachieve2": "0x800000", "title": "Discerning Palate", "descr": "Gain intrinsic food appraisal" },
+    "ach153": { "tnntachieve2": "0x1000000", "title": "Playerbanebane", "descr": "Kill a soldier ant" },
+    "ach154": { "tnntachieve2": "0x2000000", "title": "Banishing Spells Not Included", "descr": "Summon a demon lord" },
+    "ach155": { "tnntachieve2": "0x4000000", "title": "Tastes Like Chicken", "descr": "Eat chickatrice or cockatrice meat" },
+    "ach156": { "tnntachieve2": "0x8000000", "title": "Dust to Dust", "descr": "Wrest one last charge from a wand of wishing" },
+    "ach157": { "tnntachieve2": "0x10000000", "title": "Teetotaler", "descr": "Neutralize a potion of booze with an amethyst" },
+    "ach158": { "tnntachieve2": "0x20000000", "title": "Spooky Scary Skeletons", "descr": "Get scared by the rattling of a skeleton" },
+    "ach159": { "tnntachieve2": "0x40000000", "title": "Ocean's Eleven", "descr": "Enter Fort Ludios" },
+    "ach160": { "tnntachieve2": "0x80000000", "title": "I Did It For The Money", "descr": "Kill Croesus" },
+    "ach161": { "tnntachieve2": "0x100000000", "title": "Gullible", "descr": "Lie to a vault guard about your name" },
+    "ach162": { "tnntachieve2": "0x200000000", "title": "Luck of the Grasshopper", "descr": "Reach +13 Luck" },
+    "ach163": { "tnntachieve2": "0x400000000", "title": "Murphy's Law", "descr": "Reach -13 Luck" },
+    "ach164": { "tnntachieve2": "0x800000000", "title": "Looking Slick", "descr": "Grease a piece of armor" },
+    "ach165": { "tnntachieve2": "0x1000000000", "title": "Watch Your Footing", "descr": "Step onto the vibrating square" },
+    "ach166": { "tnntachieve2": "0x2000000000", "title": "The Grand Tour", "descr": "Visit each high altar on the Astral Plane" },
+    "ach167": { "tnntachieve2": "0x4000000000", "title": "Friends Not Food", "descr": "Receive the Quest with vegetarian conduct intact" },
+    "ach168": { "tnntachieve2": "0x8000000000", "title": "Animal Rights Activist", "descr": "Receive the Quest with vegan conduct intact" },
+    "ach169": { "tnntachieve2": "0x10000000000", "title": "Anti Gulp", "descr": "Receive the Quest with foodless conduct intact" },
+    "ach170": { "tnntachieve2": "0x20000000000", "title": "No Help from Above", "descr": "Receive the Quest with atheist conduct intact" },
+    "ach171": { "tnntachieve2": "0x40000000000", "title": "Wax On Wax Off", "descr": "Receive the Quest with weaponless conduct intact" },
+    "ach172": { "tnntachieve2": "0x80000000000", "title": "Thou Shalt Not Kill", "descr": "Receive the Quest with pacifist conduct intact" },
+    "ach173": { "tnntachieve2": "0x100000000000", "title": "Me No Do Words Good", "descr": "Receive the Quest with illiterate conduct intact" },
+    "ach174": { "tnntachieve2": "0x200000000000", "title": "Lost My Transmutation License", "descr": "Receive the Quest with polypileless conduct intact" },
+    "ach175": { "tnntachieve2": "0x400000000000", "title": "True to Form", "descr": "Receive the Quest with polyselfless conduct intact" },
+    "ach176": { "tnntachieve2": "0x800000000000", "title": "Self Sufficient", "descr": "Receive the Quest with wishless conduct intact" },
+    "ach177": { "tnntachieve2": "0x1000000000000", "title": "Leave the Artifacts to the Gods", "descr": "Receive the Quest with artifact wishless conduct intact" },
+    "ach178": { "tnntachieve2": "0x2000000000000", "title": "Feeling Your Way", "descr": "Receive the Quest with zen (permablind) conduct intact" },
+    "ach179": { "tnntachieve2": "0x4000000000000", "title": "Going Commando", "descr": "Receive the Quest with nudist conduct intact" },
+    "ach180": { "tnntachieve2": "0x8000000000000", "title": "Make Love", "descr": "Not War, Receive the Quest with genocideless conduct intact" },
+    "ach181": { "tnntachieve2": "0x10000000000000", "title": "No Help From The Floor", "descr": "Receive the Quest with Elberethless conduct intact" },
+    "ach182": { "tnntachieve2": "0x20000000000000", "title": "It's A Wonderful Trip", "descr": "Receive the Quest with permahallu conduct intact" },
+    "ach183": { "tnntachieve2": "0x40000000000000", "title": "Silent World", "descr": "Receive the Quest with permadeaf conduct intact" },
+    "ach184": { "tnntachieve2": "0x80000000000000", "title": "Keep Your Fancy Toys", "descr": "Receive the Quest with artifactless conduct intact" },
+    "ach185": { "tnntachieve2": "0x100000000000000", "title": "New Dungeon", "descr": "Never Occupied, Receive the Quest with bonesless conduct intact" },
+    "ach186": { "tnntachieve2": "0x200000000000000", "title": "Extradimensionally Challenged", "descr": "Receive the Quest with swapchestless conduct intact" },
+    "ach187": { "tnntachieve2": "0x400000000000000", "title": "Fur Allergy", "descr": "Receive the Quest with petless conduct intact" },
+    "ach188": { "tnntachieve2": "0x800000000000000", "title": "Death Isn't So Cheap", "descr": "Receive the Quest with survivor conduct intact" },
+    "ach189": { "tnntachieve2": "0x1000000000000000", "title": "It's Dangerous To Go Alone! Take This", "descr": "Put an item into a swap chest" },
+    "ach190": { "tnntachieve2": "0x2000000000000000", "title": "The True Dungeon Masters", "descr": "Chat with an active devteam member" },
+    "ach191": { "tnntachieve2": "0x4000000000000000", "title": "There Is No Spoon", "descr": "Finish the task the devteam requires of you" },
+    "ach192": { "tnntachieve2": "0x8000000000000000", "title": "DIRGE", "descr": "Instakill an enemy with poison" },
+    "ach193": { "tnntachieve3": "0x1", "title": "Gender Bender", "descr": "Change gender two or more times" },
+    "ach194": { "tnntachieve3": "0x2", "title": "The Deathly Hallows", "descr": "Wield a wand of death while wearing an invisibility cloak and amulet of life saving" },
+    "ach195": { "tnntachieve3": "0x4", "title": "Indiana Jones", "descr": "Disarm a monster with a bullwhip" },
+    "ach196": { "tnntachieve3": "0x8", "title": "Pilgrim", "descr": "Visit every type of aligned altar" },
+    "ach197": { "tnntachieve3": "0x10", "title": "Wanton Waste", "descr": "Break an identified, charged wand of wishing" },
+    "ach198": { "tnntachieve3": "0x20", "title": "Poseidon", "descr": "Kill a sea monster with a trident" },
+    "ach199": { "tnntachieve3": "0x40", "title": "It's 4:20 Somewhere", "descr": "Stone a monster" },
+    "ach200": { "tnntachieve3": "0x80", "title": "Orpheus", "descr": "Activate a drawbridge with the passtune" },
+    "ach201": { "tnntachieve3": "0x100", "title": "Michelin Guide", "descr": "Identify both sources of food detection" },
+    "ach202": { "tnntachieve3": "0x200", "title": "All You Ever Wanted", "descr": "Get a wish from every wish source" },
+    "ach203": { "tnntachieve3": "0x400", "title": "Touch It With A 10 Foot Pole", "descr": "Kill a floating eye with a polearm" },
+    "ach204": { "tnntachieve3": "0x800", "title": "Jeweler", "descr": "Identify all rings" },
+    "ach205": { "tnntachieve3": "0x1000", "title": "Mikado", "descr": "Identify all wands" },
+    "ach206": { "tnntachieve3": "0x2000", "title": "King of Bling", "descr": "Identify all amulets" },
+    "ach207": { "tnntachieve3": "0x4000", "title": "Bookworm", "descr": "Identify all spellbooks" },
+    "ach208": { "tnntachieve3": "0x8000", "title": "Scholar", "descr": "Identify all scrolls" },
+    "ach209": { "tnntachieve3": "0x10000", "title": "Alchemist", "descr": "Identify all potions" },
+    "ach210": { "tnntachieve3": "0x20000", "title": "Fashionista", "descr": "Identify all non-obvious cloaks, helms, boots, and gloves" },
+    "ach211": { "tnntachieve3": "0x40000", "title": "Minesweeper", "descr": "Disarm all land mines in Fort Ludios without blowing any up" },
+    "ach212": { "tnntachieve3": "0x80000", "title": "Hyperliterate", "descr": "Read every readable item in the game" },
+    "ach213": { "tnntachieve3": "0x100000", "title": "Civilized Cooking", "descr": "Open a tin with a tin opener" },
+    "ach214": { "tnntachieve3": "0x200000", "title": "007", "descr": "Unlock something with a credit card" },
+    "ach215": { "tnntachieve3": "0x400000", "title": "Bob Ross", "descr": "Release a picture-painting demon from a camera" },
+    "ach216": { "tnntachieve3": "0x800000", "title": "Got No Talent", "descr": "Scare something by playing music" },
+    "ach217": { "tnntachieve3": "0x1000000", "title": "Cookie Monster", "descr": "Read a fortune without eating its cookie" },
+    "ach218": { "tnntachieve3": "0x2000000", "title": "Say Hello To My Evil Friend", "descr": "Have a non-guaranteed demon lord gated in or summoned" },
+    "ach219": { "tnntachieve3": "0x4000000", "title": "Death onna Stick", "descr": "Kill a member of 25 different monster species" },
+    "ach220": { "tnntachieve3": "0x8000000", "title": "Bring out your Dead", "descr": "Kill a member of 50 different monster species" },
+    "ach221": { "tnntachieve3": "0x10000000", "title": "Diverse Death-Dealer", "descr": "Kill a member of 100 different monster species" },
+    "ach222": { "tnntachieve3": "0x20000000", "title": "Grim Reaper", "descr": "Kill a member of 200 different monster species" },
+    "ach223": { "tnntachieve3": "0x40000000", "title": "Gotta Kill 'em All", "descr": "Kill a member of all eligible monster species" },
+    "ach224": { "tnntachieve3": "0x80000000", "title": "Learn the Alphabet", "descr": "Kill a member of each species from a to z" },
+    "ach225": { "tnntachieve3": "0x100000000", "title": "Make your Mark", "descr": "Engrave with an athame" },
+    "ach226": { "tnntachieve3": "0x200000000", "title": "One Hit KO", "descr": "Deal a monster its maximum HP or more of damage (minimum 20)" },
+    "ach227": { "tnntachieve3": "0x400000000", "title": "Drink It To The Next Level", "descr": "Level up by drinking from a sink" },
+    "ach228": { "tnntachieve3": "0x800000000", "title": "Why Won't You DIE Already", "descr": "Kill the Wizard of Yendor 20 or more times" },
+    "ach229": { "tnntachieve3": "0x1000000000", "title": "You're About To Die", "descr": "You Scrub, Get a special message saying you're about to die, you scrub" },
+    "ach230": { "tnntachieve3": "0x2000000000", "title": "Six Pack", "descr": "Stock an ice box with 6 or more potions of booze" },
+    "ach231": { "tnntachieve3": "0x4000000000", "title": "Bar Brawler", "descr": "Kill a monster with HP damage by smashing a bottle on it" },
+    "ach232": { "tnntachieve3": "0x8000000000", "title": "Extreme Omnivore", "descr": "Eat an object from every common, edible object class" },
+    "ach233": { "tnntachieve3": "0x10000000000", "title": "Extinctionist Lite", "descr": "Genocide 20 or more monster species" },
+    "ach234": { "tnntachieve3": "0x20000000000", "title": "Dudley's Hero", "descr": "Extinct newts" },
+    "ach235": { "tnntachieve3": "0x40000000000", "title": "Ice Jesus", "descr": "Walk on top of lava unharmed" },
+    "ach236": { "tnntachieve3": "0x80000000000", "title": "Rare Loot", "descr": "Acquire an athame that was generated in the inventory of a lich" },
+    "ach237": { "tnntachieve3": "0x100000000000", "title": "Boy Scout", "descr": "Complete Sokoban without incurring any penalties for rule-breaking" },
+    "ach238": { "tnntachieve3": "0x200000000000", "title": "Sounds Hollow", "descr": "Reveal a secret door with a stethoscope" },
+    "ach239": { "tnntachieve3": "0x400000000000", "title": "DO YOU WANT TO DO THIS BRO? BECAUSE IT'S THUNDERDOME TIME!", "descr": "Defeat the NPC from the NPC Deathmatch quest" }
   },
 
   #---------------------------------------------------------------------------
