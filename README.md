@@ -1,22 +1,22 @@
-# THE NEXT NOVEMBER TOURNAMENT SCOREBOARD / BACKEND
+# THE NOVEMBER NETHACK TOURNAMENT SCOREBOARD / BACKEND
 
 Back-end part of the /dev/null/nethack replacement
 tournament. Work in progress.
 
 ## COMMAND-LINE OPTIONS
 
-**--help**  
+**--help**
 Display usage summary and exit.
 
-**--json**, **--json**=*file*  
+**--json**, **--json**=*file*
 Output the scoreboard's internal data that are passed into templates as JSON
 text file, either on output or to specified file.
 
-**--nohtml**  
+**--nohtml**
 Do not compile templates into HTML. Useful when you only want to get the
 JSON data.
 
-**--coalesce**=*file*  
+**--coalesce**=*file*
 Merge the source xlogfiles into one unified xlogfile. This can be used by
 external consumer to see the tournament as a single source.
 
@@ -42,7 +42,7 @@ The detailed description of the section follows.
 
 This section has only two sub-sections: `all` and `ascs`.
 
-**`games`.`all`**  
+**`games`.`all`**
 
 `games`.`all` is an array of hashes, each hash representing one game
 from xlogfile(s), with the keys being the xlogfile fields with some
@@ -78,7 +78,7 @@ itself)
 * `scum` indicates if the game is regarded as scummmed; scumming
 criteria are defined in configuration
 
-**`games`.`ascs`**  
+**`games`.`ascs`**
 
 This is a simple array of ascended games, in chronological order.
 
@@ -153,7 +153,7 @@ be empty or even missing
 
 This section details clan data and has two keys `all` and `ordered`.
 
-**`clans`.`all`**  
+**`clans`.`all`**
 
 List of hashes, each hash for one clan. The (numerical) index of a clan in
 this array is how the clans are refered to elsewhere.
