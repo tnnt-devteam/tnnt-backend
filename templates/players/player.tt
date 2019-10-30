@@ -180,7 +180,7 @@
     <div
       class="achieve-item[% IF plr.achievements.grep('^' _ ach _ '$').size %] achieved[% ELSE %] not-achieved[% END %]"
       title="[% config.achievements.item(ach).descr %]"
-      [% IF ach == 'ndexperience' %] style="font-variant:small-caps" [% END %]
+      [% IF config.achievements.item(ach).title == 'Near Death Experience' %] style="font-variant:small-caps" [% END %]
     >
       [% config.achievements.item(ach).title %]
     </div>
