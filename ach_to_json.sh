@@ -24,14 +24,12 @@ read -d '' awkscript << 'EOF'
 # produce commas before the line, except on the first line. This avoids us
 # having to save to a temporary file and count its lines (= number of
 # achievements) separately to know where the last line is.
-NR > 1 {
-  printf(", ")
-}
 {
   off = ((NR - 1) % 64); # compensate for NR starting at 1 rather than 0
   X = ((NR - 1) - off) / 64;
   hex = lshift(1, off);
-  printf "\\"ach%d\\": { \\"tnntachieve%d\\": \\"0x%x\\", \\"title\\": \\"%s\\", \\"descr\\": \\"%s\\" }\\n", NR, X, hex, $1, $2;
+  # note $3 is just either }, or }
+  printf "\\"ach%d\\": { \\"tnntachieve%d\\": \\"0x%x\\", \\"title\\": \\"%s\\", \\"descr\\": \\"%s\\" %s\\n", NR, X, hex, $1, $2, $3;
 }
 EOF
 
@@ -45,7 +43,7 @@ echo '{'
 # Second line: strip C syntax and transform into tab-separated strings.
 # Third line: apply awk script to turn it into JSON.
 sed -n '/tnnt_achievements\[/,/^};$/ p' $1/src/decl.c | head -n -1 | tail -n +2 \
-  | sed -e 's/^ *{//' -e 's/"//g' -e 's/\},$//' -e 's/,/\t/' \
+  | sed -e 's/^ *{//' -e 's/", \?/"\t/' -e 's/"//g' -e 's/\}/\t\}/' \
   | awk -F'\t' "$awkscript" #\
   # | sed "s/\'/\"/g"
 
