@@ -485,7 +485,7 @@
 
     <tr>
       <td class="trophy-name"
-          title="Moral cleanliness; never become degraded with scummy behavior. 10 points.">Never Scum a Game</td>
+          title="Never quit or escape within the first 100 turns. 10 points.">Never Scum a Game</td>
       <td class="trophy-multi">
         [% IF trophies.players.exists('noscum');
           FOREACH plr IN trophies.players.noscum;
