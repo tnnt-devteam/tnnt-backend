@@ -1063,20 +1063,22 @@
       "descr"   : "Enter the Astral Plane"
     },
 
+    #-- note: 0x100 is the "u.uachieve.ascended" bit; TNNT has no achievement for this
+
     "meluckstone" : {
-      "achieve" : "0x100",
+      "achieve" : "0x200",
       "title"   : "Are You Feeling Lucky",
       "descr"   : "Get the luckstone from Mines' End"
     },
 
     "sokoban" : {
-      "achieve" : "0x200",
+      "achieve" : "0x400",
       "title"   : "Boulder Pusher",
       "descr"   : "Finish Sokoban"
     },
 
     "medusa" : {
-      "achieve" : "0x400",
+      "achieve" : "0x800",
       "title"   : "Anti-Stoner",
       "descr"   : "Kill Medusa"
     },
