@@ -73,7 +73,6 @@ sub add_game
   return if !exists $self->eligible_clans()->{$clan->n()};
 
   #--- aux function to find highest-scoring eligible clan
-  # FIXME: This doesn't handle ties
 
   my $get_new_clan = sub {
     my @sorted =
@@ -105,12 +104,14 @@ sub add_game
 
   my $new_clan = $get_new_clan->();
 
-  #--- if the leading clan has not changed, do nothing
+  #--- If the (old) leading clan has the same score as the new leader,
+  #--- either it has not changed, or it's a tie, in which case the old
+  #--- leader gets priority due to attaining the score first.
 
   if(
     (
       $self->topclan()
-      && $self->topclan()->n() == $new_clan->n()
+      && $self->topclan()->sum_score('!clan-medusacup') == $new_clan->sum_score('!clan-medusacup')
     ) || (
       !$self->topclan()
       && !defined $new_clan
