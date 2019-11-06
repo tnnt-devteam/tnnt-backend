@@ -108,6 +108,11 @@ has src => (
   required => 1,
 );
 
+has server => (
+  is => 'ro',
+  required => 1,
+);
+
 # clan unique flag
 
 has clan_unique => (
