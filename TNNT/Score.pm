@@ -172,6 +172,7 @@ sub export
     games => {
       all => $self->export_games(1),
       ascs => $self->export_ascensions(),
+      scums => $self->count_scums,
     },
     players => $self->export_players(),
     clans => $clans->export(),

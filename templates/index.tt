@@ -114,6 +114,10 @@
         <td>[% games.all.size %]
       </tr>
       <tr>
+        <td>Scummed games</td>
+        <td>[% games.scums %]
+      </tr>
+      <tr>
         <td>Ascensions</td>
         <td>[% games.ascs.size %]
       </tr>
