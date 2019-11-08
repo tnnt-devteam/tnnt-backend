@@ -233,6 +233,7 @@ sub export
       scores       => $clan->export_scores(),
       games        => $clan->export_games(),
       ascs         => $clan->export_ascensions(),
+      scum         => $clan->count_scums(),
       achievements => $clan->achievements(),
       udeaths_rank => $clan->udeaths_rank(),
       unique_deaths => [

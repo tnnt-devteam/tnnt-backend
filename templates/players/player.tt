@@ -59,6 +59,13 @@
     <td class="num">[% plr.ascs.size || 0 %]</td>
   </tr>
 
+  [% IF plr.scum %]
+  <tr>
+    <td>games scummed</td>
+    <td class="num">[% plr.scum %]</td>
+  </tr>
+  [% END %]
+
   <tr>
     <td>ascension ratio</td>
     <td class="num">
