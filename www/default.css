@@ -48,6 +48,10 @@ h5 {
   font-weight: bold;
 }
 
+.more {
+  text-align: center;
+}
+
 a {
   color: inherit;
   text-decoration: none;

@@ -1,0 +1,37 @@
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::All Games</title>
+  [% INCLUDE headlinks.tt %]
+</head>
+
+<body>
+
+[% INCLUDE header.tt page = 'games' %]
+
+<h2>List of all games</h2>
+
+[% IF games.all.size %]
+  <table>
+    <thead>
+      [% INCLUDE game.tt head=1 class="framed" %]
+    </thead>
+    <tbody>
+      [%
+        FOREACH game IN games.all.reverse;
+          IF !game.scum;
+            SET i = game.n + 1;
+            INCLUDE game.tt game=game.n;
+          END;
+        END;
+      %]
+    </tbody>
+  </table>
+[% ELSE %]
+  <p>There are no games yet %]
+[% END %]
+
+</body>

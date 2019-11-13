@@ -239,6 +239,9 @@
           LAST IF cnt < 1 || i < 1;
         END;
       %]
+      <tr>
+        <td colspan=10 class="more"><a href="ascensions.html">. . .</a></td>
+      </tr>
     </tbody>
   </table>
 [% ELSE %]
@@ -269,6 +272,9 @@
           LAST IF cnt < 1 || i < 1;
         END;
       %]
+      <tr>
+        <td colspan=10 class="more"><a href="games.html">. . .</a></td>
+      </tr>
     </tbody>
   </table>
 [% ELSE %]

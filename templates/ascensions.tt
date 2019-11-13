@@ -1,0 +1,38 @@
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::All Ascensions</title>
+  [% INCLUDE headlinks.tt %]
+</head>
+
+<body>
+
+[% INCLUDE header.tt page = 'ascensions' %]
+
+<h2>List of all ascensions</h2>
+
+[% IF games.ascs.size %]
+  <table>
+    <thead>
+      [% INCLUDE game.tt head=1 aswon=1 class="framed" %]
+    </thead>
+    <tbody>
+      [%
+        SET i = games.ascs.size;
+        FOREACH game IN games.ascs.reverse;
+          IF !game.scum;
+            INCLUDE game.tt aswon=1;
+            SET i = i - 1;
+          END;
+        END;
+      %]
+    </tbody>
+  </table>
+[% ELSE %]
+  <p>There are no ascensions yet %]
+[% END %]
+
+</body>
