@@ -264,7 +264,7 @@
 
     "conduct:geno" : {
       "title"  : "Conduct: Genocideless",
-      "multi"  : 1.02
+      "multi"  : 1.1
     },
 
     "conduct:elbe" : {
@@ -985,7 +985,7 @@
 
     "order" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "elbe", "illi", "paci", "food", "zen", "nude", "halo", "wiz", "ride",
+      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "wiz", "ride",
       "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
     ],
 
@@ -993,7 +993,7 @@
 
     "all" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "elbe", "illi", "paci", "food", "zen", "nude", "halo", "wiz", "ride",
+      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "wiz", "ride",
       "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
     ],
 
