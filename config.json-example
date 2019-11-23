@@ -347,8 +347,8 @@
 
     "speedrun" : {
       "title"  : "Speedrun",
-      "factor" : 20000,
-      "cutoff" : null
+      "factor" : 500000,
+      "cutoff" : 20000
     },
 
     "greatrace:orc" : {
