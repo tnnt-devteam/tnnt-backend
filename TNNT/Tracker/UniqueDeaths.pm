@@ -122,7 +122,10 @@ sub add_game
   #--- init clan tracking
 
   if(!exists $self->_clan_track()->{$clan->n()}) {
-    $self->_clan_track()->{$clan->n()} = {};
+    $self->_clan_track()->{$clan->n()} = {
+      deaths => {},
+      last_death => undef,
+    };
   }
 
   my $ctrk = $self->_clan_track()->{$clan->n()};
@@ -132,10 +135,11 @@ sub add_game
   #--- unique deaths list, re-sort the clan ladder and see if the unique
   #--- deaths leading clan has changed
 
-  if(!exists $ctrk->{$death}) {
+  if(!exists $ctrk->{'deaths'}{$death}) {
 
     # track the new unique death
-    $ctrk->{$death} = $game;
+    $ctrk->{'deaths'}{$death} = $game;
+    $ctrk->{'last_death'} = $game;
     push(
       @{$clan->unique_deaths()},
       [ $death, $game ]
@@ -147,9 +151,20 @@ sub add_game
         $clans->get_by_id($_);
       }
       sort {
-        scalar keys %{$self->_clan_track()->{$b}}
-        <=>
-        scalar keys %{$self->_clan_track()->{$a}}
+        my $ud_a = keys %{$self->_clan_track()->{$a}{'deaths'}};
+        my $ud_b = keys %{$self->_clan_track()->{$b}{'deaths'}};
+        if($ud_a == $ud_b) {
+          my ($ld_a, $ld_b) = (0, 0);
+          if($self->_clan_track()->{$a}{'last_death'}) {
+            $ld_a = $self->_clan_track()->{$a}{'last_death'}->endtime;
+          }
+          if($self->_clan_track()->{$b}{'last_death'}) {
+            $ld_b = $self->_clan_track()->{$b}{'last_death'}->endtime;
+          }
+          $ld_a <=> $ld_b;
+        } else {
+          $ud_b <=> $ud_a;
+        }
       } keys %{$self->_clan_track()}
     ]);
 
@@ -175,7 +190,7 @@ sub add_game
         trophy => 'clan-' . $self->name(),
         when => $game->endtime(),
         games => [ $game ],
-        data => { uniqdeaths => scalar(keys %$ctrk) },
+        data => { uniqdeaths => scalar(keys %{$ctrk->{'deaths'}}) },
       ));
     }
   }
