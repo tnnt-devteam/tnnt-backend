@@ -1,0 +1,30 @@
+[%- PROCESS 'macros.tt' -%]
+<!doctype html>
+
+<html>
+
+<head>
+  <title>TNNT::About</title>
+  [% INCLUDE headlinks.tt %]
+</head>
+
+<body>
+
+[% INCLUDE header.tt page = 'archives' %]
+
+<article>
+  <h4>Past Tournament Archives</h4>
+  <p>
+    Below you can find static snapshots of the tournament site following the
+    end of previous tournaments, with all of the data from the games in that
+    year's tournament.
+  </p>
+  <ul>
+    <li><a href="/tnnt/archives/2018">2018 Tournament</a></li>
+    <li><a href="/tnnt/archives/2019">2019 Tournament</a></li>
+  </ul>
+</article>
+
+</body>
+
+</html>

@@ -23,7 +23,7 @@
           <td class="rightmenu">
               <a href="rules.html" class="menu [% IF page == 'rules' %] menusel [% END %]">RULES</a>
               <a href="about.html" class="menu [% IF page == 'about' %] menusel [% END %]">ABOUT</a>
-              <a href="/tnnt/archives/2018" class="menu [% IF page == 'archive' %] menusel [% END %]">ARCHIVES</a>
+              <a href="archives.html" class="menu [% IF page == 'archive' %] menusel [% END %]">ARCHIVES</a>
               <a href="/tnnt/clanmgmt" class="menu [% IF page == 'settings' %] menusel [% END %]">MY CLAN</a>
           </td>
       </tr>
