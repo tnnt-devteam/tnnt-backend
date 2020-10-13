@@ -204,6 +204,31 @@
       "points" : 50
     },
 
+    "no-wizard-kills" : {
+      "title"  : "Conduct: Never kill the Wizard",
+      "points"  : 20
+    },
+
+    "no-rider-kills" : {
+      "title"  : "Conduct: Never kill a Rider",
+      "points"  : 10
+    },
+
+    "no-vlad-kill" : {
+      "title"  : "Conduct: Never kill Vlad",
+      "points"  : 5
+    },
+
+    "no-nemesis-kill" : {
+      "title"  : "Conduct: Never kill your quest nemesis",
+      "points"  : 5
+    },
+
+    "no-priest-kill" : {
+      "title"  : "Conduct: Never kill the High Priest of Moloch",
+      "points"  : 5
+    },
+
     "conduct" : {
       "title" : "Conduct"
     },
@@ -288,24 +313,9 @@
       "multi"  : 1.2
     },
 
-    "conduct:wiz" : {
-      "title"  : "Conduct: Never kill the Wizard",
-      "points"  : 20
-    },
-
-    "conduct:ride" : {
-      "title"  : "Conduct: Never kill a Rider",
-      "points"  : 10
-    },
-
     "conduct:arts" : {
       "title"  : "Conduct: Artifactless",
       "multi"  : 1.1
-    },
-
-    "conduct:vlad" : {
-      "title"  : "Conduct: Never kill Vlad",
-      "points"  : 5
     },
 
     "conduct:bone" : {
@@ -316,16 +326,6 @@
     "conduct:swap" : {
       "title"  : "Conduct: Swapchestless",
       "multi"  : 1.01
-    },
-
-    "conduct:neme" : {
-      "title"  : "Conduct: Never kill your quest nemesis",
-      "points"  : 5
-    },
-
-    "conduct:prst" : {
-      "title"  : "Conduct: Never kill the High Priest of Moloch",
-      "points"  : 5
     },
 
     "conduct:surv" : {
