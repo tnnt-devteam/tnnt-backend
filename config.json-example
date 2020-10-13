@@ -210,12 +210,12 @@
 
     "conduct:food" : {
       "title"  : "Conduct: Foodless",
-      "multi"  : 2
+      "multi"  : 1.5
     },
 
     "conduct:vegn" : {
       "title"  : "Conduct: Vegan",
-      "multi"  : 1.4
+      "multi"  : 1.3
     },
 
     "conduct:vegt" : {
@@ -225,22 +225,22 @@
 
     "conduct:athe" : {
       "title"  : "Conduct: Atheist",
-      "multi"  : 1.2
+      "multi"  : 1.15
     },
 
     "conduct:weap" : {
       "title"  : "Conduct: Weaponless",
-      "multi"  : 1.2
+      "multi"  : 1.15
     },
 
     "conduct:paci" : {
       "title"  : "Conduct: Pacifist",
-      "multi"  : 2
+      "multi"  : 1.6
     },
 
     "conduct:illi" : {
       "title"  : "Conduct: Illiterate",
-      "multi"  : 1.4
+      "multi"  : 1.3
     },
 
     "conduct:pile" : {
@@ -275,57 +275,57 @@
 
     "conduct:zen"  : {
       "title"  : "Conduct: Zen",
-      "multi"  : 2.2
+      "multi"  : 1.8
     },
 
     "conduct:nude" : {
       "title"  : "Conduct: Nude",
-      "multi"  : 2
+      "multi"  : 1.6
     },
 
     "conduct:halu" : {
       "title"  : "Conduct: Permahallucinating",
-      "multi"  : 2
+      "multi"  : 1.2
     },
 
     "conduct:wiz" : {
       "title"  : "Conduct: Never kill the Wizard",
-      "multi"  : 1.6
+      "points"  : 20
     },
 
     "conduct:ride" : {
       "title"  : "Conduct: Never kill a Rider",
-      "multi"  : 1.4
+      "points"  : 10
     },
 
     "conduct:arts" : {
       "title"  : "Conduct: Artifactless",
-      "multi"  : 1.2
+      "multi"  : 1.1
     },
 
     "conduct:vlad" : {
       "title"  : "Conduct: Never kill Vlad",
-      "multi"  : 1.2
+      "points"  : 5
     },
 
     "conduct:bone" : {
       "title"  : "Conduct: Bonesless",
-      "multi"  : 1.1
+      "multi"  : 1.01
     },
 
     "conduct:swap" : {
       "title"  : "Conduct: Swapchestless",
-      "multi"  : 1.1
+      "multi"  : 1.01
     },
 
     "conduct:neme" : {
       "title"  : "Conduct: Never kill your quest nemesis",
-      "multi"  : 1.1
+      "points"  : 5
     },
 
     "conduct:prst" : {
       "title"  : "Conduct: Never kill the High Priest of Moloch",
-      "multi"  : 1.05
+      "points"  : 5
     },
 
     "conduct:surv" : {
@@ -335,12 +335,12 @@
 
     "conduct:pets" : {
       "title"  : "Conduct: Petless",
-      "multi"  : 1.05
+      "multi"  : 1.02
     },
 
     "conduct:deaf" : {
       "title"  : "Conduct: Permadeaf",
-      "multi"  : 1.05
+      "multi"  : 1.02
     },
 
     # speedrunning bonus is int(factor / turns); if cutoff is defined then
