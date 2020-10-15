@@ -1,4 +1,4 @@
-#!/usr/bin/env perl -I.
+#!/usr/bin/env perl
 
 #=============================================================================
 # THE NOVEMBER NETHACK TOURNAMENT
