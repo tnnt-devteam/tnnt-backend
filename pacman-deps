@@ -1,0 +1,6 @@
+perl-json
+perl-try-tiny
+perl-moo
+perl-dbi
+perl-template-toolkit
+perl-dbd-sqlite

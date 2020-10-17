@@ -20,6 +20,8 @@
   # ie. number of seconds since 1970-01-01 00:00)
 
   "time" : {
+    #2019 start 1572566400
+    #2019 end 1575158400
     "starttime" : 1604188800,
     "endtime"   : 1606780800
   },
@@ -205,27 +207,27 @@
     },
 
     "no-wizard-kills" : {
-      "title"  : "Conduct: Never kill the Wizard",
+      "title"  : "Trophy: ascend a game without ever killing the Wizard",
       "points"  : 20
     },
 
     "no-rider-kills" : {
-      "title"  : "Conduct: Never kill a Rider",
+      "title"  : "Trophy: ascend a game without ever killing a Rider",
       "points"  : 10
     },
 
     "no-vlad-kill" : {
-      "title"  : "Conduct: Never kill Vlad",
+      "title"  : "Trophy: ascend without killing Vlad",
       "points"  : 5
     },
 
     "no-nemesis-kill" : {
-      "title"  : "Conduct: Never kill your quest nemesis",
+      "title"  : "Trophy: ascend without killing your quest nemesis",
       "points"  : 5
     },
 
     "no-priest-kill" : {
-      "title"  : "Conduct: Never kill the High Priest of Moloch",
+      "title"  : "Trophy: ascend without killing the High Priest of Moloch",
       "points"  : 5
     },
 
@@ -1006,7 +1008,10 @@
       [ "food", "vegt", "vegn" ],
       [ "vegn", "vegt" ],
       [ "wish", "arti" ]
-    ]
+    ],
+
+    # since some have been moved to being one-off trophies, have an exclude list here 
+    "exclude" : [ "vlad", "wiz", "prst", "neme", "ride" ]
   },
 
   #---------------------------------------------------------------------------
