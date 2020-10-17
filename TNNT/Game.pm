@@ -234,6 +234,7 @@ sub conducts
 #=============================================================================
 # Return list of conducts, but filter out conducts, that are superseded by
 # a higher level conduct (e.g. wishless supersedes artiwishless).
+# This superseding stuff may not be necessary with the new conduct Z-scoring
 #=============================================================================
 
 sub conducts_filtered
@@ -241,19 +242,6 @@ sub conducts_filtered
   my ($self) = shift;
   my $cfg = TNNT::Config->instance()->config();
   my (@conducts) = $self->conducts();
-
-  # some we want to consider as one-off trophies and not proper conducts
-  # didn't kill the Wizard, etc.
-  my $exclude = $cfg->{'conducts'}{'exclude'};
-  my $exclude_list = join ", ", @$exclude;
-  my $conduct_list = join ", ", @conducts;
-  print "exclusions: $exclude_list\n";
-  print "conducts: $conduct_list\n";
-  foreach my $x (@$exclude) {
-    @conducts = grep { $_ ne $x } @conducts;
-  }
-  $conduct_list = join ", ", @conducts;
-  print "conducts after exclusions: $conduct_list\n";
 
   return @conducts if !exists $cfg->{'conducts'}{'supersede'};
   $cfg = $cfg->{'conducts'}{'supersede'};

@@ -988,16 +988,16 @@
 
     "order" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "wiz", "ride",
-      "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
+      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "arts", "bone",
+      "swap", "surv", "pets", "deaf"
     ],
 
     # this defines what counts as "all conducts"
 
     "all" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "wiz", "ride",
-      "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
+      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "arts", "bone",
+      "swap", "surv", "pets", "deaf"
     ],
 
     # this defines, for scoring purposes, conducts, that imply another one or
@@ -1010,8 +1010,8 @@
       [ "wish", "arti" ]
     ],
 
-    # since some have been moved to being one-off trophies, have an exclude list here 
-    "exclude" : [ "vlad", "wiz", "prst", "neme", "ride" ]
+    # not really conducts this tournament, but we do need their bitfield values
+    "merciful" : [ "vlad", "wiz", "prst", "neme", "ride" ]
   },
 
   #---------------------------------------------------------------------------
