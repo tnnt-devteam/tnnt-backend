@@ -992,6 +992,38 @@
       "swap", "surv", "pets", "deaf"
     ],
 
+    # add a second ordered list with the indices baked in
+    "order_idx" : [
+      "arti" : 0,
+      "pile" : 1,
+      "self" : 2, 
+      "geno" : 3,
+      "wish" : 4,
+      "athe" : 5,
+      "vegt" : 6,
+      "vegn" : 7,
+      "weap" : 8,
+      "elbe" : 9,
+      "illi" : 10,
+      "paci" : 11,
+      "food" : 12,
+      "zen" : 13,
+      "nude" : 14,
+      "halu" : 15,
+      "arts" : 16,
+      "bone" : 17,
+      "swap" : 18,
+      "surv" : 19,
+      "pets" : 20,
+      "deaf" : 21
+    ],
+
+    "multi_array": [ 1.02, 1.02, 1.02, 1.1, 1.1, 1.15, 1.1, 1.3, 1.15, 1.1,
+                1.3, 1.6, 1.5, 1.8, 1.6, 1.2, 1.1, 1.01, 1.01, 1.05, 1.02, 1.02],
+    
+    "n_total": 22,
+
+
     # this defines what counts as "all conducts"
 
     "all" : [

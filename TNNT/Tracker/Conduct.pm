@@ -11,6 +11,7 @@ package TNNT::Tracker::Conduct;
 use Carp;
 use Moo;
 use TNNT::ScoringEntry;
+use TNNT::Game;
 use Data::Dump qw(dd);
 
 
@@ -78,6 +79,7 @@ sub add_game
 
   return if !$game->is_ascended();
   my $player = $game->player();
+  my $game_index = $game->n();
   my $tracker = $self->_track_data($player);
 
   #--- get summary score for conducts
@@ -86,66 +88,80 @@ sub add_game
 
   my $cfg = TNNT::Config->instance()->config();
 
-  my $full_set = $cfg->{'conducts'}{'order'};
-
+  my $conds_idx = $cfg->{'conducts'}{'order_idx'};
+  my $cond_multi_array = $cfg->{'conducts'}{'multi_array'};
+  my $conds_max = $cfg->{'conducts'};
+  my $first = 0;
   if (!%$tracker) {
-    # initialise conduct grid tracking
-    my $i = 0;
-    foreach my $conduct (@$full_set) {
-      $tracker->{'conduct_indices'}{$conduct} = $i;
-      push @{$tracker->{'conduct_multipliers'}}, $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
-      #$tracker->{'multi_hash'}{$conduct} = $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
-      $i += 1;
-    }
+    # flag this as first run - thus we only add score entry, rather than remove and add
+    $first = 1;
   }
-  push @{$tracker->{'condascs'}}, { 'index' => $game->n(), 'conducts' => [$game->conducts()] };
+  push @{$tracker->{'condascs'}}, { 'index' => $game_index, 'conducts' => [$game->conducts()] };
 
-  my $n_total_conducts = @$full_set;
-  $tracker->{'conduct_grid'} = [];
-  $tracker->{'Z_factor_array'} = [(1) x $n_total_conducts];
-  $tracker->{'conduct_zscore'} = 0;
-
-  dd(%$tracker);
   # fill an initial grid now, this will simply
   # contain 1 in each grid position with a conduct,
   # for the beginning
-  my $i = 0;
+  my @conduct_grid = ();
+  my @game_keys = ();
+  my $n_ascs = 0;
   foreach my $ascension (@{$tracker->{'condascs'}}) {
-    push @{$tracker->{'conduct_grid'}}, [(0) x $n_total_conducts];
+    push @conduct_grid, [(0) x $conds_max];
+    push @game_keys, $ascension->{'index'};
     foreach my $conduct (@{$ascension->{'conducts'}}) {
-      my $cond_index = $tracker->{'conduct_indices'}{$conduct};
-      $tracker->{'conduct_grid'}->[$i][$cond_index] = 1;
+      my $cond_index = $conds_idx->{$conduct};
+      $conduct_grid[$n_ascs][$cond_index] = 1;
     }
-    $i += 1;
+    $n_ascs += 1;
   }
 
+  my @zscores, @sorted_keys = greedy_zscore(\@conduct_grid, $cond_multi_array, $conds_max, $n_ascs, \@game_keys);
+  
+  for (my $i = 0; $i < @sorted_keys; $i++) {
+    my $se = new TNNT::ScoringEntry(
+      trophy => $self->name(),
+      when => $game->endtime,
+      points => 0,
+      data => {
+        conducts => [ $game->conducts() ],
+        conducts_txt => join(' ', $game->conducts()),
+        ncond => scalar($game->conducts()),
+        multiplier => $zscores[$i],
+        key => $sorted_keys[$i]
+      }
+    );
 
-  dd($tracker->{'conduct_grid'});
-  $tracker->{'conduct_zscore'} = compute_best_zscore($tracker->{'conduct_grid'}, $tracker->{'Z_factor_array'},
-                      $tracker->{'conduct_multipliers'}, scalar(@{$tracker->{'condascs'}}));
-  dd($tracker->{'conduct_grid'});
-  dd($tracker->{'conduct_zscore'});
+    if ($game_index == $sorted_keys[$i]) {
+      $game->add_score($se);
+    } else {
+      $game->remove_and_add("key", $sorted_keys[$i], $se);
+    }
+  }
   #--- finish
 
   return $self;
 }
 
 
-sub compute_best_zscore {
-  my ($grid, $zfactors, $multipliers, $n_ascs) = @_;
-  my $n_conds = scalar(@$zfactors);
+sub greedy_zscore {
+  my      ($grid,
+    $multipliers,
+        $m_conds,
+         $n_ascs,
+    $inial_order) = @_;
+  my @zfactors = (1) x $m_conds;
+  my @zscores;
+  my @final_order = @$initial_order;
 
-  my $zscore_cumulative = 0;
   for (my $i = 0; $i < $n_ascs; $i++) {
     my $temp_best = 0;
     my $best_index = 0;
     for (my $j = $i; $j < $n_ascs; $j++) {
       # compute a trial conduct Z-score for each game, to see which is best
       # j loops through each game and i will steadily increase as we find best games
-      my $score = 50;
-      for (my $k = 0; $k < $n_conds; $k++) {
+      my $score = 1;
+      for (my $k = 0; $k < $m_conds; $k++) {
         if ($grid->[$i][$j] != 0) {
-          $score *= $multipliers->[$k];
+          $score *= $multipliers[$k];
         }
       }
 
@@ -159,7 +175,10 @@ sub compute_best_zscore {
     # now we should have the highest scoring game/index for the round
     if ($i != $best_index) {
       # swap the positions
-      for (my $k = 0; $k < $n_conds; $k++) {
+      my $token = $final_order[$i];
+      $final_order[$i] = $final_order[$best_index];
+      $final_order[$best_index] = $token;
+      for (my $k = 0; $k < $m_conds; $k++) {
         my $tmp = $grid->[$i][$k];
         $grid->[$i][$k] = $grid->[$best_index][$k];
         $grid->[$best_index][$k] = $tmp;
@@ -167,18 +186,20 @@ sub compute_best_zscore {
     }
 
     # now we use whichever one is in position $i to update the z factors
-    my $round_score = 50;
-    for (my $k = 0; $k < $n_conds; $k++) {
+    $score = 1;
+    for (my $k = 0; $k < $m_conds; $k++) {
       if ($grid->[$i][$k] != 0) {
-        $grid->[$i][$k] *= $zfactors->[$k];
-        $round_score *= $grid->[$i][$k] * $multipliers->[$k];
-        $zfactors->[$k] = 1/(1/$zfactors->[$k] + 1);
+        $grid->[$i][$k] *= $zfactors[$k];
+        $score *= $grid->[$i][$k] * $multipliers->[$k];
+        $zfactors[$k] = 1/(1/$zfactors[$k] + 1);
       }
     }
-    $zscore_cumulative += $round_score;
+    push @zscores, $score;
   }
 
-  return $zscore_cumulative;
+  # i think i also want to return some information about how the
+  # games have been (re)ordered
+  return @zscores, @final_order;
 }
 
 
