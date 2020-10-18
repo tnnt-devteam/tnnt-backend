@@ -114,7 +114,7 @@ sub add_game
     $n_ascs += 1;
   }
 
-  my @zscores, @sorted_keys = greedy_zscore(\@conduct_grid, $cond_multi_array, $conds_max, $n_ascs, \@game_keys);
+  my (@zscores, @sorted_keys) = greedy_zscore(\@conduct_grid, $cond_multi_array, $conds_max, $n_ascs, \@game_keys);
   
   for (my $i = 0; $i < @sorted_keys; $i++) {
     my $se = new TNNT::ScoringEntry(
@@ -147,7 +147,7 @@ sub greedy_zscore {
     $multipliers,
         $m_conds,
          $n_ascs,
-    $inial_order) = @_;
+    $initial_order) = @_;
   my @zfactors = (1) x $m_conds;
   my @zscores;
   my @final_order = @$initial_order;
@@ -155,13 +155,14 @@ sub greedy_zscore {
   for (my $i = 0; $i < $n_ascs; $i++) {
     my $temp_best = 0;
     my $best_index = 0;
+    my $score;
     for (my $j = $i; $j < $n_ascs; $j++) {
       # compute a trial conduct Z-score for each game, to see which is best
       # j loops through each game and i will steadily increase as we find best games
-      my $score = 1;
+      $score = 1;
       for (my $k = 0; $k < $m_conds; $k++) {
         if ($grid->[$i][$j] != 0) {
-          $score *= $multipliers[$k];
+          $score *= $multipliers->[$k];
         }
       }
 
