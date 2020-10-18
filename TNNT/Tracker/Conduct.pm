@@ -94,6 +94,7 @@ sub add_game
     foreach my $conduct (@$full_set) {
       $tracker->{'conduct_indices'}{$conduct} = $i;
       push @{$tracker->{'conduct_multipliers'}}, $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
+      #$tracker->{'multi_hash'}{$conduct} = $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
       $i += 1;
     }
   }
@@ -110,18 +111,20 @@ sub add_game
   # for the beginning
   my $i = 0;
   foreach my $ascension (@{$tracker->{'condascs'}}) {
-    dd($ascension);
-    push @{$tracker->{'conduct_grid'}}, (0) x $n_total_conducts;
+    push @{$tracker->{'conduct_grid'}}, [(0) x $n_total_conducts];
     foreach my $conduct (@{$ascension->{'conducts'}}) {
-      my $cond_index = int($tracker->{'conduct_indices'}{$conduct});
-      $tracker->{'conduct_grid'}->[int($i)][$cond_index] = 1;
+      my $cond_index = $tracker->{'conduct_indices'}{$conduct};
+      $tracker->{'conduct_grid'}->[$i][$cond_index] = 1;
     }
     $i += 1;
   }
 
+
+  dd($tracker->{'conduct_grid'});
   $tracker->{'conduct_zscore'} = compute_best_zscore($tracker->{'conduct_grid'}, $tracker->{'Z_factor_array'},
                       $tracker->{'conduct_multipliers'}, scalar(@{$tracker->{'condascs'}}));
-
+  dd($tracker->{'conduct_grid'});
+  dd($tracker->{'conduct_zscore'});
   #--- finish
 
   return $self;
@@ -167,6 +170,7 @@ sub compute_best_zscore {
     my $round_score = 50;
     for (my $k = 0; $k < $n_conds; $k++) {
       if ($grid->[$i][$k] != 0) {
+        $grid->[$i][$k] *= $zfactors->[$k];
         $round_score *= $grid->[$i][$k] * $multipliers->[$k];
         $zfactors->[$k] = 1/(1/$zfactors->[$k] + 1);
       }
