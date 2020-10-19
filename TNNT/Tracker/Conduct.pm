@@ -92,8 +92,7 @@ sub add_game
 
   # passing @games as a ref means we can sort it in greedy_zscore()
   # as a side-effect, which is cute but is it a good idea? :>
-  my @zscores = greedy_zscore(\@games, $cfg);
-
+  dd(@zscores);
   for (my $i = 0; $i < @games; $i++) {
     # create a scoring entry for each game, with the $game ref
     # itself as a key for removing/updating later
@@ -109,7 +108,6 @@ sub add_game
         key => $games[$i]
       }
     );
-
     if ($game == $games[$i]) {
       $game->add_score($se);
     } else {
@@ -142,11 +140,12 @@ sub single_zscore {
 
     my $score = 1;
     foreach my $conduct ($game->conducts()) {
-        $score *= $zhash->{$conduct}{'Z'} * $zhash->{$conduct}{'multi'};
+        $score *= ($zhash->{$conduct}{'Z'} * ($zhash->{$conduct}{'multi'} - 1)) + 1;
         if ($update) {
             $zhash->{$conduct}{'Z'} = 1/(1/$zhash->{$conduct}{'Z'} + 1);
         }
     }
+    return $score;
 }
 
 sub greedy_zscore {
@@ -175,7 +174,7 @@ sub greedy_zscore {
 
         # compute zscore again for this game, this
         # time save the value and update the zhash
-        push @zscores, single_zscore($games->[$opt_index], \%zhash, 1)
+        push @zscores, single_zscore($games->[$opt_index], \%zhash, 1);
     }
 
     return @zscores;
