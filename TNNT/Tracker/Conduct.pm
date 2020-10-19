@@ -137,6 +137,7 @@ sub add_game
       # the case for the current game is quite simple
       # i think game score is only the one entry, while
       # with player->add_score() we can retreive the previous games
+      #print "$key: conduct points = ", $zscores[$i] * 50, "\n";
       $game->add_score($se);
       $player->add_score($se);
     } else {
@@ -153,6 +154,7 @@ sub add_game
         $asc_se->{'data'}{'breakdown'}{'cpoints'} = $new_cpoints;
         my $old_score = $asc_se->get_points();
         $asc_se->points($new_cpoints + $rest);
+        #print "update ", $cond_ascs[$i]->{'key'}, " : new conduct points = ", $new_cpoints, "\n";
       } else {
         warn "failed to find player score entry for game with key " . $cond_ascs[$i]->{'key'} . "\n";
       }
