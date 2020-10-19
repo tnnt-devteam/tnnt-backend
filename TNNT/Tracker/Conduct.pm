@@ -201,7 +201,7 @@ sub single_zscore {
             $zhash->{$conduct}{'Z'} = 1/(1/$zhash->{$conduct}{'Z'} + 1);
         }
     }
-    return $score;
+    return $score - 1;
 }
 
 sub greedy_zscore {
