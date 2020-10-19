@@ -993,7 +993,7 @@
     ],
 
     # add a second ordered list with the indices baked in
-    "order_idx" : [
+    "order_idx" : {
       "arti" : 0,
       "pile" : 1,
       "self" : 2, 
@@ -1016,7 +1016,7 @@
       "surv" : 19,
       "pets" : 20,
       "deaf" : 21
-    ],
+    },
 
     "multi_array": [ 1.02, 1.02, 1.02, 1.1, 1.1, 1.15, 1.1, 1.3, 1.15, 1.1,
                 1.3, 1.6, 1.5, 1.8, 1.6, 1.2, 1.1, 1.01, 1.01, 1.05, 1.02, 1.02],
