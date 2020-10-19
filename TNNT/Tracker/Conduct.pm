@@ -122,11 +122,9 @@ sub add_game
   for (my $i = 0; $i < @cond_ascs; $i++) {
     # create a scoring entry for each game, with the $game ref
     # itself as a key for removing/updating later
-    print "processing game: " . $cond_ascs[$i]->{'key'} . " for primary key: $key\n";
     my $se = new TNNT::ScoringEntry(
       trophy => $self->name(),
       when => $game->endtime,
-      points => 0,
       data => {
         conducts => [ $game->conducts() ],
         conducts_txt => join(' ', $game->conducts()),
@@ -143,16 +141,19 @@ sub add_game
       $player->add_score($se);
     } else {
       # for older games we have to update stuff
-      print "updating for previous game\n";
       $player->remove_and_add("key", $cond_ascs[$i]->{'key'}, $se);
       # the above isn't enough to actually update the scoreboard points,
       # so we additionally need to faff with the ascension score-entry
       my $asc_se = $player->get_score_by_key("asckey", $cond_ascs[$i]->{'key'});
       if (defined $asc_se) {
         my $base = $asc_se->{'data'}{'breakdown'}{'bpoints'};
+        my $other_points = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'tpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
+        my $rest = $base + $other_points;
         my $old_cpoints = $asc_se->{'data'}{'breakdown'}{'cpoints'};
-        my $new_cpoints = $base * $zscores[$i];
-        $asc_se->points($asc_se->points - $old_cpoints + $new_cpoints);
+        my $new_cpoints = int($base * $zscores[$i]);
+        $asc_se->{'data'}{'breakdown'}{'cpoints'} = $new_cpoints;
+        my $old_score = $asc_se->get_points();
+        $asc_se->points($new_cpoints + $rest);
       } else {
         warn "failed to find player score entry for game with key " . $cond_ascs[$i]->{'key'} . "\n";
       }
@@ -160,9 +161,13 @@ sub add_game
         # if player is a clan member we have to update the clan score entry too
         my $clan_asc_se = $player->clan->get_score_by_key("clan_asckey", $cond_ascs[$i]->{'clan_key'});
         if (defined $clan_asc_se) {
-          my $base = $clan_asc_se->{'data'}{'breakdown'}{'bpoints'};
-          my $old_cpoints = $clan_asc_se->{'data'}{'breakdown'}{'cpoints'};
-          my $new_cpoints = $base * $zscores[$i];
+          my $base = $asc_se->{'data'}{'breakdown'}{'bpoints'};
+          my $other_points = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'tpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
+          my $rest = $base + $other_points;
+          my $old_cpoints = $asc_se->{'data'}{'breakdown'}{'cpoints'};
+          my $new_cpoints = int($base * $zscores[$i]);
+          $asc_se->{'data'}{'breakdown'}{'cpoints'} = $new_cpoints;
+          $asc_se->points($new_cpoints + $rest);
           $clan_asc_se->points($clan_asc_se->points - $old_cpoints + $new_cpoints);
         } else {
           warn "failed to find clan score entry for game with key " . $cond_ascs[$i]->{'clan_key'} . "\n";
@@ -201,7 +206,13 @@ sub single_zscore {
             $zhash->{$conduct}{'Z'} = 1/(1/$zhash->{$conduct}{'Z'} + 1);
         }
     }
-    return $score - 1;
+
+    # if Zscore bonus would end up negative multiplier, return 0 instead
+    if ($score < 1) {
+      return 0;
+    } else {
+      return $score - 1;
+    }
 }
 
 sub greedy_zscore {

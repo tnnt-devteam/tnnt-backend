@@ -84,11 +84,8 @@ sub get_score_by_key
     next if
       !defined $scores->[$i]->get_data($key)
       || $scores->[$i]->get_data($key) ne $value;
-    print "score key found\n";
     return $scores->[$i];
   }
-  print "score key $key not found\n";
-  dd($scores); exit (1);
   return undef;
 }
 
@@ -202,10 +199,8 @@ sub remove_and_add
       || $scores->[$i]->get_data($key) ne $value;
     splice(@$scores, $i, 1);
     push(@$scores, $new_entry);
-    print "update on game $value succeeded\n";
     return $self;
   }
-  print "update on old game $value failed\n";
   dd($scores); exit (1);
   return $self;
 }
