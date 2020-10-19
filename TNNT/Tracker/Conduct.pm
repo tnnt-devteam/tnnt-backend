@@ -125,6 +125,7 @@ sub add_game
     my $se = new TNNT::ScoringEntry(
       trophy => $self->name(),
       when => $game->endtime,
+      points => 0,
       data => {
         conducts => [ $game->conducts() ],
         conducts_txt => join(' ', $game->conducts()),
