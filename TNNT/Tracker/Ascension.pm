@@ -82,9 +82,9 @@ sub add_game
     my $zdivisor = ++$trk->{$entity->name}{$game->role}{$game->race};
 
   #--- create scoring entry
-    $trk->{'asc_count'} = 0 if !defined($trk->{'asc_count'});
-    $trk->{'asc_count'}++;
-    my $asc_key = $entity->name . "-" . $trk->{'asc_count'};
+    $trk->{'asc_count'}{$entity->name} = 0 if !defined($trk->{'asc_count'});
+    $trk->{'asc_count'}{$entity->name}++;
+    my $asc_key = $entity->name . "-" . $trk->{'asc_count'}{$entity->name};
     print "adding ascension key $asc_key\n";
     my $se = new TNNT::ScoringEntry(
       trophy => ($is_clan ? 'clan-':'') . $self->name(),
