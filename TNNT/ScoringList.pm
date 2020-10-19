@@ -63,6 +63,27 @@ sub get_score
   return first { $_->trophy() eq $trophy } @{$self->scores()};
 }
 
+#-----------------------------------------------------------------------------
+# This method finds a scoring entry by searching for a key/value pair in the
+# data hash associated with the entry.
+#
+# Returns either a ref to the scoring entry, or undef.
+#-----------------------------------------------------------------------------
+
+sub get_score_by_key
+{
+  my ($self, $key, $value) = @_;
+  my $scores = $self->scores();
+
+  for(my $i = 0; $i < @$scores; $i++) {
+    next if
+      !defined $scores->[$i]->get_data($key)
+      || $scores->[$i]->get_data($key) ne $value;
+    return $scores->[$i];
+  }
+
+  return undef;
+}
 
 #-----------------------------------------------------------------------------
 # Return new list of ScoringEntry instances that is a subset of the original
