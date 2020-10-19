@@ -147,8 +147,7 @@ sub add_game
       my $asc_se = $player->get_score_by_key("asckey", $cond_ascs[$i]->{'key'});
       if (defined $asc_se) {
         my $base = $asc_se->{'data'}{'breakdown'}{'bpoints'};
-        my $other_points = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'tpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
-        my $rest = $base + $other_points;
+        my $rest = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'tpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
         my $old_cpoints = $asc_se->{'data'}{'breakdown'}{'cpoints'};
         my $new_cpoints = int($base * $zscores[$i]);
         $asc_se->{'data'}{'breakdown'}{'cpoints'} = $new_cpoints;
@@ -161,14 +160,12 @@ sub add_game
         # if player is a clan member we have to update the clan score entry too
         my $clan_asc_se = $player->clan->get_score_by_key("clan_asckey", $cond_ascs[$i]->{'clan_key'});
         if (defined $clan_asc_se) {
-          my $base = $asc_se->{'data'}{'breakdown'}{'bpoints'};
-          my $other_points = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'tpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
-          my $rest = $base + $other_points;
-          my $old_cpoints = $asc_se->{'data'}{'breakdown'}{'cpoints'};
+          my $base = $clan_asc_se->{'data'}{'breakdown'}{'bpoints'};
+          my $rest = $clan_asc_se->{'data'}{'breakdown'}{'spoints'} + $clan_asc_se->{'data'}{'breakdown'}{'tpoints'} + $clan_asc_se->{'data'}{'breakdown'}{'zpoints'};
+          my $old_cpoints = $clan_asc_se->{'data'}{'breakdown'}{'cpoints'};
           my $new_cpoints = int($base * $zscores[$i]);
-          $asc_se->{'data'}{'breakdown'}{'cpoints'} = $new_cpoints;
-          $asc_se->points($new_cpoints + $rest);
-          $clan_asc_se->points($clan_asc_se->points - $old_cpoints + $new_cpoints);
+          $clan_asc_se->{'data'}{'breakdown'}{'cpoints'} = $new_cpoints;
+          $clan_asc_se->points($new_cpoints + $rest);
         } else {
           warn "failed to find clan score entry for game with key " . $cond_ascs[$i]->{'clan_key'} . "\n";
         }

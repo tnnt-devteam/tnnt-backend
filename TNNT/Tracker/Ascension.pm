@@ -89,7 +89,6 @@ sub add_game
       trophy => ($is_clan ? 'clan-':'') . $self->name(),
       games => [ $game ],
       when => $game->endtime(),
-      points => 50,
       data => { 'breakdown' => \%breakdown, achiever => $game->name,
                 ($is_clan ? 'clan_':'') . 'asckey' => $asc_key },
     );
@@ -106,7 +105,7 @@ sub add_game
 
     $breakdown{'zpoints'} = int($base / $zdivisor);
     $breakdown{'repeat'} = $zdivisor;
-    $breakdown{'combo'} = $game->role . '-' . $game->race;
+    $breakdown{'combo'} = $game->role;
 
   #--- add conduct bonus
   # The 'conduct' scoring list is added to ascended games by the 'Conduct'
