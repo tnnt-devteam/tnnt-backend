@@ -13,6 +13,7 @@ package TNNT::ScoringList;
 
 use Moo::Role;
 use List::Util qw(first);
+use Data::Dump qw(dd);
 
 
 
@@ -86,7 +87,8 @@ sub get_score_by_key
     print "score key found\n";
     return $scores->[$i];
   }
-  #print "score key not found\n";
+  print "score key $key not found\n";
+  dd($scores); exit (1);
   return undef;
 }
 
@@ -200,9 +202,11 @@ sub remove_and_add
       || $scores->[$i]->get_data($key) ne $value;
     splice(@$scores, $i, 1);
     push(@$scores, $new_entry);
+    print "update on game $value succeeded\n";
     return $self;
   }
-  #print "update on old game failed\n";
+  print "update on old game $value failed\n";
+  dd($scores); exit (1);
   return $self;
 }
 
