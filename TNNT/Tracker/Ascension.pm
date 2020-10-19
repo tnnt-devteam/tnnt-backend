@@ -79,7 +79,7 @@ sub add_game
   #--- track ascensions and get number of repeated wins for current game's
   #--- role-race combination
 
-    my $zdivisor = ++$trk->{$entity->name}{$game->role}{$game->race};
+    my $zdivisor = ++$trk->{$entity->name}{$game->role};
 
   #--- create scoring entry
     $trk->{'asc_count'}{$entity->name} = 0 if !defined($trk->{'asc_count'});
