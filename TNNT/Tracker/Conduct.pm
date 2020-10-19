@@ -108,7 +108,6 @@ sub add_game
         key => $games[$i]
       }
     );
-    dd($se); exit(1);
     if ($game == $games[$i]) {
       $game->add_score($se);
     } else {
