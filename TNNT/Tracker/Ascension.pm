@@ -90,6 +90,7 @@ sub add_game
       trophy => ($is_clan ? 'clan-':'') . $self->name(),
       games => [ $game ],
       when => $game->endtime(),
+      points => 50,
       data => { 'breakdown' => \%breakdown, achiever => $game->name,
                 ($is_clan ? 'clan_':'') . 'asckey' => $asc_key },
     );
