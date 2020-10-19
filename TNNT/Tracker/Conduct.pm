@@ -74,46 +74,29 @@ sub add_game
     $self,
     $game,
   ) = @_;
+  my $cfg = TNNT::Config->instance()->config();
+  my @conducts = $game->conducts();
+  #--- only ascended games with conducts
+  if (!$game->is_ascended() || @conducts == 0) {
+    return;
+  }
 
-  #--- only ascended games
-
-  return if !$game->is_ascended();
+  # get saved semi-persistant player conduct data
   my $player = $game->player();
   my $tracker = $self->_track_data($player);
 
-  #--- get summary score for conducts
-  # The composite multiplier formula for all conducts is
-  # multiplier₁ × multiplier₂ × … × multiplierₙ - 1
+  # add latest ascension to semi-persistent list
+  # & copy full list into @games
+  push @{$tracker->{'condascs'}}, $game;
+  my @games = @{$tracker->{'condascs'}};
 
-  my $cfg = TNNT::Config->instance()->config();
+  # passing @games as a ref means we can sort it in greedy_zscore()
+  # as a side-effect, which is cute but is it a good idea? :>
+  my @zscores = greedy_zscore(\@games, $cfg);
 
-  my @conducts = $game->conducts();
-  if (scalar(@conducts) == 0) {
-    return; # doesn't make sense to count conductless wins
-  }
-  my $conds_idx = $cfg->{'conducts'}{'order_idx'};
-  my $cond_multi_array = $cfg->{'conducts'}{'multi_array'};
-  my $conds_max = $cfg->{'conducts'}{'n_total'};
-  push @{$tracker->{'condascs'}}, { 'key' => $game, 'conducts' => [$game->conducts()] };
-
-  # fill an initial grid now, this will simply
-  # contain 1 in each grid position with a conduct,
-  # for the beginning
-  my @conduct_grid = ();
-  my @games = ();
-  my $n_ascs = 0;
-  foreach my $ascension (@{$tracker->{'condascs'}}) {
-    push @conduct_grid, [(0) x $conds_max];
-    push @games, $ascension->{'key'};
-    foreach my $conduct (@{$ascension->{'conducts'}}) {
-      my $cond_index = $conds_idx->{$conduct};
-      $conduct_grid[$n_ascs][$cond_index] = 1;
-    }
-    $n_ascs += 1;
-  }
-  
-  my (@zscores, @sorted_keys) = greedy_zscore(\@conduct_grid, $cond_multi_array, $conds_max, $n_ascs, \@games);
-  for (my $i = 0; $i < @sorted_keys; $i++) {
+  for (my $i = 0; $i < @games; $i++) {
+    # create a scoring entry for each game, with the $game ref
+    # itself as a key for removing/updating later
     my $se = new TNNT::ScoringEntry(
       trophy => $self->name(),
       when => $game->endtime,
@@ -123,14 +106,14 @@ sub add_game
         conducts_txt => join(' ', $game->conducts()),
         ncond => scalar($game->conducts()),
         multiplier => $zscores[$i],
-        key => $sorted_keys[$i]
+        key => $games[$i]
       }
     );
 
-    if ($game == $sorted_keys[$i]) {
+    if ($game == $games[$i]) {
       $game->add_score($se);
     } else {
-      $game->remove_and_add("key", $sorted_keys[$i], $se);
+      $game->remove_and_add("key", $games[$i], $se);
     }
   }
   #--- finish
@@ -138,78 +121,66 @@ sub add_game
   return $self;
 }
 
-sub greedy_zscore {
-  my      ($grid,
-    $multipliers,
-        $m_conds,
-         $n_ascs,
-          $games) = @_;
-  my @zfactors = (1) x $m_conds;
-  my @zscores;
-  my @games_copy = @$games;
-
-  # $opt_index is updated each time an optimally-scoring game is found
-  # from the set of remaining games
-  for (my $opt_index = 0; $opt_index < $n_ascs; $opt_index++) {
-    my $temp_best = 0;
-    my $best_index = 0;
-    my $score;
-    # $test_index iterates through remaining games that don't have an optimised z-score
-    # compute a trial conduct Z-score for each game, to see which is best
-    for (my $test_index = $opt_index; $test_index < $n_ascs; $test_index++) {
-      # for each conduct achieved ($grid->[$test_index][$cond_index] == 1),
-      # multiply (cumulatively) $score by the multiplier defined for that conduct,
-      # and the current Z-factor for the given conduct
-      # grid cell value will simply equal 1 at this stage, so is left out
-      $score = 1;
-      for (my $cond_index = 0; $cond_index < $m_conds; $cond_index++) {
-        if ($grid->[$test_index][$cond_index] != 0) {
-          $score *= $zfactors[$cond_index] * $multipliers->[$cond_index];
-        }
-      }
-
-      # is this the best score so far?
-      # if yes, update $temp_best and $best_index
-      if ($score > $temp_best) {
-        $temp_best = $score;
-        $best_index = $test_index;
-      }
+# make a hash where each conduct has a multiplier and an associated Z-factor
+sub gen_conducts_zhash {
+    my $cfg = shift;
+    my %hash;
+    
+    foreach my $conduct (@{$cfg->{'conducts'}{'order'}}) {
+        $hash{$conduct}{'multi'} = $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
+        $hash{$conduct}{'Z'} = 1;
     }
-
-    # now we should have the highest scoring game/index for the round,
-    # unless that coincidentally happens to be at $opt_index already,
-    # swap the entries
-    if ($opt_index != $best_index) {
-      # swap the positions
-      my $token = $games_copy[$opt_index];
-      $games_copy[$opt_index] = $games_copy[$best_index];
-      $games_copy[$best_index] = $token;
-      my $tmp = $grid->[$opt_index];
-      $grid->[$opt_index] = $grid->[$best_index];
-      $grid->[$best_index] = $tmp;
-    }
-
-    # now with the found optimum-score game, 
-    $score = 1;
-    for (my $cond_index = 0; $cond_index < $m_conds; $cond_index++) {
-      if ($grid->[$opt_index][$cond_index] != 0) {
-        # assign the current Z-factor for the conduct to the relevant cell
-        $grid->[$opt_index][$cond_index] = $zfactors[$cond_index];
-        # algorithm probably works fine without an actual grid, what's really
-        # needed is just the z-score for each game, the z-factor array, and
-        # an ordered list of the games. Having said that, someone may want
-        # these grids for some esoteric purposes so i'll leave it as is for now
-        $score *= $grid->[$opt_index][$cond_index] * $multipliers->[$cond_index];
-        $zfactors[$cond_index] = 1/(1/$zfactors[$cond_index] + 1);
-      }
-    }
-    push @zscores, $score;
-  }
-
-  # i think i also want to return some information about how the
-  # games have been (re)ordered
-  return @zscores;
+    return %hash;
 }
+
+# return the conduct z-score for a single game, using the Z-factors provided
+# in zhash. if $update is true, tick-down each Z-factor where a conduct is recorded
+sub single_zscore {
+    my ($game,
+       $zhash,
+       $update) = @_;
+
+    my $score = 1;
+    foreach my $conduct ($game->conducts()) {
+        $score *= $zhash->{$conduct}{'Z'} * $zhash->{$conduct}{'multi'};
+        if ($update) {
+            $zhash->{$conduct}{'Z'} = 1/(1/$zhash->{$conduct}{'Z'} + 1);
+        }
+    }
+}
+
+sub greedy_zscore {
+    my ($games, $cfg) = @_;
+    my %zhash = gen_conducts_zhash($cfg);
+    my @zscores;
+
+    for (my $opt_index = 0; $opt_index < @$games; $opt_index++) {
+        my $best = 0;
+        my $best_index = $opt_index;
+        for (my $test_index = $opt_index; $test_index < @$games; $test_index++) {
+            my $test = single_zscore($games->[$test_index], \%zhash, 0);
+            if ($test > $best) {
+                $best = $test;
+                $best_index = $test_index;
+            }
+        }
+
+        # move the best game to the top of the list,
+        # if it is not already there
+        if ($opt_index != $best_index) {
+            my $tmp = $games->[$opt_index];
+            $games->[$opt_index] = $games->[$best_index];
+            $games->[$best_index] = $tmp;
+        }
+
+        # compute zscore again for this game, this
+        # time save the value and update the zhash
+        push @zscores, single_zscore($games->[$opt_index], \%zhash, 1)
+    }
+
+    return @zscores;
+}
+
 
 
 sub finish
