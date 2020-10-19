@@ -82,12 +82,13 @@ sub add_game
     my $zdivisor = ++$trk->{$entity->name}{$game->role}{$game->race};
 
   #--- create scoring entry
-
+    my $asc_key = $entity->name . "-" . scalar($entity->{'ascensions'});
     my $se = new TNNT::ScoringEntry(
       trophy => ($is_clan ? 'clan-':'') . $self->name(),
       games => [ $game ],
       when => $game->endtime(),
-      data => { 'breakdown' => \%breakdown, achiever => $game->name },
+      data => { 'breakdown' => \%breakdown, achiever => $game->name,
+                ($is_clan ? 'clan-':'') . 'asckey' => $asc_key },
     );
 
   #--- get base value for ascension

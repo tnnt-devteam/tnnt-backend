@@ -92,7 +92,7 @@ sub add_game
 
   # passing @games as a ref means we can sort it in greedy_zscore()
   # as a side-effect, which is cute but is it a good idea? :>
-  dd(@zscores);
+  my @zscores = greedy_zscore(\@games, $cfg);
   for (my $i = 0; $i < @games; $i++) {
     # create a scoring entry for each game, with the $game ref
     # itself as a key for removing/updating later
@@ -108,10 +108,21 @@ sub add_game
         key => $games[$i]
       }
     );
+    dd($se); exit(1);
     if ($game == $games[$i]) {
       $game->add_score($se);
     } else {
       $game->remove_and_add("key", $games[$i], $se);
+      # the above isn't enough to actually update the scoreboard points,
+      # so we additionally need to faff with the ascension score-entry
+      my $asc_se = $game->get_score_by_key("asckey", $games[$i]);
+      if (defined $asc_se) {
+        my $base = $asc_se->{'data'}{'breakdown'}{'bpoints'};
+        my $old_cpoints = $asc_se->{'data'}{'breakdown'}{'cpoints'};
+        my $new_cpoints = $base * $zscores[$i];
+        $asc_se->points($asc_se->points - $old_cpoints + $new_cpoints);
+        #print "updated points for old game\n";
+      }
     }
   }
   #--- finish

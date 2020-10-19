@@ -72,16 +72,21 @@ sub get_score
 
 sub get_score_by_key
 {
-  my ($self, $key, $value) = @_;
+  my (
+    $self,
+    $key,
+    $value
+  ) = @_;
   my $scores = $self->scores();
 
   for(my $i = 0; $i < @$scores; $i++) {
     next if
       !defined $scores->[$i]->get_data($key)
       || $scores->[$i]->get_data($key) ne $value;
+    print "score key found\n";
     return $scores->[$i];
   }
-
+  #print "score key not found\n";
   return undef;
 }
 
@@ -195,8 +200,9 @@ sub remove_and_add
       || $scores->[$i]->get_data($key) ne $value;
     splice(@$scores, $i, 1);
     push(@$scores, $new_entry);
+    return $self;
   }
-
+  #print "update on old game failed\n";
   return $self;
 }
 
