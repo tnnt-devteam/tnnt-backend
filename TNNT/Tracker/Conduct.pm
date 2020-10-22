@@ -35,7 +35,6 @@ sub add_game
     $game,
   ) = @_;
   my $cfg = TNNT::Config->instance()->config();
-  my @conducts = $game->conducts();
   #--- only ascended games
   if (!$game->is_ascended()) {
     return;
@@ -55,7 +54,7 @@ sub add_game
       conducts => [ $game->conducts() ],
       conducts_txt => join(' ', $game->conducts()),
       ncond => scalar($game->conducts()),
-      multiplier => $zscores[$i],
+      multiplier => $multiplier,
     }
   );
   $game->add_score($se);
