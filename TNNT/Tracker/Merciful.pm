@@ -6,7 +6,7 @@
 # so this must be run before it.
 #=============================================================================
 
-package TNNT::Tracker::Conduct;
+package TNNT::Tracker::Merciful;
 
 use Moo;
 use TNNT::ScoringEntry;
@@ -19,7 +19,7 @@ use TNNT::ScoringEntry;
 
 has name => (
   is => 'ro',
-  default => 'conduct',
+  default => 'merciful',
 );
 
 
@@ -39,36 +39,27 @@ sub add_game
 
   return if !$game->is_ascended();
 
-  #--- get summary score for conducts
-  # The composite multiplier formula for all conducts is
-  # multiplier₁ × multiplier₂ × … × multiplierₙ - 1
-
   my $cfg = TNNT::Config->instance()->config();
-  my $multiplier = 1;
-  print join ", ", $game->conducts_filtered();
-  foreach my $conduct ($game->conducts_filtered()) {
-    $multiplier *= $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
-  }
-  $multiplier--;
+  my $player = $game->player;
+  my $clan = $player->clan;
+  for my $entity ($player, $clan) {
+    foreach my $mercy ($game->mercifulness()) {
+      #--- check if player already has this trophy, then
+      # add scoring entry for that
+      next if !$entity;
 
-  #--- create scoring entry (only if there are any conducts)
-  # note, that this is kind of 'degenerate' scoring entry, which is only used
-  # to calculate ascension scoring entry; it has no 'points' and 'when' fields
+      if(! $entity->get_score("mercy:$mercy")) {
+        my $se = new TNNT::ScoringEntry(
+          trophy => "mercy:$mercy",
+          when => $game->endtime(),
+          game => [ $game ]
+        );
 
-  if($multiplier) {
-    my $se = new TNNT::ScoringEntry(
-      trophy => $self->name(),
-      when => $game->endtime,
-      points => 0,
-      data => {
-        conducts => [ $game->conducts() ],
-        conducts_txt => join(' ', $game->conducts()),
-        ncond => scalar($game->conducts()),
-        multiplier => $multiplier,
+        $entity->add_score($se);
       }
-    );
+  }
 
-    $game->add_score($se);
+  
   }
 
   #--- finish
