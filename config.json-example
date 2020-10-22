@@ -232,8 +232,7 @@
     },
 
     "conduct" : {
-      "title" : "Conduct",
-      "points" : 0
+      "title" : "Conduct"
     },
 
     "conduct:food" : {

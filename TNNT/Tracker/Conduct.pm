@@ -45,6 +45,7 @@ sub add_game
   foreach my $conduct (@conducts) {
     $multiplier *= $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
   }
+  $multiplier--;
 
   my $se = new TNNT::ScoringEntry(
     trophy => $self->name(),
