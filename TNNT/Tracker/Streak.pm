@@ -210,7 +210,7 @@ sub increment_streak_cb {
 
     # update old game score
     my $rest = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'cpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
-    my $streak_bonus = $rest * $multi;
+    my $streak_bonus = int($rest * ($multi - 1));
     $asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
     $asc_se->points($rest + $streak_bonus);
 
@@ -227,7 +227,7 @@ sub increment_streak_cb {
     $rest = $clan_asc_se->{'data'}{'breakdown'}{'spoints'}
              + $clan_asc_se->{'data'}{'breakdown'}{'cpoints'}
              + $clan_asc_se->{'data'}{'breakdown'}{'zpoints'};
-    $streak_bonus = $rest * $multi;
+    $streak_bonus = int($rest * ($multi - 1));
     $clan_asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
     $clan_asc_se->points($rest + $streak_bonus);
   }
