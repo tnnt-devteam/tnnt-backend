@@ -206,34 +206,33 @@
       "points" : 50
     },
 
-    "no-wizard-kills" : {
+    "mercy:wiz" : {
       "title"  : "Trophy: ascend a game without ever killing the Wizard",
       "points"  : 20
     },
 
-    "no-rider-kills" : {
+    "mercy:ride" : {
       "title"  : "Trophy: ascend a game without ever killing a Rider",
       "points"  : 10
     },
 
-    "no-vlad-kill" : {
+    "mercy:vlad" : {
       "title"  : "Trophy: ascend without killing Vlad",
       "points"  : 5
     },
 
-    "no-nemesis-kill" : {
+    "mercy:neme" : {
       "title"  : "Trophy: ascend without killing your quest nemesis",
       "points"  : 5
     },
 
-    "no-priest-kill" : {
+    "mercy:prst" : {
       "title"  : "Trophy: ascend without killing the High Priest of Moloch",
       "points"  : 5
     },
 
     "conduct" : {
-      "title" : "Conduct",
-      "points" : 0
+      "title" : "Conduct"
     },
 
     "conduct:food" : {
