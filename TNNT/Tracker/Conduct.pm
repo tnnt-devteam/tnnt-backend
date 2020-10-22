@@ -52,7 +52,7 @@ sub _track
     return $self->_clan_track();
   }
 
-  croak "Invalid argument to GreatFoo->_track($subj_type)";
+  croak "Invalid argument to Conduct->_track($subj_type)";
 }
 
 #-----------------------------------------------------------------------------
@@ -157,6 +157,18 @@ sub add_game
         my $old_score = $asc_se->get_points();
         $asc_se->points($new_cpoints + $rest);
         #print "update ", $cond_ascs[$i]->{'key'}, " : new conduct points = ", $new_cpoints, "\n";
+
+        # ah crap, streak points depend on conduct points and everything else of the score,
+        # thus we have to also update that when a conduct score is updated FML
+        # in general the code for updating prior games should be refactored somehow because atm
+        # the same blocks of boilerplate appear multiple times...
+        my $streak = $cond_ascs[$i]->{'game'}->get_score('streak');
+        next if !$streak;
+        my $streak_multi = $streak->get_data('streakmult');
+        my $rest = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'cpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
+        my $streak_bonus = $rest * $streak_multi;
+        $asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
+        $asc_se->points($rest + $streak_bonus);
       } else {
         warn "failed to find player score entry for game with key " . $cond_ascs[$i]->{'key'} . "\n";
       }
@@ -170,6 +182,20 @@ sub add_game
           my $new_cpoints = int($base * $zscores[$i]);
           $clan_asc_se->{'data'}{'breakdown'}{'cpoints'} = $new_cpoints;
           $clan_asc_se->points($new_cpoints + $rest);
+
+          # ah crap, streak points depend on conduct points and everything else of the score,
+          # thus we have to also update that when a conduct score is updated FML
+          # in general the code for updating prior games should be refactored somehow because atm
+          # the same blocks of boilerplate appear multiple times...
+          my $streak = $cond_ascs[$i]->{'game'}->get_score('streak');
+          next if !$streak;
+          my $streak_multi = $streak->get_data('streakmult');
+          my $rest = $clan_asc_se->{'data'}{'breakdown'}{'spoints'}
+                   + $clan_asc_se->{'data'}{'breakdown'}{'cpoints'}
+                   + $clan_asc_se->{'data'}{'breakdown'}{'zpoints'};
+          my $streak_bonus = $rest * $streak_multi;
+          $clan_asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
+          $clan_asc_se->points($rest + $streak_bonus);
         } else {
           warn "failed to find clan score entry for game with key " . $cond_ascs[$i]->{'clan_key'} . "\n";
         }

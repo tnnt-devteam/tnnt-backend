@@ -39,12 +39,57 @@ has maxstreak => (
   is => 'rwp',
 );
 
-
+has _player_track => (
+  is => 'ro',
+  default => sub { {} },
+);
 
 #=============================================================================
 #=== METHODS =================================================================
 #=============================================================================
 
+#-----------------------------------------------------------------------------
+# Return a ref to player tracking structure.
+#-----------------------------------------------------------------------------
+
+sub _track
+{
+  my ($self, $subj_type) = @_;
+
+  if($subj_type eq 'player') {
+    return $self->_player_track();
+  }# elsif($subj_type eq 'clan') {
+  #  return $self->_clan_track();
+  #}
+
+  croak "Invalid argument to Streak->_track($subj_type)";
+}
+
+#-----------------------------------------------------------------------------
+# Return player/clan tracking entry. If it doesn't exist yet, new one is
+# created and returned. The argument must be an instance of Player or Clan.
+#-----------------------------------------------------------------------------
+
+sub _track_data
+{
+  my ($self, $subj) = @_;
+
+  if($subj->isa('TNNT::Player')) {
+    if(!exists $self->_player_track()->{$subj->name()}) {
+      return $self->_player_track()->{$subj->name()} = {};
+    } else {
+      return $self->_player_track()->{$subj->name()};
+    }
+  }# elsif($subj->isa('TNNT::Clan')) {
+  #  if(!exists $self->_clan_track()->{$subj->n()}) {
+  #    return $self->_clan_track()->{$subj->n()} = {};
+  #  } else {
+  #    return $self->_clan_track()->{$subj->n()};
+  #  }
+  #} else {
+  #  croak 'Invalid argument to GreatFoo->track_data(), must be Player or Clan';
+  #}
+}
 #-----------------------------------------------------------------------------
 # Return player object for current maxstreak. If the maxstreak is an empty
 # list, return undef.
