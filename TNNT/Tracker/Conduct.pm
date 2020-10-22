@@ -140,10 +140,11 @@ sub add_game
       # with player->add_score() we can retreive the previous games
       #print "$key: conduct points = ", $zscores[$i] * 50, "\n";
       $game->add_score($se);
-      $player->add_score($se);
     } else {
       # for older games we have to update stuff
-      $player->remove_and_add("key", $cond_ascs[$i]->{'key'}, $se);
+      # the actual game ref is in the cond_ascs data structure
+      $cond_ascs[$i]->{'game'}->remove_and_add("key", $cond_ascs[$i]->{'key'}, $se);
+      
       # the above isn't enough to actually update the scoreboard points,
       # so we additionally need to faff with the ascension score-entry
       my $asc_se = $player->get_score_by_key("asckey", $cond_ascs[$i]->{'key'});
