@@ -79,6 +79,7 @@ sub get_score_by_key
     $value
   ) = @_;
   my $scores = $self->scores();
+  die "no value to test for $key\n" if !defined $value;
 
   for(my $i = 0; $i < @$scores; $i++) {
     next if

@@ -165,7 +165,7 @@ sub add_game
         my $streak = $cond_ascs[$i]->{'game'}->get_score('streak');
         next if !$streak;
         my $streak_multi = $streak->get_data('streakmult');
-        my $rest = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'cpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
+        $rest = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'cpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
         my $streak_bonus = $rest * $streak_multi;
         $asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
         $asc_se->points($rest + $streak_bonus);
@@ -190,7 +190,7 @@ sub add_game
           my $streak = $cond_ascs[$i]->{'game'}->get_score('streak');
           next if !$streak;
           my $streak_multi = $streak->get_data('streakmult');
-          my $rest = $clan_asc_se->{'data'}{'breakdown'}{'spoints'}
+          $rest = $clan_asc_se->{'data'}{'breakdown'}{'spoints'}
                    + $clan_asc_se->{'data'}{'breakdown'}{'cpoints'}
                    + $clan_asc_se->{'data'}{'breakdown'}{'zpoints'};
           my $streak_bonus = $rest * $streak_multi;
