@@ -177,7 +177,7 @@ sub increment_streak_cb {
       $streak_index) = @_;
   die if !$game->isa('TNNT::Game');
 
-  my $multi = 1 + (($streak_index - 1) * 0.1);
+  my $multi = 1 + ($streak_index * 0.1);
   $multi = 1.5 if $multi > 1.5; # don't forget the cap
   $game->add_score(TNNT::ScoringEntry->new(
     trophy => 'streak',
@@ -221,7 +221,7 @@ sub increment_streak_cb {
     # thus we have to also update that when a conduct score is updated FML
     # in general the code for updating prior games should be refactored somehow because atm
     # the same blocks of boilerplate appear multiple times...
-    #print "processing game $i streak index ", $streak_games[$i]->{'index'}, ", key = $key\n";
+    print "processing game $i, key = $key, multi = $multi\n";
     my $asc_se = $player->get_score_by_key("asckey", $key);
     next if !$asc_se;
     my $streak = $streak_games[$i]->{'game'}->get_score('streak');
@@ -230,10 +230,15 @@ sub increment_streak_cb {
     $streak->{'data'}{'streakidx'} = ($streak_games[$i]->{'index'} + 1);
 
     # update old game score
-    my $rest = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'cpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
+    my $rest = $asc_se->{'data'}{'breakdown'}{'spoints'}
+             + $asc_se->{'data'}{'breakdown'}{'cpoints'}
+             + $asc_se->{'data'}{'breakdown'}{'zpoints'};
     my $streak_bonus = int($rest * ($multi - 1));
     $asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
+    my $foo = $asc_se->points;
     $asc_se->points($rest + $streak_bonus);
+    my $bar = $asc_se->points;
+    print "old_score = $foo, new score = $bar\n";
     $asc_se->{'data'}{'breakdown'}{'streak'}{'multiplier'} = $multi;
     $asc_se->{'data'}{'breakdown'}{'streak'}{'index'} = ($streak_games[$i]->{'index'} + 1);
 
