@@ -147,6 +147,8 @@ sub add_game
     # will think every asc is a streak xD
     $tracker->{'asc_count'} = 0 if !defined($tracker->{'asc_count'});
     $tracker->{'asc_count'}++;
+    $tracker->{'previous_asc'} = $tracker->{'this_asc'};
+    $tracker->{'this_asc'} = $game; # need to update for first game of streak
   }
 
   if($self->player_streak($player_name)) {
@@ -175,7 +177,7 @@ sub increment_streak_cb {
       $streak_index) = @_;
   die if !$game->isa('TNNT::Game');
 
-  my $multi = 1 + ($streak_index * 0.1);
+  my $multi = 1 + (($streak_index - 1) * 0.1);
   $multi = 1.5 if $multi > 1.5; # don't forget the cap
   $game->add_score(TNNT::ScoringEntry->new(
     trophy => 'streak',
@@ -187,6 +189,24 @@ sub increment_streak_cb {
     },
   ));
 
+  if (!defined $tracker->{'active_streak'}) {
+    # means we are dealing with second game of a streak
+    push @{$tracker->{'active_streak'}}, {
+      game => $tracker->{'previous_asc'},
+      index => 0,
+      multiplier => 1, #gonna back-update this anyway so
+      key => $player->name . "-" . ($tracker->{'asc_count'} - 1)
+    };
+    $tracker->{'previous_asc'}->add_score(TNNT::ScoringEntry->new(
+      trophy => 'streak',
+      when => $game->endtime,
+      points => 0,
+      data => {
+        streakidx => 0,
+        streakmult => 1,
+      },
+    ));
+  }
   my $streak_entry = {game => $game,
                       index => $streak_index,
                       multiplier => $multi,
@@ -201,18 +221,21 @@ sub increment_streak_cb {
     # thus we have to also update that when a conduct score is updated FML
     # in general the code for updating prior games should be refactored somehow because atm
     # the same blocks of boilerplate appear multiple times...
-    print "processing game $i streak index ", $streak_games[$i]->{'index'}, ", key = $key\n";
+    #print "processing game $i streak index ", $streak_games[$i]->{'index'}, ", key = $key\n";
     my $asc_se = $player->get_score_by_key("asckey", $key);
     next if !$asc_se;
     my $streak = $streak_games[$i]->{'game'}->get_score('streak');
     next if !$streak;
     $streak->{'data'}{'streakmult'} = $multi;
+    $streak->{'data'}{'streakidx'} = ($streak_games[$i]->{'index'} + 1);
 
     # update old game score
     my $rest = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'cpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
     my $streak_bonus = int($rest * ($multi - 1));
     $asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
     $asc_se->points($rest + $streak_bonus);
+    $asc_se->{'data'}{'breakdown'}{'streak'}{'multiplier'} = $multi;
+    $asc_se->{'data'}{'breakdown'}{'streak'}{'index'} = ($streak_games[$i]->{'index'} + 1);
 
     my $clan = $player->clan;
     next if !$clan;
@@ -230,6 +253,8 @@ sub increment_streak_cb {
     $streak_bonus = int($rest * ($multi - 1));
     $clan_asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
     $clan_asc_se->points($rest + $streak_bonus);
+    $clan_asc_se->{'data'}{'breakdown'}{'streak'}{'multiplier'} = $multi;
+    $clan_asc_se->{'data'}{'breakdown'}{'streak'}{'index'} = ($streak_games[$i]->{'index'} + 1);
   }
 }
 
