@@ -140,7 +140,7 @@ sub add_game
       my $streak_multiplier;
       $streak_multiplier = $streak_se->get_data('streakmult');
       $breakdown{'streak'}{'multiplier'} = $streak_multiplier;
-      $breakdown{'streak'}{'index'} = $streak_se->get_data('streakidx');
+      $breakdown{'streak'}{'index'} = ($streak_se->get_data('streakidx') + 1);
       $breakdown{'tpoints'} = int((
         $base
         + $breakdown{'cpoints'}

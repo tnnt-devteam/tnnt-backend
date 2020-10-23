@@ -10,12 +10,12 @@
 
 package TNNT::Tracker::Streak;
 
+use Carp;
 use Moo;
+use TNNT::Game;
 use TNNT::ScoringEntry;
 use TNNT::StreakList;
 use TNNT::Streak;
-
-
 
 #=============================================================================
 #=== ATTRIBUTES ==============================================================
@@ -39,12 +39,57 @@ has maxstreak => (
   is => 'rwp',
 );
 
-
+has _player_track => (
+  is => 'ro',
+  default => sub { {} },
+);
 
 #=============================================================================
 #=== METHODS =================================================================
 #=============================================================================
 
+#-----------------------------------------------------------------------------
+# Return a ref to player tracking structure.
+#-----------------------------------------------------------------------------
+
+sub _track
+{
+  my ($self, $subj_type) = @_;
+
+  if($subj_type eq 'player') {
+    return $self->_player_track();
+  }# elsif($subj_type eq 'clan') {
+  #  return $self->_clan_track();
+  #}
+
+  croak "Invalid argument to Streak->_track($subj_type)";
+}
+
+#-----------------------------------------------------------------------------
+# Return player/clan tracking entry. If it doesn't exist yet, new one is
+# created and returned. The argument must be an instance of Player or Clan.
+#-----------------------------------------------------------------------------
+
+sub _track_data
+{
+  my ($self, $subj) = @_;
+
+  if($subj->isa('TNNT::Player')) {
+    if(!exists $self->_player_track()->{$subj->name()}) {
+      return $self->_player_track()->{$subj->name()} = {};
+    } else {
+      return $self->_player_track()->{$subj->name()};
+    }
+  }# elsif($subj->isa('TNNT::Clan')) {
+  #  if(!exists $self->_clan_track()->{$subj->n()}) {
+  #    return $self->_clan_track()->{$subj->n()} = {};
+  #  } else {
+  #    return $self->_clan_track()->{$subj->n()};
+  #  }
+  #} else {
+  #  croak 'Invalid argument to GreatFoo->track_data(), must be Player or Clan';
+  #}
+}
 #-----------------------------------------------------------------------------
 # Return player object for current maxstreak. If the maxstreak is an empty
 # list, return undef.
@@ -93,26 +138,21 @@ sub add_game
   #--- if the player is already tracked, just invoke 'add_game' on his
   #--- StreakList instance
 
+  # get/set saved semi-persistant player asc data
+  # this code should be refactored as it appears in multiple places but whatever fml
+  my $player = $game->player();
+  my $tracker = $self->_track_data($player);
+  if ($game->is_ascended()) {
+    # if we skip all this code for non-ascended games, the streak computer
+    # will think every asc is a streak xD
+    $tracker->{'asc_count'} = 0 if !defined($tracker->{'asc_count'});
+    $tracker->{'asc_count'}++;
+    $tracker->{'previous_asc'} = $tracker->{'this_asc'};
+    $tracker->{'this_asc'} = $game; # need to update for first game of streak
+  }
+
   if($self->player_streak($player_name)) {
-    $self->player_streak($player_name)->add_game($game,
-      # streak closing callback, gets (streak) as argument
-      sub {
-        $self->score($_[0]);
-      },
-      # game adding callback, gets (game, index) as argument
-      sub {
-        die if !$_[0]->isa('TNNT::Game');
-        $game->add_score(TNNT::ScoringEntry->new(
-          trophy => $self->name(),
-          when => $game->endtime,
-          points => 0,
-          data => {
-            streakidx => $_[1],
-            streakmult => 1 + ($_[1] * 0.1),
-          },
-        ));
-      }
-    );
+    $self->player_streak($player_name)->add_game($game, $self, $player, $tracker, \&close_streak_cb, \&increment_streak_cb);
   }
 
   #--- if the player IS NOT yet tracked, create new StreakList instance for
@@ -129,7 +169,103 @@ sub add_game
   $self->untrack_if_empty($player_name);
 }
 
+# game adding callback, gets (self, game, index) as argument
+sub increment_streak_cb {
+  my ($game,
+      $player,
+      $tracker,
+      $streak_index) = @_;
+  die if !$game->isa('TNNT::Game');
 
+  my $multi = 1 + (($streak_index - 1) * 0.1);
+  $multi = 1.5 if $multi > 1.5; # don't forget the cap
+  $game->add_score(TNNT::ScoringEntry->new(
+    trophy => 'streak',
+    when => $game->endtime,
+    points => 0,
+    data => {
+      streakidx => $streak_index,
+      streakmult => $multi,
+    },
+  ));
+
+  if (!defined $tracker->{'active_streak'}) {
+    # means we are dealing with second game of a streak
+    push @{$tracker->{'active_streak'}}, {
+      game => $tracker->{'previous_asc'},
+      index => 0,
+      multiplier => 1, #gonna back-update this anyway so
+      key => $player->name . "-" . ($tracker->{'asc_count'} - 1)
+    };
+    $tracker->{'previous_asc'}->add_score(TNNT::ScoringEntry->new(
+      trophy => 'streak',
+      when => $game->endtime,
+      points => 0,
+      data => {
+        streakidx => 0,
+        streakmult => 1,
+      },
+    ));
+  }
+  my $streak_entry = {game => $game,
+                      index => $streak_index,
+                      multiplier => $multi,
+                      key => $player->name . "-" . $tracker->{'asc_count'}};
+  push @{$tracker->{'active_streak'}}, $streak_entry;
+  
+  # loop over previous streak games, starting from n-1 !!
+  my @streak_games = @{$tracker->{'active_streak'}};
+  for (my $i = $streak_index - 1; $i >= 0; $i--) {
+    my $key = $streak_games[$i]->{'key'};
+    # ah crap, streak points depend on conduct points and everything else of the score,
+    # thus we have to also update that when a conduct score is updated FML
+    # in general the code for updating prior games should be refactored somehow because atm
+    # the same blocks of boilerplate appear multiple times...
+    #print "processing game $i streak index ", $streak_games[$i]->{'index'}, ", key = $key\n";
+    my $asc_se = $player->get_score_by_key("asckey", $key);
+    next if !$asc_se;
+    my $streak = $streak_games[$i]->{'game'}->get_score('streak');
+    next if !$streak;
+    $streak->{'data'}{'streakmult'} = $multi;
+    $streak->{'data'}{'streakidx'} = ($streak_games[$i]->{'index'} + 1);
+
+    # update old game score
+    my $rest = $asc_se->{'data'}{'breakdown'}{'spoints'} + $asc_se->{'data'}{'breakdown'}{'cpoints'} + $asc_se->{'data'}{'breakdown'}{'zpoints'};
+    my $streak_bonus = int($rest * ($multi - 1));
+    $asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
+    $asc_se->points($rest + $streak_bonus);
+    $asc_se->{'data'}{'breakdown'}{'streak'}{'multiplier'} = $multi;
+    $asc_se->{'data'}{'breakdown'}{'streak'}{'index'} = ($streak_games[$i]->{'index'} + 1);
+
+    my $clan = $player->clan;
+    next if !$clan;
+    $key = $clan->name . "-" . $tracker->{'asc_count'};
+    my $clan_asc_se = $player->get_score_by_key("clan_asckey", $key);
+    next if !$clan_asc_se;
+    $streak = $streak_games[$i]->{'game'}->get_score('streak');
+    next if !$streak;
+    $streak->{'data'}{'streakmult'} = $multi;
+
+    # update old game score
+    $rest = $clan_asc_se->{'data'}{'breakdown'}{'spoints'}
+             + $clan_asc_se->{'data'}{'breakdown'}{'cpoints'}
+             + $clan_asc_se->{'data'}{'breakdown'}{'zpoints'};
+    $streak_bonus = int($rest * ($multi - 1));
+    $clan_asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
+    $clan_asc_se->points($rest + $streak_bonus);
+    $clan_asc_se->{'data'}{'breakdown'}{'streak'}{'multiplier'} = $multi;
+    $clan_asc_se->{'data'}{'breakdown'}{'streak'}{'index'} = ($streak_games[$i]->{'index'} + 1);
+  }
+}
+
+# streak closing callback, gets (streak) as argument
+sub close_streak_cb {
+  my ($self, $tracker, $streak) = @_;
+
+  $tracker->{'active_streak'} = undef;
+  # need to check what this does
+  $self->score($streak);
+}
 
 #=============================================================================
 # Create player scoring entry for a streak and as a side-effect also track
@@ -271,16 +407,34 @@ sub finish
   my ($self) = @_;
 
   foreach my $player_name ($self->player_names()) {
+    
+    my $player = $self->get_player($player_name);
+    my $tracker = $self->_track_data($player);
     $self->player_streak($player_name)->close(sub {
-      $_[0]->last_game()->player()->add_score($self->score($_[0]));
-    });
+      $_[1]->{'active_streak'} = undef;
+      $_[2]->last_game()->player()->add_score($_[0]->score($_[2]));
+    }, $self, $tracker, $self->player_streak($player_name));
     $self->untrack_if_empty($player_name);
   }
 
   return $self;
 }
 
+#-----------------------------------------------------------------------------
+# Get player by name.
+#-----------------------------------------------------------------------------
 
+sub get_player
+{
+  my ($self, $name) = @_;
+  my $pl = $self->players();
+
+  if(exists $pl->{$name}) {
+    return $pl->{$name};
+  } else {
+    return undef;
+  }
+}
 
 #=============================================================================
 
