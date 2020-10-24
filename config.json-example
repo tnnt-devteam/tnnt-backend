@@ -20,8 +20,10 @@
   # ie. number of seconds since 1970-01-01 00:00)
 
   "time" : {
-    "starttime" : 1541026800,
-    "endtime"   : 1543618800
+    #2019 start 1572566400
+    #2019 end 1575158400
+    "starttime" : 1604188800,
+    "endtime"   : 1606780800
   },
 
   #---------------------------------------------------------------------------
@@ -204,18 +206,43 @@
       "points" : 50
     },
 
+    "mercy:wiz" : {
+      "title"  : "Trophy: ascend a game without ever killing the Wizard",
+      "points"  : 20
+    },
+
+    "mercy:ride" : {
+      "title"  : "Trophy: ascend a game without ever killing a Rider",
+      "points"  : 10
+    },
+
+    "mercy:vlad" : {
+      "title"  : "Trophy: ascend without killing Vlad",
+      "points"  : 5
+    },
+
+    "mercy:neme" : {
+      "title"  : "Trophy: ascend without killing your quest nemesis",
+      "points"  : 5
+    },
+
+    "mercy:prst" : {
+      "title"  : "Trophy: ascend without killing the High Priest of Moloch",
+      "points"  : 5
+    },
+
     "conduct" : {
       "title" : "Conduct"
     },
 
     "conduct:food" : {
       "title"  : "Conduct: Foodless",
-      "multi"  : 2
+      "multi"  : 1.5
     },
 
     "conduct:vegn" : {
       "title"  : "Conduct: Vegan",
-      "multi"  : 1.4
+      "multi"  : 1.3
     },
 
     "conduct:vegt" : {
@@ -225,22 +252,22 @@
 
     "conduct:athe" : {
       "title"  : "Conduct: Atheist",
-      "multi"  : 1.2
+      "multi"  : 1.15
     },
 
     "conduct:weap" : {
       "title"  : "Conduct: Weaponless",
-      "multi"  : 1.2
+      "multi"  : 1.15
     },
 
     "conduct:paci" : {
       "title"  : "Conduct: Pacifist",
-      "multi"  : 2
+      "multi"  : 1.6
     },
 
     "conduct:illi" : {
       "title"  : "Conduct: Illiterate",
-      "multi"  : 1.4
+      "multi"  : 1.3
     },
 
     "conduct:pile" : {
@@ -275,57 +302,32 @@
 
     "conduct:zen"  : {
       "title"  : "Conduct: Zen",
-      "multi"  : 2.2
+      "multi"  : 1.8
     },
 
     "conduct:nude" : {
       "title"  : "Conduct: Nude",
-      "multi"  : 2
+      "multi"  : 1.6
     },
 
     "conduct:halu" : {
       "title"  : "Conduct: Permahallucinating",
-      "multi"  : 2
-    },
-
-    "conduct:wiz" : {
-      "title"  : "Conduct: Never kill the Wizard",
-      "multi"  : 1.6
-    },
-
-    "conduct:ride" : {
-      "title"  : "Conduct: Never kill a Rider",
-      "multi"  : 1.4
+      "multi"  : 1.2
     },
 
     "conduct:arts" : {
       "title"  : "Conduct: Artifactless",
-      "multi"  : 1.2
-    },
-
-    "conduct:vlad" : {
-      "title"  : "Conduct: Never kill Vlad",
-      "multi"  : 1.2
+      "multi"  : 1.1
     },
 
     "conduct:bone" : {
       "title"  : "Conduct: Bonesless",
-      "multi"  : 1.1
+      "multi"  : 1.01
     },
 
     "conduct:swap" : {
       "title"  : "Conduct: Swapchestless",
-      "multi"  : 1.1
-    },
-
-    "conduct:neme" : {
-      "title"  : "Conduct: Never kill your quest nemesis",
-      "multi"  : 1.1
-    },
-
-    "conduct:prst" : {
-      "title"  : "Conduct: Never kill the High Priest of Moloch",
-      "multi"  : 1.05
+      "multi"  : 1.01
     },
 
     "conduct:surv" : {
@@ -335,12 +337,12 @@
 
     "conduct:pets" : {
       "title"  : "Conduct: Petless",
-      "multi"  : 1.05
+      "multi"  : 1.02
     },
 
     "conduct:deaf" : {
       "title"  : "Conduct: Permadeaf",
-      "multi"  : 1.05
+      "multi"  : 1.02
     },
 
     # speedrunning bonus is int(factor / turns); if cutoff is defined then
@@ -986,16 +988,17 @@
 
     "order" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "wiz", "ride",
-      "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
+      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "arts", "bone",
+      "swap", "surv", "pets", "deaf"
     ],
+
 
     # this defines what counts as "all conducts"
 
     "all" : [
       "arti", "pile", "self", "geno", "wish", "athe", "vegt", "vegn", "weap",
-      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "wiz", "ride",
-      "arts", "vlad", "bone", "swap", "neme", "prst", "surv", "pets", "deaf"
+      "elbe", "illi", "paci", "food", "zen", "nude", "halu", "arts", "bone",
+      "swap", "surv", "pets", "deaf"
     ],
 
     # this defines, for scoring purposes, conducts, that imply another one or
@@ -1006,7 +1009,10 @@
       [ "food", "vegt", "vegn" ],
       [ "vegn", "vegt" ],
       [ "wish", "arti" ]
-    ]
+    ],
+
+    # not really conducts this tournament, but we do need their bitfield values
+    "merciful" : [ "vlad", "wiz", "prst", "neme", "ride" ]
   },
 
   #---------------------------------------------------------------------------

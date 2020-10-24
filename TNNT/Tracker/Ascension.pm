@@ -79,15 +79,18 @@ sub add_game
   #--- track ascensions and get number of repeated wins for current game's
   #--- role-race combination
 
-    my $zdivisor = ++$trk->{$entity->name}{$game->role}{$game->race};
+    my $zdivisor = ++$trk->{$entity->name}{$game->role};
 
   #--- create scoring entry
-
+    $trk->{'asc_count'}{$entity->name} = 0 if !defined($trk->{'asc_count'});
+    $trk->{'asc_count'}{$entity->name}++;
+    my $asc_key = $entity->name . "-" . $trk->{'asc_count'}{$entity->name};
     my $se = new TNNT::ScoringEntry(
       trophy => ($is_clan ? 'clan-':'') . $self->name(),
       games => [ $game ],
       when => $game->endtime(),
-      data => { 'breakdown' => \%breakdown, achiever => $game->name },
+      data => { 'breakdown' => \%breakdown, achiever => $game->name,
+                ($is_clan ? 'clan_':'') . 'asckey' => $asc_key },
     );
 
   #--- get base value for ascension
@@ -102,7 +105,7 @@ sub add_game
 
     $breakdown{'zpoints'} = int($base / $zdivisor);
     $breakdown{'repeat'} = $zdivisor;
-    $breakdown{'combo'} = $game->role . '-' . $game->race;
+    $breakdown{'combo'} = $game->role;
 
   #--- add conduct bonus
   # The 'conduct' scoring list is added to ascended games by the 'Conduct'
@@ -137,7 +140,7 @@ sub add_game
       my $streak_multiplier;
       $streak_multiplier = $streak_se->get_data('streakmult');
       $breakdown{'streak'}{'multiplier'} = $streak_multiplier;
-      $breakdown{'streak'}{'index'} = $streak_se->get_data('streakidx');
+      $breakdown{'streak'}{'index'} = ($streak_se->get_data('streakidx') + 1);
       $breakdown{'tpoints'} = int((
         $base
         + $breakdown{'cpoints'}
