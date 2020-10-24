@@ -102,8 +102,8 @@
     Various accomplishments across one or multiple games earn you trophies,
     which come with an associated boatload of points. To see how to earn these,
     go to the <a href="trophies.html">Trophies page</a> and hover over them;
-    they will show up as a tooltip. The Great and Lesser Race/Role trophies
-    need a bit more explanation.
+    they will show up as a tooltip. Some trophies need a bit more explanation
+    and are covered below.
     <!-- TODO: Do we want to stick a trophy score table here anyway? -->
   </p>
 
@@ -159,7 +159,6 @@
       <tr> <td>The Great Wiz</td>   <td>5</td> <td>Hum-N, Hum-C, Elf-C, Gno-N, Orc-C</td>  <td>250</td> </tr>
     </tbody>
   </table>
-
   </p>
 
   <p>
@@ -181,6 +180,15 @@
     deserve the same Lesser Race or Role, since it is possible to ascend
     without completing Sokoban and/or retrieving the Mines' End luckstone. As
     such, they are scored independently of each other.
+  </p>
+
+  <h5><strong>New in 2020:</strong>Ascending without Killing (insert monster here)</h5>
+  <p>
+    These trophies are fairly straightforward for the most part, but one bit of
+    clarification is needed: in order to achieve the trophy, you can't let the
+    specified monster die by any means, like how it works in Junethack. Merely
+    abstaining from killing them personally while your pets or conflicted
+    monsters finish them off will not earn the trophy.
   </p>
 
   <h4>Ascending with Conducts</h4>
@@ -298,12 +306,12 @@
     counts for 2 points instead.
   </p>
   <p>
-    Achievement-related points are counted towards your individual score
-    directly, and are not multiplied by any streak you may have.
+    Achievement-related points are counted towards your individual and clan
+    score directly, and are not multiplied by any streak you may have.
   </p>
   <p>
-    Below is a listing of every achievement a player can earn in-game, and a description
-    of that achievement and what needs to be done to earn it.
+    Below is a listing of every achievement a player can earn in-game, and a
+    description of that achievement and what needs to be done to earn it.
   </p>
   <p>
   <!-- TODO: hide this table by default, have it expandable? -->
