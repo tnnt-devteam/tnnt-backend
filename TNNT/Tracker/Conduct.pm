@@ -88,7 +88,7 @@ sub add_game
     $game,
   ) = @_;
   my $cfg = TNNT::Config->instance()->config();
-  my @conducts = $game->conducts();
+  my @conducts = $game->conducts_filtered(); # this isn't actually used lol
   #--- only ascended games
   if (!$game->is_ascended()) {
     return;
@@ -227,7 +227,7 @@ sub single_zscore {
        $update) = @_;
 
     my $score = 1;
-    foreach my $conduct ($game->conducts()) {
+    foreach my $conduct ($game->conducts_filtered()) {
         $score *= ($zhash->{$conduct}{'Z'} * ($zhash->{$conduct}{'multi'} - 1)) + 1;
         if ($update) {
             $zhash->{$conduct}{'Z'} = 1/(1/$zhash->{$conduct}{'Z'} + 1);
