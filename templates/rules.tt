@@ -257,36 +257,45 @@
 
   <h4>Streaking</h4>
   <p>
-    A streak is a series of consecutive winning games by the same player. Because you
-    can play on multiple servers, the rule is that the first game you start on any
-    server after winning the previous game in a streak is the candidate game for
-    continuing the streak; other simultaneous games will not be counted for your streak.
-  </p>
-  <p>
-    If you simply play consecutive games, starting the next after you ascend the last,
-    then each game counts towards your streak, even if they are played on different servers.
-  </p>
-  <p>
-    However, if you start games on different servers concurrently, not every game will be
-    eligible for your streak.  For example, suppose you ascend game A, then start game B,
-    and start game C on another server before ascending game B.  You then ascend game C –
-    this does not count towards your streak, because game B came first.  If you ascend game B,
-    this will count towards your streak.  You could then start game D and ascend it, in which
-    case your longer streak would be extended, A-B-D.
+    A streak is a series of consecutive winning games by the same player.
+    Because you can have multiple in-progress games on multiple servers, the
+    rule is that the first game started after a win is the candidate for
+    continuing a streak. Winning or losing non-candidate games will not affect
+    the streak whatsoever.
   </p>
   <p>
     For those familiar with DCSS tournaments, these rules are the same as theirs.
   </p>
   <p>
-    Each consecutive streak game gets an increasing multiplier for score. Bonus
-    points for speedrunning and conducts are counted into this.  The multiplier
-    is 1.1 for the second game of a streak, 1.2 for the third, 1.3 for the
-    fourth, and so on. The base points for your ascension are assumed to be a
-    generic 50; this prevents z-score point reduction from devaluing the
-    streak.
+    Games that are part of a streak get a multiplier for score that increases
+    with the length of the streak. The multiplier is retroactively awarded:
+    ascending the third game in a row and extending a 2-streak into a 3-streak
+    will apply the higher multiplier equally to all three games. The streak
+    multiplier also multiplies bonus points for speedrunning and conducts.
   </p>
   <p>
-    The exact formula for the streaking bonus points is
+    Streak multipliers are:
+    <table>
+      <thead>
+        <tr class="framed">
+          <th>Length</th>
+          <th>Multiplier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr> <td>2</td>  <td align="right"> 1.1&times;</td> </tr>
+        <tr> <td>3</td>  <td align="right"> 1.2&times;</td> </tr>
+        <tr> <td>4</td>  <td align="right"> 1.3&times;</td> </tr>
+        <tr> <td>5</td>  <td align="right"> 1.4&times;</td> </tr>
+        <tr> <td>6+</td> <td align="right"> 1.5&times;</td> </tr>
+      </tbody>
+    </table>
+    The base points for your ascension are assumed to be a generic 50; this
+    prevents role-based Z-score point reduction from devaluing the streak.
+  </p>
+  <p>
+    The exact formula for the amount of streaking bonus points added to an
+    ascension is
     <i><big>(</big>50 &plus; conduct bonus points &plus; speedrun bonus points<big>)</big> &times; <big>(</big>streak multiplier &minus; 1<big>)</big></i>
   </p>
 
