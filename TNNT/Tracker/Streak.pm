@@ -221,7 +221,7 @@ sub increment_streak_cb {
     # thus we have to also update that when a conduct score is updated FML
     # in general the code for updating prior games should be refactored somehow because atm
     # the same blocks of boilerplate appear multiple times...
-    print "processing game $i, key = $key, multi = $multi\n";
+    #print "processing game $i, key = $key, multi = $multi\n";
     my $asc_se = $player->get_score_by_key("asckey", $key);
     next if !$asc_se;
     my $streak = $streak_games[$i]->{'game'}->get_score('streak');
@@ -238,7 +238,7 @@ sub increment_streak_cb {
     my $foo = $asc_se->points;
     $asc_se->points($rest + $streak_bonus);
     my $bar = $asc_se->points;
-    print "old_score = $foo, new score = $bar\n";
+    #print "old_score = $foo, new score = $bar\n";
     $asc_se->{'data'}{'breakdown'}{'streak'}{'multiplier'} = $multi;
     $asc_se->{'data'}{'breakdown'}{'streak'}{'index'} = ($streak_games[$i]->{'index'} + 1);
 
