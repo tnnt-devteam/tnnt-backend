@@ -40,7 +40,7 @@ sub add_game
     return;
   }
 
-  my @conducts = $game->conducts();
+  my @conducts = $game->conducts_filtered();
   my $multiplier = 1;
   foreach my $conduct (@conducts) {
     $multiplier *= $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
