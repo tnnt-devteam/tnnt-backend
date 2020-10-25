@@ -53,17 +53,16 @@ h5 {
 }
 
 a {
-  color: inherit;
+  color: #ffffe0;
   text-decoration: none;
 }
 
 a:visited {
-  color: inherit;
+  color: #inherit;
 }
 
 a:hover {
-  color:#fd0;
-  /* text-decoration: underline; */
+  color: #fd0;
 }
 
 span.streak {

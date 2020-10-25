@@ -53,9 +53,18 @@
     every year.
   </p>
   <p>
-    If you are looking for the code powering the devnull challenges, to use as
-    a patch for your own purposes, you can find it... somewhere (we don't have
-    a link handy).
+    If you are looking for the code powering the devnull tribute challenges,
+    to use as a patch for your own purposes, you can find the devnull tribute
+    scoreboard repo <a href="https://github.com/borekl/devnull-tribute-2017">here</a>,
+    and the devnull tribute game code <a href="https://github.com/NHTangles/NetHack36/tree/devnull_hdf">here</a>.
+  </p>
+
+  <h4>What's the new content in TNNT?</h4>
+  <p>
+    To not spoil players that are new to TNNT, the additional content that
+    has been added to the game has been purposely omitted from this site.
+    For those that wish to learn about all of the new game content in TNNT,
+    please visit the TNNT entry on the <a href="https://nethackwiki.com/wiki/The_November_NetHack_Tournament">NetHack Wiki</a>.
   </p>
 
   <h4>Contributors</h4>
@@ -64,6 +73,7 @@
     <li>Mandevil: Creator of the scoreboard, the website, and the backend that turns raw game logs into tables of game statistics and trophies.</li>
     <li>aosdict: Author of the achievements system and various in-game features.</li>
     <li>K2: Server admin and jack-of-all-trades programmer, maintainer, problem fixer, and designer.</li>
+    <li>aoei: Scoreboard coding.</li>
     <li>Elenmirie: Overall tournament designer, project manager, coordinator, and alpha tester.</li>
     <li>Raisse, Jilles, Hothraxxa, and oh6: Tournament designers and alpha testers.</li>
   </ul>
