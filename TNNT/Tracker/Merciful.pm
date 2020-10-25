@@ -6,13 +6,11 @@
 # so this must be run before it.
 #=============================================================================
 
-package TNNT::Tracker::Conduct;
+package TNNT::Tracker::Merciful;
 
-use Carp;
 use Moo;
 use TNNT::ScoringEntry;
-use TNNT::Game;
-use Data::Dump qw(dd);
+
 
 
 #=============================================================================
@@ -21,8 +19,10 @@ use Data::Dump qw(dd);
 
 has name => (
   is => 'ro',
-  default => 'conduct',
+  default => 'merciful',
 );
+
+
 
 #=============================================================================
 #=== METHODS =================================================================
@@ -34,35 +34,40 @@ sub add_game
     $self,
     $game,
   ) = @_;
-  my $cfg = TNNT::Config->instance()->config();
+
   #--- only ascended games
-  if (!$game->is_ascended()) {
-    return;
+
+  return if !$game->is_ascended();
+
+  my $cfg = TNNT::Config->instance()->config();
+  my $player = $game->player;
+  my $clan = $player->clan;
+  for my $entity ($player, $clan) {
+    foreach my $mercy ($game->mercifulness()) {
+      #--- check if player already has this trophy, then
+      # add scoring entry for that
+      next if !$entity;
+
+      if(! $entity->get_score("mercy:$mercy")) {
+        my $se = new TNNT::ScoringEntry(
+          trophy => "mercy:$mercy",
+          when => $game->endtime(),
+          game => [ $game ]
+        );
+
+        $entity->add_score($se);
+      }
   }
 
-  my @conducts = $game->conducts_filtered();
-  my $multiplier = 1;
-  foreach my $conduct (@conducts) {
-    $multiplier *= $cfg->{'trophies'}{"conduct:$conduct"}{'multi'};
+  
   }
-  $multiplier--;
 
-  my $se = new TNNT::ScoringEntry(
-    trophy => $self->name(),
-    when => $game->endtime,
-    points => 0,
-    data => {
-      conducts => [ $game->conducts() ],
-      conducts_txt => join(' ', $game->conducts()),
-      ncond => scalar($game->conducts()),
-      multiplier => $multiplier,
-    }
-  );
-  $game->add_score($se);
   #--- finish
 
   return $self;
 }
+
+
 
 sub finish
 {

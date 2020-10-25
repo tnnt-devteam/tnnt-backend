@@ -178,6 +178,37 @@ sub disp
   );
 }
 
+#=============================================================================
+# Get list of mercy (or no-killed-foo) achievements from the game
+#=============================================================================
+
+sub mercifulness
+{
+  my $self = shift;
+  my $cfg = TNNT::Config->instance()->config()->{'conducts'};
+  my $conduct_bitfield = $self->conduct();
+
+  my @mercy;
+
+  #--- get reverse code-to-value mapping for conducts and also ordering
+
+  my %con_to_val = reverse %{$cfg->{'conduct'}};
+  my @mercy_achiev = @{$cfg->{'merciful'}};
+
+  #---
+
+  foreach my $c (@mercy_achiev) {
+    if(exists $con_to_val{$c} && $conduct_bitfield) {
+      if($conduct_bitfield & $con_to_val{$c}) {
+        push(@mercy, $c);
+      }
+    }
+  }
+
+  #--- return value depending on context
+
+  return wantarray ? @mercy : scalar(@mercy);
+}
 
 
 #=============================================================================
@@ -234,6 +265,7 @@ sub conducts
 #=============================================================================
 # Return list of conducts, but filter out conducts, that are superseded by
 # a higher level conduct (e.g. wishless supersedes artiwishless).
+# This superseding stuff may not be necessary with the new conduct Z-scoring
 #=============================================================================
 
 sub conducts_filtered

@@ -1,4 +1,4 @@
-#!/usr/bin/env perl -I.
+#!/usr/bin/env perl
 
 #=============================================================================
 # THE NOVEMBER NETHACK TOURNAMENT
@@ -38,7 +38,23 @@ try {
 #--- check for & create a lock file
 
 if(-f '/tmp/tnnt-scoreboard.lock') {
-  die "tnnt-scoreboard: Another instance running, aborting\n";
+  open(my $fh_lock, '<', '/tmp/tnnt-scoreboard.lock');
+  die "lockfile /tmp/tnnt-scoreboard.lock exists, but we cannot open it" if !$fh_lock;
+
+  my @lines;
+  while(my $l = <$fh_lock>) {
+    chomp($l);
+    push @lines, $l;
+  }
+  close($fh_lock) if $fh_lock;
+
+  my $pid = int($lines[0]);
+  if (kill 0, $pid) {
+    die "tnnt-scoreboard: Another instance running, aborting\n";
+  } else {
+    warn "lockfile /tmp/tnnt-scoreboard.lock found, but process $pid doesn't exist\n";
+    unlink '/tmp/tnnt-scoreboard.lock';
+  }
 }
 open(my $fh_lock, '>', '/tmp/tnnt-scoreboard.lock')
   or die "tnnt-scoreboard: Failed to create a lock file, aborting\n";

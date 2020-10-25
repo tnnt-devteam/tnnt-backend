@@ -100,7 +100,7 @@ sub find_eligible
 
 sub close
 {
-  my ($self, $cb) = splice(@_, 0, 2);
+  my ($self, $cb, $streak, $tracker) = splice(@_, 0, 4);
   my @streaks = splice(@_);
   my @pruned;
 
@@ -119,7 +119,7 @@ sub close
       # if the streak length is 2 or more, invoke the callback (presumably to
       # create one or more scoring entries)
       if($cb && $self->streak($i)->count_games() > 1) {
-        $cb->($self->streak($i));
+        $cb->($streak, $tracker, $self->streak($i));
       }
     } else {
       # if the current iteration streak is not closed, move it into the list
@@ -143,7 +143,13 @@ sub close
 
 sub add_game
 {
-  my ($self, $game, $cb1, $cb2) = @_;
+  my ($self,
+      $game,
+      $streak,    # streak tracker ref, needed for the close callback
+      $player,
+      $tracker,   # need this as the callbacks can't access the _track_data subroutine in Streak.pm
+      $cb1,
+      $cb2) = @_;
 
   #--- find eligible streaks
 
@@ -164,15 +170,15 @@ sub add_game
   elsif(@eligible && $game->is_ascended()) {
     my $top_streak = shift @eligible;
     $self->streak($top_streak)->add_game($game);
-    if($cb2) { $cb2->($game, $self->streak($top_streak)->count_games()-1); }
-    $self->close($cb1, @eligible) if @eligible;
+    if($cb2) { $cb2->($game, $player, $tracker, $self->streak($top_streak)->count_games()-1); }
+    $self->close($cb1, $streak, $tracker, @eligible) if @eligible;
   }
 
   #--- if eligible streak exists and the game is not ascended
   #--- break all eligible streaks
 
   elsif(@eligible && !$game->is_ascended()) {
-    $self->close($cb1, @eligible);
+    $self->close($cb1, $streak, $tracker, @eligible);
   }
 }
 
