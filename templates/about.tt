@@ -16,7 +16,7 @@
   <h4>History</h4>
   <p>
     The long-running
-    <a href="https://nethackwiki.com/wiki//dev/null/nethack_tournament">
+    <a href="https://nethackwiki.com/wiki//dev/null/nethack_tournament" target="_blank">
       /dev/null/nethack tournament
     </a>
     was unexpectedly shut down in September 2017. When this was announced, some
@@ -30,7 +30,7 @@
     its name going, plans for a new tournament were laid. This new tournament
     would be based off the newly available development version of NetHack, and
     would remain a primarily vanilla-like tournament, unlike other tournaments
-    like <a href="https://junethack.net">Junethack</a> which focus on variant
+    like <a href="https://junethack.net" target="_blank">Junethack</a> which focus on variant
     play.  It was also decided to keep the tradition of running the tournament
     throughout November, when a lot of veteran players come out of the woodwork
     checking to see if there's a tournament.
@@ -55,8 +55,8 @@
   <p>
     If you are looking for the code powering the devnull tribute challenges,
     to use as a patch for your own purposes, you can find the devnull tribute
-    scoreboard repo <a href="https://github.com/borekl/devnull-tribute-2017">here</a>,
-    and the devnull tribute game code <a href="https://github.com/NHTangles/NetHack36/tree/devnull_hdf">here</a>.
+    scoreboard repo <a href="https://github.com/borekl/devnull-tribute-2017" target="_blank">here</a>,
+    and the devnull tribute game code <a href="https://github.com/NHTangles/NetHack36/tree/devnull_hdf" target="_blank">here</a>.
   </p>
 
   <h4>What's the new content in TNNT?</h4>
@@ -64,7 +64,7 @@
     To not spoil players that are new to TNNT, the additional content that
     has been added to the game has been purposely omitted from this site.
     For those that wish to learn about all of the new game content in TNNT,
-    please visit the TNNT entry on the <a href="https://nethackwiki.com/wiki/The_November_NetHack_Tournament">NetHack Wiki</a>.
+    please visit the TNNT entry on the <a href="https://nethackwiki.com/wiki/The_November_NetHack_Tournament" target="_blank">NetHack Wiki</a>.
   </p>
 
   <h4>Contributors</h4>

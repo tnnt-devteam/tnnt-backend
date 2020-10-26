@@ -58,7 +58,7 @@ a {
 }
 
 a:visited {
-  color: #inherit;
+  color: #ffffe0;
 }
 
 a:hover {
@@ -364,45 +364,44 @@ a.menusel {
 }
 
 table#navlogo {
-    width: 100%;
+  width: 100%;
 }
 
 table#navlogo tr {
-    background-color: #237;
+  background-color: #237;
 }
 
 table#navlogo tr#lowerheader {
-    /* should appear as the body background color */
-    background-color: #003;
+  /* should appear as the body background color */
+  background-color: #003;
 }
 
 table#navlogo td {
-    border-bottom: 2pt solid #f2f5ff;
-    /* border-left:0; */
+  border-bottom: 2pt solid #f2f5ff;
 }
 
 table#navlogo td.leftmenu {
-    width:50%;
-    text-align:right;
-    margin-left:auto;
+  width:50%;
+  text-align:right;
+  margin-left:auto;
 }
 
 table#navlogo td.rightmenu {
-    width:50%;
-    text-align:left;
-    margin-left:auto;
+  width:50%;
+  text-align:left;
+  margin-left:auto;
 }
 
 table#navlogo td#logo {
-    padding: 0 1em 0 1em;
-    text-align: center;
-    width: 100px;
-    border-left: 2pt solid #f2f5ff;
-    border-right:2pt solid #f2f5ff;
+  padding: 0 1em 0 1em;
+  text-align: center;
+  width: 100px;
+  border-left: 2pt solid #f2f5ff;
+  border-right:2pt solid #f2f5ff;
 }
 
 table#navlogo tr#lowerheader td {
-    border-bottom:none;
+  border-bottom:none;
 }
 
 /*====================================================================
@@ -410,19 +409,17 @@ table#navlogo tr#lowerheader td {
   ====================================================================*/
 
 #salespitch {
-    text-align: center;
-    margin: 0.5em 0 1em 0;
-    /* border-bottom: 0.1em solid #668; */
+  text-align: center;
+  margin: 0.5em 0 1em 0;
 }
 
 #salespitch h3 {
-    margin: 0;
-    margin-top: 0.8em;
-    /* margin-bottom: 0.3em; */
+  margin: 0;
+  margin-top: 0.8em;
 }
 
 #salespitch a {
-    color: #59f;
+  color: #59f;
 }
 
 #salespitch a:hover {
@@ -430,17 +427,25 @@ table#navlogo tr#lowerheader td {
 }
 
 hr {
-    width: 60%;
-    color: #668;
+  width: 60%;
+  color: #668;
 }
 
 article {
-    max-width: 50%;
+  max-width: 50%;
 }
 
 /* so as not to step on the toes of other links... */
 article a {
-    color: #59f;
+  color: #59f;
+}
+
+article a:visited {
+  color: #59f;
+}
+
+article a:hover {
+  color: #fd0;
 }
 
 #countdown {
