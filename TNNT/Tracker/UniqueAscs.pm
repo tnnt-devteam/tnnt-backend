@@ -10,7 +10,7 @@ use Moo;
 use TNNT::ScoringEntry;
 use TNNT::ClanList;
 
-use Data::Dumper;
+#use Data::Dumper;
 
 
 

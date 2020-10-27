@@ -13,7 +13,7 @@ package TNNT::ScoringList;
 
 use Moo::Role;
 use List::Util qw(first);
-use Data::Dump qw(dd);
+#use Data::Dump qw(dd);
 
 
 
