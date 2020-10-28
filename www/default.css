@@ -282,10 +282,7 @@ table.trophies td {
   min-width: 8em;
   border-bottom: 1px solid #eee;
   padding: 0.6rem 1.4rem;
-}
-
-table.trophies tr {
-  vertical-align: baseline;
+  vertical-align: top;
 }
 
 td.trophy-name {
@@ -303,7 +300,7 @@ td.trophy-single {
 }
 
 td.trophy-multi {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 110%;
   width: 30%;
 }
@@ -314,6 +311,13 @@ td.trophy-na {
   color: #ddd;
   text-align: center;
   width: 30%;
+}
+
+/* Put clans on their own lines. Won't work for players, too many players can
+ * get a trophy and that'd create a super tall table cell. */
+table.trophies tr td.trophy-multi:last-child a {
+/* table.trophies tr td.trophy-multi a { */
+    display:block;
 }
 
 /*====================================================================

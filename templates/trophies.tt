@@ -215,6 +215,7 @@
       <td class="trophy-multi">[% IF trophies.players.exists('allgenders') %]
           [% FOREACH plr IN trophies.players.allgenders %]
             [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
           [% END %]
         [% END %]
       </td>
@@ -237,6 +238,7 @@
       <td class="trophy-multi">[% IF trophies.players.exists('allaligns') %]
           [% FOREACH plr IN trophies.players.allaligns %]
             [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
           [% END %]
         [% END %]
       </td>
@@ -259,6 +261,7 @@
       <td class="trophy-multi">[% IF trophies.players.exists('allraces') %]
           [% FOREACH plr IN trophies.players.allraces %]
             [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
           [% END %]
         [% END %]
       </td>
@@ -281,6 +284,7 @@
       <td class="trophy-multi">[% IF trophies.players.exists('allroles') %]
           [% FOREACH plr IN trophies.players.allroles %]
             [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
           [% END %]
         [% END %]
       </td>
@@ -303,6 +307,7 @@
       <td class="trophy-multi">[% IF trophies.players.exists('allconducts') %]
           [% FOREACH plr IN trophies.players.allconducts %]
             [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
           [% END %]
         [% END %]
       </td>
@@ -325,6 +330,7 @@
       <td class="trophy-multi">[% IF trophies.players.exists('allachieve') %]
           [% FOREACH plr IN trophies.players.allachieve %]
             [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
           [% END %]
         [% END %]
       </td>
@@ -344,6 +350,7 @@
       <td class="trophy-multi">[% IF trophies.players.exists('rsimpossible') %]
           [% FOREACH plr IN trophies.players.rsimpossible %]
             [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
           [% END %]
         [% END %]
       </td>
@@ -366,6 +373,7 @@
       <td class="trophy-multi">[% IF trophies.players.exists('gimpossible') %]
           [% FOREACH plr IN trophies.players.gimpossible %]
             [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
           [% END %]
         [% END %]
       </td>
@@ -487,11 +495,12 @@
       <td class="trophy-name"
           title="Never quit or escape within the first 100 turns. 10 points.">Never Scum a Game</td>
       <td class="trophy-multi">
-        [% IF trophies.players.exists('noscum');
-          FOREACH plr IN trophies.players.noscum;
-            plink(plr); ' ';
-          END;
-        END %]
+        [% IF trophies.players.exists('noscum') %]
+          [% FOREACH plr IN trophies.players.noscum %]
+            [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
+          [% END %]
+        [% END %]
       </td>
       <td class="trophy-na">N/A</td>
     </tr>
@@ -508,6 +517,7 @@
             <td class="trophy-multi">
               [% FOREACH plr IN trophies.players.greatfoo.item(gl _ rr _ ':' _ cat.lower) %]
                 [% plink(plr) %]
+                [% UNLESS loop.last %] &middot; [% END %]
               [% END %]
             </td>
             <td class="trophy-multi">
@@ -531,6 +541,7 @@
         <td class="trophy-multi">
           [% FOREACH plr IN trophies.players.mercy.item(enemy) %]
             [% plink(plr) %]
+            [% UNLESS loop.last %] &middot; [% END %]
           [% END %]
         </td>
         <td class="trophy-multi">
