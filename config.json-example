@@ -207,27 +207,27 @@
     },
 
     "mercy:wiz" : {
-      "title"  : "Trophy: ascend a game without ever killing the Wizard",
+      "title"  : "Never kill Rodney",
       "points"  : 20
     },
 
     "mercy:ride" : {
-      "title"  : "Trophy: ascend a game without ever killing a Rider",
+      "title"  : "Never kill a Rider",
       "points"  : 10
     },
 
     "mercy:vlad" : {
-      "title"  : "Trophy: ascend without killing Vlad",
+      "title"  : "Never kill Vlad",
       "points"  : 5
     },
 
     "mercy:neme" : {
-      "title"  : "Trophy: ascend without killing your quest nemesis",
+      "title"  : "Never kill the quest nemesis",
       "points"  : 5
     },
 
     "mercy:prst" : {
-      "title"  : "Trophy: ascend without killing the High Priest of Moloch",
+      "title"  : "Never kill the High Priest of Moloch",
       "points"  : 5
     },
 

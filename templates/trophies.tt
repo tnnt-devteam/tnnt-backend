@@ -520,6 +520,27 @@
       [% END %]
     [% END %]
 
+    [%# === NEVER KILLED X ============================================ %]
+
+    <!-- TODO: merciful probably shouldn't be stored in config.conducts -->
+    [% FOREACH enemy IN config.conducts.item('mercies') %]
+      <tr>
+        <td class="trophy-name" title="See Rules page for explanation.">
+          [% config.trophies.item('mercy:' _ enemy).title %]
+        </td>
+        <td class="trophy-multi">
+          [% FOREACH plr IN trophies.players.mercy.item(enemy) %]
+            [% plink(plr) %]
+          [% END %]
+        </td>
+        <td class="trophy-multi">
+          [% FOREACH cln IN trophies.clans.mercy.item(enemy) %]
+            [% clink(clans.all.item(cln)) %]
+          [% END %]
+        </td>
+      </tr>
+    [% END %]
+
   </tbody>
 </table>
 
