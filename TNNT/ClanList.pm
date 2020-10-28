@@ -272,6 +272,11 @@ sub export
       push(@trophy_names, "greatrole:$role", "lesserrole:$role");
     }
 
+    # i would prefer these were not hardcoded but nevermind we have not much time
+    for my $enemy (qw(wiz prst ride neme vlad)) {
+      push(@trophy_names, "mercy:$enemy");
+    }
+
     for my $trophy (@trophy_names) {
       if(my $s = $clan->get_score("clan-$trophy")) {
         push(@trophies, {

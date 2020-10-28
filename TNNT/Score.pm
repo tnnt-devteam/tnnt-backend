@@ -25,7 +25,7 @@ use TNNT::Tracker::Ascension;
 use TNNT::Tracker::Conduct;
 use TNNT::Tracker::Speedrun;
 use TNNT::Tracker::FirstAsc;
-use TNNT::Tracker::Merciful;
+use TNNT::Tracker::Mercy;
 use TNNT::Tracker::MostAsc;
 use TNNT::Tracker::MostCond;
 use TNNT::Tracker::MostAch;
@@ -82,7 +82,7 @@ sub BUILD
   # Ascension tracker uses data from the above trackers
   $tr->add_tracker(new TNNT::Tracker::Ascension);
   $tr->add_tracker(new TNNT::Tracker::FirstAsc);
-  $tr->add_tracker(new TNNT::Tracker::Merciful);
+  $tr->add_tracker(new TNNT::Tracker::Mercy);
   $tr->add_tracker(new TNNT::Tracker::MostAsc);
   $tr->add_tracker(new TNNT::Tracker::MostCond);
   $tr->add_tracker(new TNNT::Tracker::MostAch);
@@ -399,6 +399,13 @@ sub export
   if(@$noscum_holders) {
     $d{'trophies'}{'players'}{'noscum'} = $noscum_holders;
   }
+
+  # Mercy trophies
+  my $mercy_tr = $tr->get_tracker_by_name('mercy');
+  (
+    $d{'trophies'}{'players'}{'mercy'},
+    $d{'trophies'}{'clans'}{'mercy'}
+  ) = $mercy_tr->export();
 
   #--- finish
 

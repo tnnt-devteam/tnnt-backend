@@ -1012,7 +1012,7 @@
     ],
 
     # not really conducts this tournament, but we do need their bitfield values
-    "merciful" : [ "vlad", "wiz", "prst", "neme", "ride" ]
+    "mercies" : [ "vlad", "wiz", "prst", "neme", "ride" ]
   },
 
   #---------------------------------------------------------------------------

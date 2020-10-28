@@ -182,7 +182,7 @@ sub disp
 # Get list of mercy (or no-killed-foo) achievements from the game
 #=============================================================================
 
-sub mercifulness
+sub mercies
 {
   my $self = shift;
   my $cfg = TNNT::Config->instance()->config()->{'conducts'};
@@ -193,7 +193,7 @@ sub mercifulness
   #--- get reverse code-to-value mapping for conducts and also ordering
 
   my %con_to_val = reverse %{$cfg->{'conduct'}};
-  my @mercy_achiev = @{$cfg->{'merciful'}};
+  my @mercy_achiev = @{$cfg->{'mercies'}};
 
   #---
 
