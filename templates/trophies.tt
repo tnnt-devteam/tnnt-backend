@@ -301,7 +301,7 @@
 
     <tr>
       <td class="trophy-name"
-          title="Across all ascensions, preserves each conduct at least once. 300 points.">
+          title="Across all ascensions, preserves each conduct (including non-vanilla conducts) at least once. 300 points.">
         All Conducts
       </td>
       <td class="trophy-multi">[% IF trophies.players.exists('allconducts') %]
