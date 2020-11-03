@@ -535,7 +535,8 @@
     <!-- TODO: merciful probably shouldn't be stored in config.conducts -->
     [% FOREACH enemy IN config.conducts.item('mercies') %]
       <tr>
-        <td class="trophy-name" title="See Rules page for explanation.">
+        <td class="trophy-name"
+          title="[% config.trophies.item('mercy:' _ enemy).title %]. [% config.trophies.item('mercy:' _ enemy).points %] points.">
           [% config.trophies.item('mercy:' _ enemy).title %]
         </td>
         <td class="trophy-multi">
