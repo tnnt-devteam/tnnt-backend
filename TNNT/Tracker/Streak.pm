@@ -229,15 +229,17 @@ sub increment_streak_cb {
     $streak->{'data'}{'streakmult'} = $multi;
     $streak->{'data'}{'streakidx'} = ($streak_games[$i]->{'index'} + 1);
 
-    # update old game score
-    my $rest = $asc_se->{'data'}{'breakdown'}{'spoints'}
-             + $asc_se->{'data'}{'breakdown'}{'cpoints'}
-             + $asc_se->{'data'}{'breakdown'}{'zpoints'};
-    my $streak_bonus = int($rest * ($multi - 1));
+    # update old game score - streak bonus is meant to be
+    # dependent on everything *except* the zpoints
+    my $streak_bonus = int(($asc_se->{'data'}{'breakdown'}{'spoints'}
+                           + $asc_se->{'data'}{'breakdown'}{'cpoints'} + 50) * ($multi - 1));
     $asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
-    my $foo = $asc_se->points;
-    $asc_se->points($rest + $streak_bonus);
-    my $bar = $asc_se->points;
+    #my $foo = $asc_se->points;
+    $asc_se->points($asc_se->{'data'}{'breakdown'}{'zpoints'}
+                    + $asc_se->{'data'}{'breakdown'}{'spoints'}
+                    + $asc_se->{'data'}{'breakdown'}{'cpoints'}
+                    + $asc_se->{'data'}{'breakdown'}{'tpoints'});
+    #my $bar = $asc_se->points;
     #print "old_score = $foo, new score = $bar\n";
     $asc_se->{'data'}{'breakdown'}{'streak'}{'multiplier'} = $multi;
     $asc_se->{'data'}{'breakdown'}{'streak'}{'index'} = ($streak_games[$i]->{'index'} + 1);
@@ -252,12 +254,15 @@ sub increment_streak_cb {
     $streak->{'data'}{'streakmult'} = $multi;
 
     # update old game score
-    $rest = $clan_asc_se->{'data'}{'breakdown'}{'spoints'}
-             + $clan_asc_se->{'data'}{'breakdown'}{'cpoints'}
-             + $clan_asc_se->{'data'}{'breakdown'}{'zpoints'};
-    $streak_bonus = int($rest * ($multi - 1));
+    # idk whether calculating this again is really necesssary...
+    # rn i just want to fix the scoring :D
+    $streak_bonus = int(($clan_asc_se->{'data'}{'breakdown'}{'spoints'}
+                           + $clan_asc_se->{'data'}{'breakdown'}{'cpoints'} + 50) * ($multi - 1));
     $clan_asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
-    $clan_asc_se->points($rest + $streak_bonus);
+    $clan_asc_se->points($clan_asc_se->{'data'}{'breakdown'}{'zpoints'}
+                    + $clan_asc_se->{'data'}{'breakdown'}{'spoints'}
+                    + $clan_asc_se->{'data'}{'breakdown'}{'cpoints'}
+                    + $clan_asc_se->{'data'}{'breakdown'}{'tpoints'});
     $clan_asc_se->{'data'}{'breakdown'}{'streak'}{'multiplier'} = $multi;
     $clan_asc_se->{'data'}{'breakdown'}{'streak'}{'index'} = ($streak_games[$i]->{'index'} + 1);
   }
