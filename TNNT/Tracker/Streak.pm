@@ -223,7 +223,11 @@ sub increment_streak_cb {
     # the same blocks of boilerplate appear multiple times...
     #print "processing game $i, key = $key, multi = $multi\n";
     my $asc_se = $player->get_score_by_key("asckey", $key);
-    next if !$asc_se;
+    if (!$asc_se)
+    {
+      warn "lookup on ascension $key failed";
+      next;
+    }
     my $streak = $streak_games[$i]->{'game'}->get_score('streak');
     next if !$streak;
     $streak->{'data'}{'streakmult'} = $multi;
