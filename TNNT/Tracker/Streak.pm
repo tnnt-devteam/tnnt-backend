@@ -246,18 +246,15 @@ sub increment_streak_cb {
 
     my $clan = $player->clan;
     next if !$clan;
-    $key = $clan->name . "-" . $tracker->{'asc_count'};
-    my $clan_asc_se = $player->get_score_by_key("clan_asckey", $key);
-    next if !$clan_asc_se;
-    $streak = $streak_games[$i]->{'game'}->get_score('streak');
-    next if !$streak;
-    $streak->{'data'}{'streakmult'} = $multi;
-
+    my $clan_asc_se = $clan->get_score_by_key("clan_asckey", $key);
+    if (!$clan_asc_se)
+    {
+      warn "lookup on ascension $key failed";
+      next;
+    }
     # update old game score
     # idk whether calculating this again is really necesssary...
     # rn i just want to fix the scoring :D
-    $streak_bonus = int(($clan_asc_se->{'data'}{'breakdown'}{'spoints'}
-                           + $clan_asc_se->{'data'}{'breakdown'}{'cpoints'} + 50) * ($multi - 1));
     $clan_asc_se->{'data'}{'breakdown'}{'tpoints'} = $streak_bonus;
     $clan_asc_se->points($clan_asc_se->{'data'}{'breakdown'}{'zpoints'}
                     + $clan_asc_se->{'data'}{'breakdown'}{'spoints'}

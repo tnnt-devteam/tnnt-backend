@@ -64,6 +64,16 @@ sub add_game
 
   return if !$game->is_ascended();
 
+  #--- will be easier to use the same key to lookup games in both the
+  #--- payer scores/games list and the clan one, for streak retro updates
+  #--- also need to move the initialisation for asc_count = 0 to up here
+  #--- and the increment, since all this is per-player now not any entity
+  my $trk = $self->_player_track;
+  my $player_name = $game->player->name;
+  $trk->{'asc_count'}{$player_name} = 0 if !defined($trk->{'asc_count'});
+  $trk->{'asc_count'}{$player_name}++;
+  my $asc_key = $player_name . "-" . $trk->{'asc_count'}{$player_name};
+
   #--- list of entities (players, clans) we'll be processing
 
   my @entities = ($game->player);
@@ -74,17 +84,12 @@ sub add_game
   foreach my $entity (@entities) {
     my $is_clan = $entity->isa('TNNT::Clan');
     my %breakdown;
-    my $trk = $is_clan ? $self->_clan_track : $self->_player_track;
-
   #--- track ascensions and get number of repeated wins for current game's
   #--- role-race combination
 
     my $zdivisor = ++$trk->{$entity->name}{$game->role};
 
   #--- create scoring entry
-    $trk->{'asc_count'}{$entity->name} = 0 if !defined($trk->{'asc_count'});
-    $trk->{'asc_count'}{$entity->name}++;
-    my $asc_key = $entity->name . "-" . $trk->{'asc_count'}{$entity->name};
     my $se = new TNNT::ScoringEntry(
       trophy => ($is_clan ? 'clan-':'') . $self->name(),
       games => [ $game ],
