@@ -408,7 +408,7 @@
 
     <tr>
       <td class="trophy-name"
-          title="Highest number of unique ascension character race/role/align0 combos. 200 points.">
+          title="Highest number of unique ascension character race/role/align0/gender0 combos. 200 points.">
         Most Unique Ascensions
       </td>
       <td class="trophy-na">N/A</td>
@@ -444,7 +444,7 @@
 
     <tr>
       <td class="trophy-name"
-          title="Ascend all 73 possible race/role/align0 combos. 1000 points.">
+          title="Ascend all 73 possible race/role/align0/gender0 combos. 1000 points.">
         NetHack Master
       </td>
       <td class="trophy-na">N/A</td>
